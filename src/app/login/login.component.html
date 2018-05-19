@@ -1,0 +1,22 @@
+<div class="row">
+  <form [formGroup]="formulario" (ngSubmit)="login()">
+    <h2>Iniciar sesión</h2>
+    <div class="form-group">
+      <label for="usuario">Usuario:</label>
+      <input formControlName="username" type="text" class="form-control" id="usuario" placeholder="Ingresa tu Usuario" name="usuario"
+             [(ngModel)]="formulario.value.username" required>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Contraseña:</label>
+      <input formControlName="password" type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd"
+             [(ngModel)]="formulario.value.password" required>
+    </div>
+    <div class="checkbox">
+      <input id="checkbox1" type="checkbox">
+      <label for="checkbox1"> Recuerdame </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-center col-md-12">Log in</button>
+  </form>
+</div>

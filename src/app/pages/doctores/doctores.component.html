@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="body">
+    <legend class="col-form-legend col-sm-2">Buscar medico:</legend>
+    <div class="form-group row">
+      <div class="input-group col-sm-8">
+        <input type="text" class="form-control" placeholder="Buscar">
+        <span class="input-group-addon">
+          <i class="zmdi zmdi-search"></i>
+        </span>
+      </div>
+      <div class="input-group col-sm-4">
+        <button type="button" (click)="router.navigate(['agregar-medico'])" class="col-md-12 btn btn-primary text-center">
+          <i class="zmdi zmdi-plus float-left"></i>
+          Agregar Medico
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="body">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="assets/images/mediteck/sin-foto.png" class="img-post" alt="profile-image">
+      </div>
+
+      <div class="col-md-10">
+        <h3 class="m-b-0">Dr. Juan Bautista </h3>
+        <p class="text-muted">Medico general</p>
+        <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+        <div class="row align-items-end justify-content-between">
+          <div class="col-4">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary float-right">Ver y/o Editar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
