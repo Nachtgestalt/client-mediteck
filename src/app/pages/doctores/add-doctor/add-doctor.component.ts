@@ -25,6 +25,8 @@ export class AddDoctorComponent implements OnInit {
       'Edad': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
+      'email': new FormControl(),
+      'password': new FormControl(),
     });
   }
 
