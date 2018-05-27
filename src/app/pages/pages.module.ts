@@ -12,6 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DoctoresComponent } from './doctores/doctores.component';
 import { AddDoctorComponent } from './doctores/add-doctor/add-doctor.component';
 import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
+import { NursesComponent } from './nurses/nurses.component';
+import { AddNursesComponent } from './nurses/add-nurses/add-nurses.component';
+import { MedicalConsultationsComponent } from './medical-consultations/medical-consultations.component';
+import { MedicalHistoryComponent } from './medical-consultations/medical-history/medical-history.component';
 
 @NgModule({
   imports: [
@@ -20,7 +24,7 @@ import { AddPatientsComponent } from './patients/add-patients/add-patients.compo
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    PAGES_ROUTES
+    PAGES_ROUTES   //pages.routes.ts
   ],
   declarations: [
     PagesComponent,
@@ -30,7 +34,11 @@ import { AddPatientsComponent } from './patients/add-patients/add-patients.compo
     DashboardComponent,
     DoctoresComponent,
     AddDoctorComponent,
-    AddPatientsComponent
+    AddPatientsComponent,
+    NursesComponent,
+    AddNursesComponent,
+    MedicalConsultationsComponent,
+    MedicalHistoryComponent,
   ]
 })
 export class PagesModule { }
