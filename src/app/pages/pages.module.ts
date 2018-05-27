@@ -12,6 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DoctoresComponent } from './doctores/doctores.component';
 import { AddDoctorComponent } from './doctores/add-doctor/add-doctor.component';
 import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
+import { WarehousesComponent } from './warehouses/warehouses.component';
+import { AddWarehouseComponent } from './warehouses/add-warehouse/add-warehouse.component';
+import { UsersComponent } from './users/users.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -30,7 +34,11 @@ import { AddPatientsComponent } from './patients/add-patients/add-patients.compo
     DashboardComponent,
     DoctoresComponent,
     AddDoctorComponent,
-    AddPatientsComponent
+    AddPatientsComponent,
+    WarehousesComponent,
+    AddWarehouseComponent,
+    UsersComponent,
+    AddUserComponent
   ]
 })
 export class PagesModule { }
