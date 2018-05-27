@@ -16,6 +16,9 @@ import { NursesComponent } from './nurses/nurses.component';
 import { AddNursesComponent } from './nurses/add-nurses/add-nurses.component';
 import { MedicalConsultationsComponent } from './medical-consultations/medical-consultations.component';
 import { MedicalHistoryComponent } from './medical-consultations/medical-history/medical-history.component';
+import { NotesComponent } from './medical-consultations/notes/notes.component';
+import { InfrastructureComponent } from './infrastructure/infrastructure.component';
+import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.component';
 
 @NgModule({
   imports: [
@@ -39,6 +42,9 @@ import { MedicalHistoryComponent } from './medical-consultations/medical-history
     AddNursesComponent,
     MedicalConsultationsComponent,
     MedicalHistoryComponent,
+    NotesComponent,
+    InfrastructureComponent,
+    BedsXroomComponent,
   ]
 })
 export class PagesModule { }

@@ -35,6 +35,7 @@ export class LeftsidebarService {
         {titulo: 'Agregar seccion', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/pisos'},
         {titulo: 'Listar secciones', url: '/secciones'},
+        {titulo: 'Agregar Camas', url: '/agregar_cama'},
       ]
     },
     {
