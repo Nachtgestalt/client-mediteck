@@ -16,6 +16,10 @@ import { WarehousesComponent } from './warehouses/warehouses.component';
 import { AddWarehouseComponent } from './warehouses/add-warehouse/add-warehouse.component';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { NursesComponent } from './nurses/nurses.component';
+import { AddNursesComponent } from './nurses/add-nurses/add-nurses.component';
+import { MedicalConsultationsComponent } from './medical-consultations/medical-consultations.component';
+import { MedicalHistoryComponent } from './medical-consultations/medical-history/medical-history.component';
 
 @NgModule({
   imports: [
@@ -24,7 +28,7 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    PAGES_ROUTES
+    PAGES_ROUTES   //pages.routes.ts
   ],
   declarations: [
     PagesComponent,
@@ -39,6 +43,10 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     AddWarehouseComponent,
     UsersComponent,
     AddUserComponent
+    NursesComponent,
+    AddNursesComponent,
+    MedicalConsultationsComponent,
+    MedicalHistoryComponent,
   ]
 })
 export class PagesModule { }

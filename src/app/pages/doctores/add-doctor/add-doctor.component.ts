@@ -31,7 +31,7 @@ export class AddDoctorComponent implements OnInit {
   }
 
   resetForm() {
-    this,this.form.reset();
+    this.form.reset();
   }
 
 }

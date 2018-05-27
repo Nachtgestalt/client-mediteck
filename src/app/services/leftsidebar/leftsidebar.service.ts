@@ -23,7 +23,7 @@ export class LeftsidebarService {
       titulo: 'Enfermeras',
       icono: 'zmdi zmdi-account-add',
       submenu: [
-        {titulo: 'Listar Enfermeras', url: '/enfermeras'},
+        {titulo: 'Listar Enfermeras', url: '/lista_enfermeras'},
         {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'}
       ]
     },
@@ -58,8 +58,8 @@ export class LeftsidebarService {
       icono: 'zmdi zmdi-account-add',
       submenu: [
         {titulo: 'Citas', url: '/cita'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
-        {titulo: 'Historia clinica', url: '/historia-clinica'}, // Este modulo lo planeo manejar con tabs para consultar y agregar historias clinicas
-        // {titulo: 'Estudios y resultados', url: '/estudios'},
+        {titulo: 'Historial Medico', url: '/historial_medico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar historias clinicas
+        {titulo: 'Estudios y resultados', url: '/estudios'},
         {titulo: 'Notas', url: '/notas'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
         // {titulo: 'Cuadro clinico', url: '/cuadro-clinico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
         {titulo: 'Recetas de medicamentos', url: '/recetas-medicamentos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
