@@ -14,8 +14,6 @@ import { AddDoctorComponent } from './doctores/add-doctor/add-doctor.component';
 import { AddPatientsComponent } from './patients/add-patients/add-patients.component';
 import { WarehousesComponent } from './warehouses/warehouses.component';
 import { AddWarehouseComponent } from './warehouses/add-warehouse/add-warehouse.component';
-import { UsersComponent } from './users/users.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
 import { NursesComponent } from './nurses/nurses.component';
 import { AddNursesComponent } from './nurses/add-nurses/add-nurses.component';
 import { MedicalConsultationsComponent } from './medical-consultations/medical-consultations.component';
@@ -44,8 +42,6 @@ import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.compo
     AddPatientsComponent,
     WarehousesComponent,
     AddWarehouseComponent,
-    UsersComponent,
-    AddUserComponent
     NursesComponent,
     AddNursesComponent,
     MedicalConsultationsComponent,
