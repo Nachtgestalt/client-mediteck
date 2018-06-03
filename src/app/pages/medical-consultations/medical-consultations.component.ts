@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-medical-consultations',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./medical-consultations.component.css']
 })
 export class MedicalConsultationsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }
