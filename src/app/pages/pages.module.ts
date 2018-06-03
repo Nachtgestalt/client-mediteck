@@ -21,6 +21,7 @@ import { MedicalHistoryComponent } from './medical-consultations/medical-history
 import { NotesComponent } from './medical-consultations/notes/notes.component';
 import { InfrastructureComponent } from './infrastructure/infrastructure.component';
 import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.component';
+import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.compo
     NotesComponent,
     InfrastructureComponent,
     BedsXroomComponent,
+    EditPatientsComponent
   ]
 })
 export class PagesModule { }

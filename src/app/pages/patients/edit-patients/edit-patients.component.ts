@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class EditPatientsComponent implements OnInit {
   objeto: any = {
-    nom_paciente: "",
-    ap_paciente: "",
-    tel_paciente: "",
-    email_paciente: "",
+    nom_paciente: '',
+    ap_paciente: '',
+    tel_paciente: '',
+    email_paciente: '',
     profs_paciente: "",
     edad_paciente: "",
     tipo_sangre: "",
