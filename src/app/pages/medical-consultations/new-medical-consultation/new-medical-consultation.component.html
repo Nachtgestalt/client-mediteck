@@ -11,60 +11,106 @@
 
       <div class="row">
         <div class="col-md-6">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Fecha: </label>
-                <input class="form-control" type="date" formControlName="fecha">
-              </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Fecha: </label>
+              <input class="form-control" type="date" formControlName="fecha">
             </div>
+          </div>
 
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Peso: </label>
-                <input class="form-control" type="text" placeholder="Peso" formControlName="peso">
-              </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Peso: </label>
+              <input class="form-control" type="text" placeholder="Peso" formControlName="peso">
             </div>
+          </div>
 
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Talla: </label>
-                <input class="form-control" type="text" placeholder="Talla" formControlName="talla">
-              </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Talla: </label>
+              <input class="form-control" type="text" placeholder="Talla" formControlName="talla">
             </div>
+          </div>
         </div>
 
-          <div class="col-md-6">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Perimetro Cefálico: </label>
-                <input class="form-control" type="text" placeholder="Perimetro Cefálico" formControlName="per_Cef">
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Perimetro Torácico: </label>
-                <input class="form-control" type="text" placeholder="Perimetro Torácico" formControlName="per_tor">
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Costo: </label>
-                <input class="form-control" type="text" placeholder="Costo" formControlName="costo">
-              </div>
+        <div class="col-md-6">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Perimetro Cefálico: </label>
+              <input class="form-control" type="text" placeholder="Perimetro Cefálico" formControlName="per_Cef">
             </div>
           </div>
 
-        <div class="col-sm-12">
-          <div class="row align-items-end justify-content-between">
-            <div class="col-4">
-              <button type="button" class="btn btn-primary float-right">Guardar</button>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Perimetro Torácico: </label>
+              <input class="form-control" type="text" placeholder="Perimetro Torácico" formControlName="per_tor">
             </div>
           </div>
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Costo: </label>
+              <input class="form-control" type="text" placeholder="Costo" formControlName="costo">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="body">
+    <ul class="nav nav-tabs padding-0">
+      <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Receta">Receta Medica</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Indicaciones">Indicaciones</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Notas">Notas</a></li>
+      <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Vacunas">Vacunas</a></li>
+    </ul>
+
+    <div class="tab-content m-t-10">
+      <div class="tab-pane active" id="Receta">
+        <div class="row clearfix">
+          <form [formGroup]="formReceta">
+
+            <h3>Aqui va recetas medicas! :D</h3>
+
+          </form>
         </div>
       </div>
 
-    </form>
+      <div class="tab-pane" routerLinkActive="active" id="Indicaciones">
+        <div class="row clearfix">
+          <form [formGroup]="formIndicaciones">
+
+            <h3>Aqui van indicaciones! :D</h3>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-pane" routerLinkActive="active" id="Notas">
+        <div class="row clearfix">
+          <form [formGroup]="formNotas">
+
+            <h3>Aqui van notas! :D</h3>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-pane" routerLinkActive="active" id="Vacunas">
+        <div class="row clearfix">
+          <form [formGroup]="formVacunas">
+
+            <h3>Aqui van vacunas ! :D</h3>
+            
+          </form>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
