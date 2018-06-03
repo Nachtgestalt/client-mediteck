@@ -58,6 +58,7 @@ export class LeftsidebarService {
       titulo: 'Consulta',
       icono: 'zmdi zmdi-account-add',
       submenu: [
+        {titulo: 'Nueva Consulta', url: '/nueva_consulta'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
         {titulo: 'Citas', url: '/cita'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
         {titulo: 'Historial Medico', url: '/historial_medico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar historias clinicas
         {titulo: 'Estudios y resultados', url: '/estudios'},

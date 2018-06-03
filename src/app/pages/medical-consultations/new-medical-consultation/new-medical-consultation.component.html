@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="body">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h3 class="section-heading text-uppercase">Nueva Consulta</h3>
+      </div>
+    </div>
+
+    <form [formGroup]="form">
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fecha: </label>
+                <input class="form-control" type="date" formControlName="fecha">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Peso: </label>
+                <input class="form-control" type="text" placeholder="Peso" formControlName="peso">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Talla: </label>
+                <input class="form-control" type="text" placeholder="Talla" formControlName="talla">
+              </div>
+            </div>
+        </div>
+
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Perimetro Cefálico: </label>
+                <input class="form-control" type="text" placeholder="Perimetro Cefálico" formControlName="per_Cef">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Perimetro Torácico: </label>
+                <input class="form-control" type="text" placeholder="Perimetro Torácico" formControlName="per_tor">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Costo: </label>
+                <input class="form-control" type="text" placeholder="Costo" formControlName="costo">
+              </div>
+            </div>
+          </div>
+
+        <div class="col-sm-12">
+          <div class="row align-items-end justify-content-between">
+            <div class="col-4">
+              <button type="button" class="btn btn-primary float-right">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
