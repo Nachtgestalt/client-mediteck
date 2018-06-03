@@ -31,7 +31,6 @@ export class LeftsidebarService {
       titulo: 'Infraestructura',
       icono: 'zmdi zmdi-account-add',
       submenu: [
-        {titulo: 'Agregar piso', url: '/agregar-piso'},
         {titulo: 'Agregar seccion', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/pisos'},
         {titulo: 'Listar secciones', url: '/secciones'},

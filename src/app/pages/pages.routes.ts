@@ -11,7 +11,8 @@ import {NursesComponent} from './nurses/nurses.component';
 import {MedicalHistoryComponent} from './medical-consultations/medical-history/medical-history.component';
 import {NotesComponent} from './medical-consultations/notes/notes.component';
 import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component';
-import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component'
+import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
+import {AddSectionComponent} from './infrastructure/add-section/add-section.component'
 
 const pagesRoutes: Routes = [
   {
@@ -30,6 +31,8 @@ const pagesRoutes: Routes = [
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
       { path: 'nueva_consulta', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
+      { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Seccion', subtitle: 'Bienvenido'}},
+
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
