@@ -12,8 +12,6 @@ import {MedicalHistoryComponent} from './medical-consultations/medical-history/m
 import {NotesComponent} from './medical-consultations/notes/notes.component'
 import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component'
 import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
-import {NotesComponent} from './medical-consultations/notes/notes.component';
-import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component';
 import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component'
 
 const pagesRoutes: Routes = [

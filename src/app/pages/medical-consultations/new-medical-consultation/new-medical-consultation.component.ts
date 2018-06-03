@@ -8,14 +8,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NewMedicalConsultationComponent implements OnInit {
 
-  form: FormGroup; 
+  form: FormGroup;
+  formReceta: FormGroup;
+  formNotas: FormGroup;
+  formVacunas: FormGroup;
+  formIndicaciones: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
     this.createFormGroup();
   }
-  
+
   createFormGroup() {
     this.form = new FormGroup({
       'fecha': new FormControl(),
