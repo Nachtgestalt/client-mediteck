@@ -24,6 +24,9 @@ import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.compo
 import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
 import { NewMedicalConsultationComponent } from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
 import { AddSectionComponent } from './infrastructure/add-section/add-section.component';
+import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component';
+import { ListPatientsComponent } from './patients/list-patients/list-patients.component';
+
 
 @NgModule({
   imports: [
@@ -55,6 +58,8 @@ import { AddSectionComponent } from './infrastructure/add-section/add-section.co
     EditPatientsComponent,
     NewMedicalConsultationComponent,
     AddSectionComponent,
+    ListFloorsComponent,
+    ListPatientsComponent
   ]
 })
 export class PagesModule { }
