@@ -18,21 +18,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     init_plugins();
     this.formulario = new FormGroup({
-      username: new FormControl('abednar@example.com', Validators.required ),
+      username: new FormControl('anderson.luz@example.com', Validators.required ),
       password: new FormControl('secret', Validators.required)
     });
   }
 
   login() {
-    let username = this.formulario.get('username').value;
+    const username = this.formulario.get('username').value;
     this._userService.auth(this.formulario.value)
       .subscribe(
         (resp: any) => {
-          this._userService.setInStorage(resp);
           this._userService.getDataUser(username)
             .subscribe(
-              res => {
-                console.log();
+              (res: any) => {
+                const usuario = res.Usuario;
+                this._userService.setInStorage(resp, usuario);
+                console.log(res);
               }
             );
           this.router.navigate(['/dashboard']);

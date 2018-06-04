@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {DoctorService} from '../../services/doctor/doctor.service';
 
 @Component({
   selector: 'app-doctores',
@@ -9,9 +10,18 @@ import {Router} from '@angular/router';
 export class DoctoresComponent implements OnInit {
 
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public _doctorService: DoctorService) { }
 
   ngOnInit() {
+    this._doctorService.getDoctors()
+      .subscribe(
+        res => {
+          console.log(res);
+        }
+
+      );
+
   }
 
   goToAddDoctor() {
