@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="body">
+  
+      <!-- Tab panes -->
+      <div class="tab-content m-t-10">
+        <div class="tab-pane table-responsive active" id="All">
+          <table class="table m-b-0 table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Telefono</th>
+                <th>Sexo</th>
+                <th>Edad</th>
+                <th>Direccion</th>
+                <th>Tipo de Sangre</th>
+                <th>Fecha de Inscripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let k of patients; let i = index">
+                <!--[ngClass]="{ 'table-danger': k.suscripcion.Estado === 2, 'table-success': k.Nombre !== 2 }">-->
+                <td>
+                  <span class="list-name"> {{i+1}} </span>
+                </td>
+                <td>{{k.Nombre}}</td>
+                <td>{{k.Apellidos}}</td>
+                <td>{{k.Telefono}}</td>
+                <td>{{k.Sexo}}</td>
+                <td>{{k.Edad}}</td>
+                <td>{{k.Direccion}}</td>
+                <td>{{k.Tipo_sangre}}</td>
+                <td>{{k.Fecha_inscripcion}}</td>
+                <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
+                <button class="btn btn-danger" type="button">
+                  <i class="fas fa-trash fa-lg"></i>
+                </button>
+  
+                <!--<td>{{k.Estado}}</td>-->
+                <!--<td><span class="badge badge-success">Approved</span></td>-->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
+    </div>

@@ -9,10 +9,13 @@ import {WarehousesComponent} from './warehouses/warehouses.component';
 import {AddNursesComponent} from './nurses/add-nurses/add-nurses.component';
 import {NursesComponent} from './nurses/nurses.component';
 import {MedicalHistoryComponent} from './medical-consultations/medical-history/medical-history.component';
+import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
+import {AddSectionComponent} from './infrastructure/add-section/add-section.component'
 import {NotesComponent} from './medical-consultations/notes/notes.component'
 import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component'
 import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
-import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component'
+import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component'
+import { ListPatientsComponent } from './patients/list-patients/list-patients.component'
 
 const pagesRoutes: Routes = [
   {
@@ -32,6 +35,9 @@ const pagesRoutes: Routes = [
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
       { path: 'lista-pacientes', component: EditPatientsComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
       { path: 'nueva_consulta', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
+      { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Seccion', subtitle: 'Bienvenido'}},
+      { path: 'listar_pisos', component: ListFloorsComponent, data: {titulo: 'Listar Pisos', subtitle: 'Bienvenido'}},
+      { path: 'listar_pacientes', component: ListPatientsComponent, data: {titulo: 'Listar Pacientes', subtitle: 'Bienvenido'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
