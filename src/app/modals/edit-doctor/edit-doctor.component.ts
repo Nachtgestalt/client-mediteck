@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DoctorService} from '../../services/doctor/doctor.service';
@@ -9,9 +9,10 @@ import {DoctorService} from '../../services/doctor/doctor.service';
   styleUrls: ['./edit-doctor.component.css']
 })
 export class EditDoctorComponent implements OnInit {
+  @Output() cerrado = new EventEmitter;
+  @Input() doctor: any;
 
   form: FormGroup;
-  @Input() doctor: any;
   private modalRef: NgbModalRef;
   closeResult: string;
 
@@ -27,7 +28,7 @@ export class EditDoctorComponent implements OnInit {
       'Nombre': new FormControl('Luis'),
       'Apellidos': new FormControl('Osorio'),
       'Especialidad': new FormControl('Proctologo'),
-      'Sexo': new FormControl('Masculino'),
+      'Sexo': new FormControl('0'),
       'Edad': new FormControl('26'),
       'Cedula': new FormControl('luis123'),
       'Direccion': new FormControl('calle siempreviva 46'),
@@ -53,6 +54,10 @@ export class EditDoctorComponent implements OnInit {
     this.loadData2Form(this.doctor);
     this.modalRef = this.modalService.open(content);
     this.modalRef.result.then((result) => {
+      if ( result ) {
+        this.cerrado.emit(true);
+      }
+      console.log(result);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -69,8 +74,8 @@ export class EditDoctorComponent implements OnInit {
     }
   }
 
-  resetForm() {
-    this.form.reset();
+  cancelModal() {
+    this.modalRef.close(false);
   }
 
   confirm() {
@@ -78,7 +83,7 @@ export class EditDoctorComponent implements OnInit {
     this._doctorService.putDoctor(this.doctor.id, this.form.value)
       .subscribe(
         res => {
-          this.modalRef.close();
+          this.modalRef.close(true);
           console.log(res);
         }
       );

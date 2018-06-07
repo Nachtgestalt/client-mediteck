@@ -28,6 +28,7 @@ import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.co
 import { ListPatientsComponent } from './patients/list-patients/list-patients.component';
 import {EditDoctorComponent} from '../modals/edit-doctor/edit-doctor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ModalsModule} from '../modals/modals.module';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    PAGES_ROUTES   //pages.routes.ts
+    ModalsModule,
+    PAGES_ROUTES
   ],
   declarations: [
     PagesComponent,
@@ -63,7 +65,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AddSectionComponent,
     ListFloorsComponent,
     ListPatientsComponent,
-    EditDoctorComponent
   ]
 })
 export class PagesModule { }

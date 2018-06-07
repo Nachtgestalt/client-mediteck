@@ -28,7 +28,9 @@ export class DoctoresComponent implements OnInit {
       );
   }
 
-  goToAddDoctor() {
-    this.router.navigateByUrl('/user');
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
   }
 }

@@ -47,8 +47,8 @@
                 <div class="form-group">
                   <label>Género: </label>
                   <select class="form-control" name="genero" formControlName="Sexo">
-                    <option value="hombre">Hombre</option>
-                    <option value="mujer">Mujer</option>
+                    <option value=0>Hombre</option>
+                    <option value=1>Mujer</option>
                   </select>
                 </div>
 
@@ -83,7 +83,7 @@
           <div class="col-sm-12">
             <div class="row align-items-end justify-content-between">
               <div class="col-4">
-                <button type="button" class="btn btn-danger" (click)="resetForm()">Cancelar</button>
+                <button type="button" class="btn btn-danger" (click)="cancelModal()">Cancelar</button>
               </div>
               <div class="col-4">
                 <button type="button" class="btn btn-primary float-right" (click)="confirm()">Guardar</button>
