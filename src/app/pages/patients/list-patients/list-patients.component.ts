@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PatientService} from '../../../services/patient/patient.service';
 
 @Component({
   selector: 'app-list-patients',
@@ -7,22 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPatientsComponent implements OnInit {
 
-  patients = [
-    {
-      Nombre: 'Omar',
-      Apellidos: 'Mendez Garcia',
-      Telefono: '2225750377',
-      Sexo: 'Masculino',
-      Edad: '12',
-      Direccion: 'Prol. 14 Sur 12134-3',
-      Tipo_sangre:'O+',
-      Fecha_inscripcion:'12-10-2017'
-    },
-  ];
+  patients = [];
 
-  constructor() { }
+  constructor( public _patientService: PatientService) { }
 
   ngOnInit() {
+    this._patientService.getPatients()
+      .subscribe(
+        (res: any) => {
+          this.patients = res;
+          console.log(res);
+        }
+      );
   }
 
 }

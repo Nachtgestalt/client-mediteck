@@ -44,7 +44,6 @@ export class AddDoctorComponent implements OnInit {
           console.log(res);
         }
       );
-
   }
 
 }

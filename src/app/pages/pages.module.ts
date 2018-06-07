@@ -26,6 +26,8 @@ import { NewMedicalConsultationComponent } from './medical-consultations/new-med
 import { AddSectionComponent } from './infrastructure/add-section/add-section.component';
 import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component';
 import { ListPatientsComponent } from './patients/list-patients/list-patients.component';
+import {EditDoctorComponent} from '../modals/edit-doctor/edit-doctor.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { ListPatientsComponent } from './patients/list-patients/list-patients.co
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     PAGES_ROUTES   //pages.routes.ts
   ],
   declarations: [
@@ -59,7 +62,8 @@ import { ListPatientsComponent } from './patients/list-patients/list-patients.co
     NewMedicalConsultationComponent,
     AddSectionComponent,
     ListFloorsComponent,
-    ListPatientsComponent
+    ListPatientsComponent,
+    EditDoctorComponent
   ]
 })
 export class PagesModule { }

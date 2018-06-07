@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="card">
+<div class="card" *ngFor="let doctor of doctores; let i = index">
   <div class="body">
     <div class="row">
       <div class="col-md-2">
@@ -27,15 +27,17 @@
       </div>
 
       <div class="col-md-10">
-        <h3 class="m-b-0">Dr. Juan Bautista </h3>
-        <p class="text-muted">Medico general</p>
-        <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+        <h3 class="m-b-0">Dr. {{doctor.Nombre + ' '  + doctor.Apellidos }} </h3>
+        <p class="text-muted">Especialidad: {{doctor.Especialidad}}</p>
+        <p class="text-muted">Cedula Profesional: {{doctor.Cedula}}</p>
+        <p class="text-muted">Direccion: {{doctor.Direccion}}</p>
         <div class="row align-items-end justify-content-between">
           <div class="col-4">
             <button type="submit" class="btn btn-danger">Eliminar</button>
           </div>
           <div class="col-4">
-            <button type="button" class="btn btn-primary float-right">Ver y/o Editar</button>
+            <app-edit-doctor [doctor]="doctores[i]"></app-edit-doctor>
+            <!--<button type="button" class="btn btn-primary float-right">Ver y/o Editar</button>-->
           </div>
         </div>
       </div>

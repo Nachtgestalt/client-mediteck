@@ -21,27 +21,34 @@ export class DoctorService {
   }
 
   getDoctor(id) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
     const url = `${this.urlDoctor}/${id}`;
-    return this.http.get(url);
+    return this.http.get(url,{headers});
   }
 
   postDoctor(doctor) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
-    const body = JSON.stringify(doctor)
+    const body = JSON.stringify(doctor);
     return this.http.post(this.urlDoctor, body, {headers});
   }
 
   putDoctor(id, doctor) {
-    const url = `${this.urlDoctor}/${id}`
+    const url = `${this.urlDoctor}/${id}`;
     const body = JSON.stringify(doctor);
-    return this.http.put(url, body);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    headers = headers.append('Content-Type', 'application/json');
+    return this.http.put(url, body,{headers});
   }
 
   deleteDoctor(id) {
-    const url = `${this.urlDoctor}/${id}`
-    return this.http.delete(url);
+    const url = `${this.urlDoctor}/${id}`;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    return this.http.delete(url,{headers});
   }
 
 }

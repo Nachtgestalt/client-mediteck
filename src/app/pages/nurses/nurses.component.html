@@ -18,17 +18,18 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" *ngFor="let nurse of nurses; let i = index;">
     <div class="body">
       <div class="row">
         <div class="col-md-2">
           <img src="assets/images/mediteck/sin-foto.png" class="img-post" alt="profile-image">
         </div>
-  
+
         <div class="col-md-10">
-          <h3 class="m-b-0">Enf. Irena Sendler </h3>
+          <h3 class="m-b-0">Enf. {{nurse.Nombre}} {{nurse.Apellidos}} </h3>
           <p class="text-muted">Enfermera</p>
-          <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+          <p class="text-muted">Cedula Profesional: {{nurse.Cedula}}</p>
+          <p class="text-muted">Direccion: {{nurse.Direccion}}</p>
           <div class="row align-items-end justify-content-between">
             <div class="col-4">
               <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -38,7 +39,7 @@
             </div>
           </div>
         </div>
-  
+
       </div>
     </div>
   </div>

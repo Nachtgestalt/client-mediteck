@@ -8,20 +8,24 @@ import {DoctorService} from '../../services/doctor/doctor.service';
   styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements OnInit {
+  doctores: any = []
 
 
   constructor(public router: Router,
               public _doctorService: DoctorService) { }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
     this._doctorService.getDoctors()
       .subscribe(
         res => {
           console.log(res);
+          this.doctores = res;
         }
-
       );
-
   }
 
   goToAddDoctor() {

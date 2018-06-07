@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WarehouseService} from '../../services/warehouse/warehouse.service';
 
 @Component({
   selector: 'app-warehouses',
@@ -7,17 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarehousesComponent implements OnInit {
 
-  suscripciones = [
-    {
-      Nombre: 'Almacen del norte',
-      Direccion: 'Calle del norte 123',
-      Descripcion: 'Este almacen almacena cosas almacenadas'
-    }
-  ];
+  warehouses = [];
 
-  constructor() { }
+  constructor( public _warehouseService: WarehouseService) { }
 
   ngOnInit() {
+    this._warehouseService.getWarehouses()
+      .subscribe(
+        (res: any) => {
+          this.warehouses = res;
+          console.log(res);
+        }
+      );
   }
 
 }

@@ -12,6 +12,8 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LeftsidebarComponent } from './shared/leftsidebar/leftsidebar.component';
 import {ServicesModule} from './services/services.module';
+import { EditDoctorComponent } from './modals/edit-doctor/edit-doctor.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import {ServicesModule} from './services/services.module';
     FormsModule,
     ReactiveFormsModule,
     ServicesModule,
-    APP_ROUTING
+    APP_ROUTING,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

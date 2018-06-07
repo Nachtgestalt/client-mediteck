@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {WarehouseService} from '../../../services/warehouse/warehouse.service';
 
 @Component({
   selector: 'app-add-warehouse',
@@ -9,7 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class AddWarehouseComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor( public _warehouseService: WarehouseService) { }
 
   ngOnInit() {
     this.createFormGrouo();
@@ -20,7 +21,23 @@ export class AddWarehouseComponent implements OnInit {
       'Nombre': new FormControl(),
       'Direccion': new FormControl(),
       'Descricion': new FormControl(),
+      'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
     });
+  }
+
+  resetForm() {
+    this.form.reset();
+  }
+
+  confirm() {
+    console.log(this.form.value);
+    this._warehouseService.postWarehouse(this.form.value)
+      .subscribe(
+        res => {
+          console.log(res);
+        }
+      );
+
   }
 
 }

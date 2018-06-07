@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import {URL_SERVICIOS} from '../../config/config';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class WarehouseService {
-
+  token = localStorage.getItem('token');
   urlWarehouse = `${URL_SERVICIOS}/almacenes`;
 
   constructor(private http: HttpClient) {}
 
   getWarehouses() {
-    return this.http.get(this.urlWarehouse);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    return this.http.get(this.urlWarehouse, {headers});
   }
 
   getWarehouse(id) {
@@ -19,8 +21,11 @@ export class WarehouseService {
   }
 
   postWarehouse(warehouse) {
-    const body = JSON.stringify(warehouse)
-    return this.http.post(this.urlWarehouse, body);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    headers = headers.append('Content-Type', 'application/json');
+    const body = JSON.stringify(warehouse);
+    return this.http.post(this.urlWarehouse, body, {headers});
   }
 
   putWarehouse(id, warehouse) {
