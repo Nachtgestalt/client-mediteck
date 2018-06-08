@@ -34,7 +34,13 @@ export class AddWarehouseComponent implements OnInit {
     this._warehouseService.postWarehouse(this.form.value)
       .subscribe(
         res => {
+          swal('Almacen agregado', 'Almacen agregado con exito', 'success');
+          this.resetForm();
           console.log(res);
+        },
+        error1 => {
+          swal('Algo malo ha ocurrido', 'Error al agregar almacen', 'error');
+          console.log(error1);
         }
       );
 

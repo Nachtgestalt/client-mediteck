@@ -19,15 +19,15 @@ export class AddDoctorComponent implements OnInit {
 
   createFormGrouo() {
     this.form = new FormGroup({
-      'Nombre': new FormControl('Luis'),
-      'Apellidos': new FormControl('Osorio'),
-      'Especialidad': new FormControl('Proctologo'),
-      'Sexo': new FormControl('Masculino'),
-      'Edad': new FormControl('26'),
-      'Cedula': new FormControl('luis123'),
-      'Direccion': new FormControl('calle siempreviva 46'),
+      'Nombre': new FormControl(),
+      'Apellidos': new FormControl(),
+      'Especialidad': new FormControl(),
+      'Sexo': new FormControl(),
+      'Edad': new FormControl(),
+      'Cedula': new FormControl(),
+      'Direccion': new FormControl(),
       'email': new FormControl(),
-      'password': new FormControl('secret'),
+      'password': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
     });
   }
@@ -41,8 +41,14 @@ export class AddDoctorComponent implements OnInit {
     this._doctorService.postDoctor(this.form.value)
       .subscribe(
         res => {
+          swal('Doctor agregado', 'Doctor agregado con exito', 'success');
           console.log(res);
-        }
+          this.resetForm();
+        },
+         error1 => {
+           swal('Algo malo ha ocurrido', 'Error al agregar doctor', 'error');
+           console.log(error1);
+         }
       );
   }
 

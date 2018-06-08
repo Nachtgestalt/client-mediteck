@@ -14,6 +14,7 @@ import { LeftsidebarComponent } from './shared/leftsidebar/leftsidebar.component
 import {ServicesModule} from './services/services.module';
 import { EditDoctorComponent } from './modals/edit-doctor/edit-doctor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ModalsModule} from './modals/modals.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ServicesModule,
     APP_ROUTING,
+    ModalsModule,
     NgbModule.forRoot()
   ],
   providers: [],

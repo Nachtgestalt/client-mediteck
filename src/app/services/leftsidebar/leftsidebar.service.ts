@@ -28,20 +28,20 @@ export class LeftsidebarService {
       ]
     },
     {
+      titulo: 'Pacientes',
+      icono: 'zmdi zmdi-account-add',
+      submenu: [
+        {titulo: 'Listar pacientes', url: '/listar_pacientes'},
+        {titulo: 'Agregar pacientes', url: '/agregar-paciente'}
+      ]
+    },
+    {
       titulo: 'Infraestructura',
       icono: 'zmdi zmdi-account-add',
       submenu: [
         {titulo: 'Agregar seccion', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/listar_pisos'},
         {titulo: 'Agregar Camas', url: '/agregar_cama'},
-      ]
-    },
-    {
-      titulo: 'Pacientes',
-      icono: 'zmdi zmdi-account-add',
-      submenu: [
-        {titulo: 'Listar pacientes', url: '/listar_pacientes'},
-        {titulo: 'Agregar pacientes', url: '/agregar-paciente'}
       ]
     },
     {

@@ -31,14 +31,19 @@ export class NurseService {
   }
 
   putNurse(id, nurse) {
-    const url = `${this.urlNurse}/${id}`
+    const url = `${this.urlNurse}/${id}`;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    headers = headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(nurse);
-    return this.http.put(url, body);
+    return this.http.put(url, body, {headers});
   }
 
   deleteNurse(id) {
-    const url = `${this.urlNurse}/${id}`
-    return this.http.delete(url);
+    const url = `${this.urlNurse}/${id}`;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    return this.http.delete(url, {headers});
   }
 
 }

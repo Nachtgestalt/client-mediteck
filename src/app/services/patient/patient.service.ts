@@ -33,9 +33,10 @@ export class PatientService {
   putPatient(id, doctor) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
+    headers = headers.append('Content-Type', 'application/json');
     const url = `${this.urlPatient}/${id}`
     const body = JSON.stringify(doctor);
-    return this.http.put(url, body,{headers});
+    return this.http.put(url, body, {headers});
   }
 
   deletePatient(id) {

@@ -11,20 +11,21 @@
                 <th>Nombre</th>
                 <th>Direccion</th>
                 <th>Descripción</th>
-                <th>Opciones</th>
+                <th style="width: 10%">Opciones</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let k of warehouses; let i = index">
-                  <!--[ngClass]="{ 'table-danger': k.suscripcion.Estado === 2, 'table-success': k.Nombre !== 2 }">-->
+              <tr *ngFor="let warehouse of warehouses; let i = index">
+                  <!--[ngClass]="{ 'table-danger': warehouse.suscripcion.Estado === 2, 'table-success': warehouse.Nombre !== 2 }">-->
                 <td><span class="list-name"> {{i+1}} </span></td>
-                <td>{{k.Nombre}}</td>
-                <td>{{k.Direccion}}</td>
-                <td>{{k.Descripcion}}</td>
+                <td>{{warehouse.Nombre}}</td>
+                <td>{{warehouse.Direccion}}</td>
+                <td>{{warehouse.Descricion}}</td>
+                <app-edit-warehouse (cerrado)="reload($event)" [warehouse]="warehouses[i]"></app-edit-warehouse>
                 <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
-                <button class="btn btn-danger" type="button"> <i class="fas fa-trash fa-lg"></i></button>
+                <button class="btn btn-danger" (click)="delete(warehouse.id)" type="button"> <i class="fas fa-trash fa-lg"></i></button>
 
-                <!--<td>{{k.Estado}}</td>-->
+                <!--<td>{{warehouse.Estado}}</td>-->
                 <!--<td><span class="badge badge-success">Approved</span></td>-->
               </tr>
               </tbody>

@@ -5,6 +5,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
+import { EditNurseComponent } from './edit-nurse/edit-nurse.component';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.component';
 
 @NgModule({
   imports: [
@@ -16,10 +19,16 @@ import {BrowserModule} from '@angular/platform-browser';
     NgbModule
   ],
   declarations: [
-    EditDoctorComponent
+    EditDoctorComponent,
+    EditNurseComponent,
+    EditPatientComponent,
+    EditWarehouseComponent
   ],
   exports: [
-    EditDoctorComponent
+    EditDoctorComponent,
+    EditNurseComponent,
+    EditPatientComponent,
+    EditWarehouseComponent
   ]
 })
 export class ModalsModule { }

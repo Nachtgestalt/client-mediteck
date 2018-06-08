@@ -10,9 +10,25 @@ export class UserService {
   urlAuth = `${URL_SERVICIOS}/oauth/token`;
   urlLogin = `${URL_SERVICIOS}/login-usuario`
   token: string;
+  user: User;
 
   constructor(public http: HttpClient,
               private router: Router) {
+    this.loadStorage();
+  }
+
+  estaLogueado() {
+    return (this.token.length > 5) ? true : false;
+  }
+
+  loadStorage () {
+    if ( localStorage.getItem('token') ) {
+      this.token = localStorage.getItem('token');
+      this.user = JSON.parse(localStorage.getItem('user'));
+    } else {
+      this.token = '';
+      this.user = null;
+    }
   }
 
   auth(user: User) {
@@ -47,6 +63,14 @@ export class UserService {
     localStorage.setItem('idMedicalCenter', usuario.idCentro_medico);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(usuario));
+  }
+
+  logout() {
+    this.token = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('idMedicalCenter')
+    this.router.navigate(['/login']);
   }
 
 }

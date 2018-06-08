@@ -1,64 +1,61 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
-import {DoctorService} from '../../services/doctor/doctor.service';
+import {NurseService} from '../../services/nurse/nurse.service';
 
 @Component({
-  selector: 'app-edit-doctor',
-  templateUrl: './edit-doctor.component.html',
-  styleUrls: ['./edit-doctor.component.css']
+  selector: 'app-edit-nurse',
+  templateUrl: './edit-nurse.component.html',
+  styleUrls: ['./edit-nurse.component.css']
 })
-export class EditDoctorComponent implements OnInit {
+export class EditNurseComponent implements OnInit {
   @Output() cerrado = new EventEmitter;
-  @Input() doctor: any;
+  @Input() nurse: any;
 
   form: FormGroup;
   private modalRef: NgbModalRef;
   closeResult: string;
 
   constructor( private modalService: NgbModal,
-               public _doctorService: DoctorService) { }
+               public _nurseService: NurseService) { }
 
   ngOnInit() {
-    this.createFormGrouo();
+    this.createForm();
   }
 
-  createFormGrouo() {
+  createForm() {
     this.form = new FormGroup({
       'Nombre': new FormControl(),
-      'Apellidos': new FormControl(),
-      'Especialidad': new FormControl(),
-      'Sexo': new FormControl(),
+      'Apellido': new FormControl(),
       'Edad': new FormControl(),
+      'Sexo': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
     });
   }
 
-  loadData2Form(doctor) {
-    console.log(this.doctor);
-    this.form.controls['Nombre'].setValue(doctor.Nombre);
-    this.form.controls['Apellidos'].setValue(doctor.Apellidos);
-    this.form.controls['Especialidad'].setValue(doctor.Especialidad);
-    this.form.controls['Sexo'].setValue(doctor.Sexo);
-    this.form.controls['Edad'].setValue(doctor.Edad);
-    this.form.controls['Cedula'].setValue(doctor.Cedula);
-    this.form.controls['Direccion'].setValue(doctor.Direccion);
+  loadData2Form(nurse) {
+    console.log(this.nurse);
+    this.form.controls['Nombre'].setValue(nurse.Nombre);
+    this.form.controls['Apellido'].setValue(nurse.Apellido);
+    this.form.controls['Sexo'].setValue(nurse.Sexo);
+    this.form.controls['Edad'].setValue(nurse.Edad);
+    this.form.controls['Cedula'].setValue(nurse.Cedula);
+    this.form.controls['Direccion'].setValue(nurse.Direccion);
   }
+
 
   open(content) {
     // console.log(this.centroMedico);
-    this.loadData2Form(this.doctor);
+    this.loadData2Form(this.nurse);
     this.modalRef = this.modalService.open(content);
     this.modalRef.result.then((result) => {
-      if ( result === 1) {
-        swal('Doctor actualizado', 'Doctor actualizado con exito', 'success');
+      if ( result === 1 ) {
+        swal('Enfermera actualizada', 'Enfermera actualizada con exito', 'success');
         this.cerrado.emit(true);
-      } else if ( result === 2 ) {
-        swal('Algo malo ha ocurrido', 'Error al actualizar doctor', 'error');
+      } else if (result === 2) {
+        swal('Algo malo ha ocurrido', 'Error al actualizar enfermera', 'error');
       }
       console.log(result);
       this.closeResult = `Closed with: ${result}`;
@@ -83,7 +80,7 @@ export class EditDoctorComponent implements OnInit {
 
   confirm() {
     console.log(this.form.value);
-    this._doctorService.putDoctor(this.doctor.id, this.form.value)
+    this._nurseService.putNurse(this.nurse.id, this.form.value)
       .subscribe(
         res => {
           this.modalRef.close(1);
@@ -94,4 +91,5 @@ export class EditDoctorComponent implements OnInit {
         }
       );
   }
+
 }
