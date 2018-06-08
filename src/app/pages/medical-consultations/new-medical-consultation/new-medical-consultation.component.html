@@ -1,15 +1,21 @@
 <div class="card">
   <div class="body">
+
+    <!--Titulo-->
     <div class="row">
       <div class="col-lg-12 text-center">
         <h3 class="section-heading text-uppercase">Nueva Consulta</h3>
       </div>
     </div>
+    <!--Final Titulo-->
 
+    <!--Formulario-->
     <form [formGroup]="form">
       <hr>
 
       <div class="row">
+
+        <!--Izquierda-->
         <div class="col-md-6">
           <div class="col-md-12">
             <div class="form-group">
@@ -32,7 +38,10 @@
             </div>
           </div>
         </div>
+        <!--Final Izquierda-->
 
+
+        <!--Derecha-->
         <div class="col-md-6">
           <div class="col-md-12">
             <div class="form-group">
@@ -55,9 +64,11 @@
             </div>
           </div>
         </div>
+        <!--Final Derecha-->
 
       </div>
     </form>
+    <!--Fin Formulario-->
   </div>
 </div>
 
@@ -78,138 +89,200 @@
       </li>
     </ul>
 
+    <!--***********************RECETAS MEDICAS*****************-->
     <div class="tab-content m-t-10">
       <div class="tab-pane active" id="Receta">
         <div class="row clearfix">
-          <form [formGroup]="formReceta">
+          <div class="col-md-12">
+            <form>
+              <div class="form-group">
+                <label>Titulo:</label>
+                <input type="text" class="form-control" id="name_medico" placeholder="Titulo de la Nota">
+              </div>
 
-            <h3>Aqui va recetas medicas! :D</h3>
+              <div class="form-group">
+                <label>Descripcion:</label>
+                <br>
+                <textarea class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
+              </div>
 
-          </form>
+              <div class="form-group">
+                <label>Lista de Medicamentos:</label>
+                <br>
+                <textarea class="form-control" id="esquema" placeholder="Medicamentos"></textarea>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
+
+      <!--***********************INDICACIONES MEDICAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Indicaciones">
         <div class="row clearfix">
-          <form [formGroup]="formIndicaciones">
+          <div class="col-md-12">
+            <form>
 
-            <h3>Aqui van indicaciones! :D</h3>
+              <div class="form-group">
+                <label>Dieta:</label>
+                <br>
+                <textarea class="form-control" name="dieta" id="dieta" placeholder="Dieta"></textarea>
+              </div>
 
-          </form>
+              <div class="form-group">
+                <label>Esquema de Soluciones:</label>
+                <br>
+                <textarea class="form-control" name="esquema" id="esquema" placeholder="Esquema de Soluciones"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Lista de Medicamentos:</label>
+                <br>
+                <textarea class="form-control" name="medicamentos" id="medicamentos" placeholder="Lista de Medicamentos"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Medidas Generales:</label>
+                <br>
+                <textarea class="form-control" name="medidas" id="medidas" placeholder="Medidas Generales"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Hemocomponentes:</label>
+                <br>
+                <textarea class="form-control" name="hemocomponentes" id="hemocomponentes" placeholder="Hemocomponentes"></textarea>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
+
+      <!--***********************NOTAS MEDICAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Notas">
         <div class="row clearfix">
-          <form [formGroup]="formNotas">
+          <div class="col-md-12">
+            <form>
 
-            <div class="form-group">
-              <label>Tipo de Nota</label>
-              <select class="form-control show-tick">
-                <option value="0">Nota de Urgencia</option>
-                <option value="1">Nota de Ingreso (Hospitalización)</option>
-                <option value="2">Nota de Evolución</option>
-                <option value="3">Nota de Guardia</option>
-                <option value="4">Nota postquirúrgica</option>
-                <option value="5">Nota de Defunción</option>
-              </select>
-            </div>
+              <div id="medico">
 
-            <div id="medico">
-              <div class="form-group">
-                <label>Nombre del Medico:</label>
-                <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico">
+                <div class="form-group">
+                  <label>Nombre del Medico:</label>
+                  <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico" name="name_medico">
+                </div>
+
+                <div class="form-group">
+                  <label>Cedula Profesional:</label>
+                  <input type="text" class="form-control" id="ced" placeholder="Cedula Profesional" name="cedula_p">
+                </div>
               </div>
 
               <div class="form-group">
-                <label>Cedula Profesional:</label>
-                <input type="text" class="form-control" id="ced" placeholder="Cedula Profesional">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Diagnóstico:</label>
-              <br>
-              <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"></textarea>
-            </div>
-
-            <div class="row" id="medidas">
-              <div class="form-group col-sm-4">
-                <label>Peso:</label>
-                <input type="text" class="form-control ancho" id="peso" placeholder="Peso" name="peso">
+                <label>Diagnóstico:</label>
+                <br>
+                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"></textarea>
               </div>
 
-              <div class="form-group col-sm-4">
-                <label>Talla:</label>
-                <input type="text" class="form-control ancho" id="talla" placeholder="Talla" name="talla">
+              <div class="row" id="medidas">
+                <div class="form-group col-sm-4">
+                  <label>Peso:</label>
+                  <input type="text" class="form-control ancho" id="peso" placeholder="Peso" name="peso">
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>Talla:</label>
+                  <input type="text" class="form-control ancho" id="talla" placeholder="Talla" name="talla">
+                </div>
+
+                <div class="form-group col-sm-4">
+                  <label>IMC:</label>
+                  <input type="text" class="form-control ancho" id="imc" placeholder="IMC" name="imc">
+                </div>
               </div>
 
-              <div class="form-group col-sm-4">
-                <label>IMC:</label>
-                <input type="text" class="form-control ancho" id="imc" placeholder="IMC" name="imc">
+              <div id="svt">
+                <div class="row">
+                  <div class="form-group col-sm-2">
+                    <label>FC:</label>
+                    <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
+                  </div>
+
+                  <div class="form-group col-sm-2">
+                    <label>TR:</label>
+                    <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
+                  </div>
+
+                  <div class="form-group col-sm-3">
+                    <label>Temperatura:</label>
+                    <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura" name="temperatura">
+                  </div>
+
+                  <div class="form-group col-sm-2">
+                    <label>TA:</label>
+                    <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
+                  </div>
+
+                  <div class="form-group col-sm-2">
+                    <label>SO2:</label>
+                    <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
+                  </div>
+
+                </div>
               </div>
-            </div>
 
-            <hr>
-
-            <div class="row">
-              <div class="form-group col-sm-2">
-                <label>FC:</label>
-                <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
+              <div class="form-group">
+                <label>NOTA:</label>
+                <br>
+                <textarea class="form-control" name="nota" id="nota" placeholder="Nota"></textarea>
               </div>
 
-              <div class="form-group col-sm-2">
-                <label>TR:</label>
-                <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
+              <div class="form-group">
+                <label>Pronóstico:</label>
+                <br>
+                <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
               </div>
 
-              <div class="form-group col-sm-3">
-                <label>Temperatura:</label>
-                <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura" name="temperatura">
+              <div class="form-group ">
+                <label>Análisis:</label>
+                <br>
+                <textarea class="form-control " name="analisis " id="analisis " placeholder="Análisis "></textarea>
               </div>
-
-              <div class="form-group col-sm-2">
-                <label>TA:</label>
-                <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
-              </div>
-
-              <div class="form-group col-sm-2">
-                <label>SO2:</label>
-                <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>NOTA:</label>
-              <textarea class="form-control" name="nota" id="nota" placeholder="Nota"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label>Pronóstico:</label>
-              <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
-            </div>
-
-            <div class="form-group ">
-              <label>Análisis:</label>
-              <textarea class="form-control " name="analisis " id="analisis " placeholder="Análisis "></textarea>
-            </div>
-
-            <button type="submit " class="btn btn-primary text-center ">Crear Nota</button>
-
-          </form>
+            </form>
+          </div>
         </div>
       </div>
 
+
+      <!--***********************VACUNAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Vacunas">
         <div class="row clearfix">
-          <form [formGroup]="formVacunas">
+          <form>
 
-            <h3>Aqui van vacunas ! :D</h3>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fecha de Aplicacion:</label>
+                <input type="date" class="form-control" id="fecha_aplicacion">
+              </div>
+
+              <div class="form-group">
+                <label>Vacuna:</label>
+                <select class="form-control">
+                  <option value="0">Vacuna1</option>
+                  <option value="1">Vacuna2</option>
+                  <option value="2">Vacuna3</option>
+                  <option value="3">Vacuna4</option>
+                </select>
+              </div>
+            </div>
 
           </form>
         </div>
       </div>
-
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary text-center">Guardar</button>
   </div>
 </div>

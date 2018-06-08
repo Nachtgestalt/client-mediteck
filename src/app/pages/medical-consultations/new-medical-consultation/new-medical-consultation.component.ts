@@ -27,8 +27,9 @@ export class NewMedicalConsultationComponent implements OnInit {
       'talla': new FormControl(),
       'per_Cef': new FormControl(),
       'per_tor': new FormControl(),
-      'costo': new FormControl(),
+      'costo': new FormControl()
     });
+
   }
 
 }
