@@ -1,0 +1,95 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <div class="col-lg-12 text-center">
+      <h3 class="section-heading text-uppercase">EDITAR ENFERMERA</h3>
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+        <!--<div class="row">-->
+          <!--<div class="col-lg-12 text-center">-->
+            <!--<h3 class="section-heading text-uppercase">DATOS DE ENFERMERA</h3>-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <form [formGroup]="form">
+
+          <div class="row">
+            <div class="col-lg-2">
+              <img src="assets/images/mediteck/sin-foto.png" class="img-post" alt="profile-image">
+            </div>
+
+            <div class="col-lg-10">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Nombre: </label>
+                    <input class="form-control" type="text" placeholder="Nombre de la Enfermera*"
+                           formControlName="Nombre">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Apellidos: </label>
+                    <input class="form-control" type="text" placeholder="Apellidos *" formControlName="Apellido">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Edad: </label>
+                    <input class="form-control" type="text" placeholder="Edad *" formControlName="Edad">
+                  </div>
+                </div>
+
+
+                <!--**************************+**************+Parte derecha*************************************-->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Género: </label>
+                    <select class="form-control" name="genero" formControlName="Sexo">
+                      <option value="0">Hombre</option>
+                      <option value="1r">Mujer</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Cédula Profesional: </label>
+                    <input class="form-control" type="text" placeholder="Cedula Profesional" required
+                           formControlName="Cedula">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="text-left">Direccion: </label>
+                    <input class="form-control" type="text" placeholder="Dirección *" formControlName="Direccion"
+                           required>
+                  </div>
+                </div>
+                <!--**********************fin parte derecha***********************************-->
+
+              </div>
+            </div>
+          </div> <!--Fin del row -->
+
+
+          <div class="row">
+
+            <div class="col-sm-12">
+              <div class="row align-items-end justify-content-between">
+                <div class="col-4">
+                  <button type="button" class="btn btn-danger" (click)="cancelModal()">Cancelar</button>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary float-right" (click)="confirm()">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+  </div>
+</ng-template>
+
+<button type="button" class="btn btn-primary float-right" (click)="open(content)">Ver y/o Editar</button>

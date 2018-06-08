@@ -33,10 +33,13 @@ export class LoginComponent implements OnInit {
               (res: any) => {
                 const usuario = res.Usuario;
                 this._userService.setInStorage(resp, usuario);
+                this.router.navigate(['/dashboard']);
                 console.log(res);
               }
             );
-          this.router.navigate(['/dashboard']);
+        },
+        error1 => {
+          swal('Error al iniciar sesión', 'Usuario y/o contraseña invalido', 'error');
         }
       );
   }

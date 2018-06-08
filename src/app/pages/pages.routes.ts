@@ -13,27 +13,27 @@ import {NewMedicalConsultationComponent} from './medical-consultations/new-medic
 import {AddSectionComponent} from './infrastructure/add-section/add-section.component'
 import {NotesComponent} from './medical-consultations/notes/notes.component'
 import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component'
-import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
 import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component'
 import { ListPatientsComponent } from './patients/list-patients/list-patients.component'
+import {LoginGuardGuard} from '../services/guards/login-guard.guard';
 
 const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard', subtitle: 'Bienvenido'}},
       { path: 'medicos', component: DoctoresComponent, data: {titulo: 'Lista de Medicos', subtitle: 'Bienvenido'}},
       { path: 'agregar-medico', component: AddDoctorComponent, data: {titulo: 'Agregar Medico', subtitle: 'Bienvenido'}},
       { path: 'agregar-paciente', component: AddPatientsComponent, data: {titulo: 'Agregar Paciente', subtitle: 'Bienvenido'}},
-      { path: 'agregar-almacen', component: AddWarehouseComponent, data: {titulo: 'Agregar Paciente', subtitle: 'Bienvenido'}},
-      { path: 'almacenes', component: WarehousesComponent, data: {titulo: 'Agregar Paciente', subtitle: 'Bienvenido'}},
-      { path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Enfermeras', subtitle: 'Bienvenido'}},
+      { path: 'agregar-almacen', component: AddWarehouseComponent, data: {titulo: 'Agregar Almacen', subtitle: 'Bienvenido'}},
+      { path: 'almacenes', component: WarehousesComponent, data: {titulo: 'Lista de almacenes', subtitle: 'Bienvenido'}},
+      { path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Agregar Enfermera', subtitle: 'Bienvenido'}},
       { path: 'lista_enfermeras', component: NursesComponent, data: {titulo: 'Listar Enfermeras', subtitle: 'Bienvenido'}},
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
-      { path: 'lista-pacientes', component: EditPatientsComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
       { path: 'nueva_consulta', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
       { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Seccion', subtitle: 'Bienvenido'}},
       { path: 'listar_pisos', component: ListFloorsComponent, data: {titulo: 'Listar Pisos', subtitle: 'Bienvenido'}},

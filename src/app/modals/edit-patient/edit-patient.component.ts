@@ -1,64 +1,65 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
-import {DoctorService} from '../../services/doctor/doctor.service';
+import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {PatientService} from '../../services/patient/patient.service';
 
 @Component({
-  selector: 'app-edit-doctor',
-  templateUrl: './edit-doctor.component.html',
-  styleUrls: ['./edit-doctor.component.css']
+  selector: 'app-edit-patient',
+  templateUrl: './edit-patient.component.html',
+  styleUrls: ['./edit-patient.component.css']
 })
-export class EditDoctorComponent implements OnInit {
+export class EditPatientComponent implements OnInit {
+
   @Output() cerrado = new EventEmitter;
-  @Input() doctor: any;
+  @Input() patient: any;
 
   form: FormGroup;
   private modalRef: NgbModalRef;
   closeResult: string;
 
   constructor( private modalService: NgbModal,
-               public _doctorService: DoctorService) { }
+               public _patientService: PatientService) { }
 
   ngOnInit() {
-    this.createFormGrouo();
+    this.createForm();
   }
 
-  createFormGrouo() {
+  createForm() {
     this.form = new FormGroup({
       'Nombre': new FormControl(),
       'Apellidos': new FormControl(),
-      'Especialidad': new FormControl(),
+      'Telefono': new FormControl(),
       'Sexo': new FormControl(),
       'Edad': new FormControl(),
-      'Cedula': new FormControl(),
       'Direccion': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl(),
-      'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
+      'Tipo_sangre': new FormControl(),
+      'Fecha_inscripcion': new FormControl(),
+      'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter')),
     });
   }
 
-  loadData2Form(doctor) {
-    console.log(this.doctor);
-    this.form.controls['Nombre'].setValue(doctor.Nombre);
-    this.form.controls['Apellidos'].setValue(doctor.Apellidos);
-    this.form.controls['Especialidad'].setValue(doctor.Especialidad);
-    this.form.controls['Sexo'].setValue(doctor.Sexo);
-    this.form.controls['Edad'].setValue(doctor.Edad);
-    this.form.controls['Cedula'].setValue(doctor.Cedula);
-    this.form.controls['Direccion'].setValue(doctor.Direccion);
+  loadData2Form(patient) {
+    console.log(this.patient);
+    this.form.controls['Nombre'].setValue(patient.Nombre);
+    this.form.controls['Apellidos'].setValue(patient.Apellidos);
+    this.form.controls['Telefono'].setValue(patient.Telefono);
+    this.form.controls['Sexo'].setValue(patient.Sexo);
+    this.form.controls['Edad'].setValue(patient.Edad);
+    this.form.controls['Direccion'].setValue(patient.Direccion);
+    this.form.controls['Tipo_sangre'].setValue(patient.Tipo_sangre);
   }
+
 
   open(content) {
     // console.log(this.centroMedico);
-    this.loadData2Form(this.doctor);
+    this.loadData2Form(this.patient);
     this.modalRef = this.modalService.open(content);
     this.modalRef.result.then((result) => {
-      if ( result === 1) {
-        swal('Doctor actualizado', 'Doctor actualizado con exito', 'success');
+      if ( result === 1 ) {
+        swal('Paciente actualizado', 'Paciente actualizado con exito', 'success');
         this.cerrado.emit(true);
-      } else if ( result === 2 ) {
-        swal('Algo malo ha ocurrido', 'Error al actualizar doctor', 'error');
+      } else if (result === 2) {
+        swal('Algo malo ha ocurrido', 'Error al actualizar paciente', 'error');
       }
       console.log(result);
       this.closeResult = `Closed with: ${result}`;
@@ -83,7 +84,7 @@ export class EditDoctorComponent implements OnInit {
 
   confirm() {
     console.log(this.form.value);
-    this._doctorService.putDoctor(this.doctor.id, this.form.value)
+    this._patientService.putPatient(this.patient.id, this.form.value)
       .subscribe(
         res => {
           this.modalRef.close(1);

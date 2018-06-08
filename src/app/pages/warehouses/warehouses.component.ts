@@ -13,6 +13,10 @@ export class WarehousesComponent implements OnInit {
   constructor( public _warehouseService: WarehouseService) { }
 
   ngOnInit() {
+   this.loadData();
+  }
+
+  loadData() {
     this._warehouseService.getWarehouses()
       .subscribe(
         (res: any) => {
@@ -20,6 +24,43 @@ export class WarehousesComponent implements OnInit {
           console.log(res);
         }
       );
+  }
+
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
+  }
+
+  delete(id) {
+    swal({
+      title: '¿Estas seguro?',
+      text: 'Una vez eliminado el almacen, no hay vuelta atras',
+      icon: 'warning',
+      buttons: {
+        cancel: true,
+        confirm: true
+      },
+      dangerMode: true
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          this._warehouseService.deleteWarehouse(id)
+            .subscribe(
+              res => {
+                swal('Almacen eliminado exitosamente', {
+                  icon: 'success',
+                });
+                this.reload(true);
+              },
+              error => {
+                swal('Algo salio mal', 'No se pudo eliminar este almacen', {
+                  icon: 'error',
+                });
+              }
+            );
+        }
+      });
   }
 
 }

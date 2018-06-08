@@ -19,18 +19,18 @@ export class AddPatientsComponent implements OnInit {
 
   createFormGroup() {
     this.form = new FormGroup({
-      'Nombre': new FormControl('Jonas'),
-      'Apellidos': new FormControl('Brothers'),
-      'Telefono': new FormControl('2345678'),
+      'Nombre': new FormControl(),
+      'Apellidos': new FormControl(),
+      'Telefono': new FormControl(),
       'Sexo': new FormControl(),
-      'Edad': new FormControl('23'),
-      'Direccion': new FormControl('Avenida de las torres 23'),
-      'Tipo_sangre': new FormControl('O+'),
-      'Fecha_inscripcion': new FormControl('2018-06-06'),
+      'Edad': new FormControl(),
+      'Direccion': new FormControl(),
+      'Tipo_sangre': new FormControl(),
+      'Fecha_inscripcion': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter')),
-      'email': new FormControl('jonas@outlook.com'),
-      'password': new FormControl('secreet'),
-    })
+      'email': new FormControl(),
+      'password': new FormControl(),
+    });
   }
 
   resetForm() {
@@ -42,7 +42,13 @@ export class AddPatientsComponent implements OnInit {
     this._patientService.postPatient(this.form.value)
       .subscribe(
         res => {
+          swal('Paciente agregado', 'Paciente agregado con exito', 'success');
+          this.resetForm();
           console.log(res);
+        },
+        error1 => {
+          swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
+          console.log(error1);
         }
       );
 

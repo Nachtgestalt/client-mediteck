@@ -29,9 +29,12 @@ export class WarehouseService {
   }
 
   putWarehouse(id, warehouse) {
-    const url = `${this.urlWarehouse}/${id}`
+    const url = `${this.urlWarehouse}/${id}`;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    headers = headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(warehouse);
-    return this.http.put(url, body);
+    return this.http.put(url, body, {headers});
   }
 
   deleteWarehouse(id) {

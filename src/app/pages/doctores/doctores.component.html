@@ -33,7 +33,7 @@
         <p class="text-muted">Direccion: {{doctor.Direccion}}</p>
         <div class="row align-items-end justify-content-between">
           <div class="col-4">
-            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-danger" (click)="delete(doctor.id)">Eliminar</button>
           </div>
           <div class="col-4">
             <app-edit-doctor (cerrado)="reload($event)"  [doctor]="doctores[i]"></app-edit-doctor>

@@ -21,7 +21,6 @@ import { MedicalHistoryComponent } from './medical-consultations/medical-history
 import { NotesComponent } from './medical-consultations/notes/notes.component';
 import { InfrastructureComponent } from './infrastructure/infrastructure.component';
 import { BedsXroomComponent } from './infrastructure/beds-xroom/beds-xroom.component';
-import {EditPatientsComponent} from './patients/edit-patients/edit-patients.component';
 import { NewMedicalConsultationComponent } from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
 import { AddSectionComponent } from './infrastructure/add-section/add-section.component';
 import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component';
@@ -60,7 +59,6 @@ import {ModalsModule} from '../modals/modals.module';
     NotesComponent,
     InfrastructureComponent,
     BedsXroomComponent,
-    EditPatientsComponent,
     NewMedicalConsultationComponent,
     AddSectionComponent,
     ListFloorsComponent,
