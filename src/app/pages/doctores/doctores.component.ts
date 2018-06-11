@@ -7,6 +7,8 @@ import {SweetAlert} from 'sweetalert/typings/core';
 
 const swal: SweetAlert = _swal as any;
 
+import { FilterPipe } from '../../pipes/filter.pipe';
+
 
 @Component({
   selector: 'app-doctores',
@@ -14,11 +16,13 @@ const swal: SweetAlert = _swal as any;
   styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements OnInit {
-  doctores: any = [];
+  searchableList: any;
 
+  doctores: any = [];
 
   constructor(public router: Router,
               public _doctorService: DoctorService) {
+    this.searchableList = ['Nombre', 'Apellidos', 'Especialidad'];
   }
 
   ngOnInit() {

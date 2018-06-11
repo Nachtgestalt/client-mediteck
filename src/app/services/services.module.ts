@@ -9,6 +9,7 @@ import {PatientService} from './patient/patient.service';
 import {DashboardMenuService} from './dashboard-menu/dashboard-menu.service';
 import {UserService} from './user/user.service';
 import {LoginGuardGuard} from './guards/login-guard.guard';
+import {VaccineService} from './vaccine/vaccine.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {LoginGuardGuard} from './guards/login-guard.guard';
     PatientService,
     DashboardMenuService,
     UserService,
-    LoginGuardGuard
+    LoginGuardGuard,
+    VaccineService
   ],
   declarations: []
 })

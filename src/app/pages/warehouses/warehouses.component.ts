@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WarehouseService} from '../../services/warehouse/warehouse.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-warehouses',
@@ -7,10 +8,14 @@ import {WarehouseService} from '../../services/warehouse/warehouse.service';
   styleUrls: ['./warehouses.component.css']
 })
 export class WarehousesComponent implements OnInit {
+  searchableList: any;
 
   warehouses = [];
 
-  constructor( public _warehouseService: WarehouseService) { }
+  constructor( public _warehouseService: WarehouseService,
+               public router: Router) {
+    this.searchableList = ['Nombre', 'Direccion'];
+  }
 
   ngOnInit() {
    this.loadData();

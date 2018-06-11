@@ -8,6 +8,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import { EditNurseComponent } from './edit-nurse/edit-nurse.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.component';
+import { EditVaccineComponent } from './edit-vaccine/edit-vaccine.component';
 
 @NgModule({
   imports: [
@@ -22,13 +23,15 @@ import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.componen
     EditDoctorComponent,
     EditNurseComponent,
     EditPatientComponent,
-    EditWarehouseComponent
+    EditWarehouseComponent,
+    EditVaccineComponent
   ],
   exports: [
     EditDoctorComponent,
     EditNurseComponent,
     EditPatientComponent,
-    EditWarehouseComponent
+    EditWarehouseComponent,
+    EditVaccineComponent
   ]
 })
 export class ModalsModule { }

@@ -1,49 +1,51 @@
 import { Injectable } from '@angular/core';
-import {URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {URL_SERVICIOS} from '../../config/config';
 
 @Injectable()
-export class PatientService {
+export class VaccineService {
+
   token = localStorage.getItem('token');
-  urlPatient = `${URL_SERVICIOS}/pacientes`;
+  urlVaccine = `${URL_SERVICIOS}/vacunas`;
 
   constructor(private http: HttpClient) {}
 
-  getPatients() {
-    const url = `${this.urlPatient}?centro=${localStorage.getItem('idMedicalCenter')}`;
+  getVaccines() {
+    const url = `${this.urlVaccine}?centro=${localStorage.getItem('idMedicalCenter')}`;
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
-    return this.http.get(this.urlPatient,{headers});
-  }
-
-  getPatient(id) {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
-    const url = `${this.urlPatient}/${id}`;
     return this.http.get(url,{headers});
   }
 
-  postPatient(patient) {
+  getVaccine(id) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', this.token);
+    const url = `${this.urlVaccine}/${id}`;
+    return this.http.get(url,{headers});
+  }
+
+  postVaccine(patient) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(patient)
-    return this.http.post(this.urlPatient, body, {headers});
+    return this.http.post(this.urlVaccine, body, {headers});
   }
 
-  putPatient(id, doctor) {
+  putVaccine(id, doctor) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
-    const url = `${this.urlPatient}/${id}`
+    const url = `${this.urlVaccine}/${id}`
     const body = JSON.stringify(doctor);
     return this.http.put(url, body, {headers});
   }
 
-  deletePatient(id) {
+  deleteVaccine(id) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
-    const url = `${this.urlPatient}/${id}`
+    const url = `${this.urlVaccine}/${id}`
     return this.http.delete(url,{headers});
   }
+
 }

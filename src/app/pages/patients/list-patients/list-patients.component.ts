@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientService} from '../../../services/patient/patient.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-patients',
@@ -7,10 +8,14 @@ import {PatientService} from '../../../services/patient/patient.service';
   styleUrls: ['./list-patients.component.css']
 })
 export class ListPatientsComponent implements OnInit {
+  searchableList: any;
 
   patients = [];
 
-  constructor( public _patientService: PatientService) { }
+  constructor( public _patientService: PatientService,
+               public router: Router) {
+    this.searchableList = ['Nombre', 'Apellidos'];
+  }
 
   ngOnInit() {
     this.loadData();

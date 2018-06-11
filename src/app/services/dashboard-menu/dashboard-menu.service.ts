@@ -9,7 +9,7 @@ export class DashboardMenuService {
       icon: 'zmdi zmdi-home'
     },
     {
-      title: 'Medicos',
+      title: 'Médicos',
       icon: 'zmdi zmdi-home'
     },
     {

@@ -15,6 +15,7 @@ import {ServicesModule} from './services/services.module';
 import { EditDoctorComponent } from './modals/edit-doctor/edit-doctor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalsModule} from './modals/modals.module';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({

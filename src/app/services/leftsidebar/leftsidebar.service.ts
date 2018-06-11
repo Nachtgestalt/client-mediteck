@@ -12,11 +12,11 @@ export class LeftsidebarService {
       ]
     },
     {
-      titulo: 'Medicos',
-      icono: 'zmdi zmdi-account-add',
+      titulo: 'Médicos',
+      icono: 'fas fa-user-md',
       submenu: [
-        {titulo: 'Listar Medicos', url: '/medicos'},
-        {titulo: 'Agregar Medico', url: '/agregar-medico'}
+        {titulo: 'Listar Médicos', url: '/medicos'},
+        {titulo: 'Agregar Médico', url: '/agregar-medico'}
       ]
     },
     {
@@ -39,17 +39,24 @@ export class LeftsidebarService {
       titulo: 'Infraestructura',
       icono: 'zmdi zmdi-account-add',
       submenu: [
-        {titulo: 'Agregar seccion', url: '/agregar-seccion'},
+        {titulo: 'Agregar sección', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/listar_pisos'},
         {titulo: 'Agregar Camas', url: '/agregar_cama'},
       ]
     },
     {
-      titulo: 'Almacen',
+      titulo: 'Almacén',
       icono: 'zmdi zmdi-account-add',
       submenu: [
         {titulo: 'Listar almacenes', url: '/almacenes'},
-        {titulo: 'Agregar almacen', url: '/agregar-almacen'}
+        {titulo: 'Agregar almacén', url: '/agregar-almacen'}
+      ]
+    },
+    {
+      titulo: 'Insumos',
+      icono: 'zmdi zmdi-account-add',
+      submenu: [
+        {titulo: 'Listar vacunas', url: '/vacunas'}
       ]
     },
     {

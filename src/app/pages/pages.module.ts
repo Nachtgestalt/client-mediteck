@@ -28,6 +28,10 @@ import { ListPatientsComponent } from './patients/list-patients/list-patients.co
 import {EditDoctorComponent} from '../modals/edit-doctor/edit-doctor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalsModule} from '../modals/modals.module';
+import { SuppliesComponent } from './supplies/supplies.component';
+import { VaccineComponent } from './supplies/vaccine/vaccine.component';
+import { AddVaccineComponent } from './supplies/vaccine/add-vaccine/add-vaccine.component';
+import {FilterPipe} from '../pipes/filter.pipe';
 
 
 @NgModule({
@@ -63,6 +67,11 @@ import {ModalsModule} from '../modals/modals.module';
     AddSectionComponent,
     ListFloorsComponent,
     ListPatientsComponent,
+    SuppliesComponent,
+    VaccineComponent,
+    AddVaccineComponent,
+    //pipes
+    FilterPipe
   ]
 })
 export class PagesModule { }

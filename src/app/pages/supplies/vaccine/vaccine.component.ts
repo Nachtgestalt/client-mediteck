@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {NurseService} from '../../services/nurse/nurse.service';
 import {Router} from '@angular/router';
-import { FilterPipe } from '../../pipes/filter.pipe';
+import {DoctorService} from '../../../services/doctor/doctor.service';
+import {VaccineService} from '../../../services/vaccine/vaccine.service';
 
 @Component({
-  selector: 'app-nurses',
-  templateUrl: './nurses.component.html',
-  styleUrls: ['./nurses.component.css']
+  selector: 'app-vaccine',
+  templateUrl: './vaccine.component.html',
+  styleUrls: ['./vaccine.component.css']
 })
-export class NursesComponent implements OnInit {
-  searchableList: any;
+export class VaccineComponent implements OnInit {
 
-  nurses: any = [];
+  vaccines: any = [];
 
-  constructor( public _nurseService: NurseService,
-               public router: Router) {
-    this.searchableList = ['Nombre', 'Apellido'];
+
+  constructor(public router: Router,
+              public _vaccineService: VaccineService) {
   }
 
   ngOnInit() {
@@ -23,11 +22,11 @@ export class NursesComponent implements OnInit {
   }
 
   loadData() {
-    this._nurseService.getNurses()
+    this._vaccineService.getVaccines()
       .subscribe(
         res => {
-          this.nurses = res;
           console.log(res);
+          this.vaccines = res;
         }
       );
   }
@@ -41,7 +40,7 @@ export class NursesComponent implements OnInit {
   delete(id) {
     swal({
       title: '¿Estas seguro?',
-      text: 'Una vez eliminada la enfermera, no hay vuelta atras',
+      text: 'Una vez eliminado el medico, no hay vuelta atras',
       icon: 'warning',
       buttons: {
         cancel: true,
@@ -51,16 +50,16 @@ export class NursesComponent implements OnInit {
     })
       .then((willDelete) => {
         if (willDelete) {
-          this._nurseService.deleteNurse(id)
+          this._vaccineService.deleteVaccine(id)
             .subscribe(
               res => {
-                swal('Enfermera eliminada exitosamente', {
+                swal('Medico eliminado exitosamente', {
                   icon: 'success',
                 });
                 this.reload(true);
               },
               error => {
-                swal('Algo salio mal', 'No se pudo eliminar esta enfermera', {
+                swal('Algo salio mal', 'No se pudo eliminar este medico', {
                   icon: 'error',
                 });
               }
@@ -68,5 +67,4 @@ export class NursesComponent implements OnInit {
         }
       });
   }
-
 }
