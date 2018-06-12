@@ -18,6 +18,8 @@ import { ListPatientsComponent } from './patients/list-patients/list-patients.co
 import {LoginGuardGuard} from '../services/guards/login-guard.guard';
 import {AddVaccineComponent} from './supplies/vaccine/add-vaccine/add-vaccine.component';
 import {VaccineComponent} from './supplies/vaccine/vaccine.component';
+import {AddProductsComponent} from './products/add-products/add-products.component';
+import {ListProductsComponent} from './products/list-products/list-products.component'
 
 const pagesRoutes: Routes = [
   {
@@ -42,6 +44,8 @@ const pagesRoutes: Routes = [
       { path: 'listar_pacientes', component: ListPatientsComponent, data: {titulo: 'Listar Pacientes', subtitle: 'Bienvenido'}},
       { path: 'agregar-vacuna', component: AddVaccineComponent, data: {titulo: 'Agregar Vacuna', subtitle: 'Bienvenido'}},
       { path: 'vacunas', component: VaccineComponent, data: {titulo: 'Listar Vacunas', subtitle: 'Bienvenido'}},
+      { path: 'add_product', component: AddProductsComponent, data: {titulo: 'Agregar productos', subtitle: 'Bienvenido'}},
+      { path: 'list_product', component: ListProductsComponent, data: {titulo: 'Listar productos', subtitle: 'Bienvenido'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
