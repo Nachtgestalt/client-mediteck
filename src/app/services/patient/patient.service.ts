@@ -13,7 +13,7 @@ export class PatientService {
     const url = `${this.urlPatient}?centro=${localStorage.getItem('idMedicalCenter')}`;
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Authorization', this.token);
-    return this.http.get(this.urlPatient,{headers});
+    return this.http.get(url,{headers});
   }
 
   getPatient(id) {

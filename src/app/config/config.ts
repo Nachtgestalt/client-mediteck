@@ -1,5 +1,15 @@
-// export const URL_SERVICIOS = 'http://api.clinitec.technous.com.mx';
+/*
 
+
+Datos de login server chido
+Usuario: arjun54@example.com
+Password: secret
+
+
+*/
+
+
+// export const URL_SERVICIOS = 'http://api.clinitec.technous.com.mx';
 export const URL_SERVICIOS = 'http://165.227.4.26';
 // export const URL_SERVICIOS = 'http://apirestful.org';
 
@@ -11,3 +21,4 @@ export const CLIENT_ID = '1';
 
 //TOKEN DEL SERVER NUEVO
 export const CLIENT_SECRET = 'L3y3YOoL7nSAEZ6bChionAxYTsNdLzK8Kosn49PM';
+
