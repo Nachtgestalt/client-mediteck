@@ -32,10 +32,17 @@ import { SuppliesComponent } from './supplies/supplies.component';
 import { VaccineComponent } from './supplies/vaccine/vaccine.component';
 import { AddVaccineComponent } from './supplies/vaccine/add-vaccine/add-vaccine.component';
 import {FilterPipe} from '../pipes/filter.pipe';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {SecurityTokenInterceptor} from '../services/interceptors/security-token-interceptor';
 
 
 @NgModule({
+  providers: [
+
+  ],
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     BrowserModule,
     RouterModule,

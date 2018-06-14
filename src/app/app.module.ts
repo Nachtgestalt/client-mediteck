@@ -16,6 +16,7 @@ import { EditDoctorComponent } from './modals/edit-doctor/edit-doctor.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalsModule} from './modals/modals.module';
 import { FilterPipe } from './pipes/filter.pipe';
+import {CalendarModule} from 'angular-calendar';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     ServicesModule,
     APP_ROUTING,
     ModalsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    CalendarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -54,14 +54,17 @@ export class UserService {
     const url = `${this.urlLogin}/${username}`;
     let headers: HttpHeaders = new HttpHeaders();
     console.log(this.token);
-    headers = headers.append('Authorization', this.token);
-    return this.http.get(url, {headers});
+    // headers = headers.append('Authorization', this.token);
+    return this.http.get(url);
   }
 
-  setInStorage(token: string, usuario) {
+  setTokenInStorage(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  setInStorage(usuario) {
     console.log(usuario)
     localStorage.setItem('idMedicalCenter', usuario.idCentro_medico);
-    localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(usuario));
   }
 

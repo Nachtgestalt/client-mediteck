@@ -2,7 +2,7 @@
 
 
 Datos de login server chido
-Usuario: arjun54@example.com
+Usuario: dcorwin@example.org
 Password: secret
 
 
@@ -20,5 +20,5 @@ export const CLIENT_ID = '1';
 // export const CLIENT_SECRET = '5FkK5NFKufuZ8ZXbRBbn44OfgyI0w84VNuHjZopN';
 
 //TOKEN DEL SERVER NUEVO
-export const CLIENT_SECRET = 'L3y3YOoL7nSAEZ6bChionAxYTsNdLzK8Kosn49PM';
+export const CLIENT_SECRET = '398QNOiE3e2u27GN3KdBAeiQEmV25H8oHyiBEP04';
 

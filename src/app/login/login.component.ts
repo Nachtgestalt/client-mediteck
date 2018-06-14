@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     init_plugins();
     this.formulario = new FormGroup({
-      username: new FormControl('anderson.luz@example.com', Validators.required ),
+      username: new FormControl('dcorwin@example.org', Validators.required ),
       password: new FormControl('secret', Validators.required)
     });
   }
@@ -28,17 +28,19 @@ export class LoginComponent implements OnInit {
     this._userService.auth(this.formulario.value)
       .subscribe(
         (resp: any) => {
+          this._userService.setTokenInStorage(resp);
           this._userService.getDataUser(username)
             .subscribe(
               (res: any) => {
                 const usuario = res.Usuario;
-                this._userService.setInStorage(resp, usuario);
+                this._userService.setInStorage(usuario);
                 this.router.navigate(['/dashboard']);
                 console.log(res);
               }
             );
         },
         error1 => {
+          console.log(error1);
           swal('Error al iniciar sesión', 'Usuario y/o contraseña invalido', 'error');
         }
       );
