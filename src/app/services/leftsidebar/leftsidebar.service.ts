@@ -75,7 +75,16 @@ export class LeftsidebarService {
         {titulo: 'Cartilla de vacunación', url: '/cartilla-vacunacion'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
         // {titulo: 'Diagnosticos', url: '/diagnosticos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
       ]
-    }
+    },
+
+    {
+      titulo: 'Productos',
+      icono: 'zmdi zmdi-account-add',
+      submenu: [
+        {titulo: 'Agregar Productos', url: '/add_product'},
+        {titulo: 'Listar Productos', url: '/list_product'}
+      ]
+    },
   ];
 
   constructor() { }

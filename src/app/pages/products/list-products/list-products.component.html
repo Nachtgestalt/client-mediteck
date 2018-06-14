@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="body">
+    <legend class="col-form-legend col-sm-2">Buscar producto:</legend>
+    <div class="form-group row">
+      <div class="input-group col-sm-8">
+        <input type="text" class="form-control" placeholder="Buscar" [(ngModel)]="queryString">
+        <span class="input-group-addon">
+          <i class="zmdi zmdi-search"></i>
+        </span>
+      </div>
+      <div class="input-group col-sm-4">
+
+        <!--Cambiar navigate(['agregar-paciente'])"-->
+        <button type="button" (click)="router.navigate(['agregar-paciente'])" class="col-md-12 btn btn-primary text-center">
+          <i class="zmdi zmdi-plus float-left"></i>
+          Agregar Producto
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="body">
+
+    <!-- Tab panes -->
+    <div class="tab-content m-t-10">
+      <div class="tab-pane table-responsive active" id="All">
+        <table class="table m-b-0 table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Marca</th>
+              <th>Compuesto</th>
+              <th>Presentación</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Lote</th>
+              <th>Caducidad</th>
+              <th>Dosis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let products of products | filter: queryString : searchableList; let i = index;">
+              <!--[ngClass]="{ 'table-danger': patient.suscripcion.Estado === 2, 'table-success': patient.Nombre !== 2 }">-->
+              <td>
+                <span class="list-name"> {{i+1}} </span>
+              </td>
+              <td>{{product.Nombre}}</td>
+              <td>{{product.Compuesto}}</td>
+              <td>{{product.Presentacion}}</td>
+              <td>{{product.Descripcion}}</td>
+              <td>{{product.Precio}}</td>
+              <td>{{product.Cantidad}}</td>
+              <td>{{product.Lote}}</td>
+              <td>{{product.Caducidad}}</td>
+              <td>{{product.Dosis}}</td>
+              <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
+              <!--<app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>-->
+              <button class="btn btn-danger" type="button" (click)="delete(patient.id)">
+                <i class="fas fa-trash fa-lg"></i>
+              </button>
+
+              <!--<td>{{k.Estado}}</td>-->
+              <!--<td><span class="badge badge-success">Approved</span></td>-->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
