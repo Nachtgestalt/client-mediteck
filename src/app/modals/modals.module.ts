@@ -9,6 +9,7 @@ import { EditNurseComponent } from './edit-nurse/edit-nurse.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.component';
 import { EditVaccineComponent } from './edit-vaccine/edit-vaccine.component';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { EditVaccineComponent } from './edit-vaccine/edit-vaccine.component';
     EditNurseComponent,
     EditPatientComponent,
     EditWarehouseComponent,
-    EditVaccineComponent
+    EditVaccineComponent,
+    EditNoteComponent
   ],
   exports: [
     EditDoctorComponent,

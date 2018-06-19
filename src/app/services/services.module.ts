@@ -10,8 +10,10 @@ import {DashboardMenuService} from './dashboard-menu/dashboard-menu.service';
 import {UserService} from './user/user.service';
 import {LoginGuardGuard} from './guards/login-guard.guard';
 import {VaccineService} from './vaccine/vaccine.service';
-import {AuthService} from './auth/Auth.service';
-import {SecurityTokenInterceptor} from './interceptors/security-token-interceptor';
+import {TokenInterceptorService} from './auth/token-interceptor.service';
+import {AuthService} from './auth/auth.service';
+import {JwtInterceptorService} from './auth/jwt-interceptor.service';
+import {ProductService} from './product/product.service';
 
 @NgModule({
   imports: [
@@ -28,10 +30,16 @@ import {SecurityTokenInterceptor} from './interceptors/security-token-intercepto
     UserService,
     LoginGuardGuard,
     VaccineService,
+    ProductService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: SecurityTokenInterceptor,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
       multi: true
     }
   ],

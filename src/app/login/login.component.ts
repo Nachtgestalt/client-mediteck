@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user/user.service';
+import {Title} from '@angular/platform-browser';
 declare function init_plugins();
 
 @Component({
@@ -13,9 +14,11 @@ export class LoginComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(private router: Router,
-              private _userService: UserService) { }
+              private _userService: UserService,
+              public _title: Title) { }
 
   ngOnInit() {
+    this._title.setTitle('Bienvenido a Clinitec');
     init_plugins();
     this.formulario = new FormGroup({
       username: new FormControl('dcorwin@example.org', Validators.required ),

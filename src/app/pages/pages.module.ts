@@ -25,22 +25,17 @@ import { NewMedicalConsultationComponent } from './medical-consultations/new-med
 import { AddSectionComponent } from './infrastructure/add-section/add-section.component';
 import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component';
 import { ListPatientsComponent } from './patients/list-patients/list-patients.component';
-import {EditDoctorComponent} from '../modals/edit-doctor/edit-doctor.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalsModule} from '../modals/modals.module';
 import { SuppliesComponent } from './supplies/supplies.component';
 import { VaccineComponent } from './supplies/vaccine/vaccine.component';
 import { AddVaccineComponent } from './supplies/vaccine/add-vaccine/add-vaccine.component';
 import {FilterPipe} from '../pipes/filter.pipe';
-<<<<<<< HEAD
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {SecurityTokenInterceptor} from '../services/interceptors/security-token-interceptor';
-=======
 import { ProductsComponent } from './products/products.component';
 import { AddProductsComponent } from './products/add-products/add-products.component';
 import { ListProductsComponent } from './products/list-products/list-products.component';
->>>>>>> 9bd8205fc10df7d8d0518418634819c4f85e2752
+import { AddNoteComponent } from './medical-consultations/notes/add-note/add-note.component';
 
 
 @NgModule({
@@ -87,7 +82,8 @@ import { ListProductsComponent } from './products/list-products/list-products.co
     FilterPipe,
     ProductsComponent,
     AddProductsComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    AddNoteComponent
   ]
 })
 export class PagesModule { }

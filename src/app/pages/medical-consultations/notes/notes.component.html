@@ -1,96 +1,16 @@
 <div class="card">
   <div class="body">
-    <div class="form-group">
-      <label>Tipo de Nota</label>
-      <select class="form-control show-tick">
-        <option value="0">Nota de Urgencia</option>
-        <option value="1">Nota de Ingreso (Hospitalización)</option>
-        <option value="2">Nota de Evolución</option>
-        <option value="3">Nota de Guardia</option>
-        <option value="4">Nota postquirúrgica</option>
-        <option value="5">Nota de Defunción</option>
-      </select>
-    </div>
-
-    <div id="medico">
-      <div class="form-group">
-        <label>Nombre del Medico:</label>
-        <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico">
+    <legend class="col-form-legend col-sm-4">Buscar nota por paciente:</legend>
+    <div class="form-group row">
+      <div class="input-group col-sm-8">
+        <input type="text" class="form-control" placeholder="Buscar">
+        <span class="input-group-addon">
+          <i class="zmdi zmdi-search"></i>
+        </span>
       </div>
-
-      <div class="form-group">
-        <label>Cedula Profesional:</label>
-        <input type="text" class="form-control" id="ced" placeholder="Cedula Profesional">
+      <div class="input-group col-sm-4">
+        <app-add-note class="col-md-12" (cerrado)="reload($event)"> </app-add-note>
       </div>
     </div>
-
-    <div class="form-group">
-      <label>Diagnóstico:</label>
-      <br>
-      <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"></textarea>
-    </div>
-
-    <div class="row" id="medidas">
-      <div class="form-group col-sm-4">
-        <label>Peso:</label>
-        <input type="text" class="form-control ancho" id="peso" placeholder="Peso" name="peso">
-      </div>
-
-      <div class="form-group col-sm-4">
-        <label>Talla:</label>
-        <input type="text" class="form-control ancho" id="talla" placeholder="Talla" name="talla">
-      </div>
-
-      <div class="form-group col-sm-4">
-        <label>IMC:</label>
-        <input type="text" class="form-control ancho" id="imc" placeholder="IMC" name="imc">
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <div class="form-group col-sm-2">
-        <label>FC:</label>
-        <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
-      </div>
-
-      <div class="form-group col-sm-2">
-        <label>TR:</label>
-        <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
-      </div>
-
-      <div class="form-group col-sm-3">
-        <label>Temperatura:</label>
-        <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura" name="temperatura">
-      </div>
-
-      <div class="form-group col-sm-2">
-        <label>TA:</label>
-        <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
-      </div>
-
-      <div class="form-group col-sm-2">
-        <label>SO2:</label>
-        <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>NOTA:</label>
-      <textarea class="form-control" name="nota" id="nota" placeholder="Nota"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Pronóstico:</label>
-      <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
-    </div>
-
-    <div class="form-group ">
-      <label>Análisis:</label>
-      <textarea class="form-control " name="analisis " id="analisis " placeholder="Análisis "></textarea>
-    </div>
-
-    <button type="submit " class="btn btn-primary text-center ">Crear Nota</button>
   </div>
 </div>

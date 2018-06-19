@@ -16,8 +16,8 @@ export class DoctorService {
   getDoctors() {
     const url = `${this.urlDoctor}?centro=${localStorage.getItem('idMedicalCenter')}`;
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
-    return this.http.get(url, {headers});
+    // headers = headers.append('Authorization', this.token);
+    return this.http.get(url);
   }
 
   getDoctor(id) {
