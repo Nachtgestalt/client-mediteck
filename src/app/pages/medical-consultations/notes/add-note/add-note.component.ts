@@ -15,7 +15,7 @@ export class AddNoteComponent implements OnInit {
   private modalRef: NgbModalRef;
   closeResult: string;
 
-  form: FormGroup;
+  formNotas: FormGroup;
 
   constructor( public _vaccineService: VaccineService,
                private modalService: NgbModal ) { }
@@ -26,38 +26,47 @@ export class AddNoteComponent implements OnInit {
   }
 
   createForm() {
-    this.form = new FormGroup({
-      'Nombre': new FormControl(),
-      'Edad_aplicar': new FormControl(),
-      'Costo': new FormControl(),
-      'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
+    this.formNotas = new FormGroup({
+      'Tipo_nota': new FormControl(''),
+      'Diagnostico': new FormControl(''),
+      'Peso': new FormControl(''),
+      'Talla': new FormControl(''),
+      'IMC': new FormControl(''),
+      'FC': new FormControl(''),
+      'TR': new FormControl(''),
+      'SVT': new FormControl(''),
+      'Temperatura': new FormControl(''),
+      'TA': new FormControl(''),
+      'SO2': new FormControl(''),
+      'Nota': new FormControl(''),
+      'Pronostico': new FormControl('')
     });
   }
 
-  loadData2Form(vaccine) {
-    this.form.controls['Nombre'].setValue(vaccine.Nombre);
-    this.form.controls['Edad_aplicar'].setValue(vaccine.Edad_aplicar);
-    this.form.controls['Costo'].setValue(vaccine.Costo);
-  }
+  // loadData2Form(vaccine) {
+  //   this.form.controls['Nombre'].setValue(vaccine.Nombre);
+  //   this.form.controls['Edad_aplicar'].setValue(vaccine.Edad_aplicar);
+  //   this.form.controls['Costo'].setValue(vaccine.Costo);
+  // }
 
   resetForm() {
-    this.form.reset();
+    this.formNotas.reset();
   }
 
   confirm() {
-    console.log(this.form.value);
-    this._vaccineService.postVaccine(this.form.value)
-      .subscribe(
-        res => {
-          this.modalRef.close(1);
-          console.log(res);
-        },
-        error1 => {
-          this.modalRef.close(2);
-
-          console.log(error1);
-        }
-      );
+    console.log(this.formNotas.value);
+    // this._vaccineService.postVaccine(this.form.value)
+    //   .subscribe(
+    //     res => {
+    //       this.modalRef.close(1);
+    //       console.log(res);
+    //     },
+    //     error1 => {
+    //       this.modalRef.close(2);
+    //
+    //       console.log(error1);
+    //     }
+    //   );
   }
 
   open(content) {

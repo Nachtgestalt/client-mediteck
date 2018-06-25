@@ -26,6 +26,7 @@ export class AddDoctorComponent implements OnInit {
       'Edad': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
+      'Telefono': new FormControl(),
       'email': new FormControl(),
       'password': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))

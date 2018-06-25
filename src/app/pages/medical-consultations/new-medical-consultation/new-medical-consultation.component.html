@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <label>Vacuna:</label>
+          <label>Paciente:</label>
           <select class="form-control" [formControl]="patientSelected">
             <option *ngFor="let patient of patients" [value]="patient.id">{{patient.Nombre + " " + patient.Apellidos}}</option>
           </select>
@@ -96,6 +96,9 @@
         <a class="nav-link" data-toggle="tab" href="#Notas">Notas</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#Estudios">Estudios y análisis</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Vacunas">Vacunas</a>
       </li>
     </ul>
@@ -173,18 +176,56 @@
         </div>
       </div>
 
+      <!--***********************Estudios y analisis*****************-->
+
+      <div class="tab-pane" routerLinkActive="active" id="Estudios">
+        <div class="row clearfix">
+          <div class="col-md-12">
+            <form [formGroup]="formEstudios">
+
+              <div class="form-group">
+                <label>Fecha:</label>
+                <input type="date" class="form-control" formControlName="Fecha">
+              </div>
+
+              <div class="form-group">
+                <label>Estudio solicitado:</label>
+                <input type="text" class="form-control" placeholder="Estudio solicitado*" formControlName="Tipo_estudio">
+              </div>
+
+              <div class="form-group">
+                <label>Descripción:</label>
+                <br>
+                <textarea class="form-control" placeholder="Descripción*"
+                          formControlName="Descripcion"></textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
       <!--***********************NOTAS MEDICAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Notas">
         <div class="row clearfix">
           <div class="col-md-12">
-            <form>
-
+            <form [formGroup]="formNotas">
               <div id="medico">
 
                 <div class="form-group">
+                  <label>Tipo de Nota</label>
+                  <select class="form-control show-tick" formControlName="Tipo_nota">
+                    <option value="0">Nota de Urgencia</option>
+                    <option value="1">Nota de Ingreso (Hospitalización)</option>
+                    <option value="2">Nota de Evolución</option>
+                    <option value="3">Nota de Guardia</option>
+                    <option value="4">Nota postquirúrgica</option>
+                    <option value="5">Nota de Defunción</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
                   <label>Nombre del Medico:</label>
-                  <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico" name="name_medico">
+                  <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico">
                 </div>
 
                 <div class="form-group">
@@ -196,23 +237,27 @@
               <div class="form-group">
                 <label>Diagnóstico:</label>
                 <br>
-                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"></textarea>
+                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"
+                          formControlName="Diagnostico"></textarea>
               </div>
 
               <div class="row" id="medidas">
                 <div class="form-group col-sm-4">
                   <label>Peso:</label>
-                  <input type="text" class="form-control ancho" id="peso" placeholder="Peso" name="peso">
+                  <input type="text" class="form-control ancho" id="peso" placeholder="Peso"
+                         formControlName="Peso">
                 </div>
 
                 <div class="form-group col-sm-4">
                   <label>Talla:</label>
-                  <input type="text" class="form-control ancho" id="talla" placeholder="Talla" name="talla">
+                  <input type="text" class="form-control ancho" id="talla" placeholder="Talla"
+                         formControlName="Talla">
                 </div>
 
                 <div class="form-group col-sm-4">
                   <label>IMC:</label>
-                  <input type="text" class="form-control ancho" id="imc" placeholder="IMC" name="imc">
+                  <input type="text" class="form-control ancho" id="imc" placeholder="IMC" name="imc"
+                         formControlName="IMC">
                 </div>
               </div>
 
@@ -228,7 +273,7 @@
                     <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
                   </div>
 
-                  <div class="form-group col-sm-3">
+                  <div class="form-group col-sm-2">
                     <label>Temperatura:</label>
                     <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura" name="temperatura">
                   </div>
@@ -236,6 +281,11 @@
                   <div class="form-group col-sm-2">
                     <label>TA:</label>
                     <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
+                  </div>
+
+                  <div class="form-group col-sm-2">
+                    <label>SVT:</label>
+                    <input type="text" class="form-control ancho" id="so2" placeholder="SVT" name="so2">
                   </div>
 
                   <div class="form-group col-sm-2">
@@ -258,11 +308,6 @@
                 <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
               </div>
 
-              <div class="form-group ">
-                <label>Análisis:</label>
-                <br>
-                <textarea class="form-control " name="analisis " id="analisis " placeholder="Análisis "></textarea>
-              </div>
             </form>
           </div>
         </div>

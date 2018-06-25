@@ -14,6 +14,7 @@ import {TokenInterceptorService} from './auth/token-interceptor.service';
 import {AuthService} from './auth/auth.service';
 import {JwtInterceptorService} from './auth/jwt-interceptor.service';
 import {ProductService} from './product/product.service';
+import {ConsultationService} from './consultation/consultation.service';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {ProductService} from './product/product.service';
     LoginGuardGuard,
     VaccineService,
     ProductService,
+    ConsultationService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

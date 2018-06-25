@@ -34,7 +34,7 @@ export class UserService {
   auth(user: User) {
     let headers = new HttpHeaders();
 
-    let credentials = `grant_type=${GRANT_TYPE}
+    const credentials = `grant_type=${GRANT_TYPE}
     &client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}
     &username=${user.username}&password=${user.password}`
 
