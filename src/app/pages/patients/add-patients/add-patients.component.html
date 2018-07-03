@@ -41,8 +41,8 @@
             <label>Genero</label>
             <select class="form-control show-tick"
                     formControlName="Sexo">
-              <option value="0">Masculino</option>
-              <option value="1">Femenino</option>
+              <option value="MASCULINO">Masculino</option>
+              <option value="FEMENINO">Femenino</option>
             </select>
           </div>
 
@@ -50,6 +50,12 @@
             <label>Edad</label>
             <input type="text" class="form-control"
                    formControlName="Edad">
+          </div>
+
+          <div class="form-group">
+            <label>Estado civil</label>
+            <input type="text" class="form-control"
+                   formControlName="Estado_civil">
           </div>
 
           <div class="form-group">
@@ -74,14 +80,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Email: </label>
-                <input class="form-control" type="email" placeholder="Email" formControlName="email">
+                <input class="form-control" type="email" placeholder="Email" formControlName="Email">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Contraseña: </label>
-                <input class="form-control" type="password" placeholder="Contraseña" formControlName="password">
+                <input class="form-control" type="password" placeholder="Contraseña" formControlName="Password">
               </div>
             </div>
 

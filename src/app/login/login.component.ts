@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this._title.setTitle('Bienvenido a Clinitec');
     init_plugins();
     this.formulario = new FormGroup({
-      username: new FormControl('pagac.pedro@example.com', Validators.required ),
+      username: new FormControl('metalico900@gmail.com', Validators.required ),
       password: new FormControl('secret', Validators.required)
     });
   }

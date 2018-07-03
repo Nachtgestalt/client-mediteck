@@ -1,93 +1,75 @@
 <div class="card">
   <div class="body">
-
-    <!--Titulo-->
     <div class="row">
-      <div class="col-lg-12 text-center">
-        <h3 class="section-heading text-uppercase m-0">Nueva Consulta</h3>
+      <div class="col-md-2 col-sm-2 col-xs-12">
+        <img src="assets/images/mediteck/sin-foto.png" class="patient-pic img-post rounded-circle" alt="profile-image">
       </div>
-    </div>
-    <!--Final Titulo-->
 
-    <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label class="text-md col-md-12">
+          {{patient?.Nombre + " " + patient?.Apellidos}}
+        </label>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-8">
+            Edad: {{patient?.Edad}}
+          </span>
+          <span class="text-md col-md-4">
+            Sexo: {{patient?.Sexo}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Email: {{patient?.email}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Teléfono: {{patient?.Telefono}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Dirección: {{patient?.Direccion}}
+          </span>
+        </div>
+        <!--<div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+        <!--<span class="text-md col-md-12">-->
+        <!--Tipo de sangre: O+-->
+        <!--</span>-->
+        <!--</div>-->
+      </div>
+
+      <div class="col-md-4" [formGroup]="form">
         <div class="form-group">
-          <label>Paciente:</label>
-          <select class="form-control" [formControl]="patientSelected">
-            <option *ngFor="let patient of patients" [value]="patient.id">{{patient.Nombre + " " + patient.Apellidos}}</option>
-          </select>
+          <label>Fecha: </label>
+          <input class="form-control" type="date" formControlName="Fecha">
         </div>
       </div>
+
     </div>
-
-    <!--Formulario-->
-    <form [formGroup]="form">
-      <hr>
-
-      <div class="row">
-
-        <!--Izquierda-->
-        <div class="col-md-6">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Fecha: </label>
-              <input class="form-control" type="date" formControlName="Fecha">
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Peso: </label>
-              <input class="form-control" type="text" placeholder="Peso" formControlName="Peso">
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Talla: </label>
-              <input class="form-control" type="text" placeholder="Talla" formControlName="Talla">
-            </div>
-          </div>
-        </div>
-        <!--Final Izquierda-->
-
-
-        <!--Derecha-->
-        <div class="col-md-6">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Perimetro Cefálico: </label>
-              <input class="form-control" type="text" placeholder="Perimetro Cefálico" formControlName="Perimetro_cefalitico">
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Perimetro Torácico: </label>
-              <input class="form-control" type="text" placeholder="Perimetro Torácico" formControlName="Perimetro_Torasico">
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Costo: </label>
-              <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
-            </div>
-          </div>
-        </div>
-        <!--Final Derecha-->
-
-      </div>
-    </form>
-    <!--Fin Formulario-->
   </div>
 </div>
+
+<!--<div class="row">-->
+<!--<div class="col-md-12">-->
+<!--<div class="form-group">-->
+<!--<label>Paciente:</label>-->
+<!--<select class="form-control" [formControl]="patientSelected">-->
+<!--<option *ngFor="let patient of patients" [value]="patient.id">{{patient.Nombre + " " + patient.Apellidos}}</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
 
 <div class="card">
   <div class="body">
     <ul class="nav nav-tabs padding-0">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#Receta">Receta Medica</a>
+        <a class="nav-link active" data-toggle="tab" href="#Basico">Signos vitales/Básicos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#Receta">Receta Medica</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Indicaciones">Indicaciones</a>
@@ -103,9 +85,72 @@
       </li>
     </ul>
 
-    <!--***********************RECETAS MEDICAS*****************-->
+    <!--***********************Signos vitales*****************-->
     <div class="tab-content m-t-10">
-      <div class="tab-pane active" id="Receta">
+      <div class="tab-pane active" id="Basico">
+        <div class="row clearfix">
+          <div class="col-md-12">
+            <!--Formulario-->
+            <form [formGroup]="form">
+              <hr>
+
+              <div class="row">
+
+                <!--Izquierda-->
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Peso: </label>
+                      <input class="form-control" type="text" placeholder="Peso" formControlName="Peso">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Talla: </label>
+                      <input class="form-control" type="text" placeholder="Talla" formControlName="Talla">
+                    </div>
+                  </div>
+                </div>
+                <!--Final Izquierda-->
+
+
+                <!--Derecha-->
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Perimetro Cefálico: </label>
+                      <input class="form-control" type="text" placeholder="Perimetro Cefálico"
+                             formControlName="Perimetro_cefalitico">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Perimetro Torácico: </label>
+                      <input class="form-control" type="text" placeholder="Perimetro Torácico"
+                             formControlName="Perimetro_Torasico">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Costo: </label>
+                      <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
+                    </div>
+                  </div>
+                </div>
+                <!--Final Derecha-->
+
+              </div>
+            </form>
+            <!--Fin Formulario-->
+          </div>
+        </div>
+      </div>
+
+    <!--***********************RECETAS MEDICAS*****************-->
+      <div class="tab-pane" routerLinkActive="active" id="Receta">
         <div class="row clearfix">
           <div class="col-md-12">
             <form [formGroup]="formReceta">
@@ -117,13 +162,15 @@
               <div class="form-group">
                 <label>Descripcion:</label>
                 <br>
-                <textarea class="form-control" id="descripcion" placeholder="Descripcion" formControlName="Descripcion"></textarea>
+                <textarea class="form-control" id="descripcion" placeholder="Descripcion"
+                          formControlName="Descripcion"></textarea>
               </div>
 
               <div class="form-group">
                 <label>Lista de Medicamentos:</label>
                 <br>
-                <textarea class="form-control" id="esquema" placeholder="Medicamentos" formControlName="Medicamentos"></textarea>
+                <textarea class="form-control" id="esquema" placeholder="Medicamentos"
+                          formControlName="Medicamentos"></textarea>
               </div>
             </form>
           </div>
@@ -190,7 +237,8 @@
 
               <div class="form-group">
                 <label>Estudio solicitado:</label>
-                <input type="text" class="form-control" placeholder="Estudio solicitado*" formControlName="Tipo_estudio">
+                <input type="text" class="form-control" placeholder="Estudio solicitado*"
+                       formControlName="Tipo_estudio">
               </div>
 
               <div class="form-group">
@@ -275,7 +323,8 @@
 
                   <div class="form-group col-sm-2">
                     <label>Temperatura:</label>
-                    <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura" name="temperatura">
+                    <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura"
+                           name="temperatura">
                   </div>
 
                   <div class="form-group col-sm-2">

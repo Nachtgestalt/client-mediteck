@@ -4,4 +4,6 @@ export interface Oauth {
   client_secret: string;
   username: string;
   password: string;
+
+  login();
 }

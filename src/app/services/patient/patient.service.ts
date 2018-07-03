@@ -17,10 +17,13 @@ export class PatientService {
   }
 
   getPatient(id) {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
     const url = `${this.urlPatient}/${id}`;
-    return this.http.get(url,{headers});
+    return this.http.get(url)
+      .map(
+        res => {
+          return res[0];
+        }
+      );
   }
 
   postPatient(patient) {

@@ -33,6 +33,7 @@ export class EditPatientComponent implements OnInit {
       'Edad': new FormControl(),
       'Direccion': new FormControl(),
       'Tipo_sangre': new FormControl(),
+      'Estado_civil': new FormControl(),
       'Fecha_inscripcion': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter')),
     });

@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="body">
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-12">
+        <img src="assets/images/mediteck/sin-foto.png" class="patient-pic img-post rounded-circle" alt="profile-image">
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <label class="text-md col-md-12">
+          {{patient?.Nombre + " " + patient?.Apellidos}}
+        </label>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-8">
+            Edad: {{patient?.Edad}}
+          </span>
+          <span class="text-md col-md-4">
+            Sexo: {{patient?.Sexo}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Email: {{patient?.email}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Teléfono: {{patient?.Telefono}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
+            Dirección: {{patient?.Direccion}}
+          </span>
+        </div>
+        <!--<div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+        <!--<span class="text-md col-md-12">-->
+          <!--Tipo de sangre: O+-->
+        <!--</span>-->
+        <!--</div>-->
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <app-edit-patient (cerrado)="reload($event)" [patient]="patient"></app-edit-patient>
+        <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient.id]">Nueva consulta</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="body">
+    <ul class="nav nav-tabs padding-0">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#Receta">Consultas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#Consultas">Indicaciones</a>
+      </li>
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" data-toggle="tab" href="#Notas">Notas</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" data-toggle="tab" href="#Estudios">Estudios y análisis</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" data-toggle="tab" href="#Vacunas">Vacunas</a>-->
+      <!--</li>-->
+    </ul>
+
+  </div>
+</div>

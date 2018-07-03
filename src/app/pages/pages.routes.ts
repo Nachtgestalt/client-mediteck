@@ -20,6 +20,7 @@ import {AddVaccineComponent} from './supplies/vaccine/add-vaccine/add-vaccine.co
 import {VaccineComponent} from './supplies/vaccine/vaccine.component';
 import {AddProductsComponent} from './products/add-products/add-products.component';
 import {ListProductsComponent} from './products/list-products/list-products.component'
+import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
 
 const pagesRoutes: Routes = [
   {
@@ -38,7 +39,7 @@ const pagesRoutes: Routes = [
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
-      { path: 'nueva_consulta', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
+      { path: 'consulta/:id', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
       { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Sección', subtitle: 'Bienvenido'}},
       { path: 'listar_pisos', component: ListFloorsComponent, data: {titulo: 'Listar Pisos', subtitle: 'Bienvenido'}},
       { path: 'listar_pacientes', component: ListPatientsComponent, data: {titulo: 'Listar Pacientes', subtitle: 'Bienvenido'}},
@@ -46,6 +47,7 @@ const pagesRoutes: Routes = [
       { path: 'vacunas', component: VaccineComponent, data: {titulo: 'Listar Vacunas', subtitle: 'Bienvenido'}},
       { path: 'add_product', component: AddProductsComponent, data: {titulo: 'Agregar productos', subtitle: 'Bienvenido'}},
       { path: 'list_product', component: ListProductsComponent, data: {titulo: 'Listar productos', subtitle: 'Bienvenido'}},
+      { path: 'detalle-paciente/:id', component: PatientDetailComponent, data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]

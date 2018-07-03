@@ -36,6 +36,7 @@ import { ProductsComponent } from './products/products.component';
 import { AddProductsComponent } from './products/add-products/add-products.component';
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { AddNoteComponent } from './medical-consultations/notes/add-note/add-note.component';
+import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
     ProductsComponent,
     AddProductsComponent,
     ListProductsComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    PatientDetailComponent
   ]
 })
 export class PagesModule { }

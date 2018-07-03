@@ -27,9 +27,10 @@ export class AddPatientsComponent implements OnInit {
       'Direccion': new FormControl(),
       'Tipo_sangre': new FormControl(),
       'Fecha_inscripcion': new FormControl(),
+      'Estado_civil': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter')),
-      'email': new FormControl(),
-      'password': new FormControl(),
+      'Email': new FormControl(),
+      'Password': new FormControl(),
     });
   }
 

@@ -27,37 +27,31 @@
           <table class="table m-b-0 table-hover">
             <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Teléfono</th>
-              <th>Sexo</th>
-              <th>Edad</th>
-              <th>Dirección</th>
-              <th>Tipo de Sangre</th>
-              <th>Fecha de Inscripción</th>
+              <th style="width: 10%">ID</th>
+              <th style="width: 40%">Nombre</th>
+              <!--<th>Teléfono</th>-->
+              <!--<th>Sexo</th>-->
+              <!--<th>Edad</th>-->
+              <!--<th>Dirección</th>-->
+              <!--<th>Tipo de Sangre</th>-->
+              <th style="width: 20%">Fecha de Inscripción</th>
+              <th style="width: 30%">Opciones</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let patient of patients | filter: queryString : searchableList; let i = index;">
-              <!--[ngClass]="{ 'table-danger': patient.suscripcion.Estado === 2, 'table-success': patient.Nombre !== 2 }">-->
-              <td>
+              <td [routerLink]="['/detalle-paciente', patient.id]" class="clickable">
                 <span class="list-name"> {{i+1}} </span>
               </td>
-              <td>{{patient.Nombre}}</td>
-              <td>{{patient.Apellidos}}</td>
-              <td>{{patient.Telefono}}</td>
-              <td>{{patient.Sexo}}</td>
-              <td>{{patient.Edad}}</td>
-              <td>{{patient.Direccion}}</td>
-              <td>{{patient.Tipo_sangre}}</td>
-              <td>{{patient.Fecha_inscripcion}}</td>
+              <td [routerLink]="['/detalle-paciente', patient.id]" class="clickable">{{patient.Nombre + " " + patient.Apellidos}} </td>
+              <td> {{patient.Fecha_inscripcion}} </td>
+              <button class="btn btn-primary btn-round">Agendar cita</button>
+              <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient.id]">Nueva consulta</button>
               <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
-              <app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>
+              <!--<app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>-->
               <button class="btn btn-danger" type="button" (click)="delete(patient.id)">
                 <i class="fas fa-trash fa-lg"></i>
               </button>
-
               <!--<td>{{k.Estado}}</td>-->
               <!--<td><span class="badge badge-success">Approved</span></td>-->
             </tr>
@@ -65,6 +59,5 @@
           </table>
         </div>
       </div>
-
     </div>
 </div>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VaccineService} from '../../../services/vaccine/vaccine.service';
 import {PatientService} from '../../../services/patient/patient.service';
 import {ConsultationService} from '../../../services/consultation/consultation.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-medical-consultation',
@@ -19,17 +20,34 @@ export class NewMedicalConsultationComponent implements OnInit {
   formEstudios: FormGroup;
 
   vaccines = [];
-  patients = [];
+  patient: any;
 
   doctor = JSON.parse(localStorage.getItem('user'));
 
   patientSelected = new FormControl();
 
-  constructor( public _vaccineService: VaccineService,
-               public _patientService: PatientService,
-               private _consultationService: ConsultationService) { }
+  constructor(public _vaccineService: VaccineService,
+              private router: Router,
+              private route: ActivatedRoute,
+              public _patientService: PatientService,
+              private _consultationService: ConsultationService) {
+    let id;
+    this.route.params
+      .subscribe(parametros => {
+        id = parametros['id'];
+        this._patientService.getPatient(id)
+          .subscribe(
+            res => {
+              this.patient = res;
+              console.log(res);
+            }
+          );
+      });
+
+  }
 
   ngOnInit() {
+    console.log("Estoy en el OnInit")
     this.createFormGroup();
     this._vaccineService.getVaccines()
       .subscribe(
@@ -37,13 +55,13 @@ export class NewMedicalConsultationComponent implements OnInit {
           this.vaccines = res;
         }
       );
-    this._patientService.getPatients()
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          this.patients = res;
-        }
-      );
+    // this._patientService.getPatients()
+    //   .subscribe(
+    //     (res: any) => {
+    //       console.log(res);
+    //       this.patients = res;
+    //     }
+    //   );
   }
 
   createFormGroup() {
@@ -124,4 +142,5 @@ export class NewMedicalConsultationComponent implements OnInit {
       );
 
   }
+
 }
