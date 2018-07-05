@@ -50,18 +50,6 @@
   </div>
 </div>
 
-<!--<div class="row">-->
-<!--<div class="col-md-12">-->
-<!--<div class="form-group">-->
-<!--<label>Paciente:</label>-->
-<!--<select class="form-control" [formControl]="patientSelected">-->
-<!--<option *ngFor="let patient of patients" [value]="patient.id">{{patient.Nombre + " " + patient.Apellidos}}</option>-->
-<!--</select>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-
 <div class="card">
   <div class="body">
     <ul class="nav nav-tabs padding-0">
@@ -149,28 +137,54 @@
         </div>
       </div>
 
-    <!--***********************RECETAS MEDICAS*****************-->
+      <!--***********************RECETAS MEDICAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Receta">
         <div class="row clearfix">
           <div class="col-md-12">
             <form [formGroup]="formReceta">
-              <div class="form-group">
-                <label>Titulo:</label>
-                <input type="text" class="form-control" placeholder="Titulo de la receta" formControlName="Titulo">
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+
+                  <div class="form-group">
+                    <label>Titulo:</label>
+                    <input type="text" class="form-control" placeholder="Titulo de la receta"
+                           formControlName="Titulo">
+                  </div>
+
+                </div>
               </div>
 
-              <div class="form-group">
-                <label>Descripcion:</label>
-                <br>
-                <textarea class="form-control" id="descripcion" placeholder="Descripcion"
-                          formControlName="Descripcion"></textarea>
-              </div>
+              <div class="row" formArrayName="Medicamentos">
+                <div *ngFor="let pedido of formReceta.controls['Medicamentos'].controls; let i = index"
+                     [formGroupName]="i" class="col-md-12">
 
-              <div class="form-group">
-                <label>Lista de Medicamentos:</label>
-                <br>
-                <textarea class="form-control" id="esquema" placeholder="Medicamentos"
-                          formControlName="Medicamentos"></textarea>
+                    <div class="form-group col-md-5">
+                      <label>Medicamento:</label>
+                      <input class="form-control" placeholder="Medicamento:"
+                             formControlName="Medicina">
+                    </div>
+
+                    <div class="form-group col-md-5">
+                      <label>Prescripción:</label>
+                      <input class="form-control" placeholder="Prescripción"
+                             formControlName="Prescripcion">
+                    </div>
+
+
+                    <button class="btn btn-danger btn-icon  btn-icon-mini btn-round col-md-1"
+                            *ngIf="formReceta.controls['Medicamentos'].length > 1"
+                            (click)="deleteMedicine(i)">
+                      <i class="zmdi zmdi-minus"></i>
+                    </button>
+
+                </div>
+
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-icon btn-icon-mini btn-round" (click)="addNewMedicine()">
+                    <i class="zmdi zmdi-plus"></i>
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -390,6 +404,6 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <button type="submit" class="btn btn-primary text-center" (click)="save()">Guardar</button>
+    <button type="submit" class="float-right btn btn-primary text-center mt-1" (click)="save()">Guardar</button>
   </div>
 </div>

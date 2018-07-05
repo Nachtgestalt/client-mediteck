@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {VaccineService} from '../../../services/vaccine/vaccine.service';
 import {PatientService} from '../../../services/patient/patient.service';
 import {ConsultationService} from '../../../services/consultation/consultation.service';
@@ -27,10 +27,12 @@ export class NewMedicalConsultationComponent implements OnInit {
   patientSelected = new FormControl();
 
   constructor(public _vaccineService: VaccineService,
-              private router: Router,
-              private route: ActivatedRoute,
               public _patientService: PatientService,
-              private _consultationService: ConsultationService) {
+              private _consultationService: ConsultationService,
+              private formBuilder: FormBuilder,
+              private cdref: ChangeDetectorRef,
+              private router: Router,
+              private route: ActivatedRoute) {
     let id;
     this.route.params
       .subscribe(parametros => {
@@ -47,7 +49,6 @@ export class NewMedicalConsultationComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Estoy en el OnInit")
     this.createFormGroup();
     this._vaccineService.getVaccines()
       .subscribe(
@@ -55,13 +56,6 @@ export class NewMedicalConsultationComponent implements OnInit {
           this.vaccines = res;
         }
       );
-    // this._patientService.getPatients()
-    //   .subscribe(
-    //     (res: any) => {
-    //       console.log(res);
-    //       this.patients = res;
-    //     }
-    //   );
   }
 
   createFormGroup() {
@@ -79,8 +73,7 @@ export class NewMedicalConsultationComponent implements OnInit {
 
     this.formReceta = new FormGroup({
       'Titulo': new FormControl('', Validators.required),
-      'Descripcion': new FormControl(''),
-      'Medicamentos': new FormControl('')
+      'Medicamentos': new FormArray([this.createItemMedicine()])
     });
 
     this.formIndicaciones = new FormGroup({
@@ -143,4 +136,23 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   }
 
+  createItemMedicine(): FormGroup {
+    return this.formBuilder.group({
+      Medicina: ['', Validators.required],
+      Prescripcion: ['', Validators.required],
+    });
+  }
+
+  addNewMedicine() {
+    const control = <FormArray>this.formReceta.controls['Medicamentos'];
+    control.push(this.createItemMedicine());
+    this.cdref.detectChanges();
+  }
+
+  deleteMedicine(index) {
+    // control refers to your formarray
+    const control = <FormArray>this.formReceta.controls['Medicamentos'];
+    // remove the chosen row
+    control.removeAt(index);
+  }
 }
