@@ -26,7 +26,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    // canActivate: [LoginGuardGuard],
+    canActivate: [LoginGuardGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard', subtitle: 'Bienvenido'}},
       { path: 'medicos', component: DoctoresComponent, data: {titulo: 'Lista de Médicos', subtitle: 'Bienvenido'}},

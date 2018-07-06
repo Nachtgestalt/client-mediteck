@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, URL_SERVICIOS} from '../../config/config';
+import {CLIENT_ID, CLIENT_SECRET, DESTINO, GRANT_TYPE, URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {User} from '../../interfaces/user.interface';
@@ -8,7 +8,7 @@ import {Oauth} from '../../interfaces/oauth.interface';
 @Injectable()
 export class UserService {
   urlAuth = `${URL_SERVICIOS}/oauth/token`;
-  urlLogin = `${URL_SERVICIOS}/login-usuario`
+  urlLogin = `${URL_SERVICIOS}/user-information`
   token: string;
   user: User;
 
@@ -36,7 +36,7 @@ export class UserService {
 
     const credentials = `grant_type=${GRANT_TYPE}
     &client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}
-    &username=${user.username}&password=${user.password}`
+    &username=${user.username}&password=${user.password}&Destino=${DESTINO}`;
 
     headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.post(this.urlAuth, credentials, {observe: 'response', headers})
@@ -52,9 +52,6 @@ export class UserService {
 
   getDataUser(username) {
     const url = `${this.urlLogin}/${username}`;
-    let headers: HttpHeaders = new HttpHeaders();
-    console.log(this.token);
-    // headers = headers.append('Authorization', this.token);
     return this.http.get(url);
   }
 
@@ -62,10 +59,11 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
-  setInStorage(usuario) {
+  setInStorage(usuario, menu) {
     console.log(usuario)
     localStorage.setItem('idMedicalCenter', usuario.idCentro_medico);
     localStorage.setItem('user', JSON.stringify(usuario));
+    localStorage.setItem('menu', JSON.stringify(menu));
   }
 
   logout() {

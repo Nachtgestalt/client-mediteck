@@ -127,12 +127,12 @@ export class NewMedicalConsultationComponent implements OnInit {
 
     console.log(JSON.stringify(newConsult));
 
-    this._consultationService.postConsultation(newConsult)
-      .subscribe(
-        res => {
-          console.log(res);
-        }
-      );
+    // this._consultationService.postConsultation(newConsult)
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
+    //     }
+    //   );
 
   }
 

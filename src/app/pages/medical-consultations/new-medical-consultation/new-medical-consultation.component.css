@@ -1,3 +1,9 @@
 .btn{
   margin-top: 24px;
 }
+
+.alinear-centro{
+  display: flex;
+  justify-content: center;
+}
+

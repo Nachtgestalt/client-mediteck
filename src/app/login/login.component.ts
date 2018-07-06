@@ -31,12 +31,14 @@ export class LoginComponent implements OnInit {
     this._userService.auth(this.formulario.value)
       .subscribe(
         (resp: any) => {
+          console.log(resp);
           this._userService.setTokenInStorage(resp);
           this._userService.getDataUser(username)
             .subscribe(
               (res: any) => {
-                const usuario = res.Usuario;
-                this._userService.setInStorage(usuario);
+                const usuario = res.User;
+                const menu = res.Menu;
+                this._userService.setInStorage(usuario, menu);
                 this.router.navigate(['/dashboard']);
                 console.log(res);
               }
