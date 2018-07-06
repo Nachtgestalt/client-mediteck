@@ -40,7 +40,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <app-edit-patient (cerrado)="reload($event)" [patient]="patient"></app-edit-patient>
-        <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient.id]">Nueva consulta</button>
+        <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient?.id]">Nueva consulta</button>
       </div>
 
 

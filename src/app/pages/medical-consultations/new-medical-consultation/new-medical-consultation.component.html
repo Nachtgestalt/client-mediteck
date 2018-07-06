@@ -1,7 +1,7 @@
 <div class="card">
   <div class="body">
     <div class="row">
-      <div class="col-md-2 col-sm-2 col-xs-12">
+      <div class="col-md1 col-sm-1 col-xs-12">
         <img src="assets/images/mediteck/sin-foto.png" class="patient-pic img-post rounded-circle" alt="profile-image">
       </div>
 
@@ -39,11 +39,18 @@
         <!--</div>-->
       </div>
 
-      <div class="col-md-4" [formGroup]="form">
+      <div class="col-md-5" [formGroup]="form">
         <div class="form-group">
           <label>Fecha: </label>
           <input class="form-control" type="date" formControlName="Fecha">
         </div>
+
+
+        <div class="form-group">
+          <label>Costo: </label>
+          <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
+        </div>
+
       </div>
 
     </div>
@@ -54,7 +61,10 @@
   <div class="body">
     <ul class="nav nav-tabs padding-0">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#Basico">Signos vitales/Básicos</a>
+        <a class="nav-link active" data-toggle="tab" href="#HistoriaClinica">Historia Clinica</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#Basico">Signos vitales/Básicos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Receta">Receta Medica</a>
@@ -73,9 +83,125 @@
       </li>
     </ul>
 
-    <!--***********************Signos vitales*****************-->
     <div class="tab-content m-t-10">
-      <div class="tab-pane active" id="Basico">
+      <!--***********************Historia clinica *****************-->
+      <div class="tab-pane active" id="HistoriaClinica">
+        <div class="row clearfix">
+          <div class="col-md-12">
+            <!--Formulario-->
+            <form [formGroup]="form">
+              <hr>
+
+              <div class="row">
+
+                <!--Izquierda-->
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Antecedentes importantes: </label>
+                      <input class="form-control" type="text" placeholder="Peso" formControlName="Peso">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Alergias: </label>
+                      <input class="form-control" type="text" placeholder="Talla" formControlName="Talla">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Motivo de la consulta: </label>
+                      <input class="form-control" type="text" placeholder="Talla" formControlName="Talla">
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Observaciones: </label>
+                      <input class="form-control" type="text" placeholder="Talla" formControlName="Talla">
+                    </div>
+                  </div>
+                </div>
+                <!--Final Izquierda-->
+
+
+                <!--Derecha-->
+                <div class="col-md-6">
+                  <div class="historia-header">
+                    <div class="row">
+                      <div class="col-sm-9">
+                        <p class="mb-0 ml-3">
+                          Historia clinica
+                        </p>
+                      </div>
+                      <div class="col-sm-3">
+                        <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">{{msgEditMedical}}</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Antecedentes familiares-->
+                  <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
+                          [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
+                          [disabled]="isEditMedicalHistory">
+                    Antecedentes familiares
+                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
+                  </button>
+                  <!--Antecedentes familiares detalle-->
+                  <div id="AntecedentesFam" [ngbCollapse]="isCollapsedAntFam">
+                    <div class="card-body">
+                      <div class="checkbox">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">
+                          Diabetes mellitus
+                        </label>
+                      </div>
+                      <input type="text">
+                    </div>
+                  </div>
+
+                  <!--Antecedentes personales patologicos-->
+                  <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
+                          [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
+                          [disabled]="isEditMedicalHistory">
+                    Antecedentes personales patologicos
+                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
+                  </button>
+                  <!--Antecedentes personales patologicos detalle-->
+                  <div id="AntecedentesPat" [ngbCollapse]="isCollapsedAntPat">
+                    <div class="card-body">
+                      Lorem ipsum..
+                    </div>
+                  </div>
+
+                  <!--Antecedentes personales NO patologicos-->
+                  <button class="accordion" (click)="isCollapsedAntNoPat = !isCollapsedAntNoPat"
+                          [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"
+                          [disabled]="isEditMedicalHistory">
+                    Antecedentes personales no patologicos
+                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
+                  </button>
+                  <!--Antecedentes personales NO patologicos detalle-->
+                  <div id="AntecedentesNoPat" [ngbCollapse]="isCollapsedAntNoPat">
+                    <div class="card-body">
+                      Lorem ipsum..
+                    </div>
+                  </div>
+                </div>
+                <!--Final Derecha-->
+
+              </div>
+            </form>
+            <!--Fin Formulario-->
+          </div>
+        </div>
+      </div>
+      <!--***********************Signos vitales*****************-->
+      <div class="tab-pane" routerLinkActive="active" id="Basico">
         <div class="row clearfix">
           <div class="col-md-12">
             <!--Formulario-->
@@ -120,13 +246,6 @@
                              formControlName="Perimetro_Torasico">
                     </div>
                   </div>
-
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Costo: </label>
-                      <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
-                    </div>
-                  </div>
                 </div>
                 <!--Final Derecha-->
 
@@ -156,7 +275,8 @@
               </div>
 
               <div class="row" formArrayName="Medicamentos">
-                <div class="col-md-11" *ngFor="let pedido of formReceta.controls['Medicamentos'].controls; let i = index"
+                <div class="col-md-11"
+                     *ngFor="let pedido of formReceta.controls['Medicamentos'].controls; let i = index"
                      [formGroupName]="i">
                   <div class="row">
 

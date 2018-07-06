@@ -12,6 +12,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class NewMedicalConsultationComponent implements OnInit {
 
+  isCollapsedAntFam = true;
+  isCollapsedAntPat = true;
+  isCollapsedAntNoPat = true;
+
+  isEditMedicalHistory = true;
+  msgEditMedical = 'Editar'
+
   form: FormGroup;
   formReceta: FormGroup;
   formNotas: FormGroup;
@@ -154,5 +161,20 @@ export class NewMedicalConsultationComponent implements OnInit {
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
     // remove the chosen row
     control.removeAt(index);
+  }
+
+  editMedicalHistory() {
+    this.isEditMedicalHistory = !this.isEditMedicalHistory;
+    this.isEditMedicalHistory ? this.msgEditMedical = 'Editar' : this.msgEditMedical = 'Guardar';
+
+    if (!this.isEditMedicalHistory) {
+      this.isCollapsedAntFam = false;
+      this.isCollapsedAntNoPat = false;
+      this.isCollapsedAntPat = false;
+    } else {
+      this.isCollapsedAntFam = true;
+      this.isCollapsedAntNoPat = true;
+      this.isCollapsedAntPat = true;
+    }
   }
 }
