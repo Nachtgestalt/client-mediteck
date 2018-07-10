@@ -20,13 +20,14 @@ export class AddNursesComponent implements OnInit {
   createForm() {
     this.form = new FormGroup({
       'Nombre': new FormControl(),
-      'Apellido': new FormControl(),
+      'Apellidos': new FormControl(),
       'Edad': new FormControl(),
       'Sexo': new FormControl(),
+      'Telefono': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl('secret'),
+      'Email': new FormControl(),
+      'Password': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
     });
   }

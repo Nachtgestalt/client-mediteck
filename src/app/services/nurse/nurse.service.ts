@@ -25,7 +25,6 @@ export class NurseService {
     const body = JSON.stringify(nurse);
     console.log(body);
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
     return this.http.post(this.urlNurse, body, {headers});
   }

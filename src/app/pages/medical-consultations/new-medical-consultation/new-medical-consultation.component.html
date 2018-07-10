@@ -51,6 +51,8 @@
           <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
         </div>
 
+        <app-add-note></app-add-note>
+
       </div>
 
     </div>
@@ -137,7 +139,9 @@
                         </p>
                       </div>
                       <div class="col-sm-3">
-                        <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">{{msgEditMedical}}</button>
+                        <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">
+                          {{msgEditMedical}}
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -146,7 +150,8 @@
                           [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
                           [disabled]="isEditMedicalHistory">
                     Antecedentes familiares
-                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-down float-right"
+                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
                     <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
                   </button>
                   <!--Antecedentes familiares detalle-->
@@ -167,7 +172,8 @@
                           [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
                           [disabled]="isEditMedicalHistory">
                     Antecedentes personales patologicos
-                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-down float-right"
+                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
                     <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
                   </button>
                   <!--Antecedentes personales patologicos detalle-->
@@ -182,7 +188,8 @@
                           [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"
                           [disabled]="isEditMedicalHistory">
                     Antecedentes personales no patologicos
-                    <i class="zmdi zmdi-chevron-down float-right" *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+                    <i class="zmdi zmdi-chevron-down float-right"
+                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
                     <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
                   </button>
                   <!--Antecedentes personales NO patologicos detalle-->
@@ -399,38 +406,13 @@
           <div class="col-md-12">
             <form [formGroup]="formNotas">
               <div id="medico">
-
                 <div class="form-group">
-                  <label>Tipo de Nota</label>
-                  <select class="form-control show-tick" formControlName="Tipo_nota">
-                    <option value="0">Nota de Urgencia</option>
-                    <option value="1">Nota de Ingreso (Hospitalización)</option>
-                    <option value="2">Nota de Evolución</option>
-                    <option value="3">Nota de Guardia</option>
-                    <option value="4">Nota postquirúrgica</option>
-                    <option value="5">Nota de Defunción</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label>Nombre del Medico:</label>
-                  <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico">
-                </div>
-
-                <div class="form-group">
-                  <label>Cedula Profesional:</label>
-                  <input type="text" class="form-control" id="ced" placeholder="Cedula Profesional" name="cedula_p">
+                  <label>Motivo de la consulta:</label>
+                  <input type="text" class="form-control" placeholder="Motivo de la consulta">
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Diagnóstico:</label>
-                <br>
-                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"
-                          formControlName="Diagnostico"></textarea>
-              </div>
-
-              <div class="row" id="medidas">
+              <div class="row">
                 <div class="form-group col-sm-4">
                   <label>Peso:</label>
                   <input type="text" class="form-control ancho" id="peso" placeholder="Peso"
@@ -450,40 +432,46 @@
                 </div>
               </div>
 
-              <div id="svt">
-                <div class="row">
-                  <div class="form-group col-sm-2">
-                    <label>FC:</label>
-                    <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
-                  </div>
 
-                  <div class="form-group col-sm-2">
-                    <label>TR:</label>
-                    <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
-                  </div>
-
-                  <div class="form-group col-sm-2">
-                    <label>Temperatura:</label>
-                    <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura"
-                           name="temperatura">
-                  </div>
-
-                  <div class="form-group col-sm-2">
-                    <label>TA:</label>
-                    <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
-                  </div>
-
-                  <div class="form-group col-sm-2">
-                    <label>SVT:</label>
-                    <input type="text" class="form-control ancho" id="so2" placeholder="SVT" name="so2">
-                  </div>
-
-                  <div class="form-group col-sm-2">
-                    <label>SO2:</label>
-                    <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
-                  </div>
-
+              <div class="row">
+                <div class="form-group col-sm-2">
+                  <label>FC:</label>
+                  <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
                 </div>
+
+                <div class="form-group col-sm-2">
+                  <label>TR:</label>
+                  <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
+                </div>
+
+                <div class="form-group col-sm-2">
+                  <label>Temperatura:</label>
+                  <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura"
+                         name="temperatura">
+                </div>
+
+                <div class="form-group col-sm-2">
+                  <label>TA:</label>
+                  <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
+                </div>
+
+                <div class="form-group col-sm-2">
+                  <label>SVT:</label>
+                  <input type="text" class="form-control ancho" id="so2" placeholder="SVT" name="so2">
+                </div>
+
+                <div class="form-group col-sm-2">
+                  <label>SO2:</label>
+                  <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <label>Diagnóstico:</label>
+                <br>
+                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"
+                          formControlName="Diagnostico"></textarea>
               </div>
 
               <div class="form-group">

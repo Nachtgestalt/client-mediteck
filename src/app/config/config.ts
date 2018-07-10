@@ -8,9 +8,8 @@ Password: secret
 
 export const URL_SERVICIOS = 'http://167.99.224.27:81';
 export const GRANT_TYPE = 'password';
-export const CLIENT_ID = '2';
+export const CLIENT_ID = '1';
 export const DESTINO = 'Client';
 
 // TOKEN DEL SERVER NUEVO
-export const CLIENT_SECRET = 'T6Mc1Q2RjTnpgLcl7DzOUCXEa9l0cZ7ZQrV1QNl9';
-
+export const CLIENT_SECRET = '5prs81bNv9aEugCEJ8SdbQIjKbg2geRBP3Dd4dHQ';

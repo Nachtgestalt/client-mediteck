@@ -24,13 +24,19 @@
 
               <div class="form-group">
                 <label>Apellidos: </label>
-                <input class="form-control" type="text" placeholder="Apellidos *" formControlName="Apellido">
+                <input class="form-control" type="text" placeholder="Apellidos *" formControlName="Apellidos">
               </div>
 
               <div class="form-group">
-                <label>Edad: </label>
-                <input class="form-control" type="text" placeholder="Edad *" formControlName="Edad">
+                <label class="text-left">Dirección: </label>
+                <input class="form-control" type="text" placeholder="Dirección *" formControlName="Direccion" required>
               </div>
+
+              <div class="form-group">
+                <label class="text-left">Telefono: </label>
+                <input class="form-control" type="tel" placeholder="Telefono *" formControlName="Telefono" required>
+              </div>
+
             </div>
 
 
@@ -39,9 +45,14 @@
               <div class="form-group">
                 <label>Género: </label>
                 <select class="form-control" name="genero" formControlName="Sexo">
-                  <option value="hombre">Hombre</option>
-                  <option value="mujer">Mujer</option>
+                  <option value="0">Masculino</option>
+                  <option value="1">Femenino</option>
                 </select>
+              </div>
+
+              <div class="form-group">
+                <label>Edad: </label>
+                <input class="form-control" type="text" placeholder="Edad *" formControlName="Edad">
               </div>
 
               <div class="form-group">
@@ -50,10 +61,7 @@
                        formControlName="Cedula">
               </div>
 
-              <div class="form-group">
-                <label class="text-left">Dirección: </label>
-                <input class="form-control" type="text" placeholder="Dirección *" formControlName="Direccion" required>
-              </div>
+
             </div>
             <!--**********************fin parte derecha***********************************-->
 
@@ -76,14 +84,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Email: </label>
-                <input class="form-control" type="email" placeholder="Email" formControlName="email">
+                <input class="form-control" type="email" placeholder="Email" formControlName="Email">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Contraseña: </label>
-                <input class="form-control" type="password" placeholder="Contraseña" formControlName="password">
+                <input class="form-control" type="password" placeholder="Contraseña" formControlName="Password">
               </div>
             </div>
 
