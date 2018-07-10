@@ -1,0 +1,44 @@
+<!--***********************INDICACIONES MEDICAS*****************-->
+<div class="tab-pane" routerLinkActive="active" id="Indicaciones">
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <form [formGroup]="formIndicaciones">
+
+        <div class="form-group">
+          <label>Dieta:</label>
+          <br>
+          <textarea class="form-control" placeholder="Dieta"
+                    formControlName="Dieta"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Esquema de Soluciones:</label>
+          <br>
+          <textarea class="form-control" name="esquema" id="esquema" placeholder="Esquema de Soluciones"
+                    formControlName="Esquema_soluciones"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Lista de Medicamentos:</label>
+          <br>
+          <textarea class="form-control" name="medicamentos" id="medicamentos" placeholder="Lista de Medicamentos"
+                    formControlName="Lista_medicamentos"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Medidas Generales:</label>
+          <br>
+          <textarea class="form-control" name="medidas" id="medidas" placeholder="Medidas Generales"
+                    formControlName="Medias_generales"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Hemocomponentes:</label>
+          <br>
+          <textarea class="form-control" name="hemocomponentes" id="hemocomponentes" placeholder="Hemocomponentes"
+                    formControlName="Hemocomponentes"></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

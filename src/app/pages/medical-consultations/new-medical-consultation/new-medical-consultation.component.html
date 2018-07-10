@@ -72,9 +72,6 @@
         <a class="nav-link" data-toggle="tab" href="#Receta">Receta Medica</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#Indicaciones">Indicaciones</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Notas">Notas</a>
       </li>
       <li class="nav-item">
@@ -131,73 +128,7 @@
 
                 <!--Derecha-->
                 <div class="col-md-6">
-                  <div class="historia-header">
-                    <div class="row">
-                      <div class="col-sm-9">
-                        <p class="mb-0 ml-3">
-                          Historia clinica
-                        </p>
-                      </div>
-                      <div class="col-sm-3">
-                        <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">
-                          {{msgEditMedical}}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Antecedentes familiares-->
-                  <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
-                          [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
-                          [disabled]="isEditMedicalHistory">
-                    Antecedentes familiares
-                    <i class="zmdi zmdi-chevron-down float-right"
-                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
-                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
-                  </button>
-                  <!--Antecedentes familiares detalle-->
-                  <div id="AntecedentesFam" [ngbCollapse]="isCollapsedAntFam">
-                    <div class="card-body">
-                      <div class="checkbox">
-                        <input id="checkbox1" type="checkbox">
-                        <label for="checkbox1">
-                          Diabetes mellitus
-                        </label>
-                      </div>
-                      <input type="text">
-                    </div>
-                  </div>
-
-                  <!--Antecedentes personales patologicos-->
-                  <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
-                          [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
-                          [disabled]="isEditMedicalHistory">
-                    Antecedentes personales patologicos
-                    <i class="zmdi zmdi-chevron-down float-right"
-                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
-                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
-                  </button>
-                  <!--Antecedentes personales patologicos detalle-->
-                  <div id="AntecedentesPat" [ngbCollapse]="isCollapsedAntPat">
-                    <div class="card-body">
-                      Lorem ipsum..
-                    </div>
-                  </div>
-
-                  <!--Antecedentes personales NO patologicos-->
-                  <button class="accordion" (click)="isCollapsedAntNoPat = !isCollapsedAntNoPat"
-                          [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"
-                          [disabled]="isEditMedicalHistory">
-                    Antecedentes personales no patologicos
-                    <i class="zmdi zmdi-chevron-down float-right"
-                       *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
-                    <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
-                  </button>
-                  <!--Antecedentes personales NO patologicos detalle-->
-                  <div id="AntecedentesNoPat" [ngbCollapse]="isCollapsedAntNoPat">
-                    <div class="card-body">
-                      Lorem ipsum..
-                    </div>
-                  </div>
+                  <app-medical-history [questions]="questions"></app-medical-history>
                 </div>
                 <!--Final Derecha-->
 
@@ -325,52 +256,6 @@
         </div>
       </div>
 
-
-      <!--***********************INDICACIONES MEDICAS*****************-->
-      <div class="tab-pane" routerLinkActive="active" id="Indicaciones">
-        <div class="row clearfix">
-          <div class="col-md-12">
-            <form [formGroup]="formIndicaciones">
-
-              <div class="form-group">
-                <label>Dieta:</label>
-                <br>
-                <textarea class="form-control" placeholder="Dieta"
-                          formControlName="Dieta"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label>Esquema de Soluciones:</label>
-                <br>
-                <textarea class="form-control" name="esquema" id="esquema" placeholder="Esquema de Soluciones"
-                          formControlName="Esquema_soluciones"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label>Lista de Medicamentos:</label>
-                <br>
-                <textarea class="form-control" name="medicamentos" id="medicamentos" placeholder="Lista de Medicamentos"
-                          formControlName="Lista_medicamentos"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label>Medidas Generales:</label>
-                <br>
-                <textarea class="form-control" name="medidas" id="medidas" placeholder="Medidas Generales"
-                          formControlName="Medias_generales"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label>Hemocomponentes:</label>
-                <br>
-                <textarea class="form-control" name="hemocomponentes" id="hemocomponentes" placeholder="Hemocomponentes"
-                          formControlName="Hemocomponentes"></textarea>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
       <!--***********************Estudios y analisis*****************-->
 
       <div class="tab-pane" routerLinkActive="active" id="Estudios">
@@ -452,12 +337,12 @@
 
                 <div class="form-group col-sm-2">
                   <label>TA:</label>
-                  <input type="text" class="form-control ancho" id="ta" placeholder="TA" name="ta">
+                  <input type="text" class="form-control ancho" placeholder="TA">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>SVT:</label>
-                  <input type="text" class="form-control ancho" id="so2" placeholder="SVT" name="so2">
+                  <input type="text" class="form-control ancho" placeholder="SVT">
                 </div>
 
                 <div class="form-group col-sm-2">
@@ -468,21 +353,25 @@
               </div>
 
               <div class="form-group">
-                <label>Diagnóstico:</label>
-                <br>
-                <textarea class="form-control" name="diagnostico" id="diagnostico" placeholder="Diagnostico"
+                <label>Exploración física:</label>
+                <textarea class="form-control" placeholder="Detalles de la exploración física"></textarea>
+              </div>
+
+
+              <div class="form-group">
+                <label>Plan:</label>
+                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
                           formControlName="Diagnostico"></textarea>
               </div>
 
               <div class="form-group">
-                <label>NOTA:</label>
-                <br>
-                <textarea class="form-control" name="nota" id="nota" placeholder="Nota"></textarea>
+                <label>Diagnóstico:</label>
+                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
+                          formControlName="Diagnostico"></textarea>
               </div>
 
               <div class="form-group">
                 <label>Pronóstico:</label>
-                <br>
                 <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
               </div>
 

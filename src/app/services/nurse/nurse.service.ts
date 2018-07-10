@@ -10,10 +10,10 @@ export class NurseService {
   constructor(private http: HttpClient) {}
 
   getNurses() {
+    const url = `${this.urlNurse}?centro=${localStorage.getItem('idMedicalCenter')}`;
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.get(this.urlNurse,{headers});
+    return this.http.get(url, {headers});
   }
 
   getNurse(id) {

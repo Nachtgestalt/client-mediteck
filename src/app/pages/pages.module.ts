@@ -37,6 +37,8 @@ import { AddProductsComponent } from './products/add-products/add-products.compo
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { AddNoteComponent } from './medical-consultations/notes/add-note/add-note.component';
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
+import { SurgeryComponent } from './surgery/surgery.component';
+import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
 
 
 @NgModule({
@@ -85,7 +87,9 @@ import { PatientDetailComponent } from './patients/patient-detail/patient-detail
     AddProductsComponent,
     ListProductsComponent,
     AddNoteComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    SurgeryComponent,
+    DynamicFormComponent
   ]
 })
 export class PagesModule { }

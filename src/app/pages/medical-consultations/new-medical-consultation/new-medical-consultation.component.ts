@@ -4,6 +4,7 @@ import {VaccineService} from '../../../services/vaccine/vaccine.service';
 import {PatientService} from '../../../services/patient/patient.service';
 import {ConsultationService} from '../../../services/consultation/consultation.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {QuestionService} from '../../../services/question/question.service';
 
 @Component({
   selector: 'app-new-medical-consultation',
@@ -11,13 +12,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./new-medical-consultation.component.css']
 })
 export class NewMedicalConsultationComponent implements OnInit {
+  questions: any[];
 
-  isCollapsedAntFam = true;
-  isCollapsedAntPat = true;
-  isCollapsedAntNoPat = true;
-
-  isEditMedicalHistory = true;
-  msgEditMedical = 'Editar'
 
   form: FormGroup;
   formReceta: FormGroup;
@@ -36,10 +32,12 @@ export class NewMedicalConsultationComponent implements OnInit {
   constructor(public _vaccineService: VaccineService,
               public _patientService: PatientService,
               private _consultationService: ConsultationService,
+              private questionService: QuestionService,
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
               private router: Router,
               private route: ActivatedRoute) {
+    this.questions = questionService.getQuestions();
     let id;
     this.route.params
       .subscribe(parametros => {
@@ -163,18 +161,5 @@ export class NewMedicalConsultationComponent implements OnInit {
     control.removeAt(index);
   }
 
-  editMedicalHistory() {
-    this.isEditMedicalHistory = !this.isEditMedicalHistory;
-    this.isEditMedicalHistory ? this.msgEditMedical = 'Editar' : this.msgEditMedical = 'Guardar';
 
-    if (!this.isEditMedicalHistory) {
-      this.isCollapsedAntFam = false;
-      this.isCollapsedAntNoPat = false;
-      this.isCollapsedAntPat = false;
-    } else {
-      this.isCollapsedAntFam = true;
-      this.isCollapsedAntNoPat = true;
-      this.isCollapsedAntPat = true;
-    }
-  }
 }

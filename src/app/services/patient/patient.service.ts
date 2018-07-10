@@ -21,6 +21,7 @@ export class PatientService {
     return this.http.get(url)
       .map(
         res => {
+          console.log(res);
           return res[0];
         }
       );
