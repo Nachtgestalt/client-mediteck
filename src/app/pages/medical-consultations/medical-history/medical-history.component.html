@@ -14,93 +14,523 @@
         </div>
       </div>
     </div>
+
     <!--Antecedentes familiares-->
-    <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
-            [disabled]="isEditMedicalHistory">
-      Antecedentes familiares
-      <i class="zmdi zmdi-chevron-down float-right"
-         *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
-      <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
-    </button>
-    <!--Antecedentes familiares detalle-->
-    <div id="AntecedentesFam" [ngbCollapse]="isCollapsedAntFam">
-      <div class="card-body">
-        <!--Diabetes Mellitus-->
-        <div class="checkbox">
-          <input id="checkbox1" type="checkbox" (change)="showDescription('Diabetes mellitus')">
-          <label for="checkbox1">
-            Diabetes mellitus
-          </label>
-          <div class="row" *ngIf="isDiabetesMellitus">
-            <div class="form-group col-md-12">
-              <input class="form-control" placeholder="Descripcion:">
+    <div formGroupName="AntecedentesFamiliares">
+      <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
+              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fa-users fa-2x mx-2"></i>
+        Antecedentes familiares
+        <i class="zmdi zmdi-chevron-down float-right text-center"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
+        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
+      </button>
+      <!--Antecedentes familiares detalle-->
+      <div id="AntecedentesFam" [ngbCollapse]="isCollapsedAntFam">
+        <div class="card-body">
+          <!--Diabetes Mellitus-->
+          <div class="radio" formGroupName="DiabetesMellitus">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="diabetes" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="diabetes">
+                  Diabetes mellitus
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notDiabetes" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notDiabetes">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('DiabetesMellitus').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Cancer-->
+          <div class="radio" formGroupName="Cancer">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="cancer" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="cancer">
+                  Cancer
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notCancer" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notCancer">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Cancer').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:"
+                       formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Hipertension-->
+          <div class="radio" formGroupName="Hipertension">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="hipertension" type="radio"
+                       [value]="true"
+                       formControlName="Estado">
+                <label for="hipertension">
+                  Hipertensión
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notHipertension" type="radio"
+                       [value]="false"
+                       formControlName="Estado">
+                <label for="notHipertension">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Hipertension').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:">
+              </div>
+            </div>
+          </div>
+
+          <!--Reumatologicas-->
+          <div class="radio" formGroupName="Reumatologicas">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="reumatologicas" type="radio"
+                       [value]="true"
+                       formControlName="Estado">
+                <label for="reumatologicas">
+                  Reumatologicas
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notReumatologicas" type="radio"
+                       [value]="false"
+                       formControlName="Estado">
+                <label for="notReumatologicas">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Reumatologicas').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:">
+              </div>
+            </div>
+          </div>
+
+          <!--Cardiovasculares-->
+          <div class="radio" formGroupName="Cardiovasculares">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="cardiovasculares" type="radio"
+                       [value]="true"
+                       formControlName="Estado">
+                <label for="cardiovasculares">
+                  Cardiovasculares
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notCardiovasculares" type="radio"
+                       [value]="false"
+                       formControlName="Estado">
+                <label for="notCardiovasculares">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Cardiovasculares').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:">
+              </div>
+            </div>
+          </div>
+
+          <!--Neurologicas-->
+          <div class="radio" formGroupName="Neurologicas">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="neurologicas" type="radio"
+                       [value]="true"
+                       formControlName="Estado">
+                <label for="neurologicas">
+                  Neurologicas
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notNeurologicas" type="radio"
+                       [value]="false"
+                       formControlName="Estado">
+                <label for="notNeurologicas">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Neurologicas').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:">
+              </div>
+            </div>
+          </div>
+
+          <!--Otras patologias de importancia-->
+          <div class="radio" formGroupName="Otras">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="otrasPatologias" type="radio"
+                       [value]="true"
+                       formControlName="Estado">
+                <label for="otrasPatologias">
+                  Otras patologicas de importancía
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notOtrasPatologias" type="radio"
+                       [value]="false"
+                       formControlName="Estado">
+                <label for="notOtrasPatologias">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesFamiliares').get('Otras').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Antecedentes personales patologicos-->
+    <div formGroupName="AntecedentesPatologicos">
+      <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
+              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fa-heartbeat fa-2x mx-2"></i>
+        Antecedentes personales patologicos
+        <i class="zmdi zmdi-chevron-down float-right text-center"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntPat"></i>
+        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isEditMedicalHistory && !isCollapsedAntPat"></i>
+      </button>
+      <!--Antecedentes personales patologicos detalle-->
+      <div id="AntecedentesPat" [ngbCollapse]="isCollapsedAntPat">
+        <div class="card-body">
+          <!--Ingesta de farmacos-->
+          <div class="radio" formGroupName="IngestaFarmacos">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="ingestaFarmacos" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="ingestaFarmacos">
+                  Ingesta de farmacos
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notIngestaFarmacos" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notIngestaFarmacos">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesPatologicos').get('IngestaFarmacos').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+          <!--Ultima hospitalizacion-->
+          <div class="radio" formGroupName="UltimaHospitalizacion">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="ultimaHospitalizacion" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="ultimaHospitalizacion">
+                  Ultima Hospitalizacion
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notUltimaHospitalizacion" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notUltimaHospitalizacion">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesPatologicos').get('UltimaHospitalizacion').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Transfusiones-->
+          <div class="radio" formGroupName="Transfusiones">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="transfusiones" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="transfusiones">
+                  Transfusiones
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notTransfusiones" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notTransfusiones">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesPatologicos').get('Transfusiones').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Cirugias-->
+          <div class="radio" formGroupName="Cirugias">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="cirugias" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="cirugias">
+                  Cirugias
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notCirugias" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notCirugias">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesPatologicos').get('Cirugias').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!--Cancer-->
-        <div class="checkbox">
-          <input id="checkbox2" type="checkbox" (change)="showDescription('Cancer')">
-          <label for="checkbox2">
-            Cancer
-          </label>
-          <div class="row" *ngIf="isCancer">
-            <div class="form-group col-md-12">
-              <input class="form-control" placeholder="Descripcion:">
+    <!--Antecedentes personales NO patologicos-->
+    <div formGroupName="AntecedentesNoPatologicos">
+      <button class="accordion" (click)="isCollapsedAntNoPat = !isCollapsedAntNoPat"
+              [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"
+              [disabled]="isEditMedicalHistory">
+        <i class="icon fas fa-home fa-2x mx-2"></i>
+        Antecedentes personales no patologicos
+        <i class="zmdi zmdi-chevron-down float-right"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntNoPat"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntNoPat"></i>
+      </button>
+      <!--Antecedentes personales NO patologicos detalle-->
+      <div id="AntecedentesNoPat" [ngbCollapse]="isCollapsedAntNoPat">
+        <div class="card-body">
+          <!--Tabaquismo-->
+          <div class="radio" formGroupName="Tabaquismo">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="tabaquismo" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="tabaquismo">
+                  Tabaquismo
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="noTabaquismo" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="noTabaquismo">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('Tabaquismo').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Alcoholismo-->
+          <div class="radio" formGroupName="Alcoholismo">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="alcoholismo" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="alcoholismo">
+                  Alcoholismo
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notAlcoholismo" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notAlcoholismo">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('Alcoholismo').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Toxicomanias-->
+          <div class="radio" formGroupName="Toxicomanias">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="toxicomanias" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="toxicomanias">
+                  Toxicomanias
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notToxicomanias" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notToxicomanias">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('Toxicomanias').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Dieta-->
+          <div class="radio" formGroupName="Dieta">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="dieta" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="dieta">
+                  Dieta
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notDieta" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notDieta">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('Dieta').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
+          </div>
+
+          <!--Actividad Fisica-->
+          <div class="radio" formGroupName="ActividadFisica">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="actividadFisica" type="radio" [value]="true"
+                       formControlName="Estado">
+                <label for="actividadFisica">
+                  Actividad Fisica
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notActividadFisica" type="radio" [value]="false"
+                       formControlName="Estado">
+                <label for="notActividadFisica">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <div class="row"
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!--Hipertension-->
-        <div class="checkbox">
-          <input id="checkbox3" type="checkbox" (change)="showDescription('Hipertension')">
-          <label for="checkbox3">
-            Hipertensión
-          </label>
-          <div class="row" *ngIf="isHipertension">
-            <div class="form-group col-md-12">
-              <input class="form-control" placeholder="Descripcion:">
-            </div>
+    <!--Interrogatorio por aparatos-->
+    <div formGroupName="InterrogatorioAparatos">
+      <button class="accordion" (click)="isCollapsedIntApar = !isCollapsedIntApar"
+              [attr.aria-expanded]="!isCollapsedIntApar" aria-controls="InterrogatorioAparatos"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fa-x-ray mx-2 fa-2x"></i>
+        Interrogatorio por aparatos
+        <i class="zmdi zmdi-chevron-down float-right"
+           *ngIf="!isEditMedicalHistory && isCollapsedIntApar"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedIntApar"></i>
+      </button>
+      <!--Antecedentes personales NO patologicos detalle-->
+      <div id="InterrogatorioAparatos" [ngbCollapse]="isCollapsedIntApar">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="interrogatorioAparatosDesc">Detalle: </label>
+            <textarea name="interrogatorioAparatos" id="interrogatorioAparatosDesc" rows="3"
+                      placeholder="Interrogatorio por aparatos" class="form-control"></textarea>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!--<div *ngFor="let question of questions" class="form-row">-->
-        <!--<app-question [question]="question" [form]="form"></app-question>-->
-        <!--</div>-->
+    <div class="historia-header" *ngIf="!isEditMedicalHistory">
+      <div class="row">
+        <div class="col-sm-9">
+          <p class="mb-0 ml-3">
+
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">
+            {{msgEditMedical}}
+          </button>
+        </div>
       </div>
     </div>
   </form>
 </div>
 
-<!--&lt;!&ndash;Antecedentes personales patologicos&ndash;&gt;-->
-<!--<button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"-->
-<!--[attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"-->
-<!--[disabled]="isEditMedicalHistory">-->
-<!--Antecedentes personales patologicos-->
-<!--<i class="zmdi zmdi-chevron-down float-right"-->
-<!--*ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>-->
-<!--<i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>-->
-<!--</button>-->
-<!--&lt;!&ndash;Antecedentes personales patologicos detalle&ndash;&gt;-->
-<!--<div id="AntecedentesPat" [ngbCollapse]="isCollapsedAntPat">-->
-<!--<div class="card-body">-->
-<!--Lorem ipsum..-->
-<!--</div>-->
-<!--</div>-->
 
-<!--&lt;!&ndash;Antecedentes personales NO patologicos&ndash;&gt;-->
-<!--<button class="accordion" (click)="isCollapsedAntNoPat = !isCollapsedAntNoPat"-->
-<!--[attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"-->
-<!--[disabled]="isEditMedicalHistory">-->
-<!--Antecedentes personales no patologicos-->
-<!--<i class="zmdi zmdi-chevron-down float-right"-->
-<!--*ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>-->
-<!--<i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>-->
-<!--</button>-->
-<!--&lt;!&ndash;Antecedentes personales NO patologicos detalle&ndash;&gt;-->
-<!--<div id="AntecedentesNoPat" [ngbCollapse]="isCollapsedAntNoPat">-->
-<!--<div class="card-body">-->
-<!--Lorem ipsum..-->
-<!--</div>-->
-<!--</div>-->
