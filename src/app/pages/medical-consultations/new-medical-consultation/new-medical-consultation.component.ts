@@ -5,6 +5,7 @@ import {PatientService} from '../../../services/patient/patient.service';
 import {ConsultationService} from '../../../services/consultation/consultation.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionService} from '../../../services/question/question.service';
+import {UtilsService} from '../../../services/utils/utils.service';
 
 @Component({
   selector: 'app-new-medical-consultation',
@@ -33,6 +34,7 @@ export class NewMedicalConsultationComponent implements OnInit {
               public _patientService: PatientService,
               private _consultationService: ConsultationService,
               private questionService: QuestionService,
+              public utilsServiece: UtilsService,
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
               private router: Router,
@@ -54,6 +56,7 @@ export class NewMedicalConsultationComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.utilsServiece.getAge('12/07/2018'));
     this.createFormGroup();
     this._vaccineService.getVaccines()
       .subscribe(

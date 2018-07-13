@@ -17,6 +17,7 @@ import {ProductService} from './product/product.service';
 import {ConsultationService} from './consultation/consultation.service';
 import {QuestionControlService} from './question/question-control.service';
 import {QuestionService} from './question/question.service';
+import {UtilsService} from './utils/utils.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {QuestionService} from './question/question.service';
     ConsultationService,
     QuestionControlService,
     QuestionService,
+    UtilsService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
