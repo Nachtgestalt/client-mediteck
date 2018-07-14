@@ -24,7 +24,12 @@ export class LeftsidebarService {
       icono: 'zmdi zmdi-account-add',
       submenu: [
         {titulo: 'Listar Enfermeras', url: '/lista_enfermeras'},
-        {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'}
+        {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'},
+
+        {titulo: 'Agregar Places, Enfermeras y Pacientes', url: '/agregar-places'},
+        {titulo: 'Pacientes del place', url: '/pacientes-place'},
+        {titulo: 'Dieta y medicamentos', url: '/dieta-medicamentos'}
+
       ]
     },
     {

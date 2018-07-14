@@ -6,8 +6,14 @@ import {AddDoctorComponent} from './doctores/add-doctor/add-doctor.component';
 import {AddPatientsComponent} from './patients/add-patients/add-patients.component';
 import {AddWarehouseComponent} from './warehouses/add-warehouse/add-warehouse.component';
 import {WarehousesComponent} from './warehouses/warehouses.component';
+
 import {AddNursesComponent} from './nurses/add-nurses/add-nurses.component';
 import {NursesComponent} from './nurses/nurses.component';
+
+import {AddPlaceComponent} from './nurses/add-place/add-place.component';
+import {AllPatientsComponent} from './nurses/all-patients/all-patients.component';
+import {DietAndMedicamentsComponent} from './nurses/diet-and-medicaments/diet-and-medicaments.component';
+
 import {MedicalHistoryComponent} from './medical-consultations/medical-history/medical-history.component';
 import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
 import {AddSectionComponent} from './infrastructure/add-section/add-section.component'
@@ -36,6 +42,11 @@ const pagesRoutes: Routes = [
       { path: 'almacenes', component: WarehousesComponent, data: {titulo: 'Lista de almacenes', subtitle: 'Bienvenido'}},
       { path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Agregar Enfermera', subtitle: 'Bienvenido'}},
       { path: 'lista_enfermeras', component: NursesComponent, data: {titulo: 'Listar Enfermeras', subtitle: 'Bienvenido'}},
+
+      { path: 'agregar-places', component: AddPlaceComponent, data: {titulo: 'Agregar Places, Enfermeras y Pacientes', subtitle: 'Bienvenido'}},
+      { path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes del place', subtitle: 'Bienvenido'}},
+      { path: 'dieta-medicamentos', component: DietAndMedicamentsComponent, data: {titulo: 'Dieta y medicamentos', subtitle: 'Bienvenido'}},
+      
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},

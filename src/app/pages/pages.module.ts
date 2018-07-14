@@ -39,6 +39,11 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { SurgeryComponent } from './surgery/surgery.component';
 import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
+import { Patient2PlaceComponent } from './nurses/patient2-place/patient2-place.component';
+import { AddPlaceComponent } from './nurses/add-place/add-place.component';
+import { DietAndMedicamentsComponent } from './nurses/diet-and-medicaments/diet-and-medicaments.component';
+import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
+import { Nurse2placeComponent } from './nurses/nurse2place/nurse2place.component';
 
 
 @NgModule({
@@ -89,7 +94,12 @@ import {DynamicFormComponent} from './medical-consultations/medical-history/dyna
     AddNoteComponent,
     PatientDetailComponent,
     SurgeryComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    Patient2PlaceComponent,
+    AddPlaceComponent,
+    DietAndMedicamentsComponent,
+    AllPatientsComponent,
+    Nurse2placeComponent
   ]
 })
 export class PagesModule { }
