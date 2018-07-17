@@ -6,14 +6,14 @@ export class LeftsidebarService {
   menu: any = [
     {
       titulo: 'Inicio',
-      icono: 'zmdi zmdi-home',
+      icono: 'fas fa-home fa-2x',
       submenu: [
         {titulo: 'Dashboard', url: '/dashboard'}
       ]
     },
     {
       titulo: 'Médicos',
-      icono: 'fas fa-user-md',
+      icono: 'med-doctor',
       submenu: [
         {titulo: 'Listar Médicos', url: '/medicos'},
         {titulo: 'Agregar Médico', url: '/agregar-medico'}
@@ -21,7 +21,7 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Enfermeras',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'med-nurse-user',
       submenu: [
         {titulo: 'Listar Enfermeras', url: '/lista_enfermeras'},
         {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'}
@@ -29,7 +29,7 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Pacientes',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user fa-2x',
       submenu: [
         {titulo: 'Listar pacientes', url: '/listar_pacientes'},
         {titulo: 'Agregar pacientes', url: '/agregar-paciente'}
@@ -37,7 +37,7 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Infraestructura',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user-md fa-2x',
       submenu: [
         {titulo: 'Agregar sección', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/listar_pisos'},
@@ -46,7 +46,7 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Almacén',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user-md fa-2x',
       submenu: [
         {titulo: 'Listar almacenes', url: '/almacenes'},
         {titulo: 'Agregar almacén', url: '/agregar-almacen'}
@@ -54,14 +54,14 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Insumos',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user-md fa-2x',
       submenu: [
         {titulo: 'Listar vacunas', url: '/vacunas'}
       ]
     },
     {
       titulo: 'Consulta',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user-md fa-2x',
       submenu: [
         // {titulo: 'Nueva Consulta', url: '/consulta'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
         {titulo: 'Citas', url: '/cita'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
@@ -79,7 +79,7 @@ export class LeftsidebarService {
 
     {
       titulo: 'Productos',
-      icono: 'zmdi zmdi-account-add',
+      icono: 'fas fa-user-md fa-2x',
       submenu: [
         {titulo: 'Agregar Productos', url: '/add_product'},
         {titulo: 'Listar Productos', url: '/list_product'}

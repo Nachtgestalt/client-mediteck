@@ -90,7 +90,8 @@
   color: #006FB1;
 }
 .theme-blue .sidebar .menu .list a:hover {
-  color: #006FB1;
+  background: #006FB1;
+  color: #FFFFFF;
 }
 .theme-blue .checkbox input[type="checkbox"]:checked+label::after {
   border: 1px solid #006FB1;
