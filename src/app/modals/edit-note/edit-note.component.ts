@@ -12,4 +12,8 @@ export class EditNoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  open(content){
+
+  }
+
 }

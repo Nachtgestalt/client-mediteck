@@ -54,3 +54,11 @@
   font-size: 2em;
   content: "\64";
 }
+.med-building:before {
+  font-size: 2em;
+  content: "\65";
+}
+.med-pill:before {
+  font-size: 2em;
+  content: "\66";
+}

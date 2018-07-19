@@ -56,7 +56,6 @@ export class NewMedicalConsultationComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.utilsServiece.getAge('12/07/2018'));
     this.createFormGroup();
     this._vaccineService.getVaccines()
       .subscribe(
@@ -64,6 +63,11 @@ export class NewMedicalConsultationComponent implements OnInit {
           this.vaccines = res;
         }
       );
+  }
+
+  getAge(age) {
+    const ageOld = this.utilsServiece.getAge(age);
+    this.patient.Edad = ageOld;
   }
 
   createFormGroup() {
@@ -146,7 +150,9 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   createItemMedicine(): FormGroup {
     return this.formBuilder.group({
-      Medicina: ['', Validators.required],
+      Medicamento: ['', Validators.required],
+      Cantidad: ['', Validators.required],
+      Tiempo: ['', Validators.required],
       Prescripcion: ['', Validators.required],
     });
   }

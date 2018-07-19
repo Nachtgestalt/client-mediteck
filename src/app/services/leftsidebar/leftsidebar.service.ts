@@ -37,7 +37,7 @@ export class LeftsidebarService {
     },
     {
       titulo: 'Infraestructura',
-      icono: 'fas fa-user-md fa-2x',
+      icono: 'med-building',
       submenu: [
         {titulo: 'Agregar sección', url: '/agregar-seccion'},
         {titulo: 'Listar pisos', url: '/listar_pisos'},
@@ -79,7 +79,7 @@ export class LeftsidebarService {
 
     {
       titulo: 'Productos',
-      icono: 'fas fa-user-md fa-2x',
+      icono: 'med-pill',
       submenu: [
         {titulo: 'Agregar Productos', url: '/add_product'},
         {titulo: 'Listar Productos', url: '/list_product'}

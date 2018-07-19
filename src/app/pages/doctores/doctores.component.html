@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card animated fadeIn fast">
   <div class="body">
     <legend class="col-form-legend col-sm-2">Buscar médico:</legend>
     <div class="form-group row">
@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="card" *ngFor="let doctor of doctores | filter: queryString : searchableList; let i = index;">
+<div class="card animated fadeIn fast" *ngFor="let doctor of doctores | filter: queryString : searchableList; let i = index;">
   <div class="body">
     <div class="row">
       <div class="col-md-2">

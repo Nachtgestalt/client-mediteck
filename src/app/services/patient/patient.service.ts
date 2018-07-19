@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UtilsService} from '../utils/utils.service';
 
 @Injectable()
 export class PatientService {
   token = localStorage.getItem('token');
   urlPatient = `${URL_SERVICIOS}/pacientes`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private _utilsService: UtilsService) {}
 
   getPatients() {
     const url = `${this.urlPatient}?centro=${localStorage.getItem('idMedicalCenter')}`;
@@ -21,7 +23,8 @@ export class PatientService {
     return this.http.get(url)
       .map(
         res => {
-          console.log(res);
+          console.log(res[0].Fecha_nacimiento);
+          res[0].Edad = this._utilsService.getAge(res[0].Fecha_nacimiento);
           return res[0];
         }
       );

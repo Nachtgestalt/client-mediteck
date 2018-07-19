@@ -9,8 +9,12 @@ export class UtilsService {
 
   getAge(dateString) {
     const now = new Date();
-    let a = moment(now, 'DDMMYYYY');
-    let b = moment(dateString, 'DDMMYYYY');
+    let a = moment(now, 'YYYY[-]MM[-]DD');
+    let b = moment(dateString, 'YYYY[-]MM[-]DD');
+    console.log('fecha entrante: ', dateString);
+    console.log('fecha formateada: ', b);
+
+
     let yearString = '';
     let monthString = '';
     let dayString = '';

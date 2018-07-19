@@ -1,4 +1,4 @@
-<div class="card margintopForm">
+<div class="card margintopForm animated fadeIn fast">
   <div class="body">
 
     <div class="row">
@@ -55,13 +55,14 @@
           <div class="form-group">
             <label>Fecha de nacimiento</label>
             <input type="date" class="form-control"
-                   formControlName="Edad">
+                   formControlName="Fecha_nacimiento">
           </div>
 
           <div class="form-group">
             <label>Estado civil</label>
-            <input type="text" class="form-control"
-                   formControlName="Estado_civil">
+            <select class="form-control show-tick" formControlName="Estado_civil">
+              <option *ngFor="let status of civilStatus" [value]="status.value">{{status.viewValue}}</option>
+            </select>
           </div>
 
           <div class="form-group">

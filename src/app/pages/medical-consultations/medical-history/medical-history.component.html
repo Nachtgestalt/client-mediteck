@@ -18,7 +18,7 @@
     <!--Antecedentes familiares-->
     <div formGroupName="AntecedentesFamiliares">
       <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
-              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
+              [attr.aria-expanded]="!isCollapsedAntFam" aria-controls="AntecedentesFam"
               [disabled]="isEditMedicalHistory">
         <i class="fas fa-users fa-2x mx-2"></i>
         Antecedentes familiares
@@ -229,7 +229,7 @@
     <!--Antecedentes personales patologicos-->
     <div formGroupName="AntecedentesPatologicos">
       <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
-              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
+              [attr.aria-expanded]="!isCollapsedAntPat" aria-controls="AntecedentesPat"
               [disabled]="isEditMedicalHistory">
         <i class="fas fa-heartbeat fa-2x mx-2"></i>
         Antecedentes personales patologicos
