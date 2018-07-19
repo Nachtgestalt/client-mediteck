@@ -10,7 +10,6 @@ import {WarehousesComponent} from './warehouses/warehouses.component';
 import {AddNursesComponent} from './nurses/add-nurses/add-nurses.component';
 import {NursesComponent} from './nurses/nurses.component';
 
-import {AddPlaceComponent} from './nurses/add-place/add-place.component';
 import {AllPatientsComponent} from './nurses/all-patients/all-patients.component';
 import {DietAndMedicamentsComponent} from './nurses/diet-and-medicaments/diet-and-medicaments.component';
 
@@ -19,8 +18,8 @@ import {NewMedicalConsultationComponent} from './medical-consultations/new-medic
 import {AddSectionComponent} from './infrastructure/add-section/add-section.component'
 import {NotesComponent} from './medical-consultations/notes/notes.component'
 import {BedsXroomComponent} from './infrastructure/beds-xroom/beds-xroom.component'
-import { ListFloorsComponent } from './infrastructure/list-floors/list-floors.component'
-import { ListPatientsComponent } from './patients/list-patients/list-patients.component'
+import {ListFloorsComponent} from './infrastructure/list-floors/list-floors.component'
+import {ListPatientsComponent} from './patients/list-patients/list-patients.component'
 import {LoginGuardGuard} from '../services/guards/login-guard.guard';
 import {AddVaccineComponent} from './supplies/vaccine/add-vaccine/add-vaccine.component';
 import {VaccineComponent} from './supplies/vaccine/vaccine.component';
@@ -43,7 +42,6 @@ const pagesRoutes: Routes = [
       { path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Agregar Enfermera', subtitle: 'Bienvenido'}},
       { path: 'lista_enfermeras', component: NursesComponent, data: {titulo: 'Listar Enfermeras', subtitle: 'Bienvenido'}},
 
-      { path: 'agregar-places', component: AddPlaceComponent, data: {titulo: 'Agregar Places, Enfermeras y Pacientes', subtitle: 'Bienvenido'}},
       { path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes del place', subtitle: 'Bienvenido'}},
       { path: 'dieta-medicamentos', component: DietAndMedicamentsComponent, data: {titulo: 'Dieta y medicamentos', subtitle: 'Bienvenido'}},
       
