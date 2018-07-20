@@ -27,6 +27,8 @@ import {AddProductsComponent} from './products/add-products/add-products.compone
 import {ListProductsComponent} from './products/list-products/list-products.component'
 import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
 
+import {DatesComponent} from './medical-consultations/dates/dates.component';
+
 const pagesRoutes: Routes = [
   {
     path: '',
@@ -44,7 +46,8 @@ const pagesRoutes: Routes = [
 
       { path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes del place', subtitle: 'Bienvenido'}},
       { path: 'dieta-medicamentos', component: DietAndMedicamentsComponent, data: {titulo: 'Dieta y medicamentos', subtitle: 'Bienvenido'}},
-      
+      { path: 'cita', component: DatesComponent, data: {titulo: 'Citas', subtitle: 'Bienvenido'}},
+
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
