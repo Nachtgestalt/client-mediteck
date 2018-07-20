@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {l} from '@angular/core/src/render3';
 import {Params} from '@angular/router';
 
 @Injectable()

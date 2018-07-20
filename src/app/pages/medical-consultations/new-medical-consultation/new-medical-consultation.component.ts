@@ -13,15 +13,13 @@ import {UtilsService} from '../../../services/utils/utils.service';
   styleUrls: ['./new-medical-consultation.component.css']
 })
 export class NewMedicalConsultationComponent implements OnInit {
-  questions: any[];
-
-
   form: FormGroup;
   formReceta: FormGroup;
   formNotas: FormGroup;
   formVacunas: FormGroup;
   formIndicaciones: FormGroup;
   formEstudios: FormGroup;
+  id = 0;
 
   vaccines = [];
   patient: any;
@@ -33,30 +31,20 @@ export class NewMedicalConsultationComponent implements OnInit {
   constructor(public _vaccineService: VaccineService,
               public _patientService: PatientService,
               private _consultationService: ConsultationService,
-              private questionService: QuestionService,
               public utilsServiece: UtilsService,
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
               private router: Router,
               private route: ActivatedRoute) {
-    this.questions = questionService.getQuestions();
-    let id;
-    this.route.params
-      .subscribe(parametros => {
-        id = parametros['id'];
-        this._patientService.getPatient(id)
-          .subscribe(
-            res => {
-              this.patient = res;
-              console.log(res);
-            }
-          );
+    this.route.data
+      .subscribe(data => {
+        this.patient = data.patient;
       });
-
   }
 
   ngOnInit() {
     this.createFormGroup();
+    console.log('Paciente: ', this.patient)
     this._vaccineService.getVaccines()
       .subscribe(
         (res: any) => {
@@ -65,21 +53,18 @@ export class NewMedicalConsultationComponent implements OnInit {
       );
   }
 
-  getAge(age) {
-    const ageOld = this.utilsServiece.getAge(age);
-    this.patient.Edad = ageOld;
-  }
-
   createFormGroup() {
     this.form = new FormGroup({
       'idCentro_medico': new FormControl(Number(localStorage.getItem('idMedicalCenter'))),
       'idMedico': new FormControl(this.doctor.id),
-      'idPaciente': new FormControl(),
-      'Fecha': new FormControl(''),
-      'Peso': new FormControl(''),
-      'Talla': new FormControl(''),
-      'Perimetro_cefalitico': new FormControl(''),
-      'Perimetro_Torasico': new FormControl(''),
+      'idPaciente': new FormControl(this.patient.id),
+      'Fecha': new FormControl(),
+      'MotivoConsulta': new FormControl(''),
+      'EnfermedadActual': new FormControl(),
+      'Alergia': new FormGroup({
+        'Estado': new FormControl(false),
+        'Descripcion': new FormControl()
+      }),
       'Costo': new FormControl('')
     });
 
@@ -88,16 +73,9 @@ export class NewMedicalConsultationComponent implements OnInit {
       'Medicamentos': new FormArray([this.createItemMedicine()])
     });
 
-    this.formIndicaciones = new FormGroup({
-      'Dieta': new FormControl('', Validators.required),
-      'Esquema_soluciones': new FormControl(''),
-      'Lista_medicamentos': new FormControl(''),
-      'Medias_generales': new FormControl(''),
-      'Hemocomponentes': new FormControl(''),
-    });
 
     this.formNotas = new FormGroup({
-      'Tipo_nota': new FormControl(''),
+      'MotivoConsulta': new FormControl(''),
       'Diagnostico': new FormControl(''),
       'Peso': new FormControl(''),
       'Talla': new FormControl(''),
@@ -131,7 +109,6 @@ export class NewMedicalConsultationComponent implements OnInit {
     let newConsult = {
       'consulta': this.form.value,
       'receta': this.formReceta.value,
-      'indicaciones': this.formIndicaciones.value,
       'vacunas': this.formVacunas.value,
       'nota': this.formNotas.value,
       'estudios': this.formEstudios.value

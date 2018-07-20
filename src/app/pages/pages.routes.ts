@@ -21,6 +21,7 @@ import {VaccineComponent} from './supplies/vaccine/vaccine.component';
 import {AddProductsComponent} from './products/add-products/add-products.component';
 import {ListProductsComponent} from './products/list-products/list-products.component'
 import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
+import {PatientDetailsResolveService} from '../services/patient-detail-resolve/patient-details-resolve.service';
 
 const pagesRoutes: Routes = [
   {
@@ -39,7 +40,11 @@ const pagesRoutes: Routes = [
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
-      { path: 'consulta/:id', component: NewMedicalConsultationComponent, data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
+      { path: 'consulta/:id', component: NewMedicalConsultationComponent,
+        resolve: {
+          patient: PatientDetailsResolveService
+        },
+        data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
       { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Sección', subtitle: 'Bienvenido'}},
       { path: 'listar_pisos', component: ListFloorsComponent, data: {titulo: 'Listar Pisos', subtitle: 'Bienvenido'}},
       { path: 'listar_pacientes', component: ListPatientsComponent, data: {titulo: 'Listar Pacientes', subtitle: 'Bienvenido'}},

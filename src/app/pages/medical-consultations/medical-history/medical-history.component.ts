@@ -1,30 +1,63 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {QuestionBase} from '../../../models/question-base';
 import {QuestionControlService} from '../../../services/question/question-control.service';
+import {UtilsService} from '../../../services/utils/utils.service';
 
 @Component({
   selector: 'app-medical-history',
   templateUrl: './medical-history.component.html',
   styleUrls: ['./medical-history.component.css']
 })
+
 export class MedicalHistoryComponent implements OnInit {
-  @Input() questions: QuestionBase<any>[] = [];
+  @Input() patientData: any;
   form: FormGroup;
-  payLoad = '';
+  payLoad;
 
   isCollapsedAntFam = true;
   isCollapsedAntPat = true;
   isCollapsedAntNoPat = true;
   isCollapsedIntApar = true;
+  isCollapsedAntGinecologicos = true;
+  isCollapsedAntPerinatales = true;
 
   isEditMedicalHistory = true;
   msgEditMedical = 'Editar';
 
+  patientAge = 0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private _utilsService: UtilsService) { }
 
   ngOnInit() {
+    this.patientAge = this._utilsService.getAgeOnlyYear(this.patientData.Fecha_nacimiento)
+    console.log('Edad del paciente: ', this.patientAge);
+    console.log('Datos del paciente: ', this.patientData);
+
+    this.createFormGroup();
+
+    if (this.patientAge <= 5) {
+      this.form.addControl('AntecedentesPerinatales', new FormGroup({
+        'ProductoGesta': new FormControl(),
+        'TipoNacimiento': new FormControl(),
+        'CalificacionApgar': new FormControl(),
+        'GestacionNacimiento': new FormControl(),
+        'TiempoLactancia': new FormControl(),
+        'EdadAblactacion': new FormControl(),
+      }));
+    }
+
+    if (this.patientData.Sexo === 'FEMENINO' && (this.patientAge >= 15 && this.patientAge <= 90)) {
+      this.form.addControl('AntecedentesGinecologicos', new FormGroup({
+        'Menarca': new FormControl(),
+        'FUM': new FormControl(),
+        'Gestaciones': new FormControl(false),
+        'Menopausia': new FormControl(false)
+      }));
+    }
+  }
+
+  createFormGroup() {
     this.form = new FormGroup({
       'AntecedentesFamiliares': new FormGroup({
         'DiabetesMellitus': new FormGroup({
@@ -112,13 +145,21 @@ export class MedicalHistoryComponent implements OnInit {
       this.isCollapsedAntNoPat = false;
       this.isCollapsedAntPat = false;
       this.isCollapsedIntApar = false;
+      this.isCollapsedAntGinecologicos = false;
+      this.isCollapsedAntPerinatales = false;
+      console.log(this.patientData);
     } else {
-      this.payLoad = JSON.stringify(this.form.value);
-      console.log(this.payLoad);
+      this.payLoad = {
+        idUsuario: this.patientData.id,
+        HistoriaClinica: this.form.value,
+      };
+      console.log(JSON.stringify(this.payLoad));
       this.isCollapsedAntFam = true;
       this.isCollapsedAntNoPat = true;
       this.isCollapsedAntPat = true;
       this.isCollapsedIntApar = true;
+      this.isCollapsedAntGinecologicos = true;
+      this.isCollapsedAntPerinatales = true;
     }
   }
 }

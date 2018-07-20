@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UtilsService} from '../utils/utils.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PatientService {
@@ -21,12 +22,10 @@ export class PatientService {
   getPatient(id) {
     const url = `${this.urlPatient}/${id}`;
     return this.http.get(url)
-      .map(
-        res => {
-          console.log(res[0].Fecha_nacimiento);
+      .pipe(map(res => {
           res[0].Edad = this._utilsService.getAge(res[0].Fecha_nacimiento);
           return res[0];
-        }
+        })
       );
   }
 

@@ -100,7 +100,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Motivo de la consulta: </label>
-                      <input class="form-control" type="text" placeholder="Motivo de la consulta" formControlName="Peso">
+                      <input class="form-control" type="text" placeholder="Motivo de la consulta" formControlName="MotivoConsulta">
                     </div>
                   </div>
 
@@ -108,14 +108,34 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Enfermedad actual: </label>
-                      <input class="form-control" type="text" placeholder="Enfermedad actual" formControlName="Talla">
+                      <input class="form-control" type="text" placeholder="Enfermedad actual" formControlName="EnfermedadActual">
                     </div>
                   </div>
 
                   <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Alergias: </label>
-                      <input class="form-control" type="text" placeholder="Alergias" formControlName="Talla">
+                    <div class="radio" formGroupName="Alergia">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input id="actividadFisica" type="radio" [value]="true"
+                                 formControlName="Estado">
+                          <label for="actividadFisica">
+                            Alergia
+                          </label>
+                        </div>
+                        <div class="col-md-6">
+                          <input id="notActividadFisica" type="radio" [value]="false"
+                                 formControlName="Estado">
+                          <label for="notActividadFisica">
+                            Negado
+                          </label>
+                        </div>
+                      </div>
+                      <div class="row"
+                           *ngIf="form.get('Alergia').get('Estado').value">
+                        <div class="form-group col-md-12">
+                          <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -124,7 +144,7 @@
 
                 <!--Derecha-->
                 <div class="col-md-6">
-                  <app-medical-history></app-medical-history>
+                  <app-medical-history [patientData]="patient"></app-medical-history>
                 </div>
                 <!--Final Derecha-->
 
@@ -249,7 +269,7 @@
               <div id="medico">
                 <div class="form-group">
                   <label>Motivo de la consulta:</label>
-                  <input type="text" class="form-control" placeholder="Motivo de la consulta">
+                  <input type="text" class="form-control" placeholder="Motivo de la consulta" formControlName="MotivoConsulta">
                 </div>
               </div>
 

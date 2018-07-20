@@ -3,7 +3,7 @@
     <li>
       <div class="navbar-header">
         <a [routerLink]="['/dashboard']" class="bars"></a>
-        <a class="m-l-10" [routerLink]="['/suscripcion']"><img src="../../../assets/images/brand/logo_navbar.png" alt="CLINITEC" /></a>
+        <a class="m-l-10" [routerLink]="['/dashboard']"><img src="../../../assets/images/brand/logo_navbar.png" alt="CLINITEC" /></a>
       </div>
     </li>
     <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
@@ -17,9 +17,9 @@
       </div>
     </li>
     <li class="float-right">
-      <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
+      <a class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
       <!--<button class="mega-menu"><i class="zmdi zmdi-power"></i></button>-->
-      <a href="javascript:void(0);" (click)="_userService.logout()" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+      <a (click)="_userService.logout()" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
       <!--<a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>-->
     </li>
   </ul>
