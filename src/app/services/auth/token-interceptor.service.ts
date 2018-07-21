@@ -10,11 +10,11 @@ export class TokenInterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    request = request.clone({
+    /*request = request.clone({
       setHeaders: {
         Authorization: `${this.auth.getToken()}`
       }
-    });
+    });*/
 
     return next.handle(request);
   }

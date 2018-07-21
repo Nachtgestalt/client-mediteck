@@ -16,7 +16,12 @@
   
         <div class="row">
           <div class="col-md-12">
-
+            <li *ngFor="let date of dates">
+              <b>Lugar {{date.location}}</b>
+              <b>Descripción {{date.summary}}</b>
+              <b>Inicia {{date.start.dateTime}}</b>
+              <b>Termina {{date.end.dateTime}}</b>      
+            </li>
           </div>
         </div>
 

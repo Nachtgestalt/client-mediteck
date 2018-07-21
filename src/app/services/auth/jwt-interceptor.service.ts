@@ -20,7 +20,7 @@ export class JwtInterceptorService {
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
-          this.router.navigate(['/login']);
+          //this.router.navigate(['/login']);
           // console.warn('No hay token');
           // redirect to the login route
           // or show a modal
