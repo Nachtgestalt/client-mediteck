@@ -22,6 +22,7 @@ import {AddProductsComponent} from './products/add-products/add-products.compone
 import {ListProductsComponent} from './products/list-products/list-products.component'
 import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
 import {PatientDetailsResolveService} from '../services/patient-detail-resolve/patient-details-resolve.service';
+import {AutocompleteDataDetailService} from '../services/autocompleteData/autocomplete-data-detail.service';
 
 const pagesRoutes: Routes = [
   {
@@ -42,7 +43,8 @@ const pagesRoutes: Routes = [
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
       { path: 'consulta/:id', component: NewMedicalConsultationComponent,
         resolve: {
-          patient: PatientDetailsResolveService
+          patient: PatientDetailsResolveService,
+          // diagnostics: AutocompleteDataDetailService
         },
         data: {titulo: 'Nueva Consulta', subtitle: 'Bienvenido'}},
       { path: 'agregar-seccion', component: AddSectionComponent, data: {titulo: 'Agregar Sección', subtitle: 'Bienvenido'}},

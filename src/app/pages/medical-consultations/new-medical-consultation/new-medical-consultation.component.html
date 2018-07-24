@@ -100,7 +100,8 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Motivo de la consulta: </label>
-                      <input class="form-control" type="text" placeholder="Motivo de la consulta" formControlName="MotivoConsulta">
+                      <input class="form-control" type="text" placeholder="Motivo de la consulta"
+                             formControlName="MotivoConsulta">
                     </div>
                   </div>
 
@@ -108,7 +109,8 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Enfermedad actual: </label>
-                      <input class="form-control" type="text" placeholder="Enfermedad actual" formControlName="EnfermedadActual">
+                      <input class="form-control" type="text" placeholder="Enfermedad actual"
+                             formControlName="EnfermedadActual">
                     </div>
                   </div>
 
@@ -269,7 +271,8 @@
               <div id="medico">
                 <div class="form-group">
                   <label>Motivo de la consulta:</label>
-                  <input type="text" class="form-control" placeholder="Motivo de la consulta" formControlName="MotivoConsulta">
+                  <input type="text" class="form-control" placeholder="Motivo de la consulta"
+                         formControlName="MotivoConsulta">
                 </div>
               </div>
 
@@ -336,15 +339,23 @@
 
               <div class="form-group">
                 <label>Plan:</label>
-                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
-                          formControlName="Diagnostico"></textarea>
+                <textarea class="form-control" name="plan" placeholder="Plan"
+                          formControlName="Plan"></textarea>
               </div>
+
 
               <div class="form-group">
                 <label>Diagnóstico:</label>
-                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
-                          formControlName="Diagnostico"></textarea>
+                <input class="form-control" placeholder="Diagnostico:" matInput
+                       formControlName="Diagnostico" [matAutocomplete]="auto" required>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let diagnostic of filteredOptionsDiagnostics | async"
+                              [value]="diagnostic.Enfermedades">
+                    {{ diagnostic.Enfermedades }}
+                  </mat-option>
+                </mat-autocomplete>
               </div>
+
 
               <div class="form-group">
                 <label>Pronóstico:</label>

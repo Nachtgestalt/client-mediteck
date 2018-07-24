@@ -6,6 +6,12 @@ import {ConsultationService} from '../../../services/consultation/consultation.s
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionService} from '../../../services/question/question.service';
 import {UtilsService} from '../../../services/utils/utils.service';
+import {AutocompleteDataService} from '../../../services/autocompleteData/autocomplete-data.service';
+import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
+import { Observable, empty, of } from 'rxjs';
+import {EMPTY} from 'rxjs/internal/observable/empty';
+import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
+
 
 @Component({
   selector: 'app-new-medical-consultation',
@@ -21,6 +27,10 @@ export class NewMedicalConsultationComponent implements OnInit {
   formEstudios: FormGroup;
   id = 0;
 
+  filteredOptionsDiagnostics: Observable<any[]>;
+
+  diagnostics: any[] = [];
+
   vaccines = [];
   patient: any;
 
@@ -28,10 +38,10 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   patientSelected = new FormControl();
 
-  constructor(public _vaccineService: VaccineService,
+  constructor(private _autocompleteDataService: AutocompleteDataService,
+              public _vaccineService: VaccineService,
               public _patientService: PatientService,
               private _consultationService: ConsultationService,
-              public utilsServiece: UtilsService,
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
               private router: Router,
@@ -44,12 +54,34 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   ngOnInit() {
     this.createFormGroup();
-    console.log('Paciente: ', this.patient)
+    console.log('Paciente: ', this.patient);
+    // this._autocompleteDataService.getDiagnostics()
+    //   .subscribe(
+    //     (res: any) => {
+    //       this.diagnostics = res;
+    //       console.log(this.diagnostics);
+    //       console.log(res);
+    //       console.log(res[0].Enfermedades);
+    //     }
+    //   );
+
     this._vaccineService.getVaccines()
       .subscribe(
         (res: any) => {
           this.vaccines = res;
         }
+      );
+
+    this.filteredOptionsDiagnostics = this.formNotas.get('Diagnostico').valueChanges
+      .pipe(
+        startWith(' '),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          console.log(value);
+          // value ? this.filter(value || '') : new EmptyObservable();
+          return this.filter(value || ' ');
+        })
       );
   }
 
@@ -76,7 +108,7 @@ export class NewMedicalConsultationComponent implements OnInit {
 
     this.formNotas = new FormGroup({
       'MotivoConsulta': new FormControl(''),
-      'Diagnostico': new FormControl(''),
+      'Diagnostico': new FormControl(),
       'Peso': new FormControl(''),
       'Talla': new FormControl(''),
       'IMC': new FormControl(''),
@@ -87,7 +119,8 @@ export class NewMedicalConsultationComponent implements OnInit {
       'TA': new FormControl(''),
       'SO2': new FormControl(''),
       'Nota': new FormControl(''),
-      'Pronostico': new FormControl('')
+      'Pronostico': new FormControl(''),
+      'Plan': new FormControl('')
     });
 
     this.formVacunas = new FormGroup({
@@ -100,6 +133,7 @@ export class NewMedicalConsultationComponent implements OnInit {
       'Tipo_estudio': new FormControl(''),
       'Descripcion': new FormControl('')
     });
+
   }
 
 
@@ -145,6 +179,17 @@ export class NewMedicalConsultationComponent implements OnInit {
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
     // remove the chosen row
     control.removeAt(index);
+  }
+
+  filter(val: string): Observable<any[]> {
+    // call the service which makes the http-request
+    return this._autocompleteDataService.getDiagnostics(val)
+      .pipe(
+        map((response: any) => response.filter(option => {
+          return option.Enfermedades.toLowerCase().indexOf(val.toLowerCase()) === 0;
+        }))
+      );
+
   }
 
 
