@@ -43,6 +43,7 @@ import { DietAndMedicamentsComponent } from './nurses/diet-and-medicaments/diet-
 import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 @NgModule({
   providers: [
@@ -57,7 +58,8 @@ import { DatesComponent } from './medical-consultations/dates/dates.component';
     ReactiveFormsModule,
     NgbModule,
     ModalsModule,
-    PAGES_ROUTES
+    PAGES_ROUTES,
+    FullCalendarModule
   ],
   declarations: [
     PagesComponent,
@@ -95,7 +97,7 @@ import { DatesComponent } from './medical-consultations/dates/dates.component';
     DynamicFormComponent,
     DietAndMedicamentsComponent,
     AllPatientsComponent,
-    DatesComponent
+    DatesComponent,
   ]
 })
 export class PagesModule { }

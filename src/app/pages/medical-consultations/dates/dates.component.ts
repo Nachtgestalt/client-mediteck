@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { URL_LOCAL, GOOGLE_CLIENT_ID } from '../../../config/config';
+
+import { CalendarComponent } from 'ng-fullcalendar';
+import { Options } from 'fullcalendar';
 
 @Component({
   selector: 'app-dates',
@@ -14,7 +17,8 @@ export class DatesComponent implements OnInit {
   dates: any;
   client_id: string = GOOGLE_CLIENT_ID;
   redirect_uri: string = `${URL_LOCAL}/cita`;
-  
+  calendarOptions: Options;
+  @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
   constructor(public http: HttpClient){
     //Google Auth
@@ -32,7 +36,7 @@ export class DatesComponent implements OnInit {
     }
   }
 
-  ngOnInit(){}
+  ngOnInit(){ }
 
   public googleAuth() {
     let url = `https://accounts.google.com/o/oauth2/auth?client_id=${this.client_id}&redirect_uri=${this.redirect_uri}&scope=https://www.googleapis.com/auth/calendar&approval_prompt=force&response_type=token`;
@@ -64,7 +68,32 @@ export class DatesComponent implements OnInit {
 
     this.gDates
     .subscribe(data => {
-        this.dates = data.items;
+       let events = [];
+       data.items.forEach(date => {
+        let tmp_event = {
+          title: `Descripción: ${date.summary ? date.summary : "Sin descripción"} Lugar: ${date.location ? date.location: "Indefinido"}`,
+          start: `${date.start ? date.start.dateTime : Date.now()}`,
+          end: `${date.end ? date.end.dateTime : Date.now()}`,
+          allDay : false
+        }
+        events.push(tmp_event)  
+       });
+
+       this.dates = events
+       console.log(this.dates)
+
+       this.calendarOptions = {
+        editable: false,
+        eventLimit: false,
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,listMonth'
+        },
+        selectable: true,
+        events: this.dates
+      };
+
     })
 
   }
