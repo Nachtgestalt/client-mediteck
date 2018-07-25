@@ -11,6 +11,7 @@ import { Options } from 'fullcalendar';
   templateUrl: './dates.component.html',
   styleUrls: ['./dates.component.css']
 })
+
 export class DatesComponent implements OnInit {
   visible: boolean = true;
   gDates: Observable<any>;
@@ -69,11 +70,13 @@ export class DatesComponent implements OnInit {
     this.gDates
     .subscribe(data => {
        let events = [];
+       let au = new Date;
+       let auDate = au.toISOString();
        data.items.forEach(date => {
         let tmp_event = {
           title: `Descripción: ${date.summary ? date.summary : "Sin descripción"} Lugar: ${date.location ? date.location: "Indefinido"}`,
-          start: `${date.start ? date.start.dateTime : Date.now()}`,
-          end: `${date.end ? date.end.dateTime : Date.now()}`,
+          start: `${date.start ? date.start.dateTime : auDate}`,
+          end: `${date.end ? date.end.dateTime : auDate}`,
           allDay : false
         }
         events.push(tmp_event)  
