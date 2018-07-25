@@ -25,10 +25,7 @@ export class LeftsidebarService {
       submenu: [
         {titulo: 'Listar Enfermeras', url: '/lista_enfermeras'},
         {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'},
-
-        {titulo: 'Pacientes internados', url: '/pacientes-place'},
-        {titulo: 'Dieta y medicamentos', url: '/dieta-medicamentos'}
-
+        {titulo: 'Pacientes internados', url: '/pacientes-place'}
       ]
     },
     {

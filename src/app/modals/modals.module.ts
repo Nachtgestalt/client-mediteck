@@ -10,6 +10,7 @@ import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.component';
 import { EditVaccineComponent } from './edit-vaccine/edit-vaccine.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
+import { SeeIndicationsComponent } from './see-indications/see-indications.component';
 
 @NgModule({
   imports: [
@@ -26,14 +27,16 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
     EditPatientComponent,
     EditWarehouseComponent,
     EditVaccineComponent,
-    EditNoteComponent
+    EditNoteComponent,
+    SeeIndicationsComponent
   ],
   exports: [
     EditDoctorComponent,
     EditNurseComponent,
     EditPatientComponent,
     EditWarehouseComponent,
-    EditVaccineComponent
+    EditVaccineComponent,
+    SeeIndicationsComponent
   ]
 })
 export class ModalsModule { }

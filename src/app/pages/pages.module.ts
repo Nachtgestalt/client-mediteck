@@ -39,7 +39,6 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { SurgeryComponent } from './surgery/surgery.component';
 import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
-import { DietAndMedicamentsComponent } from './nurses/diet-and-medicaments/diet-and-medicaments.component';
 import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
@@ -95,7 +94,6 @@ import { FullCalendarModule } from 'ng-fullcalendar';
     PatientDetailComponent,
     SurgeryComponent,
     DynamicFormComponent,
-    DietAndMedicamentsComponent,
     AllPatientsComponent,
     DatesComponent,
   ]
