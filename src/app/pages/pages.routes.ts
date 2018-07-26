@@ -25,8 +25,10 @@ import {VaccineComponent} from './supplies/vaccine/vaccine.component';
 import {AddProductsComponent} from './products/add-products/add-products.component';
 import {ListProductsComponent} from './products/list-products/list-products.component'
 import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
-
 import {DatesComponent} from './medical-consultations/dates/dates.component';
+import {AdmissionsComponent} from './admissions/admissions.component';
+import {AddUrgenciasComponent} from './admissions/add-urgencias/add-urgencias.component';
+import {PatientsUrgenciasComponent} from './admissions/patients-urgencias/patients-urgencias.component';
 
 const pagesRoutes: Routes = [
   {
@@ -56,6 +58,9 @@ const pagesRoutes: Routes = [
       { path: 'add_product', component: AddProductsComponent, data: {titulo: 'Agregar productos', subtitle: 'Bienvenido'}},
       { path: 'list_product', component: ListProductsComponent, data: {titulo: 'Listar productos', subtitle: 'Bienvenido'}},
       { path: 'detalle-paciente/:id', component: PatientDetailComponent, data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
+      { path: 'admissions', component: AdmissionsComponent, data: {titulo: 'Admisiones', subtitle: 'Bienvenido'}},
+      { path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}},
+      { path: 'add_urgencias', component: AddUrgenciasComponent, data: {titulo: 'Ingresar a urgencias', subtitle: 'Bienvenido'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]

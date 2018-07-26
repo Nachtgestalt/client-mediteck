@@ -43,6 +43,9 @@ import { AllPatientsComponent } from './nurses/all-patients/all-patients.compone
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
 import { FullCalendarModule } from 'ng-fullcalendar';
+import { AdmissionsComponent } from './admissions/admissions.component';
+import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
+import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.component';
 
 @NgModule({
   providers: [
@@ -96,6 +99,9 @@ import { FullCalendarModule } from 'ng-fullcalendar';
     DynamicFormComponent,
     AllPatientsComponent,
     DatesComponent,
+    AdmissionsComponent,
+    PatientsUrgenciasComponent,
+    AddUrgenciasComponent,
   ]
 })
 export class PagesModule { }

@@ -12,6 +12,15 @@ export class LeftsidebarService {
       ]
     },
     {
+      titulo: 'Ingresos y urgencias',
+      icono: 'zmdi zmdi-account-add',
+      submenu: [
+        {titulo: 'Admisiones', url: '/admissions'},
+        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'},
+        {titulo: 'Ingresar a urgencias', url: '/add_urgencias'},
+      ]
+    },
+    {
       titulo: 'Médicos',
       icono: 'fas fa-user-md',
       submenu: [

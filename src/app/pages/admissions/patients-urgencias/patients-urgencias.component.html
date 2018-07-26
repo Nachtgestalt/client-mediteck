@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="body">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-heading text-uppercase mt-3">Pacientes en urgencias</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content m-t-10">
+              <div class="tab-pane table-responsive active" id="All">
+                  <table class="table m-b-0 table-hover">
+                      <thead>
+                          <tr>                                       
+                              <th>Nombre</th>
+                              <th>Fecha de nacimiento</th>
+                              <th>Dirección</th>
+                              <th>Teléfono</th>
+                              <th>Tipo de sangre</th>
+                              <th>Fecha de ingreso</th>
+                              <th>Motivo</th>
+                              <th>Prioridad</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let info of infoPatients">
+                              <td>{{info.Nombre}} {{info.Apellidos}}</td>
+                              <td>{{info.Fecha_nacimiento}}</td>
+                              <td>{{info.Direccion}}</td>
+                              <td>{{info.Telefono}}</td>
+                              <td>{{info.Tipo_sangre}}</td>
+                              <td>{{info.Fecha_ingreso}}</td>
+                              <td>{{info.Motivo}}</td>
+                              <td>{{info.Prioridad}}</td>
+                          </tr>
+                      </tbody>
+                  </table>                            
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
