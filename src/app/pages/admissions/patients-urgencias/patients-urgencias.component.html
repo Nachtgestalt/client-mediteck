@@ -21,6 +21,9 @@
                               <th>Fecha de ingreso</th>
                               <th>Motivo</th>
                               <th>Prioridad</th>
+                              <th>
+
+                              </th>
                           </tr>
                       </thead>
                       <tbody>
@@ -33,6 +36,10 @@
                               <td>{{info.Fecha_ingreso}}</td>
                               <td>{{info.Motivo}}</td>
                               <td>{{info.Prioridad}}</td>
+                              <td>
+                                  <button class="btn btn-info" (click)="alta(info.idPaciente)">Egresar de urgencias</button>
+                                  <app-intern [id]="info.idPaciente"></app-intern>
+                              </td>
                           </tr>
                       </tbody>
                   </table>                            
