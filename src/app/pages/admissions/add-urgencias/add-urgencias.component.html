@@ -1,3 +1,78 @@
-<p>
-  add-urgencias works!
-</p>
+<div class="card">
+    <div class="body">
+  
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-heading text-uppercase">Urgencias</h3>
+        </div>
+      </div>
+  
+        <div class="row">
+          <div class="col-lg-2">
+            <img src="assets/images/mediteck/sin-foto.png" class="img-post" alt="profile-image">
+          </div>
+  
+          <div class="col-lg-10">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Nombre: </label>
+                  <input class="form-control" type="text" placeholder="Nombre*">
+                </div>
+  
+                <div class="form-group">
+                  <label>Apellidos: </label>
+                  <input class="form-control" type="text" placeholder="Apellidos *">
+                </div>
+  
+                <div class="form-group">
+                  <label>Telefono: </label>
+                  <input class="form-control" type="tel" placeholder="Teléfono *">
+                </div>
+  
+                <div class="form-group">
+                  <label class="text-left">Direccion: </label>
+                  <input class="form-control" type="text" placeholder="Dirección *"required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Género: </label>
+                  <select class="form-control" name="genero">
+                    <option value=0>Femenino</option>
+                    <option value=1>Masculino</option>
+                  </select>
+                </div>
+  
+                <div class="form-group">
+                  <label for="edad">Edad: </label>
+                  <input class="form-control" id="edad" type="edad" placeholder="Edad *">
+                </div>
+  
+                <div class="form-group">
+                  <label for="triage">Triage:</label>
+                  <select id="triage" class="form-control show-tick">
+                      <option value="1">Triage 1</option>
+                      <option value="2">Triage 2</option>
+                      <option value="3">Triage 3</option>
+                      <option value="4">Triage 4</option>
+                      <option value="5">Triage 5</option>
+                  </select>
+                </div>
+                
+                <hr/>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary float-right" (click)="confirm()">Guardar</button>
+                </div>
+
+              </div>
+  
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+  
