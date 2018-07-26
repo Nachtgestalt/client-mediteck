@@ -17,6 +17,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalsModule} from './modals/modals.module';
 import { FilterPipe } from './pipes/filter.pipe';
 import {CalendarModule} from 'angular-calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {CalendarModule} from 'angular-calendar';
     LoginComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     PagesModule,
     FormsModule,

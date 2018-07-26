@@ -39,8 +39,22 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { SurgeryComponent } from './surgery/surgery.component';
 import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
+<<<<<<< HEAD
 import { DietAndMedicamentsComponent } from './nurses/diet-and-medicaments/diet-and-medicaments.component';
 import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
+=======
+import {
+  MatAutocompleteModule, MatButtonModule, MatCardModule,
+  MatDatepickerModule, MatDialogModule,
+  MatFormFieldModule, MatIconModule,
+  MatInputModule, MatListModule, MatMenuModule,
+  MatNativeDateModule,
+  MatOptionModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatRadioModule, MatSelectModule, MatSidenavModule,
+  MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
+>>>>>>> 9ec680a84226c806b17eea1f522924a5cd3cb210
 
 
 @NgModule({
@@ -48,14 +62,39 @@ import { AllPatientsComponent } from './nurses/all-patients/all-patients.compone
 
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
-    BrowserModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
     ModalsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatSortModule,
+    MatAutocompleteModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+
     PAGES_ROUTES
   ],
   declarations: [

@@ -42,7 +42,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let products of products | filter: queryString : searchableList; let i = index;">
+            <tr *ngFor="let product of products | filter: queryString : searchableList; let i = index;">
               <!--[ngClass]="{ 'table-danger': patient.suscripcion.Estado === 2, 'table-success': patient.Nombre !== 2 }">-->
               <td>
                 <span class="list-name"> {{i+1}} </span>
@@ -58,7 +58,7 @@
               <td>{{product.Dosis}}</td>
               <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
               <!--<app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>-->
-              <button class="btn btn-danger" type="button" (click)="delete(patient.id)">
+              <button class="btn btn-danger" type="button" (click)="delete(product.id)">
                 <i class="fas fa-trash fa-lg"></i>
               </button>
 

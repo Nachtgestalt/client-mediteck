@@ -9,6 +9,7 @@ import { FilterPipe } from '../../pipes/filter.pipe';
   styleUrls: ['./nurses.component.css']
 })
 export class NursesComponent implements OnInit {
+  queryString = '';
   searchableList: any;
 
   nurses: any = [];

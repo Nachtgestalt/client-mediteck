@@ -18,7 +18,7 @@
     <!--Antecedentes familiares-->
     <div formGroupName="AntecedentesFamiliares">
       <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
-              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesFam"
+              [attr.aria-expanded]="!isCollapsedAntFam" aria-controls="AntecedentesFam"
               [disabled]="isEditMedicalHistory">
         <i class="fas fa-users fa-2x mx-2"></i>
         Antecedentes familiares
@@ -229,7 +229,7 @@
     <!--Antecedentes personales patologicos-->
     <div formGroupName="AntecedentesPatologicos">
       <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
-              [attr.aria-expanded]="!isCollapsed" aria-controls="AntecedentesPat"
+              [attr.aria-expanded]="!isCollapsedAntPat" aria-controls="AntecedentesPat"
               [disabled]="isEditMedicalHistory">
         <i class="fas fa-heartbeat fa-2x mx-2"></i>
         Antecedentes personales patologicos
@@ -493,6 +493,150 @@
       </div>
     </div>
 
+    <!--Antecedentes ginecologicos-->
+    <div formGroupName="AntecedentesGinecologicos"
+         *ngIf="patientData.Sexo === 'FEMENINO' && (patientAge >= 15 && patientAge <= 90)">
+      <button class="accordion" (click)="isCollapsedAntGinecologicos = !isCollapsedAntGinecologicos"
+              [attr.aria-expanded]="!isCollapsedAntGinecologicos" aria-controls="InterrogatorioAparatos"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fa-female mx-3 fa-2x"></i>
+        Antecedentes ginecologicos
+        <i class="zmdi zmdi-chevron-down float-right"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntGinecologicos"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntGinecologicos"></i>
+      </button>
+
+      <!--Antecedentes ginecologicos detalle-->
+      <div id="AntGinecologicos" [ngbCollapse]="isCollapsedAntGinecologicos">
+        <div class="card-body">
+          <!--Menarca-->
+          <div class="form-group">
+            <label for="menarca">Edad de la menarca: </label>
+            <input class="form-control col-md-3" placeholder="Edad:" formControlName="Menarca" id="menarca">
+          </div>
+          <!--FUM-->
+          <div class="form-group">
+            <label for="fum">FUM: </label>
+            <input type="date" class="form-control col-md-3" placeholder="Fecha:" formControlName="FUM" id="fum">
+          </div>
+          <!--Gestaciones-->
+          <div class="radio">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="gestaciones" type="radio" [value]="true"
+                       formControlName="Gestaciones">
+                <label for="gestaciones">
+                  Gestaciones
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notGestaciones" type="radio" [value]="false"
+                       formControlName="Gestaciones">
+                <label for="notGestaciones">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <!--<div class="row"-->
+            <!--*ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">-->
+            <!--<div class="form-group col-md-12">-->
+            <!--<input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">-->
+            <!--</div>-->
+            <!--</div>-->
+          </div>
+
+          <div class="radio">
+            <div class="row">
+              <div class="col-md-6">
+                <input id="menopausia" type="radio" [value]="true"
+                       formControlName="Menopausia">
+                <label for="menopausia">
+                  Menopausia
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notMenopausia" type="radio" [value]="false"
+                       formControlName="Menopausia">
+                <label for="notMenopausia">
+                  Negado
+                </label>
+              </div>
+            </div>
+            <!--<div class="row"-->
+            <!--*ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">-->
+            <!--<div class="form-group col-md-12">-->
+            <!--<input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">-->
+            <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Antecedentes Perinatales-->
+    <div formGroupName="AntecedentesPerinatales"
+         *ngIf="patientAge <= 5">
+      <button class="accordion" (click)="isCollapsedAntPerinatales = !isCollapsedAntPerinatales"
+              [attr.aria-expanded]="!isCollapsedAntPerinatales" aria-controls="InterrogatorioAparatos"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fas fa-child mx-2 fa-2x"></i>
+        Antecedentes perinatales
+        <i class="zmdi zmdi-chevron-down float-right"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntPerinatales"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntPerinatales"></i>
+      </button>
+
+      <!--Antecedentes Perinatales detalle-->
+      <div id="AntPerinatales" [ngbCollapse]="isCollapsedAntPerinatales">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="productoGesta">Producto de la gesta: </label>
+            <input class="form-control col-md-3" placeholder="Producto:" formControlName="ProductoGesta" id="productoGesta">
+          </div>
+
+          <div class="radio">
+            <p>Tipo de nacimiento:</p>
+            <div class="row">
+              <div class="col-md-6">
+                <input id="tipoNacimiento" type="radio" value="ABDOMINAL"
+                       formControlName="TipoNacimiento">
+                <label for="tipoNacimiento">
+                  Abdominal
+                </label>
+              </div>
+              <div class="col-md-6">
+                <input id="notTipoNacimiento" type="radio" value="VAGINAL"
+                       formControlName="TipoNacimiento">
+                <label for="notTipoNacimiento">
+                  Vaginal
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="calificacionApgar">Calificación de apgar: </label>
+            <input class="form-control col-md-3" placeholder="Calificación:" formControlName="CalificacionApgar" id="calificacionApgar">
+          </div>
+
+          <div class="form-group">
+            <label for="gestacionNacimiento">Edad gestacional al nacer (semanas): </label>
+            <input class="form-control col-md-3" placeholder="Semanas:" formControlName="GestacionNacimiento" id="gestacionNacimiento">
+          </div>
+
+          <div class="form-group">
+            <label for="tiempoLactancia">Tiempo de lactancia (meses): </label>
+            <input class="form-control col-md-3" placeholder="Meses:" formControlName="TiempoLactancia" id="tiempoLactancia">
+          </div>
+
+          <div class="form-group">
+            <label for="edadAblactacion">Edad de ablactación (meses): </label>
+            <input class="form-control col-md-3" placeholder="Meses:" formControlName="EdadAblactacion" id="edadAblactacion">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--Interrogatorio por aparatos-->
     <div formGroupName="InterrogatorioAparatos">
       <button class="accordion" (click)="isCollapsedIntApar = !isCollapsedIntApar"
@@ -504,7 +648,7 @@
            *ngIf="!isEditMedicalHistory && isCollapsedIntApar"></i>
         <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedIntApar"></i>
       </button>
-      <!--Antecedentes personales NO patologicos detalle-->
+      <!--Interrogatorio por aparatos detalle-->
       <div id="InterrogatorioAparatos" [ngbCollapse]="isCollapsedIntApar">
         <div class="card-body">
           <div class="form-group">
@@ -515,6 +659,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="historia-header" *ngIf="!isEditMedicalHistory">
       <div class="row">

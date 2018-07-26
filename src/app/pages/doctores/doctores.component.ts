@@ -16,6 +16,7 @@ import { FilterPipe } from '../../pipes/filter.pipe';
   styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements OnInit {
+  queryString = '';
   searchableList: any;
 
   doctores: any = [];

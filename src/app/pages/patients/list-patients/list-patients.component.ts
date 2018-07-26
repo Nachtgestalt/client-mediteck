@@ -9,6 +9,7 @@ import {DoctorService} from '../../../services/doctor/doctor.service';
   styleUrls: ['./list-patients.component.css']
 })
 export class ListPatientsComponent implements OnInit {
+  queryString = '';
   searchableList: any;
 
   patients = [];

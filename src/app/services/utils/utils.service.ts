@@ -9,8 +9,9 @@ export class UtilsService {
 
   getAge(dateString) {
     const now = new Date();
-    let a = moment(now, 'DDMMYYYY');
-    let b = moment(dateString, 'DDMMYYYY');
+    let a = moment(now, 'YYYY[-]MM[-]DD');
+    let b = moment(dateString, 'YYYY[-]MM[-]DD');
+
     let yearString = '';
     let monthString = '';
     let dayString = '';
@@ -65,6 +66,33 @@ export class UtilsService {
     }
 
     return ageString;
+  }
+
+  getAgeOnlyYear(dateString) {
+    const now = new Date();
+    let a = moment(now, 'YYYY[-]MM[-]DD');
+    let b = moment(dateString, 'YYYY[-]MM[-]DD');
+
+    let yearString = '';
+    let monthString = '';
+    let dayString = '';
+    let ageString = '';
+
+    const years = a.diff(b, 'year');
+    b.add(years, 'years');
+
+    const months = a.diff(b, 'months');
+    b.add(months, 'months');
+
+    const days = a.diff(b, 'days');
+
+    const age = {
+      years: years,
+      months: months,
+      days: days
+    };
+
+    return age.years;
   }
 
 }

@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./warehouses.component.css']
 })
 export class WarehousesComponent implements OnInit {
+  queryString = '';
   searchableList: any;
 
   warehouses = [];

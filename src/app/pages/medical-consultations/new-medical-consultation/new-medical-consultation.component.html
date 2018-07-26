@@ -29,6 +29,11 @@
         </div>
         <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <span class="text-md col-md-12">
+            Teléfono: {{patient?.Celular}}
+          </span>
+        </div>
+        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="text-md col-md-12">
             Dirección: {{patient?.Direccion}}
           </span>
         </div>
@@ -95,7 +100,8 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Motivo de la consulta: </label>
-                      <input class="form-control" type="text" placeholder="Motivo de la consulta" formControlName="Peso">
+                      <input class="form-control" type="text" placeholder="Motivo de la consulta"
+                             formControlName="MotivoConsulta">
                     </div>
                   </div>
 
@@ -103,14 +109,35 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Enfermedad actual: </label>
-                      <input class="form-control" type="text" placeholder="Enfermedad actual" formControlName="Talla">
+                      <input class="form-control" type="text" placeholder="Enfermedad actual"
+                             formControlName="EnfermedadActual">
                     </div>
                   </div>
 
                   <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Alergias: </label>
-                      <input class="form-control" type="text" placeholder="Alergias" formControlName="Talla">
+                    <div class="radio" formGroupName="Alergia">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input id="actividadFisica" type="radio" [value]="true"
+                                 formControlName="Estado">
+                          <label for="actividadFisica">
+                            Alergia
+                          </label>
+                        </div>
+                        <div class="col-md-6">
+                          <input id="notActividadFisica" type="radio" [value]="false"
+                                 formControlName="Estado">
+                          <label for="notActividadFisica">
+                            Negado
+                          </label>
+                        </div>
+                      </div>
+                      <div class="row"
+                           *ngIf="form.get('Alergia').get('Estado').value">
+                        <div class="form-group col-md-12">
+                          <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -119,7 +146,7 @@
 
                 <!--Derecha-->
                 <div class="col-md-6">
-                  <app-medical-history></app-medical-history>
+                  <app-medical-history [patientData]="patient"></app-medical-history>
                 </div>
                 <!--Final Derecha-->
 
@@ -149,19 +176,35 @@
 
               <div class="row" formArrayName="Medicamentos">
                 <div class="col-md-11"
-                     *ngFor="let pedido of formReceta.controls['Medicamentos'].controls; let i = index"
+                     *ngFor="let pedido of formReceta.get('Medicamentos').controls; let i = index"
                      [formGroupName]="i">
                   <div class="row">
 
-                    <div class="col-md-5">
+                    <div class="col-5 col-md-5">
                       <div class="form-group">
                         <label>Medicamento:</label>
                         <input class="form-control" placeholder="Medicamento:"
-                               formControlName="Medicina">
+                               formControlName="Medicamento">
                       </div>
                     </div>
-                    <div class="col-md-6">
 
+                    <div class="col-1 col-md-1">
+                      <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input class="form-control" placeholder="Cantidad"
+                               formControlName="Cantidad">
+                      </div>
+                    </div>
+
+                    <div class="col-1 col-md-1">
+                      <div class="form-group">
+                        <label>Tiempo(horas):</label>
+                        <input class="form-control" placeholder="Tiempo"
+                               formControlName="Tiempo">
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-md-4">
                       <div class="form-group">
                         <label>Prescripción:</label>
                         <input class="form-control" placeholder="Prescripción"
@@ -169,7 +212,7 @@
                       </div>
                     </div>
 
-                    <div class="col-md-1 alinear-centro">
+                    <div class="col-1 col-sm-1 alinear-centro">
                       <button class="btn btn-danger btn-icon  btn-icon-mini btn-round col-md-1"
                               *ngIf="formReceta.controls['Medicamentos'].length > 1"
                               (click)="deleteMedicine(i)">
@@ -180,7 +223,7 @@
                   </div>
 
                 </div>
-                <div class="col-md-1 alinear-centro">
+                <div class="col-1 col-sm-1 alinear-centro">
                   <button class="btn btn-primary btn-icon btn-icon-mini btn-round" (click)="addNewMedicine()">
                     <i class="zmdi zmdi-plus"></i>
                   </button>
@@ -228,7 +271,8 @@
               <div id="medico">
                 <div class="form-group">
                   <label>Motivo de la consulta:</label>
-                  <input type="text" class="form-control" placeholder="Motivo de la consulta">
+                  <input type="text" class="form-control" placeholder="Motivo de la consulta"
+                         formControlName="MotivoConsulta">
                 </div>
               </div>
 
@@ -295,15 +339,23 @@
 
               <div class="form-group">
                 <label>Plan:</label>
-                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
-                          formControlName="Diagnostico"></textarea>
+                <textarea class="form-control" name="plan" placeholder="Plan"
+                          formControlName="Plan"></textarea>
               </div>
+
 
               <div class="form-group">
                 <label>Diagnóstico:</label>
-                <textarea class="form-control" name="diagnostico" placeholder="Diagnostico"
-                          formControlName="Diagnostico"></textarea>
+                <input class="form-control" placeholder="Diagnostico:" matInput
+                       formControlName="Diagnostico" [matAutocomplete]="auto" required>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let diagnostic of filteredOptionsDiagnostics | async"
+                              [value]="diagnostic.Enfermedades">
+                    {{ diagnostic.Enfermedades }}
+                  </mat-option>
+                </mat-autocomplete>
               </div>
+
 
               <div class="form-group">
                 <label>Pronóstico:</label>

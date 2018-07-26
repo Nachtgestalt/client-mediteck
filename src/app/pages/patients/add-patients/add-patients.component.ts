@@ -10,6 +10,13 @@ import {PatientService} from '../../../services/patient/patient.service';
 export class AddPatientsComponent implements OnInit {
   form: FormGroup;
 
+  civilStatus = [
+    {value: 2, viewValue: 'SOLTERO'},
+    {value: 1, viewValue: 'CASADO'},
+    {value: 3, viewValue: 'DIVORCIADO'},
+    {value: 4, viewValue: 'VIUDO'}
+    ];
+
   constructor( public _patientService: PatientService) { }
 
   ngOnInit() {
