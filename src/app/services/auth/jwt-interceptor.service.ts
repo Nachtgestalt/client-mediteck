@@ -4,6 +4,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest, HttpResponse} fr
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import {Router} from '@angular/router';
+import {URL_SERVICIOS} from '../../config/config';
 
 @Injectable()
 export class JwtInterceptorService {
@@ -19,7 +20,7 @@ export class JwtInterceptorService {
       }
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
+        if (err.status === 401 && request.url.includes(URL_SERVICIOS)) {
           this.router.navigate(['/login']);
           // console.warn('No hay token');
           // redirect to the login route

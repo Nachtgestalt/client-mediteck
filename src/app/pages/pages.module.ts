@@ -50,7 +50,13 @@ import {
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
+import { DatesComponent } from './medical-consultations/dates/dates.component';
 
+import { FullCalendarModule } from 'ng-fullcalendar';
+import { AdmissionsComponent } from './admissions/admissions.component';
+import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
+import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.component';
 
 @NgModule({
   providers: [
@@ -90,7 +96,8 @@ import {
     MatTooltipModule,
     MatProgressSpinnerModule,
 
-    PAGES_ROUTES
+    PAGES_ROUTES,
+    FullCalendarModule
   ],
   declarations: [
     PagesComponent,
@@ -125,7 +132,12 @@ import {
     AddNoteComponent,
     PatientDetailComponent,
     SurgeryComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    AllPatientsComponent,
+    DatesComponent,
+    AdmissionsComponent,
+    PatientsUrgenciasComponent,
+    AddUrgenciasComponent,
   ]
 })
 export class PagesModule { }

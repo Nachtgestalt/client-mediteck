@@ -12,6 +12,15 @@ export class LeftsidebarService {
       ]
     },
     {
+      titulo: 'Ingresos y urgencias',
+      icono: 'zmdi zmdi-account-add',
+      submenu: [
+        {titulo: 'Admisiones', url: '/admissions'},
+        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'},
+        {titulo: 'Ingresar a urgencias', url: '/add_urgencias'},
+      ]
+    },
+    {
       titulo: 'Médicos',
       icono: 'med-doctor',
       submenu: [
@@ -24,7 +33,8 @@ export class LeftsidebarService {
       icono: 'med-nurse-user',
       submenu: [
         {titulo: 'Listar Enfermeras', url: '/lista_enfermeras'},
-        {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'}
+        {titulo: 'Agregar Enfermeras', url: '/agregar-enfermera'},
+        {titulo: 'Pacientes internados', url: '/pacientes-place'}
       ]
     },
     {
