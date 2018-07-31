@@ -8,7 +8,7 @@ import {QuestionService} from '../../../services/question/question.service';
 import {UtilsService} from '../../../services/utils/utils.service';
 import {AutocompleteDataService} from '../../../services/autocompleteData/autocomplete-data.service';
 import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
-import { Observable, empty, of } from 'rxjs';
+import {Observable, empty, of} from 'rxjs';
 import {EMPTY} from 'rxjs/internal/observable/empty';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 
@@ -28,8 +28,7 @@ export class NewMedicalConsultationComponent implements OnInit {
   id = 0;
 
   filteredOptionsDiagnostics: Observable<any[]>;
-
-  diagnostics: any[] = [];
+  filteredOptionsMedicine: Observable<any[]>[] = [];
 
   vaccines = [];
   patient: any;
@@ -55,15 +54,6 @@ export class NewMedicalConsultationComponent implements OnInit {
   ngOnInit() {
     this.createFormGroup();
     console.log('Paciente: ', this.patient);
-    // this._autocompleteDataService.getDiagnostics()
-    //   .subscribe(
-    //     (res: any) => {
-    //       this.diagnostics = res;
-    //       console.log(this.diagnostics);
-    //       console.log(res);
-    //       console.log(res[0].Enfermedades);
-    //     }
-    //   );
 
     this._vaccineService.getVaccines()
       .subscribe(
@@ -72,9 +62,21 @@ export class NewMedicalConsultationComponent implements OnInit {
         }
       );
 
+    this.filteredOptionsMedicine[0] = this.formReceta.get('Medicamentos.0').get('Medicamento').valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          console.log(value);
+          // value ? this.filter(value || '') : new EmptyObservable();
+          return this.filterMedicine(value || '');
+        })
+      );
+
     this.filteredOptionsDiagnostics = this.formNotas.get('Diagnostico').valueChanges
       .pipe(
-        startWith(' '),
+        startWith(''),
         debounceTime(400),
         distinctUntilChanged(),
         switchMap((value: any) => {
@@ -120,7 +122,7 @@ export class NewMedicalConsultationComponent implements OnInit {
       'SO2': new FormControl(''),
       'Nota': new FormControl(''),
       'Pronostico': new FormControl(''),
-      'Plan': new FormControl('')
+      // 'Plan': new FormControl('')
     });
 
     this.formVacunas = new FormGroup({
@@ -139,8 +141,8 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   save() {
     console.log(this.patientSelected.value);
-    this.form.get('idPaciente').setValue(Number(this.patientSelected.value));
-    let newConsult = {
+    // this.form.get('idPaciente').setValue(Number(this.patientSelected.value));
+    const newConsult = {
       'consulta': this.form.value,
       'receta': this.formReceta.value,
       'vacunas': this.formVacunas.value,
@@ -150,12 +152,12 @@ export class NewMedicalConsultationComponent implements OnInit {
 
     console.log(JSON.stringify(newConsult));
 
-    // this._consultationService.postConsultation(newConsult)
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //     }
-    //   );
+    this._consultationService.postConsultation(newConsult)
+      .subscribe(
+        res => {
+          console.log(res);
+        }
+      );
 
   }
 
@@ -171,6 +173,18 @@ export class NewMedicalConsultationComponent implements OnInit {
   addNewMedicine() {
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
     control.push(this.createItemMedicine());
+
+    this.filteredOptionsMedicine[control.length - 1] = this.formReceta.get(`Medicamentos.${control.length - 1}`).get('Medicamento').valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          console.log(value);
+          // value ? this.filter(value || '') : new EmptyObservable();
+          return this.filterMedicine(value || ' ');
+        })
+      );
     this.cdref.detectChanges();
   }
 
@@ -186,10 +200,24 @@ export class NewMedicalConsultationComponent implements OnInit {
     return this._autocompleteDataService.getDiagnostics(val)
       .pipe(
         map((response: any) => response.filter(option => {
-          return option.Enfermedades.toLowerCase().indexOf(val.toLowerCase()) === 0;
+          return option.Enfermedades.toLowerCase().indexOf(val.toLowerCase()) >= 0;
         }))
       );
+  }
 
+
+  filterMedicine(val: string): Observable<any[]> {
+    // call the service which makes the http-request
+    return this._autocompleteDataService.getMedicines(val)
+      .pipe(
+        map((response: any) => response.filter(option => {
+          return option.Compuesto.toLowerCase().indexOf(val.toLowerCase()) >= 0;
+        }))
+      );
+  }
+
+  displayMedicineFn(medicine?: any): string | undefined {
+    return medicine ? medicine.Compuesto : undefined;
   }
 
 

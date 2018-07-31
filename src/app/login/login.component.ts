@@ -36,11 +36,14 @@ export class LoginComponent implements OnInit {
           this._userService.getDataUser(username)
             .subscribe(
               (res: any) => {
-                const usuario = res.User;
+                const usuario = res.Usuario;
                 const menu = res.Menu;
                 this._userService.setInStorage(usuario, menu);
                 this.router.navigate(['/dashboard']);
                 console.log(res);
+              },
+              error1 => {
+                console.log(error1);
               }
             );
         },

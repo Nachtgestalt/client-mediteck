@@ -43,4 +43,35 @@ export class PatientDetailComponent implements OnInit {
       );
   }
 
+  delete(id) {
+    swal({
+      title: '¿Estas seguro?',
+      text: 'Una vez eliminado el paciente, no hay vuelta atras',
+      icon: 'warning',
+      buttons: {
+        cancel: true,
+        confirm: true
+      },
+      dangerMode: true
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          this._patientService.deletePatient(id)
+            .subscribe(
+              res => {
+                swal('Paciente eliminado exitosamente', {
+                  icon: 'success',
+                });
+                this.router.navigate(['/listar_pacientes'])
+              },
+              error => {
+                swal('Algo salio mal', 'No se pudo eliminar este paciente', {
+                  icon: 'error',
+                });
+              }
+            );
+        }
+      });
+  }
+
 }
