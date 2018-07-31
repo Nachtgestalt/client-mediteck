@@ -1,24 +1,60 @@
 <div class="card">
-    <div class="body">
-        <!-- Tab panes -->
-        <div class="col-md-8 ">
-
-            <div class="form-group">
-                <label>Nombre del Formato: </label>
-                <input class="form-control" type="text" placeholder="Nombre del Formato *" formControlName="Nombre">
-            </div>
-            <br>
-
-            <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                <input name="uploadedfile" type="file" />
-                <input class="btn btn-primary float-right" type="submit" value="Subir archivo" />
-            </form> <br>
-
-            <div class="form-group">
-                <label>Descripción:</label>
-                <br>
-                <textarea class="form-control" formControlName="Descripcion"></textarea>
-            </div>
-        </div>
+  <div class="body">
+    <legend class="col-form-legend col-sm-2">Buscar vacuna:</legend>
+    <div class="form-group row">
+      <div class="input-group col-sm-8">
+        <input type="text" class="form-control" placeholder="Buscar">
+        <span class="input-group-addon">
+          <i class="zmdi zmdi-search"></i>
+        </span>
+      </div>
+      <div class="input-group col-sm-4">
+       <app-add-vaccine class="col-md-12" (cerrado)="reload($event)"> </app-add-vaccine>
+      </div>
     </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="body">
+
+    <!-- Tab panes -->
+    <div class="tab-content m-t-10">
+      <div class="tab-pane table-responsive active" id="All">
+        <table class="table m-b-0 table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad a aplicar</th>
+            <th>Costo</th>
+            <th>Opciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let vaccine of vaccines; let i = index">
+            <!--[ngClass]="{ 'table-danger': vaccine.suscripcion.Estado === 2, 'table-success': vaccine.Nombre !== 2 }">-->
+            <td>
+              <span class="list-name"> {{i+1}} </span>
+            </td>
+            <td>{{vaccine.Nombre}}</td>
+            <td>{{vaccine.Edad_aplicar}}</td>
+            <td>{{vaccine.Costo}}</td>
+            <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
+            <!--<app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>-->
+            <app-edit-vaccine (cerrado)="reload($event)" [vaccine]="vaccines[i]"></app-edit-vaccine>
+            <button class="btn btn-danger" type="button" (click)="delete(vaccine.id)">
+              <i class="fas fa-trash fa-lg"></i>
+            </button>
+
+            <!--<td>{{k.Estado}}</td>-->
+            <!--<td><span class="badge badge-success">Approved</span></td>-->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>
