@@ -39,13 +39,7 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { SurgeryComponent } from './surgery/surgery.component';
 import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { DietAndMedicamentsComponent } from './nurses/diet-and-medicaments/diet-and-medicaments.component';
 import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
-=======
-=======
->>>>>>> a35d2e814ec213e4c722b9d2e02faefbc625a8f4
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule,
   MatDatepickerModule, MatDialogModule,
@@ -57,12 +51,9 @@ import {
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-<<<<<<< HEAD
->>>>>>> 9ec680a84226c806b17eea1f522924a5cd3cb210
-=======
-import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
+
+
 import { DatesComponent } from './medical-consultations/dates/dates.component';
->>>>>>> a35d2e814ec213e4c722b9d2e02faefbc625a8f4
 
 import { FullCalendarModule } from 'ng-fullcalendar';
 import { AdmissionsComponent } from './admissions/admissions.component';
