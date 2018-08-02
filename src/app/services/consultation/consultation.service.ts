@@ -5,7 +5,7 @@ import {URL_SERVICIOS} from '../../config/config';
 @Injectable()
 export class ConsultationService {
 
-  urlConsultation = `${URL_SERVICIOS}/nueva-consulta`;
+  urlConsultation = `${URL_SERVICIOS}/consultas`;
   constructor(private http: HttpClient) { }
 
   getConsultations() {

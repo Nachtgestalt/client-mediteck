@@ -8,7 +8,7 @@ import {Oauth} from '../../interfaces/oauth.interface';
 @Injectable()
 export class UserService {
   urlAuth = `${URL_SERVICIOS}/oauth/token`;
-  urlLogin = `${URL_SERVICIOS}/user-information`
+  urlLogin = `${URL_SERVICIOS}/login-usuario`;
   token: string;
   user: User;
 

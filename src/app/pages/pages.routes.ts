@@ -11,7 +11,6 @@ import {AddNursesComponent} from './nurses/add-nurses/add-nurses.component';
 import {NursesComponent} from './nurses/nurses.component';
 
 import {AllPatientsComponent} from './nurses/all-patients/all-patients.component';
-import {DietAndMedicamentsComponent} from './nurses/diet-and-medicaments/diet-and-medicaments.component';
 
 import {MedicalHistoryComponent} from './medical-consultations/medical-history/medical-history.component';
 import {NewMedicalConsultationComponent} from './medical-consultations/new-medical-consultation/new-medical-consultation.component';
@@ -28,6 +27,10 @@ import {ListProductsComponent} from './products/list-products/list-products.comp
 import {PatientDetailComponent} from './patients/patient-detail/patient-detail.component';
 import {PatientDetailsResolveService} from '../services/patient-detail-resolve/patient-details-resolve.service';
 import {AutocompleteDataDetailService} from '../services/autocompleteData/autocomplete-data-detail.service';
+import {DatesComponent} from './medical-consultations/dates/dates.component';
+import {AdmissionsComponent} from './admissions/admissions.component';
+import {AddUrgenciasComponent} from './admissions/add-urgencias/add-urgencias.component';
+import {PatientsUrgenciasComponent} from './admissions/patients-urgencias/patients-urgencias.component';
 
 const pagesRoutes: Routes = [
   {
@@ -43,10 +46,8 @@ const pagesRoutes: Routes = [
       { path: 'almacenes', component: WarehousesComponent, data: {titulo: 'Lista de almacenes', subtitle: 'Bienvenido'}},
       { path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Agregar Enfermera', subtitle: 'Bienvenido'}},
       { path: 'lista_enfermeras', component: NursesComponent, data: {titulo: 'Listar Enfermeras', subtitle: 'Bienvenido'}},
-
       { path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes del place', subtitle: 'Bienvenido'}},
-      { path: 'dieta-medicamentos', component: DietAndMedicamentsComponent, data: {titulo: 'Dieta y medicamentos', subtitle: 'Bienvenido'}},
-      
+      { path: 'cita', component: DatesComponent, data: {titulo: 'Citas', subtitle: 'Bienvenido'}},
       { path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}},
       { path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}},
       { path: 'agregar_cama', component: BedsXroomComponent, data: {titulo: 'Agregar Camas', subtitle: 'Bienvenido'}},
@@ -64,6 +65,9 @@ const pagesRoutes: Routes = [
       { path: 'add_product', component: AddProductsComponent, data: {titulo: 'Agregar productos', subtitle: 'Bienvenido'}},
       { path: 'list_product', component: ListProductsComponent, data: {titulo: 'Listar productos', subtitle: 'Bienvenido'}},
       { path: 'detalle-paciente/:id', component: PatientDetailComponent, data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
+      { path: 'admissions', component: AdmissionsComponent, data: {titulo: 'Admisiones', subtitle: 'Bienvenido'}},
+      { path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}},
+      { path: 'add_urgencias', component: AddUrgenciasComponent, data: {titulo: 'Ingresar a urgencias', subtitle: 'Bienvenido'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]

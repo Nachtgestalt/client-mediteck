@@ -3,6 +3,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {QuestionBase} from '../../../models/question-base';
 import {QuestionControlService} from '../../../services/question/question-control.service';
 import {UtilsService} from '../../../services/utils/utils.service';
+import {MedicalHistoryService} from '../../../services/medical-history/medical-history.service';
 
 @Component({
   selector: 'app-medical-history',
@@ -27,7 +28,8 @@ export class MedicalHistoryComponent implements OnInit {
 
   patientAge = 0;
 
-  constructor(private _utilsService: UtilsService) { }
+  constructor(private _utilsService: UtilsService,
+              private _medicalHistoryService: MedicalHistoryService) { }
 
   ngOnInit() {
     this.patientAge = this._utilsService.getAgeOnlyYear(this.patientData.Fecha_nacimiento)
@@ -154,6 +156,12 @@ export class MedicalHistoryComponent implements OnInit {
         HistoriaClinica: this.form.value,
       };
       console.log(JSON.stringify(this.payLoad));
+      this._medicalHistoryService.postMedicalHistory(this.payLoad)
+        .subscribe(
+          res => {
+            console.log(res);
+          }
+        );
       this.isCollapsedAntFam = true;
       this.isCollapsedAntNoPat = true;
       this.isCollapsedAntPat = true;

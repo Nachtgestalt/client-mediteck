@@ -174,41 +174,24 @@
                 </div>
               </div>
 
+              <hr>
+
               <div class="row" formArrayName="Medicamentos">
                 <div class="col-md-11"
                      *ngFor="let pedido of formReceta.get('Medicamentos').controls; let i = index"
                      [formGroupName]="i">
                   <div class="row">
-
-                    <div class="col-5 col-md-5">
+                    <div class="col-11 col-md-11">
                       <div class="form-group">
-                        <label>Medicamento:</label>
-                        <input class="form-control" placeholder="Medicamento:"
-                               formControlName="Medicamento">
-                      </div>
-                    </div>
-
-                    <div class="col-1 col-md-1">
-                      <div class="form-group">
-                        <label>Cantidad:</label>
-                        <input class="form-control" placeholder="Cantidad"
-                               formControlName="Cantidad">
-                      </div>
-                    </div>
-
-                    <div class="col-1 col-md-1">
-                      <div class="form-group">
-                        <label>Tiempo(horas):</label>
-                        <input class="form-control" placeholder="Tiempo"
-                               formControlName="Tiempo">
-                      </div>
-                    </div>
-
-                    <div class="col-4 col-md-4">
-                      <div class="form-group">
-                        <label>Prescripción:</label>
-                        <input class="form-control" placeholder="Prescripción"
-                               formControlName="Prescripcion">
+                        <label class="font-weight-bold">{{i+1 + ".- "}}Medicamento:</label>
+                        <input class="form-control" placeholder="Medicamento:" matInput
+                               formControlName="Medicamento" [matAutocomplete]="medicine">
+                        <mat-autocomplete #medicine="matAutocomplete">
+                          <mat-option *ngFor="let medicine of filteredOptionsMedicine[i] | async"
+                                      [value]='medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " + medicine.Cantidad'>
+                            {{ medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " + medicine.Cantidad}}
+                          </mat-option>
+                        </mat-autocomplete>
                       </div>
                     </div>
 
@@ -218,6 +201,30 @@
                               (click)="deleteMedicine(i)">
                         <i class="zmdi zmdi-minus"></i>
                       </button>
+                    </div>
+
+                    <div class="col-8 col-md-8">
+                      <div class="form-group">
+                        <label>Prescripción:</label>
+                        <input class="form-control" placeholder="Prescripción"
+                               formControlName="Prescripcion">
+                      </div>
+                    </div>
+
+                    <div class="col-2 col-md-2">
+                      <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input class="form-control" placeholder="Cantidad"
+                               formControlName="Cantidad">
+                      </div>
+                    </div>
+
+                    <div class="col-2 col-md-2">
+                      <div class="form-group">
+                        <label>Tiempo(horas):</label>
+                        <input class="form-control" placeholder="Tiempo"
+                               formControlName="Tiempo">
+                      </div>
                     </div>
 
                   </div>
@@ -347,7 +354,7 @@
               <div class="form-group">
                 <label>Diagnóstico:</label>
                 <input class="form-control" placeholder="Diagnostico:" matInput
-                       formControlName="Diagnostico" [matAutocomplete]="auto" required>
+                       formControlName="Diagnostico" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option *ngFor="let diagnostic of filteredOptionsDiagnostics | async"
                               [value]="diagnostic.Enfermedades">

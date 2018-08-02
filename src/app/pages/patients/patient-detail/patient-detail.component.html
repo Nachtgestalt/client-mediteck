@@ -39,7 +39,10 @@
         <!--</div>-->
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <app-edit-patient (cerrado)="reload($event)" [patient]="patient"></app-edit-patient>
+        <button class="btn btn-danger mx-2" type="button" (click)="delete(patient.id)">
+          <i class="fas fa-trash fa-lg"></i>
+        </button>
+        <app-edit-patient class="mx-2" (cerrado)="reload($event)" [patient]="patient"></app-edit-patient>
         <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient?.id]">Nueva consulta</button>
       </div>
 

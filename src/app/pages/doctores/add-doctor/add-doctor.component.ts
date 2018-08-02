@@ -23,7 +23,7 @@ export class AddDoctorComponent implements OnInit {
       'Apellidos': new FormControl(),
       'Especialidad': new FormControl(),
       'Sexo': new FormControl(),
-      'Edad': new FormControl(),
+      'Fecha_nacimiento': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
       'Telefono': new FormControl(),

@@ -18,6 +18,7 @@ import {ConsultationService} from './consultation/consultation.service';
 import {QuestionControlService} from './question/question-control.service';
 import {QuestionService} from './question/question.service';
 import {UtilsService} from './utils/utils.service';
+import {MedicalHistoryService} from './medical-history/medical-history.service';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {UtilsService} from './utils/utils.service';
     QuestionControlService,
     QuestionService,
     UtilsService,
+    MedicalHistoryService,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -2,13 +2,12 @@
   <div class="body">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h3 class="section-heading text-uppercase mt-3">Pacientes ingresados</h3>
+          <h3 class="section-heading text-uppercase mt-3">Pacientes en urgencias</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <!--Table-->
           <div class="tab-content m-t-10">
               <div class="tab-pane table-responsive active" id="All">
                   <table class="table m-b-0 table-hover">
@@ -20,7 +19,11 @@
                               <th>Teléfono</th>
                               <th>Tipo de sangre</th>
                               <th>Fecha de ingreso</th>
-                              <th></th>
+                              <th>Motivo</th>
+                              <th>Prioridad</th>
+                              <th>
+
+                              </th>
                           </tr>
                       </thead>
                       <tbody>
@@ -31,15 +34,17 @@
                               <td>{{info.Telefono}}</td>
                               <td>{{info.Tipo_sangre}}</td>
                               <td>{{info.Fecha_ingreso}}</td>
+                              <td>{{info.Motivo}}</td>
+                              <td>{{info.Prioridad}}</td>
                               <td>
-                                <app-see-indications [indicaciones]="info.indicaciones" [medicamentos]="info.medicamento"></app-see-indications>
+                                  <button class="btn btn-info" (click)="alta(info.idPaciente)">Egresar de urgencias</button>
+                                  <app-intern [id]="info.idPaciente"></app-intern>
                               </td>
                           </tr>
                       </tbody>
                   </table>                            
               </div>
           </div>
-          <!--Table-->
         </div>
       </div>
   </div>

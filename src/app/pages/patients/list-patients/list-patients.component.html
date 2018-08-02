@@ -48,13 +48,11 @@
               patient.Apellidos}}
             </td>
             <td> {{patient.Fecha_inscripcion}}</td>
+            <button class="btn btn-primary btn-round">Revisar expediente</button>
             <button class="btn btn-primary btn-round">Agendar cita</button>
             <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient.id]">Nueva consulta</button>
             <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
             <!--<app-edit-patient (cerrado)="reload($event)" [patient]="patients[i]"></app-edit-patient>-->
-            <button class="btn btn-danger" type="button" (click)="delete(patient.id)">
-              <i class="fas fa-trash fa-lg"></i>
-            </button>
             <!--<td>{{k.Estado}}</td>-->
             <!--<td><span class="badge badge-success">Approved</span></td>-->
           </tr>
