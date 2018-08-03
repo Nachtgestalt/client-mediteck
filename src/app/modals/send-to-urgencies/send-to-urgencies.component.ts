@@ -31,7 +31,7 @@ export class SendToUrgenciesComponent implements OnInit {
       "idCentro_medico": idMedCenter
     }
 
-    console.log(this.motivo, this.prioridad);
+    //console.log(this.motivo, this.prioridad);
 
     this.http.post(`${URL_SERVICIOS}/urgencias`, data)
     .subscribe(data => {

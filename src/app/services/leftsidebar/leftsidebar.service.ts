@@ -12,12 +12,17 @@ export class LeftsidebarService {
       ]
     },
     {
-      titulo: 'Ingresos y urgencias',
-      icono: 'zmdi zmdi-account-add',
-      submenu: [
-        {titulo: 'Admisiones', url: '/admissions'},
-        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'},
-        {titulo: 'Ingresar a urgencias', url: '/add_urgencias'},
+      titulo: 'Documentos',
+      icono: 'fas fa-copy fa-2x',
+      submenu: [ 
+        {titulo: 'Documentos y formatos', url: '/documents'}
+      ]
+    },
+    {
+      titulo: 'Urgencias',
+      icono: 'fas fa-ambulance fa-2x',
+      submenu: [ 
+        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'}
       ]
     },
     {
