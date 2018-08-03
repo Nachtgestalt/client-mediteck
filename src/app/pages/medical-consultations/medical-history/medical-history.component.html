@@ -591,7 +591,8 @@
         <div class="card-body">
           <div class="form-group">
             <label for="productoGesta">Producto de la gesta: </label>
-            <input class="form-control col-md-3" placeholder="Producto:" formControlName="ProductoGesta" id="productoGesta">
+            <input class="form-control col-md-3" placeholder="Producto:" formControlName="ProductoGesta"
+                   id="productoGesta">
           </div>
 
           <div class="radio">
@@ -616,23 +617,278 @@
 
           <div class="form-group">
             <label for="calificacionApgar">Calificación de apgar: </label>
-            <input class="form-control col-md-3" placeholder="Calificación:" formControlName="CalificacionApgar" id="calificacionApgar">
+            <input class="form-control col-md-3" placeholder="Calificación:" formControlName="CalificacionApgar"
+                   id="calificacionApgar">
           </div>
 
           <div class="form-group">
             <label for="gestacionNacimiento">Edad gestacional al nacer (semanas): </label>
-            <input class="form-control col-md-3" placeholder="Semanas:" formControlName="GestacionNacimiento" id="gestacionNacimiento">
+            <input class="form-control col-md-3" placeholder="Semanas:" formControlName="GestacionNacimiento"
+                   id="gestacionNacimiento">
           </div>
 
           <div class="form-group">
             <label for="tiempoLactancia">Tiempo de lactancia (meses): </label>
-            <input class="form-control col-md-3" placeholder="Meses:" formControlName="TiempoLactancia" id="tiempoLactancia">
+            <input class="form-control col-md-3" placeholder="Meses:" formControlName="TiempoLactancia"
+                   id="tiempoLactancia">
           </div>
 
           <div class="form-group">
             <label for="edadAblactacion">Edad de ablactación (meses): </label>
-            <input class="form-control col-md-3" placeholder="Meses:" formControlName="EdadAblactacion" id="edadAblactacion">
+            <input class="form-control col-md-3" placeholder="Meses:" formControlName="EdadAblactacion"
+                   id="edadAblactacion">
           </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Cartilla de vacunas-->
+    <div formGroupName="AntecedentesPerinatales"
+         *ngIf="patientAge <= 5">
+      <button class="accordion" (click)="isCollapsedAntPerinatales = !isCollapsedAntPerinatales"
+              [attr.aria-expanded]="!isCollapsedAntPerinatales" aria-controls="InterrogatorioAparatos"
+              [disabled]="isEditMedicalHistory">
+        <i class="fas fas fa-child mx-2 fa-2x"></i>
+        Cartilla de vacunación
+        <i class="zmdi zmdi-chevron-down float-right"
+           *ngIf="!isEditMedicalHistory && isCollapsedAntPerinatales"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntPerinatales"></i>
+      </button>
+
+      <!--Cartilla de vacunas detalle-->
+      <div id="CartillaVacunas" [ngbCollapse]="isCollapsedAntPerinatales">
+        <div class="card-body">
+          <table class="table m-b-0 table-hover">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Vacunas</th>
+              <th>Enfermedad que previene</th>
+              <th>Dosis</th>
+              <th>Edad y Frecuencia</th>
+              <th>Fecha de vacuna</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <!--[ngClass]="{ 'table-danger': vaccine.suscripcion.Estado === 2, 'table-success': vaccine.Nombre !== 2 }">-->
+              <td>1</td>
+              <td>BCG</td>
+              <td>Tuberculosis</td>
+              <td>UNICA</td>
+              <td>AL NACER</td>
+              <td>
+                <input type="date">
+              </td>
+
+
+            <tr>
+              <td rowspan="3">2</td>
+              <td rowspan="3">Hepatitis B</td>
+              <td rowspan="3">Hepatitis B</td>
+              <td>PRIMERA</td>
+              <td>AL NACER</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>SEGUNDA</td>
+              <td>2 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>TERCERA</td>
+              <td>6 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <tr>
+              <td rowspan="4">3</td>
+              <td rowspan="4">Pentavalente acelular</td>
+              <td rowspan="4">
+
+                <li>Difteria</li>
+                <li>Tos ferina</li>
+                <li>Poliome Iritis</li>
+                <li>Infecciones por H. Influenza B</li>
+
+              </td>
+              <td>PRIMERA</td>
+              <td>2 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>SEGUNDA</td>
+              <td>4 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>TERCERA</td>
+              <td>6 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>CUARTA</td>
+              <td>18 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <td>4</td>
+            <td>DPT</td>
+            <td>
+
+              <li>Difteria</li>
+              <li>Tos Ferina</li>
+              <li>Tetanos</li>
+
+            </td>
+            <td>REFUERZO</td>
+            <td>4 AÑOS</td>
+            <td>
+              <input type="date">
+            </td>
+
+
+            <tr>
+              <td rowspan="3">5</td>
+              <td rowspan="3">Rotavirus</td>
+              <td rowspan="3">Infección por Rotavirus</td>
+              <td>PRIMERA</td>
+              <td>2 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>SEGUNDA</td>
+              <td>4 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>TERCERA</td>
+              <td>6 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <tr>
+              <td rowspan="3">6</td>
+              <td rowspan="3">Neumococo Conjugada</td>
+              <td rowspan="3">Infección por Neumococo</td>
+              <td>PRIMERA</td>
+              <td>2 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>SEGUNDA</td>
+              <td>4 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>REFUERZO</td>
+              <td>12 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <tr>
+              <td rowspan="3">7</td>
+              <td rowspan="3">Influenza</td>
+              <td rowspan="3">Influenza</td>
+              <td>PRIMERA</td>
+              <td>6 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>SEGUNDA</td>
+              <td>7 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>REVACUNACIÓN</td>
+              <td>ANUAL <br> HASTA 59 MESES</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <tr>
+              <td rowspan="2">8</td>
+              <td rowspan="2">SRP</td>
+              <td rowspan="2">
+
+                <li>Sarampion</li>
+                <li>Rubeola</li>
+                <li>Parotiditis</li>
+
+              </td>
+              <td>PRIMERA</td>
+              <td>1 AÑO</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            <tr>
+              <td>REFUERZO</td>
+              <td>6 AÑOS</td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+
+
+            <td>9</td>
+            <td>SABIN</td>
+            <td>Poliomelitis</td>
+            <td>ADICIONALES</td>
+            <td></td>
+            <td>
+              <input type="date">
+            </td>
+
+            <tr>
+              <td>10</td>
+              <td>SR</td>
+              <td>Sarampion y Rubeola</td>
+              <td>ADICIONALES</td>
+              <td></td>
+              <td>
+                <input type="date">
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

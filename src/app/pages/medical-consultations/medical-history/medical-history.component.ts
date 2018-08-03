@@ -135,6 +135,11 @@ export class MedicalHistoryComponent implements OnInit {
       'InterrogatorioAparatos': new FormGroup({
         'Descripcion': new FormControl()
       }),
+      'CartillaVacunacion': new FormGroup({
+        'BCG': new FormGroup({
+          'Fecha': new FormControl()
+        })
+      })
     });
   }
 
