@@ -1,3 +1,59 @@
-<p>
-  documents works!
-</p>
+    <div class="card">
+        <div class="body">  
+          
+            <div class="row">
+              <div class="col-md-12">
+                <!--Documents-->
+                <div class="container">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Nombre del formato:</h5>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" value="" class="form-control" [(ngModel)]="name">
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <h5 class="card-title">Selecciona un archivo:</h5>
+                        <input type="file" (change)="upload($event)" accept=".pdf" />
+                        <br/><br/>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <br><br>
+                        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+                            File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+                        </div>
+
+                        <!--Files-->
+                        <div class="tab-content m-t-10">
+                            <div class="tab-pane table-responsive active" id="All">
+                                <table class="table m-b-0 table-hover">
+                                    <thead>
+                                        <tr>                                       
+                                            <th>Nombre del formato</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let record of records">
+                                            <td>{{record.name}}</td>
+                                            <td>
+                                                <a class="btn btn-info" href="{{record.fileUrl}}" download>Descargar</a>
+                                                <button class="btn btn-danger" (click)="delete(record.id)">Eliminar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                        <!--Files-->
+                      </div>
+                    </div>
+                  </div>
+                <!--Documents-->
+              </div>
+            </div>
+        </div>
+      </div>
+      

@@ -20,6 +20,8 @@ import {CalendarModule} from 'angular-calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { AngularFireModule } from 'angularfire2';
       projectId: "clinitec-f4f3f",
       storageBucket: "clinitec-f4f3f.appspot.com",
       messagingSenderId: "124604988463"
-    })
+    }),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
