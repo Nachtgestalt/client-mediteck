@@ -31,8 +31,6 @@ export class DocumentsComponent{
 
   upload(event) {
     //Storage
-    
-
     const id = Math.random().toString(36).substring(2);
     this.ref = this.afStorage.ref(`files/${id}`);
     this.task = this.ref.put(event.target.files[0])
@@ -40,7 +38,7 @@ export class DocumentsComponent{
     this.uploadProgress = this.task.percentageChanges();
     this.uploadProgress.subscribe(progress =>{
       if(progress == 100){
-        swal('¡Listo :)!', 'El archivo se subio con éxito', 'success');
+        swal('¡Listo :)!', 'El archivo se ha subio con éxito', 'success');
         this.task.then(snap => {
           snap.ref.getDownloadURL().then(data => {
             this.url = data;
@@ -59,9 +57,13 @@ export class DocumentsComponent{
   }
 
     getRecords(){
-      this.db.list<any>('files', ref => ref.orderByChild('medicalCenter').equalTo(this.medicalCenter)).valueChanges().subscribe(data=>{
-        this.records = data;
-      });
+      this.db
+        .list<any>('files', 
+        ref => ref.orderByChild('medicalCenter')
+        .equalTo(this.medicalCenter))
+        .valueChanges().subscribe(data=>{
+            this.records = data;
+        });
     }
 
     delete(id){

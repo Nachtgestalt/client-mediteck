@@ -39,7 +39,7 @@
                                         <tr *ngFor="let record of records">
                                             <td>{{record.name}}</td>
                                             <td>
-                                                <a class="btn btn-info" href="{{record.fileUrl}}" download>Descargar</a>
+                                                <a class="btn btn-info" href="{{record.fileUrl}}" target="_blank" download>Descargar</a>
                                                 <button class="btn btn-danger" (click)="delete(record.id)">Eliminar</button>
                                             </td>
                                         </tr>
