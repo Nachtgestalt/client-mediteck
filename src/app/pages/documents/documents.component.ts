@@ -26,14 +26,15 @@ export class DocumentsComponent{
 
   constructor(public afStorage: AngularFireStorage, public db: AngularFireDatabase){
       this.getRecords();
-      console.log(this.records);
   }
 
-  upload(event) {
+  upload(){
     //Storage
     const id = Math.random().toString(36).substring(2);
     this.ref = this.afStorage.ref(`files/${id}`);
-    this.task = this.ref.put(event.target.files[0])
+    for (let selectedFile of [(<HTMLInputElement>document.getElementById('docsPDF')).files[0]]) {
+      this.task = this.ref.put(selectedFile)
+    }
     this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
     this.uploadProgress = this.task.percentageChanges();
     this.uploadProgress.subscribe(progress =>{
@@ -50,6 +51,10 @@ export class DocumentsComponent{
                 medicalCenter: this.medicalCenter,
                 name: this.name
               });
+              //Reset
+              this.name = "";
+              let input = $("#docsPDF");
+              input.replaceWith(input.val('').clone(true));
           });
         });
       }
