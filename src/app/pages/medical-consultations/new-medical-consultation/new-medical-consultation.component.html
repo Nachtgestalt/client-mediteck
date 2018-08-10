@@ -307,40 +307,46 @@
               <div class="row">
                 <div class="form-group col-sm-2">
                   <label>FC:</label>
-                  <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc">
+                  <input type="text" class="form-control ancho" id="fc" placeholder="FC" name="fc"
+                         formControlName="FC">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>TR:</label>
-                  <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr">
+                  <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr"
+                         formControlName="TR">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>Temperatura:</label>
                   <input type="text" class="form-control ancho" id="temperatura" placeholder="Temperatura"
-                         name="temperatura">
+                         name="temperatura" formControlName="Temperatura">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>TA:</label>
-                  <input type="text" class="form-control ancho" placeholder="TA">
+                  <input type="text" class="form-control ancho" placeholder="TA"
+                         formControlName="TA">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>SVT:</label>
-                  <input type="text" class="form-control ancho" placeholder="SVT">
+                  <input type="text" class="form-control ancho" placeholder="SVT"
+                         formControlName="SVT">
                 </div>
 
                 <div class="form-group col-sm-2">
                   <label>SO2:</label>
-                  <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2">
+                  <input type="text" class="form-control ancho" id="so2" placeholder="SO2" name="so2"
+                         formControlName="SO2">
                 </div>
 
               </div>
 
               <div class="form-group">
                 <label>Exploración física:</label>
-                <textarea class="form-control" placeholder="Detalles de la exploración física"></textarea>
+                <textarea class="form-control" placeholder="Detalles de la exploración física"
+                          formControlName="ExploracionFisica"></textarea>
               </div>
 
 
@@ -366,7 +372,8 @@
 
               <div class="form-group">
                 <label>Pronóstico:</label>
-                <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "></textarea>
+                <textarea class="form-control " name="pron " id="pron " placeholder="Pronostico "
+                          formControlName="Pronostico"></textarea>
               </div>
 
             </form>

@@ -48,7 +48,7 @@
               patient.Apellidos}}
             </td>
             <td> {{patient.Fecha_inscripcion}}</td>
-            <button class="btn btn-primary btn-round">Revisar expediente</button>
+            <button class="btn btn-primary btn-round" [routerLink]="['/detalle-paciente', patient.id]">Revisar expediente</button>
             <button class="btn btn-primary btn-round">Agendar cita</button>
             <button class="btn btn-primary btn-round" [routerLink]="['/consulta', patient.id]">Nueva consulta</button>
             <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->

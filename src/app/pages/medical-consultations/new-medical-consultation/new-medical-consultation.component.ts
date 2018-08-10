@@ -122,7 +122,8 @@ export class NewMedicalConsultationComponent implements OnInit {
       'SO2': new FormControl(''),
       'Nota': new FormControl(''),
       'Pronostico': new FormControl(''),
-      // 'Plan': new FormControl('')
+      'Plan': new FormControl(''),
+      'ExploracionFisica': new FormControl('')
     });
 
     this.formVacunas = new FormGroup({
