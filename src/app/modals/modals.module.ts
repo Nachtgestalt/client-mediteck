@@ -13,6 +13,8 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SeeIndicationsComponent } from './see-indications/see-indications.component';
 import { InternComponent } from './intern/intern.component';
 import { SendToUrgenciesComponent } from './send-to-urgencies/send-to-urgencies.component';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { AddPlanComponent } from './add-plan/add-plan.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { SendToUrgenciesComponent } from './send-to-urgencies/send-to-urgencies.
     EditNoteComponent,
     SeeIndicationsComponent,
     InternComponent,
-    SendToUrgenciesComponent
+    SendToUrgenciesComponent,
+    EditPlanComponent,
+    AddPlanComponent
   ],
   exports: [
     EditDoctorComponent,
@@ -42,7 +46,9 @@ import { SendToUrgenciesComponent } from './send-to-urgencies/send-to-urgencies.
     EditVaccineComponent,
     SeeIndicationsComponent,
     InternComponent,
-    SendToUrgenciesComponent
+    SendToUrgenciesComponent,
+    EditPlanComponent,
+    AddPlanComponent
   ]
 })
 export class ModalsModule { }
