@@ -1,0 +1,124 @@
+<div class="card">
+  <div class="body">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h3 class="section-heading text-uppercase mt-3">Realiza tu pago</h3>
+        </div>
+      </div>
+
+        <!--Plans-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Selecciona un plan</h4>
+                <select class="form-control" [(ngModel)]="plan" (change)="showButtons()">
+                    <option *ngFor="let plan of plans" value="{{plan.id}}">{{plan.Nombre}}- ${{plan.Precio}}</option>
+                </select>
+            </div>
+        </div>
+        <!--Plans-->
+        
+        <br/><br/>
+
+      <div *ngIf="buttons" class="row" >
+        <h4>Selecciona un método de pago</h4>
+        <div class="col-sm">
+            <img class="img-responsive center-block" src="assets/images/visamaster.jpg" (click)="paymentMethod('Card')">
+        </div>
+        <div class="col-sm">
+            <img class="img-responsive center-block" src="assets/images/oxxo.png" (click)="paymentMethod('Oxxo')">
+        </div>
+        <div class="col-sm">
+            <img class="img-responsive center-block" src="assets/images/spei.jpg" (click)="paymentMethod('SPEI')">
+        </div>
+      </div>
+
+      <!--Card-->
+      <div *ngIf="card" class="row" >
+        <div class="col-md-12">
+            <h4>Llena todos los campos</h4>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="name">Nombre completo*</label>
+                    <input type="text" id="name"  [(ngModel)]="name" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="number">Número de tarjeta*</label>
+                    <input type="number" id="number" [(ngModel)]="number" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="exp_year">Año de expiración*</label>
+                            <input type="number" id="exp_year" [(ngModel)]="exp_year" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="exp_month">Mes de expiración*</label>
+                            <input type="number" id="exp_month" [(ngModel)]="exp_month" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="cvc">CVC*</label>
+                            <input type="number" id="cvc"  [(ngModel)]="cvc" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="street1">Dirección 1</label>
+                    <input type="text" id="street1" [(ngModel)]="street1" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="street2">Dirección 2</label>
+                    <input type="text" id="street2" [(ngModel)]="street2" class="form-control">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="city">Ciudad</label>
+                            <input type="text" id="city" [(ngModel)]="city" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="state">Estado</label>
+                            <input type="text" id="state" [(ngModel)]="state" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="zip">Código postal</label>
+                            <input type="number" id="zip" [(ngModel)]="zip" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="country">País</label>
+                            <input type="text" id="country" [(ngModel)]="country" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+            <button class="btn btn-info btn-lg" (click)="payment()">Pagar</button>
+        </div>
+      </div>
+      <!--Card-->
+
+  </div>
+</div>

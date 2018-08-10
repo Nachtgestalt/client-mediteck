@@ -30,6 +30,7 @@ import {AutocompleteDataDetailService} from '../services/autocompleteData/autoco
 import {DatesComponent} from './medical-consultations/dates/dates.component';
 import {PatientsUrgenciasComponent} from './admissions/patients-urgencias/patients-urgencias.component';
 import {DocumentsComponent} from './documents/documents.component';
+import {PaymentsComponent} from './payments/payments.component';
 
 const pagesRoutes: Routes = [
   {
@@ -66,6 +67,7 @@ const pagesRoutes: Routes = [
       { path: 'detalle-paciente/:id', component: PatientDetailComponent, data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
       { path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}},
       { path: 'documents', component: DocumentsComponent, data: {titulo: 'Documentos y formatos', subtitle: 'Bienvenido'}},
+      { path: 'payments', component: PaymentsComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
