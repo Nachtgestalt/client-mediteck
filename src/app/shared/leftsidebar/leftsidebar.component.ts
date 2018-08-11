@@ -7,10 +7,12 @@ import {LeftsidebarService} from '../../services/leftsidebar/leftsidebar.service
   styleUrls: ['./leftsidebar.component.css']
 })
 export class LeftsidebarComponent implements OnInit {
+  user = JSON.parse(localStorage.getItem('user'));
 
   constructor(public _leftsidebarService: LeftsidebarService) { }
 
   ngOnInit() {
+    console.log(this.user);
   }
 
 }
