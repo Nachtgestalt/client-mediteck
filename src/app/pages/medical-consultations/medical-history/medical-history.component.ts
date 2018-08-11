@@ -22,41 +22,34 @@ export class MedicalHistoryComponent implements OnInit {
   isCollapsedIntApar = true;
   isCollapsedAntGinecologicos = true;
   isCollapsedAntPerinatales = true;
+  isCollapsedCartilla = true;
 
   isEditMedicalHistory = true;
   msgEditMedical = 'Editar';
 
   patientAge = 0;
+  medicalHistory: any;
 
   constructor(private _utilsService: UtilsService,
-              private _medicalHistoryService: MedicalHistoryService) { }
+              private _medicalHistoryService: MedicalHistoryService) {
+  }
 
   ngOnInit() {
-    this.patientAge = this._utilsService.getAgeOnlyYear(this.patientData.Fecha_nacimiento)
+    this.patientAge = this._utilsService.getAgeOnlyYear(this.patientData.Fecha_nacimiento);
     console.log('Edad del paciente: ', this.patientAge);
     console.log('Datos del paciente: ', this.patientData);
-
+    console.log('Historia del paciente: ', this.medicalHistory);
     this.createFormGroup();
-
-    if (this.patientAge <= 5) {
-      this.form.addControl('AntecedentesPerinatales', new FormGroup({
-        'ProductoGesta': new FormControl(),
-        'TipoNacimiento': new FormControl(),
-        'CalificacionApgar': new FormControl(),
-        'GestacionNacimiento': new FormControl(),
-        'TiempoLactancia': new FormControl(),
-        'EdadAblactacion': new FormControl(),
-      }));
-    }
-
-    if (this.patientData.Sexo === 'FEMENINO' && (this.patientAge >= 15 && this.patientAge <= 90)) {
-      this.form.addControl('AntecedentesGinecologicos', new FormGroup({
-        'Menarca': new FormControl(),
-        'FUM': new FormControl(),
-        'Gestaciones': new FormControl(false),
-        'Menopausia': new FormControl(false)
-      }));
-    }
+    this._medicalHistoryService.getMedicalHistory(this.patientData.id)
+      .subscribe(
+        (res: any) => {
+          if ( res.length !== 0) {
+            this.medicalHistory = res[0].HistoriaClinica;
+            this.form.patchValue(this.medicalHistory);
+            console.log('Historia del paciente: ', this.medicalHistory);
+          }
+        }
+      );
   }
 
   createFormGroup() {
@@ -134,13 +127,73 @@ export class MedicalHistoryComponent implements OnInit {
       }),
       'InterrogatorioAparatos': new FormGroup({
         'Descripcion': new FormControl()
-      }),
-      'CartillaVacunacion': new FormGroup({
-        'BCG': new FormGroup({
-          'Fecha': new FormControl()
-        })
       })
     });
+
+    if (this.patientAge <= 5) {
+      this.form.addControl('AntecedentesPerinatales', new FormGroup({
+        'ProductoGesta': new FormControl(),
+        'TipoNacimiento': new FormControl(),
+        'CalificacionApgar': new FormControl(),
+        'GestacionNacimiento': new FormControl(),
+        'TiempoLactancia': new FormControl(),
+        'EdadAblactacion': new FormControl(),
+      }));
+
+      this.form.addControl('CartillaVacunacion', new FormGroup({
+        'BCG': new FormGroup({
+          'Unica': new FormControl()
+        }),
+        'HepatitisB': new FormGroup({
+          'Primera': new FormControl(),
+          'Segunda': new FormControl(),
+          'Tercera': new FormControl()
+        }),
+        'Pentavalente': new FormGroup({
+          'Primera': new FormControl(),
+          'Segunda': new FormControl(),
+          'Tercera': new FormControl(),
+          'Cuarta': new FormControl()
+        }),
+        'DPT': new FormGroup({
+          'Refuerzo': new FormControl()
+        }),
+        'Rotavirus': new FormGroup({
+          'Primera': new FormControl(),
+          'Segunda': new FormControl(),
+          'Tercera': new FormControl()
+        }),
+        'Neumococo': new FormGroup({
+          'Primera': new FormControl(),
+          'Segunda': new FormControl(),
+          'Refuerzo': new FormControl()
+        }),
+        'Influenza': new FormGroup({
+          'Primera': new FormControl(),
+          'Segunda': new FormControl(),
+          'Revacunacion': new FormControl()
+        }),
+        'SRP': new FormGroup({
+          'Primera': new FormControl(),
+          'Refuerzo': new FormControl()
+        }),
+        'Sabin': new FormGroup({
+          'Adicionales': new FormControl()
+        }),
+        'SR': new FormGroup({
+          'Adicionales': new FormControl()
+        }),
+      }));
+    }
+
+    if (this.patientData.Sexo === 'FEMENINO' && (this.patientAge >= 15 && this.patientAge <= 90)) {
+      this.form.addControl('AntecedentesGinecologicos', new FormGroup({
+        'Menarca': new FormControl(),
+        'FUM': new FormControl(),
+        'Gestaciones': new FormControl(false),
+        'Menopausia': new FormControl(false)
+      }));
+    }
   }
 
   editMedicalHistory() {
@@ -154,6 +207,7 @@ export class MedicalHistoryComponent implements OnInit {
       this.isCollapsedIntApar = false;
       this.isCollapsedAntGinecologicos = false;
       this.isCollapsedAntPerinatales = false;
+      this.isCollapsedCartilla = false;
       console.log(this.patientData);
     } else {
       this.payLoad = {
@@ -173,6 +227,7 @@ export class MedicalHistoryComponent implements OnInit {
       this.isCollapsedIntApar = true;
       this.isCollapsedAntGinecologicos = true;
       this.isCollapsedAntPerinatales = true;
+      this.isCollapsedCartilla = true;
     }
   }
 }

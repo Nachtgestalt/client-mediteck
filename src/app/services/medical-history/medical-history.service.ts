@@ -16,6 +16,10 @@ export class MedicalHistoryService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     return this.http.post(this.urlMedicalHistory, body, {headers});
+  }
 
+  getMedicalHistory(id) {
+    const url = `${this.urlMedicalHistory}/${id}`;
+    return this.http.get(url);
   }
 }

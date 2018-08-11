@@ -644,20 +644,20 @@
 
 
     <!--Cartilla de vacunas-->
-    <div formGroupName="AntecedentesPerinatales"
+    <div formGroupName="CartillaVacunacion"
          *ngIf="patientAge <= 5">
-      <button class="accordion" (click)="isCollapsedAntPerinatales = !isCollapsedAntPerinatales"
-              [attr.aria-expanded]="!isCollapsedAntPerinatales" aria-controls="InterrogatorioAparatos"
+      <button class="accordion" (click)="isCollapsedCartilla = !isCollapsedCartilla"
+              [attr.aria-expanded]="!isCollapsedCartilla" aria-controls="InterrogatorioAparatos"
               [disabled]="isEditMedicalHistory">
         <i class="fas fas fa-child mx-2 fa-2x"></i>
         Cartilla de vacunación
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntPerinatales"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntPerinatales"></i>
+           *ngIf="!isEditMedicalHistory && isCollapsedCartilla"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedCartilla"></i>
       </button>
 
       <!--Cartilla de vacunas detalle-->
-      <div id="CartillaVacunas" [ngbCollapse]="isCollapsedAntPerinatales">
+      <div id="CartillaVacunas" [ngbCollapse]="isCollapsedCartilla">
         <div class="card-body">
           <table class="table m-b-0 table-hover">
             <thead>
@@ -671,7 +671,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr formGroupName="BCG">
               <!--[ngClass]="{ 'table-danger': vaccine.suscripcion.Estado === 2, 'table-success': vaccine.Nombre !== 2 }">-->
               <td>1</td>
               <td>BCG</td>
@@ -679,37 +679,37 @@
               <td>UNICA</td>
               <td>AL NACER</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Unica">
               </td>
 
 
-            <tr>
+            <tr formGroupName="HepatitisB">
               <td rowspan="3">2</td>
               <td rowspan="3">Hepatitis B</td>
               <td rowspan="3">Hepatitis B</td>
               <td>PRIMERA</td>
               <td>AL NACER</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="HepatitisB">
               <td>SEGUNDA</td>
               <td>2 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Segunda">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="HepatitisB">
               <td>TERCERA</td>
               <td>6 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Tercera">
               </td>
             </tr>
 
 
-            <tr>
+            <tr formGroupName="Pentavalente">
               <td rowspan="4">3</td>
               <td rowspan="4">Pentavalente acelular</td>
               <td rowspan="4">
@@ -723,28 +723,28 @@
               <td>PRIMERA</td>
               <td>2 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Pentavalente">
               <td>SEGUNDA</td>
               <td>4 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Segunda">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Pentavalente">
               <td>TERCERA</td>
               <td>6 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Tercera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Pentavalente">
               <td>CUARTA</td>
               <td>18 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Cuarta">
               </td>
             </tr>
 
@@ -760,90 +760,90 @@
             </td>
             <td>REFUERZO</td>
             <td>4 AÑOS</td>
-            <td>
-              <input type="date">
+            <td formGroupName="DPT">
+              <input type="date" formControlName="Refuerzo">
             </td>
 
 
-            <tr>
+            <tr formGroupName="Rotavirus">
               <td rowspan="3">5</td>
               <td rowspan="3">Rotavirus</td>
               <td rowspan="3">Infección por Rotavirus</td>
               <td>PRIMERA</td>
               <td>2 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Rotavirus">
               <td>SEGUNDA</td>
               <td>4 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Segunda">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Rotavirus">
               <td>TERCERA</td>
               <td>6 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Tercera">
               </td>
             </tr>
 
 
-            <tr>
+            <tr formGroupName="Neumococo">
               <td rowspan="3">6</td>
               <td rowspan="3">Neumococo Conjugada</td>
               <td rowspan="3">Infección por Neumococo</td>
               <td>PRIMERA</td>
               <td>2 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Neumococo">
               <td>SEGUNDA</td>
               <td>4 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Segunda">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Neumococo">
               <td>REFUERZO</td>
               <td>12 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Refuerzo">
               </td>
             </tr>
 
 
-            <tr>
+            <tr formGroupName="Influenza">
               <td rowspan="3">7</td>
               <td rowspan="3">Influenza</td>
               <td rowspan="3">Influenza</td>
               <td>PRIMERA</td>
               <td>6 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Influenza">
               <td>SEGUNDA</td>
               <td>7 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Segunda">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="Influenza">
               <td>REVACUNACIÓN</td>
               <td>ANUAL <br> HASTA 59 MESES</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Revacunacion">
               </td>
             </tr>
 
 
-            <tr>
+            <tr formGroupName="SRP">
               <td rowspan="2">8</td>
               <td rowspan="2">SRP</td>
               <td rowspan="2">
@@ -856,14 +856,14 @@
               <td>PRIMERA</td>
               <td>1 AÑO</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Primera">
               </td>
             </tr>
-            <tr>
+            <tr formGroupName="SRP">
               <td>REFUERZO</td>
               <td>6 AÑOS</td>
               <td>
-                <input type="date">
+                <input type="date" formControlName="Refuerzo">
               </td>
             </tr>
 
@@ -873,8 +873,8 @@
             <td>Poliomelitis</td>
             <td>ADICIONALES</td>
             <td></td>
-            <td>
-              <input type="date">
+            <td formGroupName="Sabin">
+              <input type="date" formControlName="Adicionales">
             </td>
 
             <tr>
@@ -883,8 +883,8 @@
               <td>Sarampion y Rubeola</td>
               <td>ADICIONALES</td>
               <td></td>
-              <td>
-                <input type="date">
+              <td formGroupName="SR">
+                <input type="date" formControlName="Adicionales">
               </td>
             </tr>
             </tbody>
@@ -910,7 +910,7 @@
           <div class="form-group">
             <label for="interrogatorioAparatosDesc">Detalle: </label>
             <textarea name="interrogatorioAparatos" id="interrogatorioAparatosDesc" rows="3"
-                      placeholder="Interrogatorio por aparatos" class="form-control"></textarea>
+                      placeholder="Interrogatorio por aparatos" class="form-control" formControlName="Descripcion"></textarea>
           </div>
         </div>
       </div>

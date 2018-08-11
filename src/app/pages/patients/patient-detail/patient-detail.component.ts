@@ -6,6 +6,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs/index';
 import {AutocompleteDataService} from '../../../services/autocompleteData/autocomplete-data.service';
+import {UtilsService} from '../../../services/utils/utils.service';
 
 @Component({
   selector: 'app-patient-detail',
@@ -25,6 +26,8 @@ export class PatientDetailComponent implements OnInit {
   formIndicaciones: FormGroup;
   formEstudios: FormGroup;
 
+  patientAge = 0;
+
   patient: any;
   id;
   consultations: any;
@@ -33,6 +36,7 @@ export class PatientDetailComponent implements OnInit {
 
   constructor(private _patientService: PatientService,
               private _autocompleteDataService: AutocompleteDataService,
+              private _utilsService: UtilsService,
               private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -48,7 +52,29 @@ export class PatientDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.patientAge = this._utilsService.getAgeOnlyYear(this.patient.Fecha_nacimiento);
+    console.log('Edad del paciente: ', this.patientAge);
     this.createFormGroup();
+
+    if (this.patientAge <= 5) {
+      this.form.addControl('AntecedentesPerinatales', new FormGroup({
+        'ProductoGesta': new FormControl(),
+        'TipoNacimiento': new FormControl(),
+        'CalificacionApgar': new FormControl(),
+        'GestacionNacimiento': new FormControl(),
+        'TiempoLactancia': new FormControl(),
+        'EdadAblactacion': new FormControl(),
+      }));
+    }
+
+    if (this.patient.Sexo === 'FEMENINO' && (this.patientAge >= 15 && this.patientAge <= 90)) {
+      this.form.addControl('AntecedentesGinecologicos', new FormGroup({
+        'Menarca': new FormControl(),
+        'FUM': new FormControl(),
+        'Gestaciones': new FormControl(false),
+        'Menopausia': new FormControl(false)
+      }));
+    }
   }
 
   createFormGroup() {
