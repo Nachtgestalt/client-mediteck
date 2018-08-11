@@ -31,23 +31,33 @@ export class DoctorService {
     headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(doctor);
-
-    console.log(doctor);
     //MailChimp
     let apiKey = "53124a9ef44b68509728c7d3fd9e32be-us19";
     let listId = "fe8a39b54b";
     let dc = apiKey.split("-")[1];
     let ere = {
       email_address: doctor.Email,
-      status: "subscribed"
+      status: "subscribed",
+      merge_fields: {
+        name: `${doctor.Nombre} ${doctor.Apellidos}`,
+        birthday: `${doctor.Fecha_nacimiento}`,
+        specialitie: `${doctor.Especialidad}`,
+        phone: `${doctor.Telefono}`
+      }
     }
     this.http.post(`https://${dc}.api.mailchimp.com/3.0/lists/${listId}/members`, ere, {
       headers: {
-        "Authorization":`Basic ${btoa(`anystring:${apiKey}`)}`
+        'Authorization':"Basic "+btoa(`anystring:${apiKey}`),
+        'Content-Type':'application/json'
       }
-    });
+    }).subscribe(
+      data =>{
+        console.log(data);
+      },error =>{
+        console.error(error);
+      }
+    );
     //MailChimp
-
     return this.http.post(this.urlDoctor, body, {headers});
   }
 
