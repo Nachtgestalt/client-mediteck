@@ -59,8 +59,8 @@ export class DatesComponent implements OnInit {
       })
     }
 
-    //let url_calendar = "https://www.googleapis.com/calendar/v3/calendars/sebastian.barrera1996@gmail.com/events";
-    let url_calendar = `https://www.googleapis.com/calendar/v3/calendars/${localStorage.getItem('google_calendar_id')}/events`
+    let url_calendar = "https://www.googleapis.com/calendar/v3/calendars/sebastian.barrera1996@gmail.com/events";
+    //let url_calendar = `https://www.googleapis.com/calendar/v3/calendars/${localStorage.getItem('google_calendar_id')}/events`
     this.gDates = this.http.get(url_calendar,{
       headers: {
         "Authorization": `Bearer ${localStorage.getItem('google_token')}`
