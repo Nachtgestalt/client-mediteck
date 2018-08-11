@@ -15,7 +15,7 @@ export class ConsultationService {
   }
 
   getConsultation(id) {
-    const url = `${this.urlConsultation}/${id}`;
+    const url = `${URL_SERVICIOS}/consultas-paciente/${id}`;
     return this.http.get(url);
   }
 

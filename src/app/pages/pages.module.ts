@@ -56,9 +56,9 @@ import {
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
 import { FullCalendarModule } from 'ng-fullcalendar';
-import { AdmissionsComponent } from './admissions/admissions.component';
 import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
-import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   providers: [
@@ -137,9 +137,9 @@ import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.
     DynamicFormComponent,
     AllPatientsComponent,
     DatesComponent,
-    AdmissionsComponent,
     PatientsUrgenciasComponent,
-    AddUrgenciasComponent,
+    DocumentsComponent,
+    PaymentsComponent,
   ]
 })
 export class PagesModule { }

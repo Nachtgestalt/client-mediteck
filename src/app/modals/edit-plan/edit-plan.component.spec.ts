@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeeIndicationsComponent } from './see-indications.component';
+import { EditPlanComponent } from './edit-plan.component';
 
-describe('SeeIndicationsComponent', () => {
-  let component: SeeIndicationsComponent;
-  let fixture: ComponentFixture<SeeIndicationsComponent>;
+describe('EditPlanComponent', () => {
+  let component: EditPlanComponent;
+  let fixture: ComponentFixture<EditPlanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeeIndicationsComponent ]
+      declarations: [ EditPlanComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SeeIndicationsComponent);
+    fixture = TestBed.createComponent(EditPlanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

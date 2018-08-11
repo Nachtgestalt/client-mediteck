@@ -19,6 +19,9 @@ import { FilterPipe } from './pipes/filter.pipe';
 import {CalendarModule} from 'angular-calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     APP_ROUTING,
     ModalsModule,
     NgbModule.forRoot(),
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyDEGyy36ZZI0fr9_0vBEmCLIFS5vYTa2-k',
+      authDomain: 'clinitec-f4f3f.firebaseapp.com',
+      databaseURL: 'https://clinitec-f4f3f.firebaseio.com',
+      projectId: 'clinitec-f4f3f',
+      storageBucket: 'clinitec-f4f3f.appspot.com',
+      messagingSenderId: '124604988463'
+    }),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

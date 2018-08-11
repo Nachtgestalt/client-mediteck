@@ -28,9 +28,10 @@ import {PatientDetailComponent} from './patients/patient-detail/patient-detail.c
 import {PatientDetailsResolveService} from '../services/patient-detail-resolve/patient-details-resolve.service';
 import {AutocompleteDataDetailService} from '../services/autocompleteData/autocomplete-data-detail.service';
 import {DatesComponent} from './medical-consultations/dates/dates.component';
-import {AdmissionsComponent} from './admissions/admissions.component';
-import {AddUrgenciasComponent} from './admissions/add-urgencias/add-urgencias.component';
 import {PatientsUrgenciasComponent} from './admissions/patients-urgencias/patients-urgencias.component';
+import {ConsultationDetailResolveService} from '../services/consultation-detail-resolve/consultation-detail-resolve.service';
+import {DocumentsComponent} from './documents/documents.component';
+import {PaymentsComponent} from './payments/payments.component';
 
 const pagesRoutes: Routes = [
   {
@@ -64,10 +65,16 @@ const pagesRoutes: Routes = [
       { path: 'vacunas', component: VaccineComponent, data: {titulo: 'Listar Vacunas', subtitle: 'Bienvenido'}},
       { path: 'add_product', component: AddProductsComponent, data: {titulo: 'Agregar productos', subtitle: 'Bienvenido'}},
       { path: 'list_product', component: ListProductsComponent, data: {titulo: 'Listar productos', subtitle: 'Bienvenido'}},
-      { path: 'detalle-paciente/:id', component: PatientDetailComponent, data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
-      { path: 'admissions', component: AdmissionsComponent, data: {titulo: 'Admisiones', subtitle: 'Bienvenido'}},
+      { path: 'detalle-paciente/:id', component: PatientDetailComponent,
+        resolve: {
+          patient: PatientDetailsResolveService,
+          consultations: ConsultationDetailResolveService
+          // diagnostics: AutocompleteDataDetailService
+        },
+        data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
       { path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}},
-      { path: 'add_urgencias', component: AddUrgenciasComponent, data: {titulo: 'Ingresar a urgencias', subtitle: 'Bienvenido'}},
+      { path: 'documents', component: DocumentsComponent, data: {titulo: 'Documentos y formatos', subtitle: 'Bienvenido'}},
+      { path: 'payments', component: PaymentsComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]

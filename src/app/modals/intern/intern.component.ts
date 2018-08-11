@@ -33,10 +33,8 @@ export class InternComponent implements OnInit {
     }
 
     console.log(info);
-
-    this.ingresar = this.http.post(`${URL_SERVICIOS}/ingreso`, info);
-
-    this.ingresar
+    
+    this.http.post(`${URL_SERVICIOS}/ingreso`, info)
     .subscribe(data => {
       console.log(data);
       window.location.reload();

@@ -1,0 +1,51 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <div class="col-lg-12 text-center">
+          <h4 class="section-heading text-uppercase">Agregar plan</h4>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="col-sm-12">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="name">
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+          <div class="form-group">
+              <label for="price">Costo</label>
+              <input type="text" id="price" class="form-control" [(ngModel)]="price">
+          </div>
+      </div>
+
+      <div class="col-sm-12">
+          <div class="form-group">
+              <label for="type">Tipo</label>
+              <input type="text" id="type" class="form-control" [(ngModel)]="type">
+          </div>
+      </div>
+
+
+      <div class="col-sm-12">
+          <div class="form-group">
+              <label for="frecuency">Frecuencia</label>
+              <input type="text" id="frecuency" class="form-control" [(ngModel)]="frecuency">
+          </div>
+      </div>
+    
+    </div>
+
+    <button class="btn btn-success btn-round" (click)="create()">
+        Crear
+    </button>
+
+</ng-template>
+
+<button class="col-md-12 btn btn-primary text-center" (click)="open(content)">
+    <i class="zmdi zmdi-plus float-left"></i> Agregar plan 
+  </button>

@@ -31,9 +31,8 @@ export class PatientService {
 
   postPatient(patient) {
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Authorization', this.token);
     headers = headers.append('Content-Type', 'application/json');
-    const body = JSON.stringify(patient)
+    const body = JSON.stringify(patient);
     return this.http.post(this.urlPatient, body, {headers});
   }
 
