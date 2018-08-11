@@ -74,7 +74,6 @@ const pagesRoutes: Routes = [
         data: {titulo: 'Detalle del paciente', subtitle: 'Bienvenido'}},
       { path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}},
       { path: 'documents', component: DocumentsComponent, data: {titulo: 'Documentos y formatos', subtitle: 'Bienvenido'}},
-      { path: 'payments', component: PaymentsComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
