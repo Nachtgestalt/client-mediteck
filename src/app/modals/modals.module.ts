@@ -15,6 +15,7 @@ import { InternComponent } from './intern/intern.component';
 import { SendToUrgenciesComponent } from './send-to-urgencies/send-to-urgencies.component';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { AddPlanComponent } from './add-plan/add-plan.component';
+import { AddDateComponent } from './add-date/add-date.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { AddPlanComponent } from './add-plan/add-plan.component';
     InternComponent,
     SendToUrgenciesComponent,
     EditPlanComponent,
-    AddPlanComponent
+    AddPlanComponent,
+    AddDateComponent
   ],
   exports: [
     EditDoctorComponent,
@@ -48,7 +50,8 @@ import { AddPlanComponent } from './add-plan/add-plan.component';
     InternComponent,
     SendToUrgenciesComponent,
     EditPlanComponent,
-    AddPlanComponent
+    AddPlanComponent,
+    AddDateComponent
   ]
 })
 export class ModalsModule { }

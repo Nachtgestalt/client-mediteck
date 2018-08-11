@@ -1,0 +1,45 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <div class="col-lg-12 text-center">
+        <h4 class="section-heading text-uppercase">Agendar cita</h4>
+      </div>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    
+    <div class="col-sm-12">
+      <div class="form-group">
+          <label for="summary">Descripción de la cita</label>
+          <input type="text" id="summary" class="form-control" [(ngModel)]="summary">
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="location">Lugar</label>
+            <input type="text" id="location" class="form-control" [(ngModel)]="location">
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="start_dateTime">Inicio de la cita</label>
+            <input type="datetime-local" id="start_dateTime" class="form-control" [(ngModel)]="start_dateTime">
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="end_dateTime">Fin de la cita</label>
+            <input type="datetime-local" id="end_dateTime" class="form-control" [(ngModel)]="end_dateTime">
+        </div>
+    </div>
+    
+    <button class="btn btn-success btn-round" (click)="addDate()">Agendar cita</button>
+
+  </div>
+</ng-template>
+
+<button class="btn btn-primary btn-round" (click)="open(content)">Agendar cita</button>
