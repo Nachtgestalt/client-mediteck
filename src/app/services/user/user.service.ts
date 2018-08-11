@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common
 import {Router} from '@angular/router';
 import {User} from '../../interfaces/user.interface';
 import {Oauth} from '../../interfaces/oauth.interface';
+import {post} from 'selenium-webdriver/http';
 
 @Injectable()
 export class UserService {
@@ -72,6 +73,14 @@ export class UserService {
     localStorage.removeItem('user');
     localStorage.removeItem('idMedicalCenter')
     this.router.navigate(['/login']);
+  }
+
+  isValidSuscription() {
+    const url = `${URL_SERVICIOS}/isValidSuscription`;
+    const body = {
+      id: localStorage.getItem('idMedicalCenter')
+    };
+    return this.http.post(url, body);
   }
 
 }

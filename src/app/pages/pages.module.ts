@@ -39,6 +39,7 @@ import { AddNoteComponent } from './medical-consultations/notes/add-note/add-not
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { SurgeryComponent } from './surgery/surgery.component';
 import {DynamicFormComponent} from './medical-consultations/medical-history/dynamic-form/dynamic-form.component';
+import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule,
   MatDatepickerModule, MatDialogModule,
@@ -50,13 +51,14 @@ import {
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-import { AllPatientsComponent } from './nurses/all-patients/all-patients.component';
+
+
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
 import { FullCalendarModule } from 'ng-fullcalendar';
-import { AdmissionsComponent } from './admissions/admissions.component';
 import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
-import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   providers: [
@@ -135,9 +137,9 @@ import { AddUrgenciasComponent } from './admissions/add-urgencias/add-urgencias.
     DynamicFormComponent,
     AllPatientsComponent,
     DatesComponent,
-    AdmissionsComponent,
     PatientsUrgenciasComponent,
-    AddUrgenciasComponent,
+    DocumentsComponent,
+    PaymentsComponent,
   ]
 })
 export class PagesModule { }

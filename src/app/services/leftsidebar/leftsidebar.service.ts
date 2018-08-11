@@ -12,12 +12,17 @@ export class LeftsidebarService {
       ]
     },
     {
-      titulo: 'Ingresos y urgencias',
-      icono: 'zmdi zmdi-account-add',
-      submenu: [
-        {titulo: 'Admisiones', url: '/admissions'},
-        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'},
-        {titulo: 'Ingresar a urgencias', url: '/add_urgencias'},
+      titulo: 'Documentos',
+      icono: 'fas fa-copy fa-2x',
+      submenu: [ 
+        {titulo: 'Documentos y formatos', url: '/documents'}
+      ]
+    },
+    {
+      titulo: 'Urgencias',
+      icono: 'fas fa-ambulance fa-2x',
+      submenu: [ 
+        {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'}
       ]
     },
     {
@@ -54,7 +59,7 @@ export class LeftsidebarService {
         {titulo: 'Agregar Camas', url: '/agregar_cama'},
       ]
     },
-    {
+    /*{
       titulo: 'Almacén',
       icono: 'fas fa-user-md fa-2x',
       submenu: [
@@ -68,7 +73,7 @@ export class LeftsidebarService {
       submenu: [
         {titulo: 'Listar vacunas', url: '/vacunas'}
       ]
-    },
+    },*/
     {
       titulo: 'Consulta',
       icono: 'fas fa-user-md fa-2x',
@@ -86,15 +91,14 @@ export class LeftsidebarService {
         // {titulo: 'Diagnosticos', url: '/diagnosticos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
       ]
     },
-
-    {
+    /*{
       titulo: 'Productos',
       icono: 'med-pill',
       submenu: [
         {titulo: 'Agregar Productos', url: '/add_product'},
         {titulo: 'Listar Productos', url: '/list_product'}
       ]
-    },
+    },*/
   ];
 
   constructor() { }
