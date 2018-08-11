@@ -60,8 +60,9 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
-  setInStorage(usuario, menu) {
-    console.log(usuario)
+  setInStorage(usuario, menu, idSuscripcion?) {
+    console.log(usuario);
+    localStorage.setItem('idSuscripcion', idSuscripcion);
     localStorage.setItem('idMedicalCenter', usuario.idCentro_medico);
     localStorage.setItem('user', JSON.stringify(usuario));
     localStorage.setItem('menu', JSON.stringify(menu));

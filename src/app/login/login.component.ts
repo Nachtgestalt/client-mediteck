@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
               (res: any) => {
                 const usuario = res.Usuario;
                 const menu = res.Menu;
-                this._userService.setInStorage(usuario, menu);
+                const idSuscripcion = res.Suscripcion.id;
+                this._userService.setInStorage(usuario, menu, idSuscripcion);
                 this.router.navigate(['/dashboard']);
                 console.log(res);
               },
