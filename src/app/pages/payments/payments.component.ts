@@ -37,6 +37,7 @@ export class PaymentsComponent implements OnInit {
 
   constructor(public http:HttpClient) {
       let tmp = JSON.parse(localStorage.getItem('user'));
+      //this.id = tmp.idCentro_medico
       this.id = tmp.idUser
       
       this.allPlans = this.http.get(`${URL_SERVICIOS}/planc`);
