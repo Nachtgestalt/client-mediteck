@@ -27,28 +27,3 @@ export class TokenInterceptorService {
   }
 }
 
-@Injectable()
-export class isValidSuscriptionInterceptor implements HttpInterceptor {
-
-  constructor(private _userService: UserService,
-              public router: Router) {}
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    this._userService.isValidSuscription()
-      .subscribe(
-        (res: any) => {
-          if ( res.valid ) {
-            return next.handle(req)
-          } else {
-            this.router.navigate(['/login']);
-          }
-        },
-        error1 => {
-          this.router.navigate(['/login']);
-        }
-      );
-
-    // return next.handle(req);
-  }
-}
