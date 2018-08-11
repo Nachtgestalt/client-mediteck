@@ -104,9 +104,12 @@ export class PatientDetailComponent implements OnInit {
   }
 
   setData2Form(consultation) {
-    // const medicines = this.formReceta.get('Medicamentos') as FormArray;
+    const medicines = this.formReceta.get('Medicamentos') as FormArray;
     console.log(consultation.receta.Medicamentos.length);
-    for (let i = 0; i < consultation.receta.Medicamentos.length - 1; i++) {
+    while (medicines.length) {
+      medicines.removeAt(0);
+    }
+    for (let i = 0; i < consultation.receta.Medicamentos.length; i++) {
       this.addNewMedicine();
     }
     // while (consultation.receta.Medicamentos.length) {
