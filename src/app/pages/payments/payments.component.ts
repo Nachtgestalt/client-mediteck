@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { CONEKTA_PUBLIC_KEY, URL_SERVICIOS } from '../../config/config'
+import { CONEKTA_PUBLIC_KEY, URL_SERVICIOS } from '../../config/config';
 
-var Conekta;
+let Conekta;
 
 @Component({
   selector: 'app-payments',
@@ -13,32 +13,32 @@ var Conekta;
 
 export class PaymentsComponent implements OnInit {
   //Views
-  card:boolean = false;
-  buttons:boolean = false;
+  card = false;
+  buttons = false;
 
   //Form Card
-  number: number
-  name: string
-  exp_year: string
-  exp_month: string
-  cvc: number
-  street1: string
-  street2: string
-  city: string
-  state: string
-  zip: number
-  country:string
+  number: number;
+  name: string;
+  exp_year: string;
+  exp_month: string;
+  cvc: number;
+  street1: string;
+  street2: string;
+  city: string;
+  state: string;
+  zip: number;
+  country: string;
 
   //Internal
-  id:any;
-  allPlans:Observable<any>;
+  id: any;
+  allPlans: Observable<any>;
   plans: any;
-  plan:any;
+  plan: any;
 
-  constructor(public http:HttpClient) {
-      let tmp = JSON.parse(localStorage.getItem('user'));
-      this.id = tmp.idUser
-      
+  constructor(public http: HttpClient) {
+      const tmp = JSON.parse(localStorage.getItem('user'));
+      this.id = tmp.idUser;
+
       this.allPlans = this.http.get(`${URL_SERVICIOS}/planc`);
 
       this.allPlans
@@ -49,45 +49,45 @@ export class PaymentsComponent implements OnInit {
 
   ngOnInit() {}
 
-  paymentMethod(method){
-      switch(method) {
-          case "Card":
+  paymentMethod(method) {
+      switch (method) {
+          case 'Card':
               this.card = true;
               break;
-          case "Oxxo":
+          case 'Oxxo':
               this.card = false;
 
               //Pay with Oxxo
-              let au = {
-                "user": this.id,
-                "plan": this.plan
-              }
+              const au = {
+                'user': this.id,
+                'plan': this.plan
+              };
 
               this.http.post(`${URL_SERVICIOS}/pagoOXXO`, au)
               .subscribe(data => {
                 console.log(data);
                 swal(':)', 'Referencia generada con éxito', 'success');
-               },error => {
+               }, error => {
                 console.log(error);
                 swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
                }
               );
               break;
-          case "SPEI":
+          case 'SPEI':
               this.card = false;
 
               //Pay with SPEI
-              let ere = {
-                  "user": this.id,
-                  "plan": this.plan
-              }
+              const ere = {
+                  'user': this.id,
+                  'plan': this.plan
+              };
 
               this.http.post(`${URL_SERVICIOS}/pagoSPEI`, ere)
               .subscribe(
                 data => {
                     console.log(data);
                     swal(':)', 'Referencia generada con éxito', 'success');
-                },error => {
+                }, error => {
                     console.log(error);
                     swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
                 }
@@ -96,60 +96,60 @@ export class PaymentsComponent implements OnInit {
       }
   }
 
-  showButtons(){
+  showButtons() {
       this.buttons = true;
   }
 
-  payment(){
+  payment() {
     Conekta.setPublicKey(CONEKTA_PUBLIC_KEY);
-    
-    let number = Conekta.card.validateNumber(this.number);  
-    let exp =Conekta.card.validateExpirationDate(this.exp_month, this.exp_year);
-    let cvc = Conekta.card.validateCVC(this.cvc);
-    
-    if(!(number && exp && cvc == true)){
+
+    const number = Conekta.card.validateNumber(this.number);
+    const exp = Conekta.card.validateExpirationDate(this.exp_month, this.exp_year);
+    const cvc = Conekta.card.validateCVC(this.cvc);
+
+    if (!(number && exp && cvc == true)) {
       swal('Datos de la tarjeta no válidos', ':(', 'error');
       return 1;
     }
 
-    let tokenParams = {
-        "card": {
-            "number": this.number,
-            "name": this.name,
-            "exp_year": this.exp_year,
-            "exp_month": this.exp_month,
-            "cvc": this.cvc,
-            "address": {
-                "street1": this.street1,
-                "street2": this.street2,
-                "city": this.city,
-                "state": this.state,
-                "zip": this.zip,
-                "country": this.country
+    const tokenParams = {
+        'card': {
+            'number': this.number,
+            'name': this.name,
+            'exp_year': this.exp_year,
+            'exp_month': this.exp_month,
+            'cvc': this.cvc,
+            'address': {
+                'street1': this.street1,
+                'street2': this.street2,
+                'city': this.city,
+                'state': this.state,
+                'zip': this.zip,
+                'country': this.country
             }
         }
-    }
+    };
 
-    var successResponseHandler = function(token) {
-        let info = {
-            "user": this.id,
-            "plan": this.plan,
-            "token_card":token
-        }
+    const successResponseHandler = function(token) {
+        const info = {
+            'user': this.id,
+            'plan': this.plan,
+            'token_card': token
+        };
 
         this.http.post(`${URL_SERVICIOS}/addSuscripcion`, info)
         .subscribe(
           data => {
            console.log(data);
            swal(':)', 'Pago realizado con éxito', 'success');
-          },error => {
+          }, error => {
             console.log(error);
             swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
           }
         );
     };
 
-    var errorResponseHandler = function(error) {
+    const errorResponseHandler = function(error) {
         swal('¡Opps! ocurrio algún error', ':(', 'error');
         console.error(error);
     };
