@@ -157,6 +157,8 @@ export class NewMedicalConsultationComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          swal('Consulta realizada', 'Consulta realizada con exito', 'success');
+          this.router.navigate(['listar_pacientes'])
         }
       );
 

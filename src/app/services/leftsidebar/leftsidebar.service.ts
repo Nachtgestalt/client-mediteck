@@ -14,14 +14,14 @@ export class LeftsidebarService {
     {
       titulo: 'Documentos',
       icono: 'fas fa-copy fa-2x',
-      submenu: [ 
+      submenu: [
         {titulo: 'Documentos y formatos', url: '/documents'}
       ]
     },
     {
       titulo: 'Urgencias',
       icono: 'fas fa-ambulance fa-2x',
-      submenu: [ 
+      submenu: [
         {titulo: 'Pacientes en urgencias', url: '/patients_urgencias'}
       ]
     },
@@ -80,14 +80,14 @@ export class LeftsidebarService {
       submenu: [
         // {titulo: 'Nueva Consulta', url: '/consulta'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
         {titulo: 'Citas', url: '/cita'}, // Este modulo lo planeo manejar con tabs para listar y agregar citas
-        {titulo: 'Historial Medico', url: '/historial_medico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar historias clinicas
-        {titulo: 'Estudios y resultados', url: '/estudios'},
-        {titulo: 'Notas', url: '/notas'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
-        // {titulo: 'Cuadro clinico', url: '/cuadro-clinico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
-        {titulo: 'Recetas de medicamentos', url: '/recetas-medicamentos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
-        // {titulo: 'Somatometría', url: '/somatometria'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
-        // {titulo: 'Alergias', url: '/alergias'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
-        {titulo: 'Cartilla de vacunación', url: '/cartilla-vacunacion'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
+        // {titulo: 'Historial Medico', url: '/historial_medico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar historias clinicas
+        // {titulo: 'Estudios y resultados', url: '/estudios'},
+        // {titulo: 'Notas', url: '/notas'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
+        // // {titulo: 'Cuadro clinico', url: '/cuadro-clinico'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
+        // {titulo: 'Recetas de medicamentos', url: '/recetas-medicamentos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar notas
+        // // {titulo: 'Somatometría', url: '/somatometria'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
+        // // {titulo: 'Alergias', url: '/alergias'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
+        // {titulo: 'Cartilla de vacunación', url: '/cartilla-vacunacion'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
         // {titulo: 'Diagnosticos', url: '/diagnosticos'}, // Este modulo lo planeo manejar con tabs para consultar y agregar dependiendo del paciente
       ]
     },
