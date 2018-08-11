@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { CONEKTA_PUBLIC_KEY, URL_SERVICIOS } from '../../config/config';
+declare function init_plugins();
 
 let Conekta;
 
@@ -46,7 +47,9 @@ export class PaymentsComponent implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    init_plugins();
+  }
 
   paymentMethod(method) {
       switch (method) {
@@ -58,7 +61,7 @@ export class PaymentsComponent implements OnInit {
 
               //Pay with Oxxo
               const au = {
-                'user': this.id,
+                'suscripcion': this.id,
                 'plan': this.plan
               };
 
@@ -77,7 +80,7 @@ export class PaymentsComponent implements OnInit {
 
               //Pay with SPEI
               const ere = {
-                  'user': this.id,
+                  'suscripcion': this.id,
                   'plan': this.plan
               };
 
