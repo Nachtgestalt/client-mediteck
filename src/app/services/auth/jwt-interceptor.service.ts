@@ -29,7 +29,7 @@ export class JwtInterceptorService {
           // redirect to the login route
           // or show a modal
         } else if (err.status === 444) {
-          localStorage.setItem('idCentro_medico', err.error.idCentro_medico);
+          localStorage.setItem('idSuscripcion', err.error.idSuscripcion);
           console.log(err);
           this.router.navigate(['/payments']);
         }

@@ -36,7 +36,7 @@ export class PaymentsComponent implements OnInit {
   plan: any;
 
   constructor(public http: HttpClient) {
-      this.id = localStorage.getItem('idCentro_medico');
+      this.id = localStorage.getItem('idSuscripcion');
 
       this.allPlans = this.http.get(`${URL_SERVICIOS}/planc`);
 
@@ -65,7 +65,7 @@ export class PaymentsComponent implements OnInit {
               this.http.post(`${URL_SERVICIOS}/pagoOXXO`, au)
               .subscribe(data => {
                 console.log(data);
-                swal(':)', 'Referencia generada con éxito', 'success');
+                swal(':)', 'Referencia generada con éxito, revisa tu correo', 'success');
                }, error => {
                 console.log(error);
                 swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
@@ -85,7 +85,7 @@ export class PaymentsComponent implements OnInit {
               .subscribe(
                 data => {
                     console.log(data);
-                    swal(':)', 'Referencia generada con éxito', 'success');
+                    swal(':)', 'Referencia generada con éxito, revisa tu correo', 'success');
                 }, error => {
                     console.log(error);
                     swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
