@@ -103,6 +103,7 @@ export class MedicalHistoryComponent implements OnInit {
           'Descripcion': new FormControl()
         }),
       }),
+
       'AntecedentesNoPatologicos': new FormGroup({
         'Tabaquismo': new FormGroup({
           'Estado': new FormControl(false),
@@ -120,11 +121,12 @@ export class MedicalHistoryComponent implements OnInit {
           'Estado': new FormControl(false),
           'Descripcion': new FormControl()
         }),
-        'ActividadFisica': new FormGroup({
+        'Fisica': new FormGroup({
           'Estado': new FormControl(false),
           'Descripcion': new FormControl()
         }),
       }),
+
       'InterrogatorioAparatos': new FormGroup({
         'Descripcion': new FormControl()
       })
@@ -190,8 +192,14 @@ export class MedicalHistoryComponent implements OnInit {
       this.form.addControl('AntecedentesGinecologicos', new FormGroup({
         'Menarca': new FormControl(),
         'FUM': new FormControl(),
-        'Gestaciones': new FormControl(false),
-        'Menopausia': new FormControl(false)
+        'Gestaciones': new FormGroup({
+          'Estado': new FormControl(false),
+          'Descripcion': new FormControl()
+        }),
+        'Menopausia': new FormGroup({
+          'Estado': new FormControl(false),
+          'Descripcion': new FormControl()
+        })
       }));
     }
   }

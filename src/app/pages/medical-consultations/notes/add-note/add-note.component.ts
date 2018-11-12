@@ -11,6 +11,7 @@ import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-boots
 export class AddNoteComponent implements OnInit {
 
   @Output() cerrado = new EventEmitter;
+  @Input() patientData: any;
 
   private modalRef: NgbModalRef;
   closeResult: string;
@@ -27,19 +28,21 @@ export class AddNoteComponent implements OnInit {
 
   createForm() {
     this.formNotas = new FormGroup({
+      'Medico': new FormControl(''),
+      'Cedula': new FormControl(''),
       'Tipo_nota': new FormControl(''),
       'Diagnostico': new FormControl(''),
       'Peso': new FormControl(''),
       'Talla': new FormControl(''),
       'IMC': new FormControl(''),
       'FC': new FormControl(''),
-      'TR': new FormControl(''),
-      'SVT': new FormControl(''),
+      'FR': new FormControl(''),
       'Temperatura': new FormControl(''),
       'TA': new FormControl(''),
       'SO2': new FormControl(''),
       'Nota': new FormControl(''),
-      'Pronostico': new FormControl('')
+      'Pronostico': new FormControl(''),
+      'Analisis': new FormControl('')
     });
   }
 
@@ -54,7 +57,12 @@ export class AddNoteComponent implements OnInit {
   }
 
   confirm() {
+    const payload = {
+      idUsuario: this.patientData.id,
+      nota: this.formNotas.value
+    };
     console.log(this.formNotas.value);
+    console.log(JSON.stringify(payload));
     // this._vaccineService.postVaccine(this.form.value)
     //   .subscribe(
     //     res => {
@@ -71,7 +79,7 @@ export class AddNoteComponent implements OnInit {
 
   open(content) {
     // this.loadData2Form(this.vaccine);
-    this.modalRef = this.modalService.open(content);
+    this.modalRef = this.modalService.open(content, {size: 'lg', backdrop: 'static'});
     this.modalRef.result.then((result) => {
       if ( result === 1 ) {
         swal('Vacuna agregada', 'Vacuna agregada con exito', 'success');

@@ -57,4 +57,14 @@ export class AutocompleteDataService {
         )
       );
   }
+
+  getSpecialitys() {
+    const url = `${URL_SERVICIOS}/getEspecialidades`;
+    return this.http.get(url);
+  }
+
+  getLaboratorys() {
+    const url = `${URL_SERVICIOS}/getLaboratorios`;
+    return this.http.get(url);
+  }
 }

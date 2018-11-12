@@ -465,7 +465,7 @@
           </div>
 
           <!--Actividad Fisica-->
-          <div class="radio" formGroupName="ActividadFisica">
+          <div class="radio" formGroupName="Fisica">
             <div class="row">
               <div class="col-md-6">
                 <input id="actividadFisica" type="radio" [value]="true"
@@ -483,7 +483,7 @@
               </div>
             </div>
             <div class="row"
-                 *ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">
+                 *ngIf="form.get('AntecedentesNoPatologicos').get('Fisica').get('Estado').value">
               <div class="form-group col-md-12">
                 <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
               </div>
@@ -520,54 +520,54 @@
             <input type="date" class="form-control col-md-3" placeholder="Fecha:" formControlName="FUM" id="fum">
           </div>
           <!--Gestaciones-->
-          <div class="radio">
+          <div class="radio" formGroupName="Gestaciones">
             <div class="row">
               <div class="col-md-6">
                 <input id="gestaciones" type="radio" [value]="true"
-                       formControlName="Gestaciones">
+                       formControlName="Estado">
                 <label for="gestaciones">
                   Gestaciones
                 </label>
               </div>
               <div class="col-md-6">
                 <input id="notGestaciones" type="radio" [value]="false"
-                       formControlName="Gestaciones">
+                       formControlName="Estado">
                 <label for="notGestaciones">
                   Negado
                 </label>
               </div>
             </div>
-            <!--<div class="row"-->
-            <!--*ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">-->
-            <!--<div class="form-group col-md-12">-->
-            <!--<input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="row"
+                 *ngIf="form.get('AntecedentesGinecologicos').get('Gestaciones').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
           </div>
 
-          <div class="radio">
+          <div class="radio" formGroupName="Menopausia">
             <div class="row">
               <div class="col-md-6">
                 <input id="menopausia" type="radio" [value]="true"
-                       formControlName="Menopausia">
+                       formControlName="Estado">
                 <label for="menopausia">
                   Menopausia
                 </label>
               </div>
               <div class="col-md-6">
                 <input id="notMenopausia" type="radio" [value]="false"
-                       formControlName="Menopausia">
+                       formControlName="Estado">
                 <label for="notMenopausia">
                   Negado
                 </label>
               </div>
             </div>
-            <!--<div class="row"-->
-            <!--*ngIf="form.get('AntecedentesNoPatologicos').get('ActividadFisica').get('Estado').value">-->
-            <!--<div class="form-group col-md-12">-->
-            <!--<input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="row"
+                 *ngIf="form.get('AntecedentesGinecologicos').get('Menopausia').get('Estado').value">
+              <div class="form-group col-md-12">
+                <input class="form-control" placeholder="Descripcion:" formControlName="Descripcion">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -908,7 +908,7 @@
       <div id="InterrogatorioAparatos" [ngbCollapse]="isCollapsedIntApar">
         <div class="card-body">
           <div class="form-group">
-            <label for="interrogatorioAparatosDesc">Detalle: </label>
+            <label for="interrogatorioAparatosDesc">Exploración: </label>
             <textarea name="interrogatorioAparatos" id="interrogatorioAparatosDesc" rows="3"
                       placeholder="Interrogatorio por aparatos" class="form-control" formControlName="Descripcion"></textarea>
           </div>

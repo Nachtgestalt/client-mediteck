@@ -1,4 +1,4 @@
-<div class="card animated fadeIn fast">
+<div class="card animated fadeIn fast" *ngIf="isData">
   <div class="body">
 
     <div class="row">
@@ -58,7 +58,14 @@
 
               <div class="form-group">
                 <label for="tipo_s">Especialidad </label>
-                <input class="form-control" id="tipo_s" type="text" placeholder="Especialidad *" formControlName="Especialidad">
+                <input class="form-control" id="tipo_s" type="text" placeholder="Especialidad *" formControlName="Especialidad"
+                       [matAutocomplete]="speciality">
+                <mat-autocomplete #speciality="matAutocomplete">
+                  <mat-option *ngFor="let speciality of filteredOptions | async"
+                              [value]='speciality.Especialidades'>
+                    {{ speciality.Especialidades}}
+                  </mat-option>
+                </mat-autocomplete>
 
               </div>
 

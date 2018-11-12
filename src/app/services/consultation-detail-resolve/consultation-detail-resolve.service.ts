@@ -11,7 +11,7 @@ export class ConsultationDetailResolveService implements Resolve<any>{
   constructor(private _consultation: ConsultationService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    let id = +route.params['id'];
+    let id = route.params['id'];
     return this._consultation.getConsultation(id);
   }
 }

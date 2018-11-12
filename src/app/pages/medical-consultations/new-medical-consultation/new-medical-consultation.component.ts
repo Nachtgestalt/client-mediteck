@@ -29,9 +29,11 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   filteredOptionsDiagnostics: Observable<any[]>;
   filteredOptionsMedicine: Observable<any[]>[] = [];
+  filteredOptionsLaboratory: Observable<any>;
 
   vaccines = [];
   patient: any;
+  laboratories = [];
 
   doctor = JSON.parse(localStorage.getItem('user'));
 
@@ -49,17 +51,26 @@ export class NewMedicalConsultationComponent implements OnInit {
       .subscribe(data => {
         this.patient = data.patient;
       });
+
+    this._autocompleteDataService.getLaboratorys()
+      .subscribe((res: any) => {
+        this.laboratories = res;
+        console.log(res);
+      });
   }
 
   ngOnInit() {
     this.createFormGroup();
     console.log('Paciente: ', this.patient);
 
-    this._vaccineService.getVaccines()
-      .subscribe(
-        (res: any) => {
-          this.vaccines = res;
-        }
+    this.filteredOptionsLaboratory = this.formEstudios.get('Tipo_estudio').valueChanges
+      .pipe(
+        startWith<any>(''),
+        map(value => {
+          console.log(value);
+          return typeof value === 'string' ? value : value.Labororatorios;
+        }),
+        map(folio => folio ? this.filterLaboratories(folio) : this.laboratories.slice())
       );
 
     this.filteredOptionsMedicine[0] = this.formReceta.get('Medicamentos.0').get('Medicamento').valueChanges
@@ -115,7 +126,7 @@ export class NewMedicalConsultationComponent implements OnInit {
       'Talla': new FormControl(''),
       'IMC': new FormControl(''),
       'FC': new FormControl(''),
-      'TR': new FormControl(''),
+      'FR': new FormControl(''),
       'SVT': new FormControl(''),
       'Temperatura': new FormControl(''),
       'TA': new FormControl(''),
@@ -217,6 +228,13 @@ export class NewMedicalConsultationComponent implements OnInit {
           return option.Compuesto.toLowerCase().indexOf(val.toLowerCase()) >= 0;
         }))
       );
+  }
+
+  filterLaboratories(val: string) {
+    // call the service which makes the http-request
+    return this.laboratories.filter(option => {
+      return option.Labororatorios.toLowerCase().indexOf(val.toLowerCase()) === 0;
+    });
   }
 
   displayMedicineFn(medicine?: any): string | undefined {
