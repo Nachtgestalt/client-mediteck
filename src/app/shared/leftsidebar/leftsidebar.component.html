@@ -1,12 +1,11 @@
 <aside id="leftsidebar" class="sidebar">
-  <ul class="nav nav-tabs">
-    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboard"><i class="zmdi zmdi-home m-r-5"></i>Clinitec</a></li>
-    <!--<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user">Doctor</a></li>-->
-  </ul>
   <div class="tab-content">
     <div class="tab-pane stretchRight active" id="dashboard">
       <div class="menu">
         <ul class="list">
+          <li>
+            <a class="text-center" [routerLink]="['/dashboard']"><img src="../../../assets/images/brand/logo_navbar.png" alt="CLINITEC" /></a>
+          </li>
           <li>
             <div class="user-info">
               <div class="image"><img src="../../../assets/images/mediteck/sin-foto.png" alt="User" /></div>
@@ -17,7 +16,7 @@
             </div>
           </li>
 
-          <li class="header">PRINCIPAL</li>
+          <!--<li class="header">PRINCIPAL</li>-->
 
           <!--Lista manejada con angular-->
           <li *ngFor="let menu of _leftsidebarService.menu">

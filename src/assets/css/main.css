@@ -844,12 +844,12 @@
 }
 .btn, .navbar .navbar-nav>a.btn {
   border-width: 2px;
-  font-weight: 400;
-  font-size: .8571em;
+  font-weight: 600;
+  font-size: 1.2em;
   line-height: 1.35em;
   margin: 5px 1px;
   border: none;
-  border-radius: .1875rem;
+  border-radius: .8rem;
   padding: 11px 22px;
   cursor: pointer;
   background-color: #888;
@@ -1043,11 +1043,11 @@
   box-shadow: none;
 }
 .btn-warning {
-  background-color: #FFB236;
+  background-color: #00ff80;
   color: #fff;
 }
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning.active:focus, .btn-warning.active:hover, .show>.btn-warning.dropdown-toggle, .show>.btn-warning.dropdown-toggle:focus, .show>.btn-warning.dropdown-toggle:hover {
-  background-color: #ffbe55;
+  background-color: #00d36a;
   color: #fff;
   box-shadow: none;
 }
@@ -1270,7 +1270,7 @@
 }
 .form-control {
   background-color: transparent;
-  border: 1px solid #E3E3E3;
+  border: 1px solid #73a2f3;
   border-radius: 30px;
   color: #2c2c2c;
   line-height: normal;
@@ -1411,7 +1411,7 @@
 }
 .input-group-addon {
   background-color: #fff;
-  border: 1px solid #E3E3E3;
+  border: 1px solid #73a2f3;
   border-radius: 30px;
   color: #555;
   padding: -.5rem 0 -.5rem -.3rem;
@@ -12680,7 +12680,7 @@ section small {
 }
 .card .body {
   font-size: 14px;
-  color: #424242;
+  color: #4794f3;
   padding: 20px;
   font-weight: 400;
 }

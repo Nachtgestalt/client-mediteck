@@ -58,27 +58,27 @@
   background-color: #006FB1;
 }
 .theme-blue .btn-primary {
-  background: #006FB1;
+  background: #36d6ff;
 }
 .theme-blue .btn-primary:active, .theme-blue .btn-primary:hover, .theme-blue .btn-primary:focus {
-  background: #00387F;
+  background: #00cbff;
 }
 .theme-blue .btn-primary.btn-simple {
   border-color: #006FB1;
   color: #006FB1;
   background: transparent;
 }
-.theme-blue .block-header h2 {
-  color: #fff;
+.theme-blue .block-header h3 {
+  color: #a5a5a5;
 }
-.theme-blue .block-header h2 small {
-  color: #fff;
+.theme-blue .block-header h3 small {
+  color: #a5a5a5;
 }
-.theme-blue section.content:before {
-  background-color: #00387F;
-}
+/*.theme-blue section.content:before {*/
+  /*background-color: #00387F;*/
+/*}*/
 .theme-blue .navbar, .theme-blue .page-loader-wrapper {
-  background: #00387F;
+  background: #FFFFFF;
 }
 .theme-blue .bars {
   color: #fff;
@@ -90,8 +90,7 @@
   color: #006FB1;
 }
 .theme-blue .sidebar .menu .list a:hover {
-  background: #006FB1;
-  color: #FFFFFF;
+  border-left: 4px solid #00fff2;
 }
 .theme-blue .checkbox input[type="checkbox"]:checked+label::after {
   border: 1px solid #006FB1;

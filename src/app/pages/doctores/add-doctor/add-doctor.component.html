@@ -2,7 +2,7 @@
   <div class="body">
 
     <div class="row">
-      <div class="col-lg-12 text-center">
+      <div class="col-lg-12">
         <h3 class="section-heading text-uppercase">Datos del Medico</h3>
       </div>
     </div>
@@ -11,7 +11,7 @@
 
       <div class="row">
         <div class="col-lg-2">
-          <img src="assets/images/mediteck/sin-foto.png" class="img-post" alt="profile-image">
+          <img src="assets/images/mediteck/sin-foto.png" class="rounded-circle" alt="profile-image">
         </div>
 
         <div class="col-lg-10">
@@ -19,22 +19,22 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Nombre: </label>
-                <input class="form-control" type="text" placeholder="Nombre*" formControlName="Nombre">
+                <input class="form-control" type="text" formControlName="Nombre">
               </div>
 
               <div class="form-group">
                 <label>Apellidos: </label>
-                <input class="form-control" type="text" placeholder="Apellidos *" formControlName="Apellidos">
+                <input class="form-control" type="text" formControlName="Apellidos">
               </div>
 
               <div class="form-group">
                 <label>Telefono: </label>
-                <input class="form-control" type="tel" placeholder="Teléfono *" formControlName="Telefono">
+                <input class="form-control" type="tel" formControlName="Telefono">
               </div>
 
               <div class="form-group">
                 <label class="text-left">Direccion: </label>
-                <input class="form-control" type="text" placeholder="Dirección *" formControlName="Direccion" required>
+                <input class="form-control" type="text" formControlName="Direccion" required>
               </div>
 
             </div>
@@ -53,12 +53,12 @@
 
               <div class="form-group">
                 <label for="edad">Fecha de nacimiento: </label>
-                <input class="form-control" id="edad" type="date" placeholder="Fecha de nacimiento *" formControlName="Fecha_nacimiento">
+                <input class="form-control" id="edad" type="date" formControlName="Fecha_nacimiento">
               </div>
 
               <div class="form-group">
                 <label for="tipo_s">Especialidad </label>
-                <input class="form-control" id="tipo_s" type="text" placeholder="Especialidad *" formControlName="Especialidad"
+                <input class="form-control" id="tipo_s" type="text" formControlName="Especialidad"
                        [matAutocomplete]="speciality">
                 <mat-autocomplete #speciality="matAutocomplete">
                   <mat-option *ngFor="let speciality of filteredOptions | async"
@@ -71,7 +71,7 @@
 
               <div class="form-group">
                 <label>Cédula Profesional: </label>
-                <input class="form-control" type="text" placeholder="Cedula Profesional" formControlName="Cedula" required>
+                <input class="form-control" type="text" formControlName="Cedula" required>
               </div>
             </div>
 
@@ -82,7 +82,7 @@
       <hr>
 
       <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12">
           <h3 class="section-heading text-uppercase mt-3">Datos del sistema</h3>
         </div>
       </div>
@@ -94,14 +94,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Email: </label>
-                <input class="form-control" type="email" placeholder="Email" formControlName="Email">
+                <input class="form-control" type="email" formControlName="Email">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Contraseña: </label>
-                <input class="form-control" type="password" placeholder="Contraseña" formControlName="Password">
+                <input class="form-control" type="password" formControlName="Password">
               </div>
             </div>
 

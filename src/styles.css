@@ -1,5 +1,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.col-form-legend {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #a5a5a5;
+}
+
 /* Animaciones */
 .animated {
   -webkit-animation-duration: 1s;
@@ -39,4 +47,11 @@
   height: 100%;
 }
 
+thead {
+  color: #a5a5a5;
+  font-size: 1.2em;
+}
 
+hr {
+  background: #4794f3;
+}

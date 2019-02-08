@@ -1,0 +1,29 @@
+.sidebar {
+  background: -moz-linear-gradient(-45deg, rgb(0, 27, 153) 0%, rgba(22,83,153,1) 51%, rgba(41,137,216,1) 82%, rgba(41,137,216,1) 82%, rgba(125,185,232,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgb(0, 27, 153) 0%,rgba(22,83,153,1) 51%,rgba(41,137,216,1) 82%,rgba(41,137,216,1) 82%,rgba(125,185,232,1) 100%);
+  background-image: url(../../../assets/images/header-sidebar.png), linear-gradient(135deg, rgb(0, 27, 153) 0%,rgba(22,83,153,1) 51%,rgba(41,137,216,1) 82%,rgba(41,137,216,1) 82%,rgba(125,185,232,1) 100%);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004799', endColorstr='#7db9e8',GradientType=1 );
+  color: #cbcbcb;
+}
+
+.sidebar .menu .list a {
+  color: #cbcbcb;
+  position: relative;
+  padding: 14px 10px;
+  font-size: 1rem;
+}
+
+/*.sidebar .user-info {*/
+  /*position: relative;*/
+  /*!*border-bottom: 1px solid #eee;*!*/
+  /*background-image: url(../../../assets/images/header-sidebar.png) !important;*/
+  /*background-position: top;*/
+  /*background-repeat: no-repeat;*/
+/*}*/
+
+.img-header-sidebar{
+  background-image: url(../../../assets/images/header-sidebar.png);
+  background-position: top;
+  background-repeat: no-repeat;
+}

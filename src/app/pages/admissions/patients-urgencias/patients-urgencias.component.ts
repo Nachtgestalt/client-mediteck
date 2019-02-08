@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { URL_SERVICIOS } from '../../../config/config';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {URL_SERVICIOS} from '../../../config/config';
 
 import * as _swal from 'sweetalert';
 import {SweetAlert} from 'sweetalert/typings/core';
+
 const swal: SweetAlert = _swal as any;
 
 @Component({
@@ -13,22 +14,18 @@ const swal: SweetAlert = _swal as any;
   styleUrls: ['./patients-urgencias.component.css']
 })
 export class PatientsUrgenciasComponent implements OnInit {
+  queryString = '';
+  searchableList: any;
 
   egresar: Observable<any>;
-  patients:Observable<any>;
+  patients: Observable<any>;
   infoPatients: any;
-  
-  constructor(public http:HttpClient){
-    let medCid = localStorage.getItem('idMedicalCenter');
-    this.patients = this.http.get(`${URL_SERVICIOS}/pacientes-urgencias?idCentroMedico=${medCid}`);
 
-    this.patients
-    .subscribe(data => {
-       this.infoPatients = data;
-    });
+  constructor(public http: HttpClient) {
+    this.searchableList = ['Nombre', 'Apellidos'];
   }
 
-  public alta(id){
+  public alta(id) {
     swal({
       title: '¿Estas seguro?',
       text: 'De querer egresar a este paciente',
@@ -42,16 +39,28 @@ export class PatientsUrgenciasComponent implements OnInit {
       .then((willDelete) => {
         if (willDelete) {
           this.egresar = this.http.get(`${URL_SERVICIOS}/paciente-altaUrgencia?idPaciente=${id}`);
-      
+
           this.egresar
-          .subscribe(data => {
-            console.log(data);
-            window.location.reload();
-          });
+            .subscribe(data => {
+              console.log(data);
+              window.location.reload();
+            });
         }
-    });
+      });
   }
-  
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    let medCid = localStorage.getItem('idMedicalCenter');
+    this.patients = this.http.get(`${URL_SERVICIOS}/pacientes-urgencias?idCentroMedico=${medCid}`);
+
+    this.patients
+      .subscribe(data => {
+        this.infoPatients = data;
+      });
+  }
 
 }

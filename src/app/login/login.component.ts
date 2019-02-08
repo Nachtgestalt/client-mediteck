@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    // this.router.navigate(['/dashboard']);
     const username = this.formulario.get('username').value;
     this._userService.auth(this.formulario.value)
       .subscribe(
