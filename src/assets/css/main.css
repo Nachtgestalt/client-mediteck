@@ -1599,7 +1599,7 @@ textarea.form-control:focus, textarea.form-control:active {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid #E3E3E3;
+  border: 1px solid #73a2f3;
   display: inline-block;
   position: absolute;
   left: 3px;
@@ -1617,8 +1617,8 @@ textarea.form-control:focus, textarea.form-control:active {
 .radio input[type="radio"]:checked+label::after {
   width: 4px;
   height: 4px;
-  background-color: #555;
-  border-color: #555;
+  background-color: #73a2f3;
+  border-color: #73a2f3;
   top: 11px;
   left: 11px;
   opacity: 1;
@@ -2119,7 +2119,7 @@ body {
   margin-right: 5px;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 30px;
+  /*border-radius: 30px;*/
   font-size: 14px;
   padding: 11px 23px;
   line-height: 1.5;
@@ -2128,8 +2128,8 @@ body {
   background-color: transparent;
 }
 .nav-tabs>.nav-item>.nav-link.active {
-  border: 1px solid #888;
-  border-radius: 30px;
+  /*border: 1px solid #888;*/
+  /*border-radius: 30px;*/
 }
 .nav-tabs>.nav-item>.nav-link i.now-ui-icons {
   font-size: 14px;

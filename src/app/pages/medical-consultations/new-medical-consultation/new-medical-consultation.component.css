@@ -8,7 +8,7 @@
 }
 
 .accordion {
-  background-color: #eee;
+  background-color: #00cbff;
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -21,7 +21,7 @@
 }
 
 .historia-header {
-  background: #006FB1;
+  background: #00cbff;
   width: 100%;
   color: #FFFFFF;
   font-size: 1.5rem;
@@ -35,5 +35,9 @@
 .example-container {
   display: flex;
   flex-direction: column;
+}
+
+.color-cyan {
+  color: #00cbff;
 }
 

@@ -1,14 +1,22 @@
 <div>
   <form [formGroup]="form">
     <div class="historia-header">
-      <div class="row">
+      <div class="row justify-content-lg-between">
         <div class="col-sm-9">
           <p class="mb-0 ml-3">
             Historia clinica
           </p>
         </div>
         <div class="col-sm-3">
-          <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">
+          <!--<button type="button" class="btn" (click)="open(content)"-->
+          <!--placement="bottom"-->
+          <!--ngbTooltip="Editar datos generales del paciente">-->
+          <!--<i class="fas fa-edit fa-lg"></i>-->
+          <!--</button>-->
+          <button type="button" class="btn btn-sm btn-edit" (click)="editMedicalHistory()"
+                  placement="bottom">
+            <i class="fas fa-lg" [ngClass]="(msgEditMedical === 'Editar') ? 'fa-edit' : 'fa-save'">
+            </i>
             {{msgEditMedical}}
           </button>
         </div>
@@ -658,7 +666,7 @@
 
       <!--Cartilla de vacunas detalle-->
       <div id="CartillaVacunas" [ngbCollapse]="isCollapsedCartilla">
-        <div class="card-body">
+        <div class="card-body color-whitesmoke">
           <table class="table m-b-0 table-hover">
             <thead>
             <tr>
@@ -674,22 +682,21 @@
             <tr formGroupName="BCG">
               <!--[ngClass]="{ 'table-danger': vaccine.suscripcion.Estado === 2, 'table-success': vaccine.Nombre !== 2 }">-->
               <td>1</td>
-              <td>BCG</td>
-              <td>Tuberculosis</td>
-              <td>UNICA</td>
-              <td>AL NACER</td>
-              <td>
+              <td class="tuberculosis color-white">BCG</td>
+              <td class="tuberculosis-border">Tuberculosis</td>
+              <td class="tuberculosis-border">UNICA</td>
+              <td class="tuberculosis-border">AL NACER</td>
+              <td class="tuberculosis-border">
                 <input type="date" formControlName="Unica">
               </td>
 
-
             <tr formGroupName="HepatitisB">
               <td rowspan="3">2</td>
-              <td rowspan="3">Hepatitis B</td>
-              <td rowspan="3">Hepatitis B</td>
-              <td>PRIMERA</td>
-              <td>AL NACER</td>
-              <td>
+              <td rowspan="3" class="color-white hepatitis-b">Hepatitis B</td>
+              <td rowspan="3" class="hepatitis-b-border">Hepatitis B</td>
+              <td class="hepatitis-b-border">PRIMERA</td>
+              <td class="hepatitis-b-border">AL NACER</td>
+              <td class="hepatitis-b-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -711,8 +718,8 @@
 
             <tr formGroupName="Pentavalente">
               <td rowspan="4">3</td>
-              <td rowspan="4">Pentavalente acelular</td>
-              <td rowspan="4">
+              <td rowspan="4" class="pentavalente color-white">Pentavalente acelular</td>
+              <td rowspan="4" class="pentavalente-border">
 
                 <li>Difteria</li>
                 <li>Tos ferina</li>
@@ -720,9 +727,9 @@
                 <li>Infecciones por H. Influenza B</li>
 
               </td>
-              <td>PRIMERA</td>
-              <td>2 MESES</td>
-              <td>
+              <td class="pentavalente-border">PRIMERA</td>
+              <td class="pentavalente-border">2 MESES</td>
+              <td class="pentavalente-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -750,28 +757,28 @@
 
 
             <td>4</td>
-            <td>DPT</td>
-            <td>
+            <td class="dpt color-white">DPT</td>
+            <td class="dpt-border">
 
               <li>Difteria</li>
               <li>Tos Ferina</li>
               <li>Tetanos</li>
 
             </td>
-            <td>REFUERZO</td>
-            <td>4 AÑOS</td>
-            <td formGroupName="DPT">
+            <td class="dpt-border">REFUERZO</td>
+            <td class="dpt-border">4 AÑOS</td>
+            <td formGroupName="DPT" class="dpt-border">
               <input type="date" formControlName="Refuerzo">
             </td>
 
 
             <tr formGroupName="Rotavirus">
               <td rowspan="3">5</td>
-              <td rowspan="3">Rotavirus</td>
-              <td rowspan="3">Infección por Rotavirus</td>
-              <td>PRIMERA</td>
-              <td>2 MESES</td>
-              <td>
+              <td rowspan="3" class="rotavirus color-white">Rotavirus</td>
+              <td rowspan="3" class="rotavirus-border">Infección por Rotavirus</td>
+              <td class="rotavirus-border">PRIMERA</td>
+              <td class="rotavirus-border">2 MESES</td>
+              <td class="rotavirus-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -793,11 +800,11 @@
 
             <tr formGroupName="Neumococo">
               <td rowspan="3">6</td>
-              <td rowspan="3">Neumococo Conjugada</td>
-              <td rowspan="3">Infección por Neumococo</td>
-              <td>PRIMERA</td>
-              <td>2 MESES</td>
-              <td>
+              <td rowspan="3" class="neumococo color-white">Neumococo Conjugada</td>
+              <td rowspan="3" class="neumococo-border">Infección por Neumococo</td>
+              <td class="neumococo-border">PRIMERA</td>
+              <td class="neumococo-border">2 MESES</td>
+              <td class="neumococo-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -819,11 +826,11 @@
 
             <tr formGroupName="Influenza">
               <td rowspan="3">7</td>
-              <td rowspan="3">Influenza</td>
-              <td rowspan="3">Influenza</td>
-              <td>PRIMERA</td>
-              <td>6 MESES</td>
-              <td>
+              <td rowspan="3" class="influenza color-white">Influenza</td>
+              <td rowspan="3" class="influenza-border">Influenza</td>
+              <td class="influenza-border">PRIMERA</td>
+              <td class="influenza-border">6 MESES</td>
+              <td class="influenza-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -845,17 +852,17 @@
 
             <tr formGroupName="SRP">
               <td rowspan="2">8</td>
-              <td rowspan="2">SRP</td>
-              <td rowspan="2">
+              <td rowspan="2" class="srp color-white">SRP</td>
+              <td rowspan="2" class="srp-border">
 
                 <li>Sarampion</li>
                 <li>Rubeola</li>
                 <li>Parotiditis</li>
 
               </td>
-              <td>PRIMERA</td>
-              <td>1 AÑO</td>
-              <td>
+              <td class="srp-border">PRIMERA</td>
+              <td class="srp-border">1 AÑO</td>
+              <td class="srp-border">
                 <input type="date" formControlName="Primera">
               </td>
             </tr>
@@ -869,21 +876,21 @@
 
 
             <td>9</td>
-            <td>SABIN</td>
-            <td>Poliomelitis</td>
-            <td>ADICIONALES</td>
-            <td></td>
-            <td formGroupName="Sabin">
+            <td class="sabin color-whitesmoke">SABIN</td>
+            <td class="sabin-border">Poliomelitis</td>
+            <td class="sabin-border">ADICIONALES</td>
+            <td class="sabin-border"></td>
+            <td formGroupName="Sabin" class="sabin-border">
               <input type="date" formControlName="Adicionales">
             </td>
 
             <tr>
               <td>10</td>
-              <td>SR</td>
-              <td>Sarampion y Rubeola</td>
-              <td>ADICIONALES</td>
-              <td></td>
-              <td formGroupName="SR">
+              <td class="sr color-white">SR</td>
+              <td class="sr-border">Sarampion y Rubeola</td>
+              <td class="sr-border">ADICIONALES</td>
+              <td class="sr-border"></td>
+              <td formGroupName="SR" class="sr-border">
                 <input type="date" formControlName="Adicionales">
               </td>
             </tr>
@@ -910,7 +917,8 @@
           <div class="form-group">
             <label for="interrogatorioAparatosDesc">Exploración: </label>
             <textarea name="interrogatorioAparatos" id="interrogatorioAparatosDesc" rows="3"
-                      placeholder="Interrogatorio por aparatos" class="form-control" formControlName="Descripcion"></textarea>
+                      placeholder="Interrogatorio por aparatos" class="form-control"
+                      formControlName="Descripcion"></textarea>
           </div>
         </div>
       </div>

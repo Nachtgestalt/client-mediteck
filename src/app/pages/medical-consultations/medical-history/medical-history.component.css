@@ -1,6 +1,5 @@
-
 .accordion {
-  background-color: #eee;
+  background-color: #00cbff;
   color: #444;
   cursor: pointer;
   padding: 10px;
@@ -18,16 +17,131 @@
 
 .historia-header {
   border-radius: 50px;
-  background: #00387F;
+  background: #00cbff;
   width: 100%;
   color: #FFFFFF;
   font-size: 1.5rem;
 }
 
-.btn-edit{
+.btn-edit {
   margin: 1px 1px;
+  background-color: transparent;
 }
 
 svg {
-  color: #006FB1;
+  color: white;
+}
+
+thead {
+  border: none;
+}
+
+.color-white {
+  color: white;
+  font-weight: bold;
+}
+
+.tuberculosis {
+  background: #ff9999;
+  border-top: 10px solid #ff9999;
+}
+
+.tuberculosis-border {
+  border-top: 10px solid #ff9999;
+}
+
+.hepatitis-b {
+  background: #ff9cde;
+  border-top: 10px solid #ff9cde;
+}
+
+.hepatitis-b-border {
+  border-top: 10px solid #ff9cde;
+}
+
+.pentavalente {
+  background: #c096ff;
+  border-top: 10px solid #c096ff;
+}
+
+.pentavalente-border {
+  border-top: 10px solid #c096ff;
+}
+
+.dpt {
+  background: #9b89c1;
+  border-top: 10px solid #9b89c1;
+}
+
+.dpt-border {
+  border-top: 10px solid #9b89c1;
+}
+
+.rotavirus {
+  background: #86e6ff;
+  border-top: 10px solid #86e6ff;
+}
+
+.rotavirus-border {
+  border-top: 10px solid #86e6ff;
+}
+
+.neumococo {
+  background: #8fff93;
+  border-top: 10px solid #8fff93;
+}
+
+.neumococo-border {
+  border-top: 10px solid #8fff93;
+}
+
+.influenza {
+  background: #8cff6a;
+  border-top: 10px solid #8cff6a;
+}
+
+.influenza-border {
+  border-top: 10px solid #8cff6a;
+}
+
+.srp {
+  background: #d2ff66;
+  border-top: 10px solid #d2ff66;
+}
+
+.srp-border {
+  border-top: 10px solid #d2ff66;
+}
+
+.sabin {
+  background: #fff59a;
+  border-top: 10px solid #fff59a;
+}
+
+.sabin-border {
+  border-top: 10px solid #fff59a;
+}
+
+.sr {
+  background: #ffc145;
+  border-top: 10px solid #ffc145;
+}
+
+.sr-border {
+  border-top: 10px solid #ffc145;
+}
+
+.color-whitesmoke {
+  color: #868686;
+}
+
+li {
+  list-style-type: none;
+}
+
+.accordion {
+  background: #36d6ff;
+  color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
 }

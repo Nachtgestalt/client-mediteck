@@ -96,7 +96,7 @@
   border: 1px solid #006FB1;
 }
 .theme-blue .nav-tabs .nav-link.active {
-  border: 1px solid #006FB1 !important;
+  border-top: 6px solid #00fff2 !important;
 }
 .theme-blue .card .header h2:before {
   background: #006FB1;

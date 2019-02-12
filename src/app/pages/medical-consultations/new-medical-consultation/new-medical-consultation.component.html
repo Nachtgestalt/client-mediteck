@@ -1,50 +1,77 @@
 <div class="card">
   <div class="body">
-    <div class="row">
-      <div class="col-md1 col-sm-1 col-xs-12">
+    <div class="row justify-content-between">
+      <div class="col-md-2 col-sm-2 col-xs-12">
         <img src="assets/images/mediteck/sin-foto.png" class="patient-pic img-post rounded-circle" alt="profile-image">
       </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <label class="text-md col-md-12">
-          {{patient?.Nombre + " " + patient?.Apellidos}}
-        </label>
-        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="text-md col-md-8">
-            Edad: {{patient?.Edad}}
-          </span>
-          <span class="text-md col-md-4">
-            Sexo: {{patient?.Sexo}}
-          </span>
+      <div class="ol-md-7">
+        <div class="row col">
+          <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <span class="font-bold" style="font-size: 1.5rem">
+              {{patient?.Nombre + " " + patient?.Apellidos}}
+            </span>
+          </div>
         </div>
-        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="text-md col-md-12">
-            Email: <a href="mailto:{{patient?.email}}">{{patient?.email}}</a>
-          </span>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span>
+                Edad: {{patient?.Edad}}
+              </span>
+            </div>
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span>
+                Género: {{patient?.Sexo}}
+              </span>
+            </div>
+
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span>
+                Estado civil: {{patient?.Estado_civil === '2' ? 'Soltero' : 'Casado'}}
+              </span>
+            </div>
+
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span>
+                Tipo de sangre: {{patient?.Tipo_sangre}}
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span class="color-cyan">Dirección: </span>
+              <span>{{patient?.Direccion}}</span>
+            </div>
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span class="color-cyan">Email: </span>
+              <span>
+                <a href="mailto:{{patient?.email}}">{{patient?.email}}</a>
+              </span>
+            </div>
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span class="color-cyan">Teléfono: </span>
+              <span>
+                {{patient?.Telefono}}
+              </span>
+            </div>
+            <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <span class="color-cyan">Celular: </span>
+              <span>
+                {{patient?.Celular}}
+              </span>
+            </div>
+            <!--<div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+            <!--<span class="text-md col-md-12">-->
+            <!--Tipo de sangre: O+-->
+            <!--</span>-->
+            <!--</div>-->
+          </div>
         </div>
-        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="text-md col-md-12">
-            Teléfono: {{patient?.Telefono}}
-          </span>
-        </div>
-        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="text-md col-md-12">
-            Teléfono: {{patient?.Celular}}
-          </span>
-        </div>
-        <div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="text-md col-md-12">
-            Dirección: {{patient?.Direccion}}
-          </span>
-        </div>
-        <!--<div class="data-patient col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-        <!--<span class="text-md col-md-12">-->
-        <!--Tipo de sangre: O+-->
-        <!--</span>-->
-        <!--</div>-->
       </div>
 
-      <div class="col-md-5" [formGroup]="form">
+      <div class="col-md-3" [formGroup]="form">
         <div class="form-group">
           <label>Fecha: </label>
           <input class="form-control" type="date" formControlName="Fecha">
@@ -91,8 +118,6 @@
           <div class="col-md-12">
             <!--Formulario-->
             <form [formGroup]="form">
-              <hr>
-
               <div class="row">
 
                 <!--Izquierda-->
@@ -183,14 +208,14 @@
                   <div class="row">
                     <div class="col-11 col-md-11">
                       <div class="form-group">
-                        <label class="font-weight-bold">{{i+1 + ".- "}}Medicamento:</label>
+                        <label class="font-weight-bold">{{i + 1 + ".- "}}Medicamento:</label>
                         <input class="form-control" placeholder="Medicamento:" matInput
                                formControlName="Medicamento" [matAutocomplete]="medicine">
                         <mat-autocomplete #medicine="matAutocomplete">
                           <mat-option *ngFor="let medicine of filteredOptionsMedicine[i] | async"
                                       [value]='medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " + medicine.Cantidad'>
                             {{ medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " +
-                            medicine.Cantidad}}
+                          medicine.Cantidad}}
                           </mat-option>
                         </mat-autocomplete>
                       </div>
