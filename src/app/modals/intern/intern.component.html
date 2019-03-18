@@ -1,34 +1,66 @@
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-        <div class="col-lg-12 text-center">
-          <h4 class="section-heading text-uppercase">Indicaciones</h4>
-        </div>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
+<div mat-dialog-title class="row p-0 m-0 justify-content-between">
+  <h4 class="section-heading text-uppercase">Indicaciones</h4>
+  <button type="button" class="close" aria-label="Close" (click)="onNoClick()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="col-sm-12">
+    <div class="form-group">
+        <textarea [(ngModel)]="indicaciones" class="form-control"
+                  placeholder="Aquí puedes escribir las indicaciones para el paciente" rows="5"></textarea>
     </div>
-    <div class="modal-body">
+  </div>
 
-          <div class="col-sm-12">
-            <div class="form-group">
-                <textarea [(ngModel)]="indicaciones" class="form-control" placeholder="Aquí puedes escribir las indicaciones para el paciente" rows="5"></textarea>
-            </div>
-          </div>
-          
-          <hr/>
+  <hr/>
 
-          <div class="col-lg-12 text-center">
-              <h4 class="section-heading text-uppercase">Medicamentos</h4>
-          </div>
+  <div class="col-lg-12 text-center">
+    <h4 class="section-heading text-uppercase">Medicamentos</h4>
+  </div>
 
-          <div class="col-sm-12">
-              <div class="form-group">
-                  <textarea [(ngModel)]="medicamentos" class="form-control" placeholder="Aquí puedes escribir los medicamentos para el paciente" rows="5"></textarea>
-              </div>
-          </div>
-
-          <button class="btn btn-primary" (click)="internar()">Enviar</button>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <input class="form-control"
+             placeholder="Aquí puedes escribir los medicamentos para el paciente"
+             [formControl]="myControl" [matAutocomplete]="auto"
+             (keydown.enter)="addMedicine($event.target.value)">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let medicine of filteredOptions | async"
+                    [value]='medicine.Compuesto + " - "  + medicine.Presentacion + " - " + medicine.Cantidad'>
+          {{ medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " +
+        medicine.Cantidad}}
+        </mat-option>
+      </mat-autocomplete>
     </div>
-</ng-template>
+  </div>
 
-<button class="btn btn-primary" (click)="open(content)">Hospitalizar</button>
+  <div class="row">
+    <ul>
+      <li *ngFor="let medicine of medicines">
+        {{medicine}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-lg-12 text-center">
+    <h4 class="section-heading text-uppercase">Cama</h4>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="form-group">
+      <select class="form-control" [(ngModel)]="cama">
+        <option *ngFor="let cama of camas" [value]="cama.id">Piso: {{cama.Piso}} - Cama: {{cama.id}}</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+
+<div mat-dialog-actions class="row justify-content-between">
+  <button class="btn btn-danger" (click)="onNoClick()">Cancelar</button>
+  <button class="btn btn-primary" (click)="internar()">Enviar</button>
+</div>
+
+
+<!--<button class="btn btn-primary" (click)="open(content)">Hospitalizar</button>-->

@@ -22,19 +22,19 @@
         </select>
       </div>
 
-      <div id="medico">
-        <div class="form-group">
-          <label>Nombre del Medico:</label>
-          <input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico"
-                 formControlName="Medico">
-        </div>
+      <!--<div id="medico">-->
+        <!--<div class="form-group">-->
+          <!--<label>Nombre del Medico:</label>-->
+          <!--<input type="text" class="form-control" id="name_medico" placeholder="Nombre del Medico"-->
+                 <!--formControlName="Medico">-->
+        <!--</div>-->
 
-        <div class="form-group">
-          <label>Cedula Profesional:</label>
-          <input type="text" class="form-control" id="ced" placeholder="Cedula Profesional"
-                 formControlName="Cedula">
-        </div>
-      </div>
+        <!--<div class="form-group">-->
+          <!--<label>Cedula Profesional:</label>-->
+          <!--<input type="text" class="form-control" id="ced" placeholder="Cedula Profesional"-->
+                 <!--formControlName="Cedula">-->
+        <!--</div>-->
+      <!--</div>-->
 
       <div class="form-group">
         <label>Diagnóstico:</label>
@@ -75,7 +75,7 @@
         <div class="form-group col-sm-2">
           <label>FR:</label>
           <input type="text" class="form-control ancho" id="fr" placeholder="FR" name="tr"
-                 formControlName="FR">
+                 formControlName="TR">
         </div>
 
         <div class="form-group col-sm-3">
@@ -115,7 +115,7 @@
                   formControlName="Analisis"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary text-center ">Crear Nota</button>
+      <button type="submit" class="btn btn-primary text-center " (click)="confirm()">Crear Nota</button>
     </form>
   </div>
 </ng-template>

@@ -29,11 +29,14 @@ export class EditDoctorComponent implements OnInit {
       'Apellidos': new FormControl(),
       'Especialidad': new FormControl(),
       'Sexo': new FormControl(),
-      'Edad': new FormControl(),
+      'Fecha_nacimiento': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl(),
+      'Telefono': new FormControl(),
+      'InfoApp': new FormControl(null),
+      'Estado': new FormControl(),
+      // 'email': new FormControl(),
+      // 'password': new FormControl(),
       'idCentro_medico': new FormControl(localStorage.getItem('idMedicalCenter'))
     });
   }
@@ -44,9 +47,11 @@ export class EditDoctorComponent implements OnInit {
     this.form.controls['Apellidos'].setValue(doctor.Apellidos);
     this.form.controls['Especialidad'].setValue(doctor.Especialidad);
     this.form.controls['Sexo'].setValue(doctor.Sexo);
-    this.form.controls['Edad'].setValue(doctor.Edad);
+    this.form.controls['Fecha_nacimiento'].setValue(doctor.Fecha_nacimiento);
     this.form.controls['Cedula'].setValue(doctor.Cedula);
     this.form.controls['Direccion'].setValue(doctor.Direccion);
+    this.form.controls['Telefono'].setValue(doctor.Telefono);
+    this.form.controls['Estado'].setValue(doctor.Estado);
   }
 
   open(content) {

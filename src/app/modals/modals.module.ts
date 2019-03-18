@@ -16,6 +16,9 @@ import { SendToUrgenciesComponent } from './send-to-urgencies/send-to-urgencies.
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { AddPlanComponent } from './add-plan/add-plan.component';
 import { AddDateComponent } from './add-date/add-date.component';
+import {PagesModule} from '../pages/pages.module';
+import {MatAutocompleteModule, MatOptionModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -24,7 +27,10 @@ import { AddDateComponent } from './add-date/add-date.component';
     BrowserModule,
     RouterModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MatAutocompleteModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     EditDoctorComponent,

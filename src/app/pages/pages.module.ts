@@ -59,6 +59,7 @@ import { FullCalendarModule } from 'ng-fullcalendar';
 import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { PaymentsComponent } from './payments/payments.component';
+import {InternComponent} from '../modals/intern/intern.component';
 
 @NgModule({
   providers: [
@@ -140,6 +141,9 @@ import { PaymentsComponent } from './payments/payments.component';
     PatientsUrgenciasComponent,
     DocumentsComponent,
     PaymentsComponent,
+  ],
+  entryComponents: [
+    InternComponent
   ]
 })
 export class PagesModule { }

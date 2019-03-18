@@ -13,7 +13,7 @@ export class SeeIndicationsComponent implements OnInit {
 
   constructor(private modalService: NgbModal){}
 
-  open(content){
+  open(content) {
     this.modalRef = this.modalService.open(content);
   }
 

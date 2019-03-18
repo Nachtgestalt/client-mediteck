@@ -11,6 +11,7 @@ import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxj
 import {Observable, empty, of} from 'rxjs';
 import {EMPTY} from 'rxjs/internal/observable/empty';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
+import * as moment from 'moment';
 
 
 @Component({
@@ -39,6 +40,8 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   patientSelected = new FormControl();
 
+  dateNow = moment().format('YYYY-MM-DD');
+
   constructor(private _autocompleteDataService: AutocompleteDataService,
               public _vaccineService: VaccineService,
               public _patientService: PatientService,
@@ -60,6 +63,7 @@ export class NewMedicalConsultationComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Fecha hoy: ', this.dateNow);
     this.createFormGroup();
     console.log('Paciente: ', this.patient);
 
@@ -103,7 +107,7 @@ export class NewMedicalConsultationComponent implements OnInit {
       'idCentro_medico': new FormControl(Number(localStorage.getItem('idMedicalCenter'))),
       'idMedico': new FormControl(this.doctor.id),
       'idPaciente': new FormControl(this.patient.id),
-      'Fecha': new FormControl(),
+      'Fecha': new FormControl(this.dateNow),
       'MotivoConsulta': new FormControl(''),
       'EnfermedadActual': new FormControl(),
       'Alergia': new FormGroup({

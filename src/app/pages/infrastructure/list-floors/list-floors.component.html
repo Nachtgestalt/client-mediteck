@@ -13,15 +13,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let k of floors; let i = index">
+            <tr *ngFor="let floor of floors; let i = index">
               <!--[ngClass]="{ 'table-danger': k.suscripcion.Estado === 2, 'table-success': k.Nombre !== 2 }">-->
               <td>
                 <span class="list-name"> {{i+1}} </span>
               </td>
-              <td>{{k.Piso}}</td>
-              <td>{{k.Seccion}}</td>
+              <td>{{floor.Infrestructura_centro_medico.Piso}}</td>
+              <td>{{floor.Infrestructura_centro_medico.Seccion}}</td>
               <!--<app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>-->
-              <button class="btn btn-danger" type="button">
+              <button class="btn btn-danger" type="button" (click)="deleteSection(floor)">
                 <i class="fas fa-trash fa-lg"></i>
               </button>
 

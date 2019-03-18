@@ -50,7 +50,8 @@
             <td>{{info.Prioridad}}</td>
             <td>
               <button class="btn btn-warning" (click)="alta(info.idPaciente)">Egresar</button>
-              <app-intern [id]="info.idPaciente"></app-intern>
+              <button class="btn btn-primary" (click)="openDialog(info.idPaciente)">Hospitalizar</button>
+              <!--<app-intern [id]="info.idPaciente"></app-intern>-->
             </td>
           </tr>
           </tbody>

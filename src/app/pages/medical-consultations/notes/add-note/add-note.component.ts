@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {VaccineService} from '../../../../services/vaccine/vaccine.service';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {NotesService} from '../../../../services/notes/notes.service';
 
 @Component({
   selector: 'app-add-note',
@@ -12,23 +13,26 @@ export class AddNoteComponent implements OnInit {
 
   @Output() cerrado = new EventEmitter;
   @Input() patientData: any;
+  
+  private user = JSON.parse(localStorage.getItem('user'));
+  
+  idUser = this.user.id;
 
   private modalRef: NgbModalRef;
   closeResult: string;
 
   formNotas: FormGroup;
 
-  constructor( public _vaccineService: VaccineService,
+  constructor( public _notesService: NotesService,
                private modalService: NgbModal ) { }
 
   ngOnInit() {
     this.createForm();
-
+    console.log(this.idUser);
   }
 
   createForm() {
     this.formNotas = new FormGroup({
-      'Medico': new FormControl(''),
       'Cedula': new FormControl(''),
       'Tipo_nota': new FormControl(''),
       'Diagnostico': new FormControl(''),
@@ -36,7 +40,7 @@ export class AddNoteComponent implements OnInit {
       'Talla': new FormControl(''),
       'IMC': new FormControl(''),
       'FC': new FormControl(''),
-      'FR': new FormControl(''),
+      'TR': new FormControl(''),
       'Temperatura': new FormControl(''),
       'TA': new FormControl(''),
       'SO2': new FormControl(''),
@@ -58,23 +62,25 @@ export class AddNoteComponent implements OnInit {
 
   confirm() {
     const payload = {
+      Tipo_nota: +this.formNotas.controls['Tipo_nota'].value(),
       idUsuario: this.patientData.id,
+      idMedico: this.idUser,
       nota: this.formNotas.value
     };
     console.log(this.formNotas.value);
     console.log(JSON.stringify(payload));
-    // this._vaccineService.postVaccine(this.form.value)
-    //   .subscribe(
-    //     res => {
-    //       this.modalRef.close(1);
-    //       console.log(res);
-    //     },
-    //     error1 => {
-    //       this.modalRef.close(2);
-    //
-    //       console.log(error1);
-    //     }
-    //   );
+    this._notesService.createNote(payload)
+      .subscribe(
+        res => {
+          this.modalRef.close(1);
+          console.log(res);
+        },
+        error1 => {
+          this.modalRef.close(2);
+
+          console.log(error1);
+        }
+      );
   }
 
   open(content) {
@@ -82,7 +88,7 @@ export class AddNoteComponent implements OnInit {
     this.modalRef = this.modalService.open(content, {size: 'lg', backdrop: 'static'});
     this.modalRef.result.then((result) => {
       if ( result === 1 ) {
-        swal('Vacuna agregada', 'Vacuna agregada con exito', 'success');
+        swal('Nota agregada', 'Nota agregada con exito', 'success');
         this.cerrado.emit(true);
       } else if (result === 2) {
         swal('Algo malo ha ocurrido', 'Error al agregar vacuna', 'error');

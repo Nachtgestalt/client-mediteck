@@ -5,6 +5,8 @@ import {URL_SERVICIOS} from '../../../config/config';
 
 import * as _swal from 'sweetalert';
 import {SweetAlert} from 'sweetalert/typings/core';
+import {MatDialog} from '@angular/material';
+import {InternComponent} from '../../../modals/intern/intern.component';
 
 const swal: SweetAlert = _swal as any;
 
@@ -21,7 +23,8 @@ export class PatientsUrgenciasComponent implements OnInit {
   patients: Observable<any>;
   infoPatients: any;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public dialog: MatDialog) {
     this.searchableList = ['Nombre', 'Apellidos'];
   }
 
@@ -43,7 +46,8 @@ export class PatientsUrgenciasComponent implements OnInit {
           this.egresar
             .subscribe(data => {
               console.log(data);
-              window.location.reload();
+              this.loadData();
+              // window.location.reload();
             });
         }
       });
@@ -51,6 +55,20 @@ export class PatientsUrgenciasComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+  }
+
+  openDialog(idPaciente): void {
+    const dialogRef = this.dialog.open(InternComponent, {
+      width: '30vw',
+      data: {idPaciente}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.loadData();
+      }
+    });
   }
 
   loadData() {
