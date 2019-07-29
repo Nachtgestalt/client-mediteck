@@ -19,6 +19,7 @@ import { AddDateComponent } from './add-date/add-date.component';
 import {PagesModule} from '../pages/pages.module';
 import {MatAutocompleteModule, MatOptionModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ScheduleDateComponent } from './schedule-date/schedule-date.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SendToUrgenciesComponent,
     EditPlanComponent,
     AddPlanComponent,
-    AddDateComponent
+    AddDateComponent,
+    ScheduleDateComponent
   ],
   exports: [
     EditDoctorComponent,

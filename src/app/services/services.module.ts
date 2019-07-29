@@ -19,13 +19,17 @@ import {QuestionControlService} from './question/question-control.service';
 import {QuestionService} from './question/question.service';
 import {UtilsService} from './utils/utils.service';
 import {MedicalHistoryService} from './medical-history/medical-history.service';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireAuthModule,
   ],
   providers: [
+
     LeftsidebarService,
     DoctorService,
     NurseService,

@@ -55,11 +55,13 @@ import {
 
 import { DatesComponent } from './medical-consultations/dates/dates.component';
 
-import { FullCalendarModule } from 'ng-fullcalendar';
 import { PatientsUrgenciasComponent } from './admissions/patients-urgencias/patients-urgencias.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { PaymentsComponent } from './payments/payments.component';
 import {InternComponent} from '../modals/intern/intern.component';
+import {ServicesModule} from '../services/services.module';
+import {FullCalendarModule} from 'ng-fullcalendar';
+import {ScheduleDateComponent} from '../modals/schedule-date/schedule-date.component';
 
 @NgModule({
   providers: [
@@ -100,7 +102,8 @@ import {InternComponent} from '../modals/intern/intern.component';
     MatProgressSpinnerModule,
 
     PAGES_ROUTES,
-    FullCalendarModule
+    FullCalendarModule,
+    ServicesModule
   ],
   declarations: [
     PagesComponent,
@@ -143,7 +146,8 @@ import {InternComponent} from '../modals/intern/intern.component';
     PaymentsComponent,
   ],
   entryComponents: [
-    InternComponent
+    InternComponent,
+    ScheduleDateComponent
   ]
 })
 export class PagesModule { }

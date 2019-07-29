@@ -1,26 +1,25 @@
-<div *ngIf="visible">
-  <p>Para ver tus citas debes iniciar tu sesión de Google</p>
-  <button class="btn btn-primary" (click)="googleAuth()">
-      Entrar con Google
-  </button>
-</div>
-
-<div class="card" *ngIf="!visible">
-    <div class="body">
-
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h3 class="section-heading text-uppercase mt-3">Citas</h3>
-          </div>
-        </div>
-  
-        <div class="row">
-          <div class="col-md-12">
-            <div *ngIf="calendarOptions">
-              <ng-fullcalendar id="ucCalendar" [options]="calendarOptions" [(eventsModel)]="events"></ng-fullcalendar>
-            </div>
-          </div>
-        </div>
-
+<div class="card">
+  <div class="body">
+    <div class="row justify-content-between">
+      <div class="" *ngIf="(auth.user$ | async)">
+        <button (click)="insertEvent()" class="btn btn-primary"> Añadir evento</button>
+        <button (click)="updateCalendar()" class="btn btn-primary">Actualizar calendario</button>
+      </div>
+      <div class="">
+        <button (click)="auth.login()" *ngIf="!(auth.user$ | async)" class="btn btn-info">Iniciar sesión con Google</button>
+        <button (click)="auth.logout()" *ngIf="(auth.user$ | async)" class="btn btn-danger btn-sm">Cerrar sesión</button>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="options && (auth.user$ | async)">
+          <ng-fullcalendar #fullcalendar [options]="options"
+                           [eventsModel]="auth.calendarItems$ | async"></ng-fullcalendar>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+

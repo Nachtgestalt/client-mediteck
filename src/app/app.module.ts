@@ -11,10 +11,11 @@ import {ModalsModule} from './modals/modals.module';
 import {CalendarModule} from 'angular-calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
