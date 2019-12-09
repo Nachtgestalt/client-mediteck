@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         (resp: any) => {
           console.log(resp);
           this._userService.setTokenInStorage(resp);
+          this._userService.setUsername(username);
           this._userService.getDataUser(username)
             .subscribe(
               (res: any) => {
@@ -52,8 +53,8 @@ export class LoginComponent implements OnInit {
             );
         },
         error1 => {
-          console.log(error1);
-          if (error1.status !== 444 ) {
+          console.log('ERROR LOGIN --> ', error1);
+          if (error1.status !== 444) {
             swal('Error al iniciar sesión', 'Usuario y/o contraseña invalido', 'error');
           }
         }

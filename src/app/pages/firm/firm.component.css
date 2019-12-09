@@ -1,0 +1,17 @@
+canvas {
+  border: 1px solid #000;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.firma{
+  position: absolute;
+}
+
+.margen-top{
+  margin-bottom: 15px;
+}
+
+.title{
+  text-align: center;
+}

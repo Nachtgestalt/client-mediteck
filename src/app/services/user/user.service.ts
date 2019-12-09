@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CLIENT_ID, CLIENT_SECRET, DESTINO, GRANT_TYPE, URL_SERVICIOS} from '../../config/config';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -22,8 +22,8 @@ export class UserService {
     return (this.token.length > 5) ? true : false;
   }
 
-  loadStorage () {
-    if ( localStorage.getItem('token') ) {
+  loadStorage() {
+    if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
     } else {
@@ -48,7 +48,7 @@ export class UserService {
           // this.token = resp.headers.get('authorization');
           return this.token;
         }
-        );
+      );
   }
 
   getDataUser(username) {
@@ -72,7 +72,7 @@ export class UserService {
     this.token = null;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('idMedicalCenter')
+    localStorage.removeItem('idMedicalCenter');
     this.router.navigate(['/login']);
   }
 
@@ -84,4 +84,17 @@ export class UserService {
     return this.http.post(url, body);
   }
 
+  getUser(id: number) {
+    const token = localStorage.getItem('token');
+    return this.http.get(`${URL_SERVICIOS}/usuarios/${id}`, {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  setUsername(username: string) {
+    localStorage.setItem('username', username);
+  }
 }

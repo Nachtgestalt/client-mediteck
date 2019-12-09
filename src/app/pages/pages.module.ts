@@ -62,6 +62,7 @@ import {InternComponent} from '../modals/intern/intern.component';
 import {ServicesModule} from '../services/services.module';
 import {FullCalendarModule} from 'ng-fullcalendar';
 import {ScheduleDateComponent} from '../modals/schedule-date/schedule-date.component';
+import { FirmComponent } from './firm/firm.component';
 
 @NgModule({
   providers: [
@@ -144,6 +145,7 @@ import {ScheduleDateComponent} from '../modals/schedule-date/schedule-date.compo
     PatientsUrgenciasComponent,
     DocumentsComponent,
     PaymentsComponent,
+    FirmComponent,
   ],
   entryComponents: [
     InternComponent,
