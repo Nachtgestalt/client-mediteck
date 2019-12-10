@@ -1,13 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {URL_LOCAL, GOOGLE_CLIENT_ID} from '../../../config/config';
 import {CalendarComponent} from 'ng-fullcalendar';
 import {OptionsInput} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import bootstrapPlugin from '@fullcalendar/bootstrap';
 import {AuthService} from '../../../services/auth/auth.service';
 import {ScheduleDateComponent} from '../../../modals/schedule-date/schedule-date.component';
 import {MatDialog} from '@angular/material';
@@ -19,12 +16,10 @@ import {MatDialog} from '@angular/material';
 })
 
 export class DatesComponent implements OnInit {
+
   google_user = localStorage.getItem('google_id_token');
   visible: boolean = true;
-  gDates: Observable<any>;
   dates: any;
-  client_id: string = GOOGLE_CLIENT_ID;
-  redirect_uri: string = `${URL_LOCAL}/cita`;
   options: OptionsInput;
   @ViewChild('fullcalendar') ucCalendar: CalendarComponent;
 

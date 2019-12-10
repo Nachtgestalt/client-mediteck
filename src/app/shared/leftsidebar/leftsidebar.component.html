@@ -20,13 +20,18 @@
 
           <!--Lista manejada con angular-->
           <li *ngFor="let menu of _leftsidebarService.menu">
-            <a class="menu-toggle"><i [class]="[menu.icono]"></i><span>{{menu.titulo}}</span> </a>
-            <ul class="ml-menu">
-              <li *ngFor="let submenu of menu.submenu">
-                <a routerLinkActive="active" [routerLink]="[submenu.url]">{{submenu.titulo}}</a>
-              </li>
-            </ul>
+            <div *ngIf="inArray(menu.number)">
+              <a class="menu-toggle"><i [class]="[menu.icono]"></i><span>{{menu.titulo}}</span> </a>
+              <ul class="ml-menu">
+                <div *ngFor="let submenu of menu.submenu" >
+                  <li *ngIf="inArray(submenu.subNumber)">
+                    <a routerLinkActive="active" [routerLink]="[submenu.url]">{{submenu.titulo}}</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
           </li>
+
         </ul>
       </div>
     </div>

@@ -6,7 +6,9 @@ Password: secret
 
 */
 
-export const GOOGLE_CLIENT_ID = '188404057526-o1tft7b3goam4rph480151pk86ufgj2c.apps.googleusercontent.com';
+// export const GOOGLE_CLIENT_ID = '188404057526-o1tft7b3goam4rph480151pk86ufgj2c.apps.googleusercontent.com';
+// export const GOOGLE_CLIENT_ID = '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com';
+export const GOOGLE_CLIENT_ID = '897811974396-bpn2vdooueqrtia61ol7mu4mkt73fii3.apps.googleusercontent.com';
 export const URL_LOCAL = 'http://localhost:4200';
 //PROD
 // export const URL_SERVICIOS = 'https://api.clinitec.com.mx';

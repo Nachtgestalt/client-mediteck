@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {auth} from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Subject} from 'rxjs/Subject';
 
@@ -21,14 +19,14 @@ export class AuthService {
 
   // Initialize the Google API client with desired scopes
   initClient() {
-    gapi.load('client', () => {
+    gapi.load('client:auth2', () => {
       console.log('Loaded client');
 
       gapi.client.init({
-        apiKey: 'AIzaSyC-ECMVVIWyVn4-TPh7hSGb-M8RbTgQVi0',
-        clientId: '824775533589-jm0svg8m49chrs439lssp6lflqloodvp.apps.googleusercontent.com',
+        apiKey: 'AIzaSyDQH-b3Q8dx2wrxfMaSktAIsMDjbKYvBmA',
+        clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-        scope: 'https://www.googleapis.com/auth/calendar'
+        scope: 'https://www.googleapis.com/auth/calendar.readonly'
       });
 
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
@@ -38,15 +36,14 @@ export class AuthService {
 
   async login() {
     const googleAuth = gapi.auth2.getAuthInstance();
+    console.log('ENTRO A LOGIN -->', googleAuth);
     const googleUser = await googleAuth.signIn();
-
+    console.log('ENTRO A LOGIN');
     const token = googleUser.getAuthResponse().id_token;
+
     localStorage.setItem('google_id_token', googleUser.getAuthResponse().id_token);
     this.user$.next(true);
-
-    console.log(googleUser);
     await this.getCalendar();
-
     // await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
   }
 
