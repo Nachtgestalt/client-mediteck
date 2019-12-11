@@ -12,7 +12,7 @@ export class LeftsidebarComponent implements OnInit {
   permission: any;
   permissionMedical = [1, 2, 6, 8, 3, 5, 6];
   permissionNurse = [1, 3, 6, 5];
-  permissionPatient = [1, 6];
+  permissionPatient = [1, 9];
   permissionAll = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 14];
 
   constructor(public _leftsidebarService: LeftsidebarService) {

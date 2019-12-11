@@ -74,6 +74,15 @@ export class LeftsidebarService {
         {titulo: 'Citas', subNumber: 1, url: '/cita'},
       ]
     },
+
+    {
+      titulo: 'Recetas',
+      icono: 'far fa-id-card fa-2x',
+      number: 9,
+      submenu: [
+        {titulo: 'Ultimas recetas', subNumber: 1, url: '/receta'},
+      ]
+    }
   ];
 
   constructor() {

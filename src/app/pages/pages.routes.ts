@@ -33,6 +33,7 @@ import {ConsultationDetailResolveService} from '../services/consultation-detail-
 import {DocumentsComponent} from './documents/documents.component';
 import {PaymentsComponent} from './payments/payments.component';
 import {FirmGuardGuard} from '../services/guards/firm-guard.guard';
+import {RecetaComponent} from './receta/receta.component';
 
 const pagesRoutes: Routes = [
   {
@@ -81,6 +82,7 @@ const pagesRoutes: Routes = [
       },
       {path: 'patients_urgencias', component: PatientsUrgenciasComponent, data: {titulo: 'Pacientes en urgencias', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'documents', component: DocumentsComponent, data: {titulo: 'Documentos y formatos', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
+      {path: 'receta', component: RecetaComponent, data: {titulo: 'Ultimas recetas', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 
     ]
