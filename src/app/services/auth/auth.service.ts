@@ -23,10 +23,11 @@ export class AuthService {
       console.log('Loaded client');
 
       gapi.client.init({
-        apiKey: 'AIzaSyDQH-b3Q8dx2wrxfMaSktAIsMDjbKYvBmA',
+        apiKey: 'AIzaSyCbFB4KgEA6xtYwipfcJSA-SZ1a-5TALk8',
+        // apiKey: 'AIzaSyDQH-b3Q8dx2wrxfMaSktAIsMDjbKYvBmA',
         clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-        scope: 'https://www.googleapis.com/auth/calendar.readonly'
+        scope: 'https://www.googleapis.com/auth/calendar'
       });
 
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
