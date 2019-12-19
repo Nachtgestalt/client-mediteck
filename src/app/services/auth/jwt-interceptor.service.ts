@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
@@ -12,7 +12,8 @@ export class JwtInterceptorService {
 
   constructor(public auth: AuthService,
               private user: UserService,
-              public router: Router) {}
+              public router: Router) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -24,16 +25,20 @@ export class JwtInterceptorService {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401 && request.url.includes(URL_SERVICIOS)) {
           this.user.logout();
-          // this.router.navigate(['/login']);
-          // console.warn('No hay token');
-          // redirect to the login route
-          // or show a modal
         } else if (err.status === 444) {
-          localStorage.setItem('idSuscripcion', err.error.idSuscripcion);
-          console.log(err);
-          this.router.navigate(['/payments']);
+          const response = err.error;
+          localStorage.setItem('idSuscripcion', response.idSuscripcion);
+          console.log('INTERCEPTOR ---> ', err, Number(response.Tipo_usuario));
+
+          if (Number(response.Tipo_usuario) === 2) {
+            this.router.navigate(['/payments']);
+          } else {
+            this.router.navigate(['/notPaid']);
+          }
+
         }
       }
-    });
+    })
+      ;
   }
 }

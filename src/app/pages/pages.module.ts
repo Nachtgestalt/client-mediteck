@@ -64,6 +64,7 @@ import {FullCalendarModule} from 'ng-fullcalendar';
 import {ScheduleDateComponent} from '../modals/schedule-date/schedule-date.component';
 import { FirmComponent } from './firm/firm.component';
 import { RecetaComponent } from './receta/receta.component';
+import { NotPaidComponent } from './not-paid/not-paid.component';
 
 @NgModule({
   providers: [
@@ -148,6 +149,7 @@ import { RecetaComponent } from './receta/receta.component';
     PaymentsComponent,
     FirmComponent,
     RecetaComponent,
+    NotPaidComponent,
   ],
   entryComponents: [
     InternComponent,

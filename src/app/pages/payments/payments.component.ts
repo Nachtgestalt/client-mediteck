@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { CONEKTA_PUBLIC_KEY, URL_SERVICIOS } from '../../config/config';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {CONEKTA_PUBLIC_KEY, URL_SERVICIOS} from '../../config/config';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import Swal from 'sweetalert2';
+
 declare function init_plugins();
 
 let Conekta;
@@ -13,22 +16,12 @@ let Conekta;
 })
 
 export class PaymentsComponent implements OnInit {
+
+  form: FormGroup;
+
   //Views
   card = false;
   buttons = false;
-
-  //Form Card
-  number: number;
-  name: string;
-  exp_year: string;
-  exp_month: string;
-  cvc: number;
-  street1: string;
-  street2: string;
-  city: string;
-  state: string;
-  zip: number;
-  country: string;
 
   //Internal
   id: any;
@@ -37,13 +30,29 @@ export class PaymentsComponent implements OnInit {
   plan: any;
 
   constructor(public http: HttpClient) {
-      this.id = localStorage.getItem('idSuscripcion');
 
-      this.allPlans = this.http.get(`${URL_SERVICIOS}/planc`);
+    this.form = new FormGroup(
+      {
+        typePlan: new FormControl('', [Validators.required]),
+        name: new FormControl('', [Validators.required]),
+        numberCard: new FormControl('', [Validators.required]),
+        exp_year: new FormControl('', [Validators.required]),
+        exp_month: new FormControl('', [Validators.required]),
+        ccv: new FormControl('', [Validators.required]),
+        street1: new FormControl('', [Validators.required]),
+        street2: new FormControl('', [Validators.required]),
+        city: new FormControl('', [Validators.required]),
+        state: new FormControl('', [Validators.required]),
+        zipcode: new FormControl('', [Validators.required]),
+        country: new FormControl('', [Validators.required]),
+      },
+    );
 
-      this.allPlans
+    this.id = localStorage.getItem('idSuscripcion');
+    this.allPlans = this.http.get(`${URL_SERVICIOS}/planc`);
+    this.allPlans
       .subscribe(data => {
-         this.plans = data;
+        this.plans = data;
       });
   }
 
@@ -51,112 +60,159 @@ export class PaymentsComponent implements OnInit {
     init_plugins();
   }
 
-  paymentMethod(method) {
-      switch (method) {
-          case 'Card':
-              this.card = true;
-              break;
-          case 'Oxxo':
-              this.card = false;
-
-              //Pay with Oxxo
-              const au = {
-                'suscripcion': this.id,
-                'plan': this.plan
-              };
-
-              this.http.post(`${URL_SERVICIOS}/pagoOXXO`, au)
-              .subscribe(data => {
-                console.log(data);
-                swal(':)', 'Referencia generada con éxito, revisa tu correo', 'success');
-               }, error => {
-                console.log(error);
-                swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
-               }
-              );
-              break;
-          case 'SPEI':
-              this.card = false;
-
-              //Pay with SPEI
-              const ere = {
-                  'suscripcion': this.id,
-                  'plan': this.plan
-              };
-
-              this.http.post(`${URL_SERVICIOS}/pagoSPEI`, ere)
-              .subscribe(
-                data => {
-                    console.log(data);
-                    swal(':)', 'Referencia generada con éxito, revisa tu correo', 'success');
-                }, error => {
-                    console.log(error);
-                    swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
-                }
-              );
-              break;
-      }
+  paymentCard() {
+    this.buttons = false;
+    this.card = true;
   }
 
   showButtons() {
-      this.buttons = true;
+    this.buttons = true;
+    this.card = false;
   }
 
-  payment() {
+  payment(data: any) {
+
     Conekta.setPublicKey(CONEKTA_PUBLIC_KEY);
 
-    const number = Conekta.card.validateNumber(this.number);
-    const exp = Conekta.card.validateExpirationDate(this.exp_month, this.exp_year);
-    const cvc = Conekta.card.validateCVC(this.cvc);
+    const number = Conekta.card.validateNumber(data.numberCard);
+    const exp = Conekta.card.validateExpirationDate(data.exp_month, data.exp_year);
+    const cvc = Conekta.card.validateCVC(data.ccv);
 
-    if (!(number && exp && cvc == true)) {
-      swal('Datos de la tarjeta no válidos', ':(', 'error');
-      return 1;
+    if (!(number && exp && cvc === true)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Los datos de la tarjeta no son validos'
+      });
+      return;
     }
 
     const tokenParams = {
-        'card': {
-            'number': this.number,
-            'name': this.name,
-            'exp_year': this.exp_year,
-            'exp_month': this.exp_month,
-            'cvc': this.cvc,
-            'address': {
-                'street1': this.street1,
-                'street2': this.street2,
-                'city': this.city,
-                'state': this.state,
-                'zip': this.zip,
-                'country': this.country
-            }
+      'card': {
+        'number': data.numberCard,
+        'name': data.name,
+        'exp_year': data.exp_year,
+        'exp_month': data.exp_month,
+        'ccv': data.ccv,
+        'address': {
+          'street1': data.street1,
+          'street2': data.street2,
+          'city': data.city,
+          'state': data.state,
+          'zip': data.zipcode,
+          'country': data.country
         }
+      }
     };
 
-    const successResponseHandler = function(token) {
-        const info = {
-            'user': this.id,
-            'plan': this.plan,
-            'token_card': token
-        };
-
-        this.http.post(`${URL_SERVICIOS}/addSuscripcion`, info)
-        .subscribe(
-          data => {
-           console.log(data);
-           swal(':)', 'Pago realizado con éxito', 'success');
-          }, error => {
-            console.log(error);
-            swal('¡Error! :(', 'Inténtelo de nuevo', 'error');
-          }
-        );
-    };
-
-    const errorResponseHandler = function(error) {
-        swal('¡Opps! ocurrio algún error', ':(', 'error');
-        console.error(error);
-    };
-
-    Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+    Conekta.Token.create(tokenParams, this.successResponseHandler.bind(this), this.errorResponseHandler.bind(this));
   }
 
+  errorResponseHandler(error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'el servicio no esta disponible por el momento '
+    });
+    console.error(error);
+  }
+
+  successResponseHandler (token) {
+    this.http.post(
+      `${URL_SERVICIOS}/addSuscripcion`,
+      {
+        'user': this.id,
+        'plan': this.plan,
+        'token_card': token
+      })
+      .subscribe(
+        data => {
+          console.log(data);
+          Swal.fire(
+            {
+              icon: 'success',
+              title: 'Operación éxitosa',
+              text: 'Se pago correctamente, su suscripción se renovo!'
+            }
+          );
+        }, error => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'el servicio no esta disponible por el momento '
+          });
+        }
+      );
+  }
+
+  submit() {
+    this.payment(this.form.value);
+  }
+
+  cancel() {
+    this.buttons = true;
+    this.card = false;
+  }
+
+  paymentOxxo() {
+    Swal.showLoading();
+    this.card = false;
+
+    this.http.post(
+      `${URL_SERVICIOS}/pagoOXXO`,
+      {
+        'suscripcion': this.id,
+        'plan': (this.form.value).typePlan.id
+      })
+      .subscribe(
+        response => {
+          console.log(response);
+          Swal.fire(
+            {
+              icon: 'success',
+              title: 'Operación éxitosa',
+              text: 'Se genero el recibo, le llegara a su correo, deberá pagar en cualquier oxxo y el sistema activará su cuenta'
+            }
+          );
+        }, error => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'el servicio no esta disponible por el momento '
+          });
+        }
+      );
+  }
+
+  paymentSPEI() {
+    Swal.showLoading();
+    this.card = false;
+    this.http.post(
+      `${URL_SERVICIOS}/pagoSPEI`,
+      {
+        'suscripcion': this.id,
+        'plan': (this.form.value).typePlan.id
+      })
+      .subscribe(
+        response => {
+          console.log(response);
+          Swal.fire(
+            {
+              icon: 'success',
+              title: 'Operación éxitosa',
+              text: 'Se genero el recibo, le llegara a su correo, deberá pagar en cualquier oxxo y el sistema activará su cuenta'
+            }
+          );
+        }, error => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'el servicio no esta disponible por el momento '
+          });
+        }
+      );
+  }
 }
