@@ -118,7 +118,6 @@ export class FirmComponent implements AfterViewInit {
     }).then((result) => {
       if (result.value) {
         Swal.showLoading();
-        console.log('PACIENTE  --> ', this.user.id);
         this._firm.setFirm(this.canvasEl.toDataURL(), this.user.id).subscribe(
           response => {
             this._userService.getDataUser(localStorage.getItem('username'))

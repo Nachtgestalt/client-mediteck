@@ -11,15 +11,15 @@ export class FirmGuardGuard implements CanActivate {
   user: any;
 
   constructor() {
-    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   canActivate() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     if (this.user.Tipo_usuario === PACIENTE) {
-      if (this.user.signature === null) {
-        return false;
-      } else {
+      if (this.user.signature !== null && this.user.signature !== '') {
         return true;
+      } else {
+        return false;
       }
     }
     return true;

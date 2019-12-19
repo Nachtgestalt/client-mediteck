@@ -14,7 +14,7 @@ export class DashboardComponent {
   constructor(public _dashboardMenuService: DashboardMenuService) {
     this.user = JSON.parse(localStorage.getItem('user'));
     if (this.user.Tipo_usuario === PACIENTE) {
-      if (this.user.signature === null) {
+      if (this.user.signature === null || this.user.signature === '') {
         this.acceptTerminus = true;
       }
     }
