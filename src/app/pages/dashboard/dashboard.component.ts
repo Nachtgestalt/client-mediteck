@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {DashboardMenuService} from '../../services/dashboard-menu/dashboard-menu.service';
 import {PACIENTE} from '../../config/config';
 
@@ -11,6 +11,7 @@ export class DashboardComponent {
   user: any;
   acceptTerminus = false;
 
+
   constructor(public _dashboardMenuService: DashboardMenuService) {
     this.user = JSON.parse(localStorage.getItem('user'));
     if (this.user.Tipo_usuario === PACIENTE) {
@@ -18,5 +19,9 @@ export class DashboardComponent {
         this.acceptTerminus = true;
       }
     }
+  }
+
+  acceptTerminusChange(accept) {
+    this.acceptTerminus = accept;
   }
 }

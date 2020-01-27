@@ -1,5 +1,5 @@
 <div class="container-fluid animated fadeIn fast">
-  <div class="row">
+  <div class="row" *ngIf="!acceptTerminus">
     <div class="col-lg-4 col-md-6" *ngFor="let menu of _dashboardMenuService.menu; let i of index">
       <div class="card">
         <div class="body">
@@ -10,8 +10,12 @@
   </div>
 
 
-  <div class="container">
-    <app-firm *ngIf="acceptTerminus"></app-firm>
+  <div class="container" *ngIf="acceptTerminus">
+    <div class="card">
+      <div class="body">
+        <app-firm (acceptTerminus)="acceptTerminusChange($event)"></app-firm>
+      </div>
+    </div>
   </div>
 </div>
 

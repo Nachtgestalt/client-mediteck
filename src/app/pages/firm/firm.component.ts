@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {fromEvent} from 'rxjs';
 import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
 import {UserService} from '../../services/user/user.service';
@@ -16,10 +16,9 @@ export class FirmComponent implements AfterViewInit {
   @ViewChild('canvas') public canvas: ElementRef;
   @Input() public width = 500;
   @Input() public height = 200;
+  @Output() acceptTerminus: EventEmitter<any>;
 
   form: FormGroup;
-
-
   private cx: CanvasRenderingContext2D;
   private user: any;
   public show = true;
@@ -35,7 +34,7 @@ export class FirmComponent implements AfterViewInit {
         accept: new FormControl('', [Validators.required]),
       }
     );
-
+    this.acceptTerminus = new EventEmitter<any>();
   }
 
   public ngAfterViewInit() {
@@ -131,8 +130,9 @@ export class FirmComponent implements AfterViewInit {
                   Swal.fire({
                     icon: 'success',
                     title: 'Operación Éxitosa',
-                    text: 'Se aceptaron los términos y conficiones satisfactoriamente'
+                    text: 'Se aceptaron los términos y condiciones satisfactoriamente'
                   });
+                  this.acceptTerminus.emit(false);
                 },
                 error1 => {
                   console.log('error1 --> ', error1);
