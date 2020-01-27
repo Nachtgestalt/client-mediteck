@@ -8,22 +8,22 @@
               <h3 class="section-heading text-uppercase mt-3">Tu suscripción caduco, llena los datos para renovarla</h3>
             </div>
           </div>
-            <!--Plans-->
+          <!--Plans-->
           <form (ngSubmit)="submit()" [formGroup]="form">
-          <div class="row">
-            <div class="col-md-10">
-              <mat-form-field class="w-100" appearance="outline">
-                <mat-label>Selecciona tu plan</mat-label>
-                <mat-select formControlName="typePlan" (valueChange)="showButtons()">
-                  <mat-option *ngFor="let plan of plans" [value]="plan">
-                    {{plan.Nombre}} - {{plan.Precio}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-md-2">
-              <button type="button" class="btn btn-danger float-left" [routerLink]="['/']">Cancelar</button>
-            </div>
+            <div class="row">
+              <div class="col-md-10">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Selecciona tu plan</mat-label>
+                  <mat-select formControlName="typePlan" (valueChange)="showButtons()">
+                    <mat-option *ngFor="let plan of plans" [value]="plan">
+                      {{plan.Nombre}} - {{plan.Precio}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-danger float-left" [routerLink]="['/']">Cancelar</button>
+              </div>
 
             </div>
             <!--Plans-->

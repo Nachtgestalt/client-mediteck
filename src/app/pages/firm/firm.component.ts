@@ -22,7 +22,7 @@ export class FirmComponent implements AfterViewInit {
 
   private cx: CanvasRenderingContext2D;
   private user: any;
-  private show = true;
+  public show = true;
   canvasEl: HTMLCanvasElement;
 
   constructor(
@@ -108,7 +108,7 @@ export class FirmComponent implements AfterViewInit {
   submit() {
     Swal.fire({
       title: 'Confirmación',
-      text: '¿Esta seguro de guardar esta firma?',
+      text: '¿Está seguro de guardar esta firma?',
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -131,7 +131,7 @@ export class FirmComponent implements AfterViewInit {
                   Swal.fire({
                     icon: 'success',
                     title: 'Operación Éxitosa',
-                    text: 'Se acepto los términos y conficiones satisfactoriamente'
+                    text: 'Se aceptaron los términos y conficiones satisfactoriamente'
                   });
                 },
                 error1 => {
@@ -140,7 +140,7 @@ export class FirmComponent implements AfterViewInit {
                   Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'El servicio no esta disponible en este momento'
+                    text: 'El servicio no está disponible en este momento'
                   });
                 }
               );
@@ -151,7 +151,7 @@ export class FirmComponent implements AfterViewInit {
             Swal.fire({
               icon: 'error',
               title: 'Error',
-              text: 'El servicio no esta disponible en este momento'
+              text: 'El servicio no está disponible en este momento'
             });
           }
         );

@@ -65,6 +65,7 @@ import {ScheduleDateComponent} from '../modals/schedule-date/schedule-date.compo
 import { FirmComponent } from './firm/firm.component';
 import { RecetaComponent } from './receta/receta.component';
 import { NotPaidComponent } from './not-paid/not-paid.component';
+import { ContractComponent } from './payments/contract/contract.component';
 
 @NgModule({
   providers: [
@@ -150,6 +151,7 @@ import { NotPaidComponent } from './not-paid/not-paid.component';
     FirmComponent,
     RecetaComponent,
     NotPaidComponent,
+    ContractComponent,
   ],
   entryComponents: [
     InternComponent,

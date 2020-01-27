@@ -202,7 +202,7 @@ export class PaymentsComponent implements OnInit {
             {
               icon: 'success',
               title: 'Operación éxitosa',
-              text: 'Se genero el recibo, le llegara a su correo, deberá pagar en cualquier oxxo y el sistema activará su cuenta'
+              text: 'Se generó el recibo, le llegará a su correo, deberá pagar en cualquier oxxo y el sistema activará su cuenta'
             }
           );
         }, error => {
@@ -210,7 +210,7 @@ export class PaymentsComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'el servicio no esta disponible por el momento '
+            text: 'El servicio no está disponible por el momento '
           });
         }
       );

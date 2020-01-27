@@ -2,10 +2,14 @@
   <div class="title">
     <h1>Términos y condiciones</h1>
   </div>
+  <div class="textContract">
+    <app-contract></app-contract>
+  </div>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="row margen-top">
       <div class="col">
-        <input type="checkbox" class="checkbox" formControlName="accept"> He leído los términos y condiciones. A continuación tiene que generar
+        <input type="checkbox" class="checkbox" formControlName="accept"> He leído los términos y condiciones. A
+        continuación tiene que generar
         una
         firma electrónica para saber que acepta lo anterior mencionado
       </div>
@@ -25,9 +29,8 @@
       </div>
 
       <div class="col-md-3">
-        <button class="btn btn-warning float-right" (click)="clearCanvas()">Limpiar</button>
+        <button class="btn btn-warning float-right" type="button" (click)="clearCanvas()">Limpiar</button>
       </div>
     </div>
   </form>
-  x
 </div>
