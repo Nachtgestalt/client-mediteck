@@ -5,7 +5,7 @@ import {NotPaidComponent} from './pages/not-paid/not-paid.component';
 
 const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
-  { path: ' ', component: PaymentsComponent},
+  { path: 'payments', component: PaymentsComponent},
   { path: 'notPaid', component: NotPaidComponent},
 ];
 
