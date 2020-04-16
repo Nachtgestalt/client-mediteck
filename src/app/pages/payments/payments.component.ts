@@ -7,8 +7,6 @@ import Swal from 'sweetalert2';
 
 declare function init_plugins();
 
-let Conekta;
-
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
@@ -30,20 +28,19 @@ export class PaymentsComponent implements OnInit {
   plan: any;
 
   constructor(public http: HttpClient) {
-
     this.form = new FormGroup(
       {
         typePlan: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required]),
-        numberCard: new FormControl('', [Validators.required]),
-        exp_year: new FormControl('', [Validators.required]),
-        exp_month: new FormControl('', [Validators.required]),
-        ccv: new FormControl('', [Validators.required]),
+        numberCard: new FormControl('', [Validators.required, Validators.min(1000000000000000), Validators.max(9999999999999999)]),
+        exp_year: new FormControl('', [Validators.required, Validators.min(20), Validators.max(99)]),
+        exp_month: new FormControl('', [Validators.required, Validators.min(1), Validators.max(12)]),
+        ccv: new FormControl('', [Validators.required, Validators.min(100)]),
         street1: new FormControl('', [Validators.required]),
-        street2: new FormControl('', [Validators.required]),
+        street2: new FormControl('', []),
         city: new FormControl('', [Validators.required]),
         state: new FormControl('', [Validators.required]),
-        zipcode: new FormControl('', [Validators.required]),
+        zipcode: new FormControl('', [Validators.required, Validators.min(1000)]),
         country: new FormControl('', [Validators.required]),
       },
     );
@@ -72,20 +69,10 @@ export class PaymentsComponent implements OnInit {
 
   payment(data: any) {
 
+    // @ts-ignore
     Conekta.setPublicKey(CONEKTA_PUBLIC_KEY);
-
-    const number = Conekta.card.validateNumber(data.numberCard);
-    const exp = Conekta.card.validateExpirationDate(data.exp_month, data.exp_year);
-    const cvc = Conekta.card.validateCVC(data.ccv);
-
-    if (!(number && exp && cvc === true)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Los datos de la tarjeta no son validos'
-      });
-      return;
-    }
+    // @ts-ignore
+    Conekta.setLanguage('es');
 
     const tokenParams = {
       'card': {
@@ -93,7 +80,7 @@ export class PaymentsComponent implements OnInit {
         'name': data.name,
         'exp_year': data.exp_year,
         'exp_month': data.exp_month,
-        'ccv': data.ccv,
+        'cvc': data.ccv,
         'address': {
           'street1': data.street1,
           'street2': data.street2,
@@ -104,26 +91,30 @@ export class PaymentsComponent implements OnInit {
         }
       }
     };
-
+// @ts-ignore
     Conekta.Token.create(tokenParams, this.successResponseHandler.bind(this), this.errorResponseHandler.bind(this));
   }
 
   errorResponseHandler(error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'el servicio no esta disponible por el momento '
-    });
+
+    if (error.type.search('error') !== -1) {
+      Swal.fire({
+        icon: 'error',
+        title: error.message_to_purchaser,
+        text: error.param
+      });
+    }
     console.error(error);
   }
 
-  successResponseHandler (token) {
+  successResponseHandler(token) {
+    const planSelect = this.form.get('typePlan').value;
     this.http.post(
       `${URL_SERVICIOS}/addSuscripcion`,
       {
-        'user': this.id,
-        'plan': this.plan,
-        'token_card': token
+        'plan': planSelect.id,
+        'token_card': token,
+        'suscripcion': this.id
       })
       .subscribe(
         data => {
@@ -214,5 +205,15 @@ export class PaymentsComponent implements OnInit {
           });
         }
       );
+  }
+
+  getAttrMessage(attr: string) {
+    const abstractControl = this.form.get(attr);
+    return abstractControl.hasError('required') ? '* Requerido' :
+      abstractControl.hasError('minlength') ? 'No se cumple el número minimo de caracteres' :
+        abstractControl.hasError('min') ? 'No se cumple el número minimo de caracteres' :
+          abstractControl.hasError('maxlength') ? 'Se alcanzo el número máximo de caracteres' :
+            abstractControl.hasError('max') ? 'Se alcanzo el número máximo de caracteres' :
+              '';
   }
 }
