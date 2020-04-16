@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   AngularFireStorage,
   AngularFireStorageReference,
@@ -8,6 +8,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 
 import {Observable} from 'rxjs/Observable';
 import {map} from 'rxjs/operators/map';
+
 declare var $: any;
 
 @Component({
@@ -15,7 +16,7 @@ declare var $: any;
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.css']
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadState: Observable<string>;
@@ -27,8 +28,11 @@ export class DocumentsComponent {
   records: any;
   name: string = '';
 
-  constructor(public afStorage: AngularFireStorage, public db: AngularFireDatabase) {
+  ngOnInit(): void {
     this.getRecords();
+  }
+
+  constructor(public afStorage: AngularFireStorage, public db: AngularFireDatabase) {
   }
 
   upload() {
@@ -71,6 +75,7 @@ export class DocumentsComponent {
           .equalTo(this.medicalCenter))
       .valueChanges().subscribe(data => {
       this.records = data;
+      console.log(data);
     });
   }
 
