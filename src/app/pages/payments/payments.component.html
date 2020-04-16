@@ -56,12 +56,14 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Nombre completo</mat-label>
                     <input matInput type="text" formControlName="name">
+                    <mat-error>{{getAttrMessage('name')}}</mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col">
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Número de tarjeta</mat-label>
-                    <input matInput type="number" formControlName="numberCard">
+                    <input matInput type="text" formControlName="numberCard">
+                    <mat-error>{{getAttrMessage('numberCard')}}</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -69,15 +71,17 @@
               <div class="row">
                 <div class="col">
                   <mat-form-field class="w-100" appearance="outline">
-                    <mat-label>Año de expiración</mat-label>
-                    <input matInput type="number" formControlName="exp_year">
+                    <mat-label>Mes de expiración</mat-label>
+                    <input matInput type="number" formControlName="exp_month">
+                    <mat-error>{{getAttrMessage('exp_month')}}</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col">
                   <mat-form-field class="w-100" appearance="outline">
-                    <mat-label>Mes de expiración</mat-label>
-                    <input matInput type="number" formControlName="exp_month">
+                    <mat-label>Año de expiración</mat-label>
+                    <input matInput type="number" formControlName="exp_year">
+                    <mat-error>{{getAttrMessage('exp_year')}}</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -85,6 +89,7 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>CCV</mat-label>
                     <input matInput type="number" formControlName="ccv">
+                    <mat-error>{{getAttrMessage('ccv')}}</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -93,14 +98,16 @@
                 <div class="col">
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Dirección</mat-label>
-                    <input matInput type="number" formControlName="street1">
+                    <input matInput type="text" formControlName="street1">
+                    <mat-error>{{getAttrMessage('street1')}}</mat-error>
                   </mat-form-field>
                 </div>
 
                 <div class="col">
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Dirección 2</mat-label>
-                    <input matInput type="number" formControlName="street2">
+                    <input matInput type="text" formControlName="street2">
+                    <mat-error>{{getAttrMessage('street2')}}</mat-error>
                   </mat-form-field>
                 </div>
               </div>
@@ -111,6 +118,7 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>País</mat-label>
                     <input matInput type="text" formControlName="country">
+                    <mat-error>{{getAttrMessage('country')}}</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -118,6 +126,7 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Código Postal</mat-label>
                     <input matInput type="number" formControlName="zipcode">
+                    <mat-error>{{getAttrMessage('zipcode')}}</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -125,6 +134,7 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Ciudad</mat-label>
                     <input matInput type="text" formControlName="city">
+                    <mat-error>{{getAttrMessage('city')}}</mat-error>
                   </mat-form-field>
                 </div>
 
@@ -132,6 +142,7 @@
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Estado</mat-label>
                     <input matInput type="text" formControlName="state">
+                    <mat-error>{{getAttrMessage('state')}}</mat-error>
                   </mat-form-field>
                 </div>
               </div>

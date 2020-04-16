@@ -15,7 +15,10 @@ export const URL_SERVICIOS = 'https://api.clinitec.com.mx';
 export const GRANT_TYPE = 'password';
 export const CLIENT_ID = '1';
 export const DESTINO = 'Client';
-export const CONEKTA_PUBLIC_KEY = 'key_BahEESZgjd9cUKGmqiL5PcQ';
+// DEV
+// export const CONEKTA_PUBLIC_KEY = 'key_BahEESZgjd9cUKGmqiL5PcQ';
+// PROD
+export const CONEKTA_PUBLIC_KEY = 'key_a2TFeHzoAFk9BFWZ4arcZRQ';
 
 // TOKEN DEL SERVER NUEVO
 export const CLIENT_SECRET = '5prs81bNv9aEugCEJ8SdbQIjKbg2geRBP3Dd4dHQ';
