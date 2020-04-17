@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient} from '@angular/common/http';
+import {Component, OnInit, Input} from '@angular/core';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClient} from '@angular/common/http';
+import {AuthService} from '../../services/auth/auth.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-date',
@@ -8,45 +10,45 @@ import { HttpClient} from '@angular/common/http';
   styleUrls: ['./add-date.component.css']
 })
 export class AddDateComponent implements OnInit {
-  
+  @Input() patient;
+  form: FormGroup;
+
   private modalRef: NgbModalRef;
 
-  summary:string;
-  location:string;
+  summary: string;
+  location: string;
   start_dateTime: any;
-  end_dateTime:any;
+  end_dateTime: any;
 
-  constructor(private modalService: NgbModal, public http:HttpClient){}
+  constructor(private modalService: NgbModal,
+              public http: HttpClient,
+              private authService: AuthService) {
+  }
 
-  open(content){
+  ngOnInit() {
+    this.initFormGroup();
+  }
+
+  initFormGroup() {
+    this.form = new FormGroup({
+      'Paciente': new FormControl(`${this.patient.Nombre} ${this.patient.Apellidos}`),
+      'Lugar': new FormControl(),
+      'Descripcion': new FormControl(),
+      'Fecha_inicio': new FormControl(new Date().toISOString(), Validators.required),
+      'Fecha_fin': new FormControl(new Date().toISOString(), Validators.required)
+    });
+  }
+
+  open(content) {
     this.modalRef = this.modalService.open(content);
   }
 
-  ngOnInit() { }
-
-  addDate(){
-    let url_calendar = "https://www.googleapis.com/calendar/v3/calendars/sebastian.barrera1996@gmail.com/events";
-    //let url_calendar = `https://www.googleapis.com/calendar/v3/calendars/${localStorage.getItem('google_calendar_id')}/events`
-    let au = {
-      'summary': this.summary,
-      'location': this.location,
-      'start': {
-        'dateTime': this.start_dateTime
-      },
-      'end': {
-        'dateTime': this.end_dateTime
-      },
-    }
-    this.http.post(url_calendar,au,{
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem('google_token')}`
-      }
-    }).subscribe(
-      data =>{
-        console.log(data);
-      },
-      error=>{
-        console.error(error);
+  addDate() {
+    console.log(this.form.value);
+    this.authService.insertEvent(this.form.value).then(
+      resp => {
+        console.log(resp);
+        // this.dialogRef.close();
       }
     );
   }

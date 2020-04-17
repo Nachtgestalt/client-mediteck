@@ -23,11 +23,14 @@ export class AuthService {
       console.log('Loaded client');
 
       gapi.client.init({
-        apiKey: 'AIzaSyCbFB4KgEA6xtYwipfcJSA-SZ1a-5TALk8',
+        apiKey: 'AIzaSyC-ECMVVIWyVn4-TPh7hSGb-M8RbTgQVi0',
+        // apiKey: 'AIzaSyCbFB4KgEA6xtYwipfcJSA-SZ1a-5TALk8',
         // apiKey: 'AIzaSyDQH-b3Q8dx2wrxfMaSktAIsMDjbKYvBmA',
-        clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
+        clientId: '824775533589-jm0svg8m49chrs439lssp6lflqloodvp.apps.googleusercontent.com',
+        // clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-        scope: 'https://www.googleapis.com/auth/calendar'
+        scope: 'https://www.googleapis.com/auth/calendar',
+        cookiepolicy: 'single_host_origin'
       });
 
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
@@ -56,7 +59,7 @@ export class AuthService {
   }
 
   async getCalendar() {
-    let calendarItems = [];
+    const calendarItems = [];
     const auDate = new Date().toISOString();
     console.log();
     const events = await gapi.client.calendar.events.list({
@@ -94,7 +97,8 @@ export class AuthService {
         timeZone: 'America/Mexico_City'
       },
       summary: `Cita con ${payload.Paciente}`,
-      description: payload.Descripcion
+      description: payload.Descripcion,
+      location: payload.Lugar
     });
 
     await this.getCalendar();

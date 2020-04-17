@@ -48,7 +48,7 @@
               <p class="list-name mb-0"> Edad: {{patient.Edad}} </p>
               <p class="list-name mb-0"> Dirección: {{patient.Direccion}} </p>
             </td>
-            <app-add-date></app-add-date>
+            <app-add-date [patient]="patient"></app-add-date>
             <button class="btn btn-sm btn-default" [routerLink]="['/consulta', patient.id]">Nueva consulta
             </button>
             <button class="btn btn-warning" [routerLink]="['/detalle-paciente', patient.id]">Revisar

@@ -13,7 +13,7 @@
               <div class="tab-pane table-responsive active" id="All">
                   <table class="table m-b-0 table-hover">
                       <thead>
-                          <tr>                                       
+                          <tr>
                               <th>Nombre</th>
                               <th>Fecha de nacimiento</th>
                               <th>Dirección</th>
@@ -32,11 +32,11 @@
                               <td>{{info.Tipo_sangre}}</td>
                               <td>{{info.Fecha_ingreso}}</td>
                               <td>
-                                <app-see-indications [indicaciones]="info.indicaciones" [medicamentos]="info.medicamento"></app-see-indications>
+                                <app-see-indications style="cursor: pointer" [indicaciones]="info.indicaciones" [medicamentos]="info.medicamento"></app-see-indications>
                               </td>
                           </tr>
                       </tbody>
-                  </table>                            
+                  </table>
               </div>
           </div>
           <!--Table-->

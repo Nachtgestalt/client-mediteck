@@ -21,7 +21,6 @@ import {UtilsService} from './utils/utils.service';
 import {MedicalHistoryService} from './medical-history/medical-history.service';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import {LaboratoryStudiesService} from './laboratory-studies/laboratory-studies.service';
 
 @NgModule({
   imports: [
@@ -30,7 +29,6 @@ import {LaboratoryStudiesService} from './laboratory-studies/laboratory-studies.
     AngularFireAuthModule,
   ],
   providers: [
-    LaboratoryStudiesService,
     LeftsidebarService,
     DoctorService,
     NurseService,

@@ -58,7 +58,7 @@ export class NewMedicalConsultationComponent implements OnInit {
     this._autocompleteDataService.getLaboratorys()
       .subscribe((res: any) => {
         this.laboratories = res;
-        console.log(res);
+        console.log('Laboratorios', res);
       });
   }
 
