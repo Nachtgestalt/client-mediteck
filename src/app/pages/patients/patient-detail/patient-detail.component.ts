@@ -17,6 +17,7 @@ export class PatientDetailComponent implements OnInit {
 
   filteredOptionsDiagnostics: Observable<any[]>;
   filteredOptionsMedicine: Observable<any[]>[] = [];
+  filteredOptionsLaboratory: Observable<any>;
 
   doctor = JSON.parse(localStorage.getItem('user'));
   form: FormGroup;
@@ -31,6 +32,7 @@ export class PatientDetailComponent implements OnInit {
   patient: any;
   id;
   consultations: any;
+  laboratories = [];
 
   showConsultationDetail = false;
 
@@ -49,12 +51,52 @@ export class PatientDetailComponent implements OnInit {
         this.consultations = data.consultations;
         // this.loadData(this.id);
       });
+
+    this._autocompleteDataService.getLaboratorys()
+      .subscribe((res: any) => {
+        this.laboratories = res;
+        console.log('Laboratorios', res);
+      });
   }
 
   ngOnInit() {
     this.patientAge = this._utilsService.getAgeOnlyYear(this.patient.Fecha_nacimiento);
     console.log('Edad del paciente: ', this.patientAge);
     this.createFormGroup();
+
+    this.filteredOptionsLaboratory = this.formEstudios.get('Tipo_estudio').valueChanges
+      .pipe(
+        startWith<any>(''),
+        map(value => {
+          console.log(value);
+          return typeof value === 'string' ? value : value.Labororatorios;
+        }),
+        map(folio => folio ? this.filterLaboratories(folio) : this.laboratories.slice())
+      );
+
+    this.filteredOptionsMedicine[0] = this.formReceta.get('Medicamentos.0').get('Medicamento').valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          console.log(value);
+          // value ? this.filter(value || '') : new EmptyObservable();
+          return this.filterMedicine(value || '');
+        })
+      );
+
+    this.filteredOptionsDiagnostics = this.formNotas.get('Diagnostico').valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          console.log(value);
+          // value ? this.filter(value || '') : new EmptyObservable();
+          return this.filter(value || ' ');
+        })
+      );
 
     if (this.patientAge <= 5) {
       this.form.addControl('AntecedentesPerinatales', new FormGroup({
@@ -105,6 +147,7 @@ export class PatientDetailComponent implements OnInit {
       'Talla': new FormControl(''),
       'IMC': new FormControl(''),
       'FC': new FormControl(''),
+      'FR': new FormControl(''),
       'TR': new FormControl(''),
       'SVT': new FormControl(''),
       'Temperatura': new FormControl(''),
@@ -144,7 +187,7 @@ export class PatientDetailComponent implements OnInit {
     console.log(consultation);
     this.showConsultationDetail = true;
     this.form.setValue(consultation.consulta);
-    this.formNotas.setValue(consultation.nota);
+    this.formNotas.patchValue(consultation.nota);
     this.formReceta.patchValue(consultation.receta);
     this.formEstudios.patchValue(consultation.estudios);
     console.log('consultation.consulta: ', consultation.consulta);
@@ -193,7 +236,7 @@ export class PatientDetailComponent implements OnInit {
                 swal('Paciente eliminado exitosamente', {
                   icon: 'success',
                 });
-                this.router.navigate(['/listar_pacientes'])
+                this.router.navigate(['/listar_pacientes']);
               },
               error => {
                 swal('Algo salio mal', 'No se pudo eliminar este paciente', {
@@ -259,6 +302,13 @@ export class PatientDetailComponent implements OnInit {
           return option.Compuesto.toLowerCase().indexOf(val.toLowerCase()) >= 0;
         }))
       );
+  }
+
+  filterLaboratories(val: string) {
+    // call the service which makes the http-request
+    return this.laboratories.filter(option => {
+      return option.Labororatorios.toLowerCase().indexOf(val.toLowerCase()) === 0;
+    });
   }
 
 }

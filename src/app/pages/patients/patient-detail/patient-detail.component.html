@@ -269,7 +269,13 @@
                   <div class="form-group">
                     <label>Estudio solicitado:</label>
                     <input type="text" class="form-control" placeholder="Estudio solicitado*"
-                           formControlName="Tipo_estudio">
+                           formControlName="Tipo_estudio" [matAutocomplete]="laboratorie">
+                    <mat-autocomplete #laboratorie="matAutocomplete">
+                      <mat-option *ngFor="let speciality of filteredOptionsLaboratory | async"
+                                  [value]='speciality.Labororatorios'>
+                        {{ speciality.Labororatorios}}
+                      </mat-option>
+                    </mat-autocomplete>
                   </div>
 
                   <div class="form-group">
@@ -326,7 +332,7 @@
 
                     <div class="form-group col-sm-2">
                       <label>FR:</label>
-                      <input type="text" class="form-control ancho" id="tr" placeholder="TR" name="tr"
+                      <input type="text" class="form-control ancho" id="tr" placeholder="FR" name="fr"
                              formControlName="FR">
                     </div>
 
