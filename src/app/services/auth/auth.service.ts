@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Subject} from 'rxjs/Subject';
+import {auth} from 'firebase/app';
+import {Observable} from 'rxjs';
+import * as moment from 'moment';
 
 declare var gapi: any;
 
@@ -8,25 +11,28 @@ declare var gapi: any;
   providedIn: 'root'
 })
 export class AuthService {
+  userFirebase$: Observable<firebase.User>;
 
   user$: Subject<any> = new Subject();
   calendarItems$ = new Subject();
+  calendarItems = [];
 
   constructor(public afAuth: AngularFireAuth) {
     this.initClient();
-    setTimeout(() => this.user$.next(localStorage.getItem('google_id_token') != null), 100);
+    this.userFirebase$ = afAuth.authState;
+    // setTimeout(() => this.user$.next(localStorage.getItem('google_id_token') != null), 100);
   }
 
   // Initialize the Google API client with desired scopes
   initClient() {
-    gapi.load('client:auth2', () => {
+    gapi.load('client', () => {
       console.log('Loaded client');
 
       gapi.client.init({
-        apiKey: 'AIzaSyC-ECMVVIWyVn4-TPh7hSGb-M8RbTgQVi0',
+        apiKey: 'AIzaSyCR6VvN3971kjrUyqyyiaWX0mtSj22JEHk',
         // apiKey: 'AIzaSyCbFB4KgEA6xtYwipfcJSA-SZ1a-5TALk8',
         // apiKey: 'AIzaSyDQH-b3Q8dx2wrxfMaSktAIsMDjbKYvBmA',
-        clientId: '824775533589-jm0svg8m49chrs439lssp6lflqloodvp.apps.googleusercontent.com',
+        clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
         // clientId: '795718094400-nkb430lqpgk570e73ti9qko1j24ogljr.apps.googleusercontent.com',
         discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
         scope: 'https://www.googleapis.com/auth/calendar',
@@ -40,34 +46,45 @@ export class AuthService {
 
   async login() {
     const googleAuth = gapi.auth2.getAuthInstance();
-    console.log('ENTRO A LOGIN -->', googleAuth);
     const googleUser = await googleAuth.signIn();
-    console.log('ENTRO A LOGIN');
     const token = googleUser.getAuthResponse().id_token;
 
-    localStorage.setItem('google_id_token', googleUser.getAuthResponse().id_token);
-    this.user$.next(true);
+    console.log('Google user', googleUser);
+
+    const credential = auth.GoogleAuthProvider.credential(token);
+
+    const provider = new auth.GoogleAuthProvider();
+
+    provider.addScope('https://www.googleapis.com/auth/calendar');
+
+    // await this.afAuth.auth.signInWithPopup(provider);
+    await this.afAuth.auth.signInWithCredential(credential);
+
+    // localStorage.setItem('google_id_token', googleUser.getAuthResponse().id_token);
+    // this.user$.next(true);
     await this.getCalendar();
     // await this.afAuth.auth.signInAndRetrieveDataWithCredential(credential);
   }
 
   async logout() {
-    const googleAuth = gapi.auth2.getAuthInstance();
-    await googleAuth.signOut();
-    localStorage.removeItem('google_id_token');
-    this.user$.next(false);
+    await this.afAuth.auth.signOut();
+    // const googleAuth = gapi.auth2.getAuthInstance();
+    // await googleAuth.signOut();
+    // localStorage.removeItem('google_id_token');
+    // this.user$.next(false);
   }
 
   async getCalendar() {
     const calendarItems = [];
+    const startDate = moment().subtract(3, 'days').toISOString();
     const auDate = new Date().toISOString();
     console.log();
     const events = await gapi.client.calendar.events.list({
       calendarId: 'primary',
-      timeMin: new Date().toISOString(),
+      // timeMin: new Date().toISOString(),
+      timeMin: startDate,
       showDeleted: false,
       singleEvents: true,
-      maxResults: 10,
       orderBy: 'startTime'
     });
 
@@ -82,6 +99,7 @@ export class AuthService {
       };
       calendarItems.push(tmp_event);
     });
+    this.calendarItems = calendarItems;
     this.calendarItems$.next(calendarItems);
   }
 

@@ -40,7 +40,14 @@ export class AddDateComponent implements OnInit {
   }
 
   open(content) {
-    this.modalRef = this.modalService.open(content);
+    this.authService.userFirebase$.subscribe(e => {
+      if (!e) {
+        console.log(e);
+        this.authService.login();
+      } else {
+        this.modalRef = this.modalService.open(content);
+      }
+    });
   }
 
   addDate() {
@@ -48,7 +55,7 @@ export class AddDateComponent implements OnInit {
     this.authService.insertEvent(this.form.value).then(
       resp => {
         console.log(resp);
-        // this.dialogRef.close();
+        this.modalRef.close();
       }
     );
   }

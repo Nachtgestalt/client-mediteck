@@ -17,10 +17,29 @@ import {MatDialog} from '@angular/material';
 
 export class DatesComponent implements OnInit {
 
-  google_user = localStorage.getItem('google_id_token');
+  // google_user = localStorage.getItem('google_id_token');
   visible: boolean = true;
   dates: any;
-  options: OptionsInput;
+  options: OptionsInput = {
+    locale: 'es',
+    buttonText: {
+      today: 'Hoy',
+      month: 'Mes',
+      week: 'Semana',
+      day: 'Día',
+      list: 'Lista'
+    },
+    editable: false,
+    eventLimit: false,
+    header: {
+      left: 'prev today next',
+      center: 'title',
+      right: 'dayGridMonth ,timeGridWeek ,timeGridDay ,listMonth'
+    },
+    selectable: true,
+    events: [],
+    plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+  };
   @ViewChild('fullcalendar') ucCalendar: CalendarComponent;
 
   constructor(public http: HttpClient,
@@ -29,28 +48,11 @@ export class DatesComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Google user', this.google_user);
-    this.options = {
-      locale: 'es',
-      buttonText: {
-        today: 'Hoy',
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        list: 'Lista'
-      },
-      editable: false,
-      eventLimit: false,
-      header: {
-        left: 'prev today next',
-        center: 'title',
-        right: 'dayGridMonth ,timeGridWeek ,timeGridDay ,listMonth'
-      },
-      selectable: true,
-      events: [],
-      plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
-    };
-    setTimeout(() => this.auth.getCalendar(), 2000);
+    this.auth.userFirebase$.subscribe(e => {
+      if (e) {
+        this.auth.getCalendar();
+      }
+    });
   }
 
   insertEvent() {
@@ -63,6 +65,7 @@ export class DatesComponent implements OnInit {
     });
   }
 
-  updateCalendar() {
+  async updateCalendar() {
+    await this.auth.getCalendar();
   }
 }

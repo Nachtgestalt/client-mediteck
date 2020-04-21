@@ -1,21 +1,26 @@
 <div class="card">
   <div class="body">
     <div class="row justify-content-between">
-      <div class="" *ngIf="(auth.user$ | async)">
+      <div class="" *ngIf="(auth.userFirebase$ | async)">
         <button (click)="insertEvent()" class="btn btn-primary"> Añadir evento</button>
         <button (click)="updateCalendar()" class="btn btn-primary">Actualizar calendario</button>
       </div>
       <div class="">
-        <button (click)="auth.login()" *ngIf="!(auth.user$ | async)" class="btn btn-info">Iniciar sesión con Google</button>
-        <button (click)="auth.logout()" *ngIf="(auth.user$ | async)" class="btn btn-danger btn-sm">Cerrar sesión</button>
+        <button (click)="auth.login()" *ngIf="!(auth.userFirebase$ | async)" class="btn btn-info">Iniciar sesión con
+          Google
+        </button>
+        <button (click)="auth.logout()" *ngIf="(auth.userFirebase$ | async)" class="btn btn-danger btn-sm">Cerrar
+          sesión
+        </button>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <div *ngIf="options && (auth.user$ | async)">
-          <ng-fullcalendar #fullcalendar [options]="options"
-                           [eventsModel]="auth.calendarItems$ | async"></ng-fullcalendar>
+        <div *ngIf="options && (auth.userFirebase$ | async)">
+          <ng-fullcalendar
+            #fullcalendar [options]="options"
+            [eventsModel]="auth.calendarItems$ | async"></ng-fullcalendar>
         </div>
       </div>
     </div>

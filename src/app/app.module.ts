@@ -34,13 +34,21 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyDEGyy36ZZI0fr9_0vBEmCLIFS5vYTa2-k',
+      apiKey: 'AIzaSyCR6VvN3971kjrUyqyyiaWX0mtSj22JEHk',
       authDomain: 'clinitec-f4f3f.firebaseapp.com',
       databaseURL: 'https://clinitec-f4f3f.firebaseio.com',
       projectId: 'clinitec-f4f3f',
       storageBucket: 'clinitec-f4f3f.appspot.com',
       messagingSenderId: '124604988463'
     }),
+    // AngularFireModule.initializeApp({
+    //   apiKey: 'AIzaSyDEGyy36ZZI0fr9_0vBEmCLIFS5vYTa2-k',
+    //   authDomain: 'clinitec-f4f3f.firebaseapp.com',
+    //   databaseURL: 'https://clinitec-f4f3f.firebaseio.com',
+    //   projectId: 'clinitec-f4f3f',
+    //   storageBucket: 'clinitec-f4f3f.appspot.com',
+    //   messagingSenderId: '124604988463'
+    // }),
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
