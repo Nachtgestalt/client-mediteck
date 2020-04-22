@@ -414,9 +414,10 @@
 
                   <div class="form-group">
                     <label>Vacuna:</label>
-                    <select class="form-control" formControlName="idVacuna">
-                      <option *ngFor="let vaccine of vaccines" [value]="vaccine.id">{{vaccine.Nombre}}</option>
-                    </select>
+                    <input type="text" class="form-control" formControlName="idVacuna">
+<!--                    <select class="form-control" formControlName="idVacuna">-->
+<!--                      <option *ngFor="let vaccine of vaccines" [value]="vaccine.id">{{vaccine.Nombre}}</option>-->
+<!--                    </select>-->
                   </div>
                 </div>
 
