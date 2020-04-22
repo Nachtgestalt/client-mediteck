@@ -17,6 +17,8 @@ declare var $: any;
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent implements OnInit {
+  selectedFile;
+  selectedFileExt;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   uploadState: Observable<string>;
@@ -35,10 +37,21 @@ export class DocumentsComponent implements OnInit {
   constructor(public afStorage: AngularFireStorage, public db: AngularFireDatabase) {
   }
 
+  detectFile(e) {
+    this.selectedFile = e.target.files;
+    console.log(this.selectedFile);
+    this.selectedFileExt = this.getFileExtension(this.selectedFile[0].name);
+    console.log(this.selectedFileExt);
+  }
+
+  getFileExtension(filename) {
+    return filename.slice((filename.lastIndexOf('.') - 1 >>> 0) + 2);
+  }
+
   upload() {
     //Storage
     const id = Math.random().toString(36).substring(2);
-    this.ref = this.afStorage.ref(`files/${id}`);
+    this.ref = this.afStorage.ref(`files/${id}.${this.selectedFileExt}`);
     for (let selectedFile of [(<HTMLInputElement>document.getElementById('docsPDF')).files[0]]) {
       this.task = this.ref.put(selectedFile);
     }
@@ -46,7 +59,7 @@ export class DocumentsComponent implements OnInit {
     this.uploadProgress = this.task.percentageChanges();
     this.uploadProgress.subscribe(progress => {
       if (progress == 100) {
-        swal('¡Listo :)!', 'El archivo se ha subio con éxito', 'success');
+        swal('Archivo cargado', 'El archivo se ha cargado con éxito', 'success');
         this.task.then(snap => {
           snap.ref.getDownloadURL().then(data => {
             this.url = data;
@@ -56,12 +69,14 @@ export class DocumentsComponent implements OnInit {
               id: id,
               fileUrl: this.url,
               medicalCenter: this.medicalCenter,
-              name: this.name
+              name: this.name,
+              ext: this.selectedFileExt
             });
             //Reset
             this.name = '';
             let input = $('#docsPDF');
-            input.replaceWith(input.val('').clone(true));
+            input.val('');
+            // input.replaceWith(input.val('').clone(true));
           });
         });
       }
@@ -79,7 +94,7 @@ export class DocumentsComponent implements OnInit {
     });
   }
 
-  delete(id) {
+  delete(record) {
     swal({
       title: '¿Estas seguro?',
       text: 'Una vez eliminado el documento, no hay vuelta atras',
@@ -92,9 +107,9 @@ export class DocumentsComponent implements OnInit {
     })
       .then((willDelete) => {
         if (willDelete) {
-          let itemRef = this.db.object(`files/${id}`);
+          let itemRef = this.db.object(`files/${record.id}`);
           itemRef.remove();
-          let ref = this.afStorage.ref(`files/${id}`);
+          let ref = this.afStorage.ref(`files/${record.id}.${record.ext}`);
           ref.delete();
         }
       });

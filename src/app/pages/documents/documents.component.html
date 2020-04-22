@@ -15,7 +15,9 @@
                         </div>
                         <br/><br/>
                         <h5 class="card-title">Selecciona un archivo:</h5>
-                        <input id="docsPDF" type="file" accept="image/jpeg,image/gif,image/png, application/pdf" />
+                        <input id="docsPDF" type="file" accept="image/jpeg,image/gif,image/png, application/pdf"
+                               (change)="detectFile($event)"
+                        />
                         <br/><br/>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
@@ -41,7 +43,7 @@
                                             <td>{{record.name}}</td>
                                             <td>
                                                 <a class="btn btn-info" href="{{record.fileUrl}}" target="_blank" download>Descargar</a>
-                                                <button class="btn btn-danger" (click)="delete(record.id)">Eliminar</button>
+                                                <button class="btn btn-danger" (click)="delete(record)">Eliminar</button>
                                             </td>
                                         </tr>
                                     </tbody>
