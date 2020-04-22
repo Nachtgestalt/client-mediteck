@@ -40,4 +40,8 @@ export class ScheduleDateComponent implements OnInit {
     );
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+
 }

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {User} from '../../interfaces/user.interface';
 import {Oauth} from '../../interfaces/oauth.interface';
 import {post} from 'selenium-webdriver/http';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,8 @@ export class UserService {
   user: User;
 
   constructor(public http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private fireAuth: AuthService) {
     this.loadStorage();
   }
 
@@ -73,6 +75,7 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('idMedicalCenter');
+    this.fireAuth.logout();
     this.router.navigate(['/login']);
   }
 

@@ -32,6 +32,9 @@
                               <td>{{info.Tipo_sangre}}</td>
                               <td>{{info.Fecha_ingreso}}</td>
                               <td>
+                                <button class="btn btn-sm btn-default" (click)="egresar(info.idPaciente)">
+                                  Egresar
+                                </button>
                                 <app-see-indications style="cursor: pointer" [indicaciones]="info.indicaciones" [medicamentos]="info.medicamento"></app-see-indications>
                               </td>
                           </tr>

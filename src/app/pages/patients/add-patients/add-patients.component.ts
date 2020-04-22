@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PatientService} from '../../../services/patient/patient.service';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-add-patients',
@@ -15,9 +16,10 @@ export class AddPatientsComponent implements OnInit {
     {value: 1, viewValue: 'CASADO'},
     {value: 3, viewValue: 'DIVORCIADO'},
     {value: 4, viewValue: 'VIUDO'}
-    ];
+  ];
 
-  constructor( public _patientService: PatientService) { }
+  constructor(public _patientService: PatientService) {
+  }
 
   ngOnInit() {
     this.createFormGroup();
@@ -56,8 +58,12 @@ export class AddPatientsComponent implements OnInit {
           console.log(res);
         },
         error1 => {
-          swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
-          console.log(error1);
+          if (error1.error.code === 409) {
+            swal('Algo malo ha ocurrido', error1.error.error, 'error');
+          } else {
+            swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
+          }
+          console.log(error1.error);
         }
       );
 

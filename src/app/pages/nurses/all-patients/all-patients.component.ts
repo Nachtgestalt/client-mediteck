@@ -14,11 +14,12 @@ export class AllPatientsComponent implements OnInit {
 
   constructor(public http: HttpClient) {
 
-    let medCid = localStorage.getItem('idMedicalCenter');
+    const medCid = localStorage.getItem('idMedicalCenter');
     this.patients = this.http.get(`${URL_SERVICIOS}/pacientes-ingresados?idCentroMedico=${medCid}`);
 
     this.patients
       .subscribe(data => {
+        console.log(data);
         this.infoPatients = data;
       });
   }
@@ -28,6 +29,29 @@ export class AllPatientsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  egresar(id) {
+    swal({
+      title: '¿Estas seguro?',
+      text: 'De querer egresar a este paciente',
+      icon: 'warning',
+      buttons: {
+        cancel: true,
+        confirm: true
+      },
+      dangerMode: true
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          this.http.get(`${URL_SERVICIOS}/paciente-altaIngresado?idPaciente=${id}`)
+            .subscribe(data => {
+              console.log(data);
+              // window.location.reload();
+            });
+        }
+      });
+
   }
 }
 

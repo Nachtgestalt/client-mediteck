@@ -85,10 +85,19 @@ export class InternComponent implements OnInit {
     console.log(info);
 
     this.http.post(`${URL_SERVICIOS}/ingreso`, info)
-      .subscribe(data => {
-        console.log(data);
-        this.dialogRef.close(true);
-      });
+      .subscribe(
+        data => {
+          console.log(data);
+          this.dialogRef.close(true);
+        },
+        error => {
+          if (error.error.cde === 409) {
+            swal('Algo malo ha ocurrido', error.error.error, 'error');
+          } else {
+            swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
+          }
+        }
+        );
   }
 
   addMedicine(medicamento) {
