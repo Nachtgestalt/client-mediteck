@@ -11,13 +11,12 @@ import {URL_SERVICIOS} from '../../../config/config';
 export class AllPatientsComponent implements OnInit {
   patients: Observable<any>;
   infoPatients: any;
+  medCid = localStorage.getItem('idMedicalCenter');
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient) {}
 
-    const medCid = localStorage.getItem('idMedicalCenter');
-    this.patients = this.http.get(`${URL_SERVICIOS}/pacientes-ingresados?idCentroMedico=${medCid}`);
-
-    this.patients
+  loadData() {
+    this.http.get(`${URL_SERVICIOS}/pacientes-ingresados?idCentroMedico=${this.medCid}`)
       .subscribe(data => {
         console.log(data);
         this.infoPatients = data;
@@ -29,6 +28,7 @@ export class AllPatientsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
   }
 
   egresar(id) {
@@ -47,6 +47,7 @@ export class AllPatientsComponent implements OnInit {
           this.http.get(`${URL_SERVICIOS}/paciente-altaIngresado?idPaciente=${id}`)
             .subscribe(data => {
               console.log(data);
+              this.loadData();
               // window.location.reload();
             });
         }
