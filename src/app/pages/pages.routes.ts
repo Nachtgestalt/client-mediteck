@@ -49,7 +49,7 @@ const pagesRoutes: Routes = [
       {path: 'almacenes', component: WarehousesComponent, data: {titulo: 'Lista de almacenes', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'agregar-enfermera', component: AddNursesComponent, data: {titulo: 'Agregar Enfermera', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'lista_enfermeras', component: NursesComponent, data: {titulo: 'Enfermeras', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
-      {path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes del place', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
+      {path: 'pacientes-place', component: AllPatientsComponent, data: {titulo: 'Pacientes', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'cita', component: DatesComponent, data: {titulo: 'Citas', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'historial_medico', component: MedicalHistoryComponent, data: {titulo: 'Historial Medico', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},
       {path: 'notas', component: NotesComponent, data: {titulo: 'Notas', subtitle: 'Bienvenido'}, canActivate: [FirmGuardGuard]},

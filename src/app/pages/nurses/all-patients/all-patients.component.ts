@@ -10,14 +10,14 @@ import {URL_SERVICIOS} from '../../../config/config';
 })
 export class AllPatientsComponent implements OnInit {
   patients: Observable<any>;
-  infoPatients: any;
+  infoPatients: Array<any> = [];
   medCid = localStorage.getItem('idMedicalCenter');
 
   constructor(public http: HttpClient) {}
 
   loadData() {
     this.http.get(`${URL_SERVICIOS}/pacientes-ingresados?idCentroMedico=${this.medCid}`)
-      .subscribe(data => {
+      .subscribe((data: Array<any>) => {
         console.log(data);
         this.infoPatients = data;
       });

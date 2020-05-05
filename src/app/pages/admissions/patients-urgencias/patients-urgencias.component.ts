@@ -21,11 +21,15 @@ export class PatientsUrgenciasComponent implements OnInit {
 
   egresar: Observable<any>;
   patients: Observable<any>;
-  infoPatients: any;
+  infoPatients: Array<any> = []
 
   constructor(public http: HttpClient,
               public dialog: MatDialog) {
     this.searchableList = ['Nombre', 'Apellidos'];
+  }
+
+  ngOnInit() {
+    this.loadData();
   }
 
   public alta(id) {
@@ -53,10 +57,6 @@ export class PatientsUrgenciasComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-    this.loadData();
-  }
-
   openDialog(idPaciente): void {
     const dialogRef = this.dialog.open(InternComponent, {
       width: '30vw',
@@ -72,7 +72,7 @@ export class PatientsUrgenciasComponent implements OnInit {
   }
 
   loadData() {
-    let medCid = localStorage.getItem('idMedicalCenter');
+    const medCid = localStorage.getItem('idMedicalCenter');
     this.patients = this.http.get(`${URL_SERVICIOS}/pacientes-urgencias?idCentroMedico=${medCid}`);
 
     this.patients

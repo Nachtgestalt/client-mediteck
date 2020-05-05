@@ -27,7 +27,7 @@ export class EditNurseComponent implements OnInit {
     this.form = new FormGroup({
       'Nombre': new FormControl(),
       'Apellido': new FormControl(),
-      'Edad': new FormControl(),
+      'Fecha_nacimiento': new FormControl(),
       'Sexo': new FormControl(),
       'Cedula': new FormControl(),
       'Direccion': new FormControl(),
@@ -38,9 +38,9 @@ export class EditNurseComponent implements OnInit {
   loadData2Form(nurse) {
     console.log(this.nurse);
     this.form.controls['Nombre'].setValue(nurse.Nombre);
-    this.form.controls['Apellido'].setValue(nurse.Apellido);
+    this.form.controls['Apellido'].setValue(nurse.Apellidos);
     this.form.controls['Sexo'].setValue(nurse.Sexo);
-    this.form.controls['Edad'].setValue(nurse.Edad);
+    this.form.controls['Fecha_nacimiento'].setValue(nurse.Fecha_nacimiento);
     this.form.controls['Cedula'].setValue(nurse.Cedula);
     this.form.controls['Direccion'].setValue(nurse.Direccion);
   }

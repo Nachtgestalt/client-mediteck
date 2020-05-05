@@ -67,11 +67,14 @@ export class AddDoctorComponent implements OnInit {
         res => {
           swal('Doctor agregado', 'Doctor agregado con exito', 'success');
           console.log(res);
-          this.resetForm();
+          this.createFormGrouo();
         },
-        error1 => {
-          swal('Algo malo ha ocurrido', 'Error al agregar doctor', 'error');
-          console.log(error1);
+        error => {
+          if (error.error.code === 409) {
+            swal('Algo malo ha ocurrido', error.error.error, 'error');
+          } else {
+            swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
+          }
         }
       );
   }

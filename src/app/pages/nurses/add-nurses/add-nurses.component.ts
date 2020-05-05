@@ -21,6 +21,7 @@ export class AddNursesComponent implements OnInit {
     this.form = new FormGroup({
       'Nombre': new FormControl(),
       'Apellidos': new FormControl(),
+      'Fecha_nacimiento': new FormControl(),
       'Edad': new FormControl(),
       'Sexo': new FormControl(),
       'Telefono': new FormControl(),
