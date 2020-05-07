@@ -12,6 +12,7 @@ import {Observable, empty, of} from 'rxjs';
 import {EMPTY} from 'rxjs/internal/observable/empty';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import * as moment from 'moment';
+import {DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class NewMedicalConsultationComponent implements OnInit {
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private domSanitizer: DomSanitizer) {
     this.route.data
       .subscribe(data => {
         this.patient = data.patient;
@@ -156,6 +158,7 @@ export class NewMedicalConsultationComponent implements OnInit {
 
 
   save() {
+    let pdfResult;
     console.log(this.patientSelected.value);
     // this.form.get('idPaciente').setValue(Number(this.patientSelected.value));
     const newConsult = {
@@ -173,7 +176,11 @@ export class NewMedicalConsultationComponent implements OnInit {
         res => {
           console.log(res);
           swal('Consulta realizada', 'Consulta realizada con exito', 'success');
-          this.router.navigate(['listar_pacientes'])
+          pdfResult = this.domSanitizer.bypassSecurityTrustResourceUrl(
+            URL.createObjectURL(res)
+          );
+          window.open(pdfResult.changingThisBreaksApplicationSecurity);
+          this.router.navigate(['listar_pacientes']);
         }
       );
 

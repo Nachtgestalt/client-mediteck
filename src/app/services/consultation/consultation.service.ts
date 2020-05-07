@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {URL_SERVICIOS} from '../../config/config';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ConsultationService {
@@ -23,7 +24,22 @@ export class ConsultationService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     const body = JSON.stringify(consultation);
-    return this.http.post(this.urlConsultation, body, {headers});
+    return this.http.post(this.urlConsultation, body, {headers, responseType: 'blob'}).pipe(
+      map(res => {
+        return new Blob([res], { type: 'application/pdf' });
+      })
+    );
+  }
+
+  getRecipe(id) {
+    const url = `${URL_SERVICIOS}/getConsulta/${id}`;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    return this.http.get(url, {headers, responseType: 'blob'}).pipe(
+      map(res => {
+        return new Blob([res], { type: 'application/pdf' });
+      })
+    );
   }
 
   putConsultation(id, doctor) {

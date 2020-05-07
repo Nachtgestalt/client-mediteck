@@ -7,6 +7,7 @@ import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxj
 import {Observable} from 'rxjs/index';
 import {AutocompleteDataService} from '../../../services/autocompleteData/autocomplete-data.service';
 import {UtilsService} from '../../../services/utils/utils.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-patient-detail',
@@ -43,7 +44,8 @@ export class PatientDetailComponent implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private cdref: ChangeDetectorRef,
-              private _consultationService: ConsultationService) {
+              private _consultationService: ConsultationService,
+              private domSanitizer: DomSanitizer) {
     this.route.data
       .subscribe(data => {
         console.log(data);
@@ -121,6 +123,7 @@ export class PatientDetailComponent implements OnInit {
 
   createFormGroup() {
     this.form = new FormGroup({
+      'id': new FormControl(),
       'idCentro_medico': new FormControl(Number(localStorage.getItem('idMedicalCenter'))),
       'idMedico': new FormControl(this.doctor.id),
       'idPaciente': new FormControl(this.patient.id),
@@ -173,8 +176,9 @@ export class PatientDetailComponent implements OnInit {
   }
 
   setData2Form(consultation) {
+    this.createFormGroup();
     const medicines = this.formReceta.get('Medicamentos') as FormArray;
-    console.log(consultation.receta.Medicamentos.length);
+    console.log(consultation);
     while (medicines.length) {
       medicines.removeAt(0);
     }
@@ -186,7 +190,7 @@ export class PatientDetailComponent implements OnInit {
     // }
     console.log(consultation);
     this.showConsultationDetail = true;
-    this.form.setValue(consultation.consulta);
+    this.form.patchValue(consultation.consulta);
     this.formNotas.patchValue(consultation.nota);
     this.formReceta.patchValue(consultation.receta);
     this.formEstudios.patchValue(consultation.estudios);
@@ -246,6 +250,20 @@ export class PatientDetailComponent implements OnInit {
             );
         }
       });
+  }
+
+  printRecipe() {
+    let pdfResult;
+    const id = this.form.get('id').value;
+    this._consultationService.getRecipe(id)
+      .subscribe(
+      res => {
+        pdfResult = this.domSanitizer.bypassSecurityTrustResourceUrl(
+          URL.createObjectURL(res)
+        );
+        window.open(pdfResult.changingThisBreaksApplicationSecurity);
+      }
+    );
   }
 
   createItemMedicine(medicamentos?): FormGroup {
