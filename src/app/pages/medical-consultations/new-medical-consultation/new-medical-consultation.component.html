@@ -98,13 +98,13 @@
         <a class="nav-link active" data-toggle="tab" href="#HistoriaClinica">Historia Clinica</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#Receta">Receta Medica</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Notas">Notas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#Estudios">Estudios y análisis</a>
+        <a class="nav-link" data-toggle="tab" href="#Receta">Receta Medica</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#Estudios">Laboratorio y Gabinete</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#Vacunas">Vacunas</a>
@@ -262,6 +262,9 @@
                   </button>
                 </div>
               </div>
+              <div class="d-flex flex-row-reverse">
+                <button class="btn btn-info" (click)="printFile('receta')">Generar orden</button>
+              </div>
             </form>
           </div>
         </div>
@@ -296,6 +299,9 @@
                 <br>
                 <textarea class="form-control" placeholder="Descripción*"
                           formControlName="Descripcion"></textarea>
+              </div>
+              <div class="d-flex flex-row-reverse">
+                <button class="btn btn-info" (click)="printFile('estudio')">Generar orden</button>
               </div>
             </form>
           </div>
@@ -361,11 +367,11 @@
                          formControlName="TA">
                 </div>
 
-<!--                <div class="form-group col-sm-2">-->
-<!--                  <label>SVT:</label>-->
-<!--                  <input type="text" class="form-control ancho" placeholder="SVT"-->
-<!--                         formControlName="SVT">-->
-<!--                </div>-->
+                <!--                <div class="form-group col-sm-2">-->
+                <!--                  <label>SVT:</label>-->
+                <!--                  <input type="text" class="form-control ancho" placeholder="SVT"-->
+                <!--                         formControlName="SVT">-->
+                <!--                </div>-->
 
                 <div class="form-group col-sm-2">
                   <label>SO2:</label>
@@ -442,6 +448,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <button type="submit" class="float-right btn btn-primary text-center mt-1" (click)="save()">Guardar consulta</button>
+    <button type="submit" class="float-right btn btn-primary text-center mt-1" (click)="save()">Guardar consulta
+    </button>
   </div>
 </div>

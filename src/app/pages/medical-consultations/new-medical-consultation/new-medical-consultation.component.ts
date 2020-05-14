@@ -4,13 +4,9 @@ import {VaccineService} from '../../../services/vaccine/vaccine.service';
 import {PatientService} from '../../../services/patient/patient.service';
 import {ConsultationService} from '../../../services/consultation/consultation.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {QuestionService} from '../../../services/question/question.service';
-import {UtilsService} from '../../../services/utils/utils.service';
 import {AutocompleteDataService} from '../../../services/autocompleteData/autocomplete-data.service';
 import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxjs/operators';
-import {Observable, empty, of} from 'rxjs';
-import {EMPTY} from 'rxjs/internal/observable/empty';
-import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
+import {Observable} from 'rxjs';
 import * as moment from 'moment';
 import {DomSanitizer} from '@angular/platform-browser';
 
@@ -154,6 +150,28 @@ export class NewMedicalConsultationComponent implements OnInit {
       'Descripcion': new FormControl('')
     });
 
+  }
+
+  printFile(type: string) {
+    let pdfResult;
+    const newConsult = {
+      'consulta': this.form.value,
+      'receta': this.formReceta.value,
+      'vacunas': this.formVacunas.value,
+      'nota': this.formNotas.value,
+      'estudios': this.formEstudios.value
+    };
+
+    this._consultationService.printFile(newConsult, type)
+      .subscribe(
+        res => {
+          console.log(res);
+          pdfResult = this.domSanitizer.bypassSecurityTrustResourceUrl(
+            URL.createObjectURL(res)
+          );
+          window.open(pdfResult.changingThisBreaksApplicationSecurity);
+        }
+      );
   }
 
 

@@ -88,7 +88,7 @@
             <a class="nav-link" data-toggle="tab" href="#Notas">Notas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#Estudios">Estudios y análisis</a>
+            <a class="nav-link" data-toggle="tab" href="#Estudios">Laboratorio y Gabinete</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#Vacunas">Vacunas</a>
@@ -249,6 +249,9 @@
                       </button>
                     </div>
                   </div>
+                  <div class="d-flex flex-row-reverse">
+                    <button class="btn btn-info" (click)="printFile('receta')">Generar orden</button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -283,6 +286,9 @@
                     <br>
                     <textarea class="form-control" placeholder="Descripción*"
                               formControlName="Descripcion"></textarea>
+                  </div>
+                  <div class="d-flex flex-row-reverse">
+                    <button class="btn btn-info" (click)="printFile('estudio')">Generar orden</button>
                   </div>
                 </form>
               </div>
@@ -425,9 +431,9 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-row-reverse mt-5">
-          <button class="btn-success btn-lg rounded" (click)="printRecipe()">Generar receta</button>
-        </div>
+<!--        <div class="d-flex flex-row-reverse mt-5">-->
+<!--          <button class="btn-success btn-lg rounded" (click)="printRecipe()">Generar receta</button>-->
+<!--        </div>-->
       </div>
     </div>
   </div>

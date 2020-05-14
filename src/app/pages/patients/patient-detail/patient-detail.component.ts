@@ -198,9 +198,32 @@ export class PatientDetailComponent implements OnInit {
     console.log('Form consulta: ', this.form.value);
   }
 
+  printFile(type: string) {
+    let pdfResult;
+    const newConsult = {
+      'consulta': this.form.value,
+      'receta': this.formReceta.value,
+      'vacunas': this.formVacunas.value,
+      'nota': this.formNotas.value,
+      'estudios': this.formEstudios.value
+    };
+
+    this._consultationService.printFile(newConsult, type)
+      .subscribe(
+        res => {
+          console.log(res);
+          pdfResult = this.domSanitizer.bypassSecurityTrustResourceUrl(
+            URL.createObjectURL(res)
+          );
+          window.open(pdfResult.changingThisBreaksApplicationSecurity);
+        }
+      );
+  }
+
   reload(cerrado) {
+    console.log('Reload -> ', cerrado);
     if (cerrado) {
-      this.loadData(this.id);
+      this.loadData(this.patient.id);
     }
   }
 

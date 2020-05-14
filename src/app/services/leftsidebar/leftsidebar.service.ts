@@ -44,7 +44,6 @@ export class LeftsidebarService {
       submenu: [
         {titulo: 'Listar Enfermeras', subNumber: 10, url: '/lista_enfermeras'},
         {titulo: 'Agregar Enfermeras', subNumber: 11, url: '/agregar-enfermera'},
-        {titulo: 'Pacientes internados', subNumber: 1, url: '/pacientes-place'}
       ]
     },
     {
@@ -53,7 +52,8 @@ export class LeftsidebarService {
       number: 6,
       submenu: [
         {titulo: 'Listar pacientes', subNumber: 1, url: '/listar_pacientes'},
-        {titulo: 'Agregar pacientes', subNumber: 1, url: '/agregar-paciente'}
+        {titulo: 'Agregar pacientes', subNumber: 1, url: '/agregar-paciente'},
+        {titulo: 'Pacientes internados', subNumber: 1, url: '/pacientes-place'}
       ]
     },
     {
