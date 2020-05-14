@@ -14,6 +14,38 @@
   font-size: 1rem;
 }
 
+::ng-deep .list {
+  overflow: auto!important;
+}
+
+::ng-deep .sidebar .menu .list {
+  list-style: none;
+  margin: 0 5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: -moz-linear-gradient(-45deg, rgb(0, 27, 153) 0%, rgba(22,83,153,1) 51%, rgba(41,137,216,1) 82%, rgba(41,137,216,1) 82%, rgba(125,185,232,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgb(0, 27, 153) 0%,rgba(22,83,153,1) 51%,rgba(41,137,216,1) 82%,rgba(41,137,216,1) 82%,rgba(125,185,232,1) 100%);
+  background-image: url(../../../assets/images/header-sidebar.png), linear-gradient(135deg, rgb(0, 27, 153) 0%,rgba(22,83,153,1) 51%,rgba(41,137,216,1) 82%,rgba(41,137,216,1) 82%,rgba(125,185,232,1) 100%);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004799', endColorstr='#7db9e8',GradientType=1 );
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #02b7ff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #02CBFF;
+}
+
 /*.sidebar .user-info {*/
   /*position: relative;*/
   /*!*border-bottom: 1px solid #eee;*!*/

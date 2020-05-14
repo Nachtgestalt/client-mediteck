@@ -34,7 +34,7 @@ function init_plugins() {
 
   function CustomScrollbar() {
     $(".sidebar .menu .list").slimscroll({
-      height: "calc(100vh - 60px)",
+      height: "100vh",
       color: "rgba(0,0,0,0.2)",
       position: "left",
       size: "2px",
