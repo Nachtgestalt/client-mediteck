@@ -13,9 +13,9 @@ export class AddNoteComponent implements OnInit {
 
   @Output() cerrado = new EventEmitter;
   @Input() patientData: any;
-  
+
   private user = JSON.parse(localStorage.getItem('user'));
-  
+
   idUser = this.user.id;
 
   private modalRef: NgbModalRef;
@@ -23,8 +23,9 @@ export class AddNoteComponent implements OnInit {
 
   formNotas: FormGroup;
 
-  constructor( public _notesService: NotesService,
-               private modalService: NgbModal ) { }
+  constructor(public _notesService: NotesService,
+              private modalService: NgbModal) {
+  }
 
   ngOnInit() {
     this.createForm();
@@ -62,7 +63,7 @@ export class AddNoteComponent implements OnInit {
 
   confirm() {
     const payload = {
-      Tipo_nota: +this.formNotas.controls['Tipo_nota'].value(),
+      Tipo_nota: +this.formNotas.controls['Tipo_nota'].value,
       idUsuario: this.patientData.id,
       idMedico: this.idUser,
       nota: this.formNotas.value
@@ -87,7 +88,7 @@ export class AddNoteComponent implements OnInit {
     // this.loadData2Form(this.vaccine);
     this.modalRef = this.modalService.open(content, {size: 'lg', backdrop: 'static'});
     this.modalRef.result.then((result) => {
-      if ( result === 1 ) {
+      if (result === 1) {
         swal('Nota agregada', 'Nota agregada con exito', 'success');
         this.cerrado.emit(true);
       } else if (result === 2) {
@@ -106,7 +107,7 @@ export class AddNoteComponent implements OnInit {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
