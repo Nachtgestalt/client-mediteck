@@ -145,3 +145,22 @@ li {
   border-radius: 1rem;
   margin-top: 1rem;
 }
+
+@media (min-width: 700px) {
+  .table td {
+    padding: .2rem;
+  }
+
+  tr {
+    font-size: .8rem;
+  }
+}
+
+@media (min-width: 1450px) {
+  .table td {
+    margin: 0;
+  }
+  input[type=date] {
+    width: 130px;
+  }
+}

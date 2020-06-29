@@ -206,7 +206,7 @@ export class MedicalHistoryComponent implements OnInit {
 
   editMedicalHistory() {
     this.isEditMedicalHistory = !this.isEditMedicalHistory;
-    this.isEditMedicalHistory ? this.msgEditMedical = 'Editar' : this.msgEditMedical = 'Guardar historia clínica';
+    this.isEditMedicalHistory ? this.msgEditMedical = 'Editar' : this.msgEditMedical = 'Guardar';
 
     if (!this.isEditMedicalHistory) {
       this.isCollapsedAntFam = false;
