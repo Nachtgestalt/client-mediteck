@@ -91,7 +91,7 @@ export class InternComponent implements OnInit {
           this.dialogRef.close(true);
         },
         error => {
-          if (error.error.cde === 409) {
+          if (error.error.code === 409) {
             swal('Algo malo ha ocurrido', error.error.error, 'error');
           } else {
             swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
