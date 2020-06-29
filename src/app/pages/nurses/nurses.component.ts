@@ -16,7 +16,7 @@ export class NursesComponent implements OnInit {
 
   constructor( public _nurseService: NurseService,
                public router: Router) {
-    this.searchableList = ['Nombre', 'Apellido'];
+    this.searchableList = ['Nombre', 'Apellidos'];
   }
 
   ngOnInit() {
@@ -69,5 +69,4 @@ export class NursesComponent implements OnInit {
         }
       });
   }
-
 }

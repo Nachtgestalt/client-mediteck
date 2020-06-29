@@ -9,7 +9,7 @@
   </div>
 
   <div class="modal-body">
-    <form [formGroup]="formNotas" (submit)="confirm()">
+    <form [formGroup]="formNotas" (ngSubmit)="confirm()">
       <div class="form-group">
         <label>Tipo de Nota</label>
         <select class="form-control show-tick" formControlName="Tipo_nota">
@@ -115,7 +115,7 @@
                   formControlName="Analisis"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary text-center " (click)="confirm()">Crear Nota</button>
+      <button class="btn btn-primary text-center">Crear Nota</button>
     </form>
   </div>
 </ng-template>

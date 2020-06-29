@@ -21,7 +21,7 @@ export class PatientsUrgenciasComponent implements OnInit {
 
   egresar: Observable<any>;
   patients: Observable<any>;
-  infoPatients: Array<any> = []
+  infoPatients: Array<any> = [];
 
   constructor(public http: HttpClient,
               public dialog: MatDialog) {
@@ -59,8 +59,9 @@ export class PatientsUrgenciasComponent implements OnInit {
 
   openDialog(idPaciente): void {
     const dialogRef = this.dialog.open(InternComponent, {
-      width: '30vw',
-      data: {idPaciente}
+      width: '50vw',
+      height: '90vh',
+      data: {idPaciente},
     });
 
     dialogRef.afterClosed().subscribe(result => {
