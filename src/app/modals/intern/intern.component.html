@@ -19,21 +19,30 @@
     <h4 class="section-heading text-uppercase">Medicamentos</h4>
   </div>
 
-  <div class="col-sm-12">
-    <div class="form-group">
-      <input class="form-control"
-             placeholder="Aquí puedes escribir los medicamentos para el paciente"
-             [formControl]="myControl" [matAutocomplete]="auto"
-             (keydown.enter)="addMedicine($event.target.value)">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let medicine of filteredOptions | async"
-                    [value]='medicine.Compuesto + " - "  + medicine.Presentacion + " - " + medicine.Cantidad'>
-          {{ medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " +
-        medicine.Cantidad}}
-        </mat-option>
-      </mat-autocomplete>
+
+  <form class="row">
+    <div class="col-sm-11">
+      <div class="form-group">
+        <input class="form-control"
+               placeholder="Aquí puedes escribir los medicamentos para el paciente"
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete"
+                          (optionSelected)="addMedicine()"
+                          [displayWith]="displayFn">
+          <mat-option *ngFor="let medicine of filteredOptions | async"
+                      [value]="medicine">
+            {{ medicine.Compuesto + " - " + medicine.Marcas + " - " + medicine.Presentacion + " - " +
+          medicine.Cantidad}}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
     </div>
-  </div>
+    <div class="col-sm-1 p-0">
+      <button class="btn btn-icon m-0" (click)="addMedicine()" matTooltip="Agregar medicamento">+</button>
+    </div>
+  </form>
+
 
   <div class="row">
     <ul>

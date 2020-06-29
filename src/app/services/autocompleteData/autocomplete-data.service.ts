@@ -39,12 +39,9 @@ export class AutocompleteDataService {
       .pipe(
         map(
           res => {
-            console.log(res);
             if (res !== null) {
-              console.log('Estoy dentro de !== null');
               return res;
             } else {
-              console.log('Estoy dentro de null');
               return [{
                 Compuesto: 'Sin medicamentos',
                 Marcas: '',

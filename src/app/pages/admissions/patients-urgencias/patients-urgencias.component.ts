@@ -59,8 +59,8 @@ export class PatientsUrgenciasComponent implements OnInit {
 
   openDialog(idPaciente): void {
     const dialogRef = this.dialog.open(InternComponent, {
-      width: '50vw',
-      height: '90vh',
+      width: '70vw',
+      height: '80vh',
       data: {idPaciente},
     });
 

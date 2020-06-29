@@ -38,7 +38,6 @@ export class InternComponent implements OnInit {
   ngOnInit() {
     this._camasService.listCamas().subscribe(
       (res: any) => {
-        console.log(res);
         this.camas = res;
       }
     );
@@ -48,7 +47,6 @@ export class InternComponent implements OnInit {
         debounceTime(400),
         distinctUntilChanged(),
         switchMap((value: any) => {
-          console.log(value);
           // value ? this.filter(value || '') : new EmptyObservable();
           return this.filterMedicine(value || '');
         })
@@ -100,14 +98,23 @@ export class InternComponent implements OnInit {
         );
   }
 
-  addMedicine(medicamento) {
+  addMedicine() {
+    const medicine = this.myControl.value;
+    console.log(medicine);
+    if (typeof medicine === 'string') {
+      this.medicines.push(medicine);
+    } else {
+      const {Compuesto, Presentacion, Cantidad} = medicine;
+      const medicineWithFormat = `${Compuesto} - ${Presentacion ? Presentacion : ''} - ${Cantidad ? Cantidad : ''}`;
+      this.medicines.push(medicineWithFormat);
+    }
     this.myControl.reset();
-    this.medicines.push(medicamento);
+    // this.medicines.push(medicine);
     console.log('Medicinas:', this.medicines);
   }
 
-  displayFn(user?) {
-    return user ? user.name : undefined;
+  displayFn(medicine): string {
+    return medicine ? `${medicine.Compuesto} - ${medicine.Presentacion} - ${medicine.Cantidad}` : '';
   }
 
   filterMedicine(val: string): Observable<any[]> {

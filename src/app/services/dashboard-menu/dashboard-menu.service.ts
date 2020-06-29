@@ -22,7 +22,7 @@ export class DashboardMenuService {
     {
       title: 'Pacientes',
       icon: 'zmdi zmdi-home',
-      url: '/pacientes-place'
+      url: '/listar_pacientes'
     }
   ];
 
