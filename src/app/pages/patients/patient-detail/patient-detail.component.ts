@@ -178,7 +178,6 @@ export class PatientDetailComponent implements OnInit {
   setData2Form(consultation) {
     this.createFormGroup();
     const medicines = this.formReceta.get('Medicamentos') as FormArray;
-    console.log(consultation);
     while (medicines.length) {
       medicines.removeAt(0);
     }
@@ -194,8 +193,7 @@ export class PatientDetailComponent implements OnInit {
     this.formNotas.patchValue(consultation.nota);
     this.formReceta.patchValue(consultation.receta);
     this.formEstudios.patchValue(consultation.estudios);
-    console.log('consultation.consulta: ', consultation.consulta);
-    console.log('Form consulta: ', this.form.value);
+    this.formVacunas.patchValue(consultation.vacunas);
   }
 
   printFile(type: string) {
