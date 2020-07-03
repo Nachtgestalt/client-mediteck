@@ -43,7 +43,7 @@ export class MedicalHistoryComponent implements OnInit {
     this._medicalHistoryService.getMedicalHistory(this.patientData.id)
       .subscribe(
         (res: any) => {
-          if ( res.length !== 0) {
+          if (res.length !== 0) {
             this.medicalHistory = res[0].HistoriaClinica;
             this.form.patchValue(this.medicalHistory);
             console.log('Historia del paciente: ', this.medicalHistory);
@@ -202,9 +202,12 @@ export class MedicalHistoryComponent implements OnInit {
         })
       }));
     }
+
+    this.form.disable();
   }
 
   editMedicalHistory() {
+    this.form.enable();
     this.isEditMedicalHistory = !this.isEditMedicalHistory;
     this.isEditMedicalHistory ? this.msgEditMedical = 'Editar' : this.msgEditMedical = 'Guardar';
 
@@ -229,13 +232,14 @@ export class MedicalHistoryComponent implements OnInit {
             console.log(res);
           }
         );
-      this.isCollapsedAntFam = true;
-      this.isCollapsedAntNoPat = true;
-      this.isCollapsedAntPat = true;
-      this.isCollapsedIntApar = true;
-      this.isCollapsedAntGinecologicos = true;
-      this.isCollapsedAntPerinatales = true;
-      this.isCollapsedCartilla = true;
+      this.form.disable();
+      // this.isCollapsedAntFam = true;
+      // this.isCollapsedAntNoPat = true;
+      // this.isCollapsedAntPat = true;
+      // this.isCollapsedIntApar = true;
+      // this.isCollapsedAntGinecologicos = true;
+      // this.isCollapsedAntPerinatales = true;
+      // this.isCollapsedCartilla = true;
     }
   }
 }

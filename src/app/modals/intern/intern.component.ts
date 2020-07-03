@@ -24,9 +24,13 @@ export class InternComponent implements OnInit {
   camas = [];
   ingresar: Observable<any>;
   medicines = [];
-  myControl = new FormControl();
   filteredOptions: Observable<any[]>;
   closeResult: string;
+
+  medicineInput = new FormControl();
+  prescripcionInput = new FormControl();
+  cantidad = new FormControl();
+  tiempo = new FormControl();
 
   constructor(public dialogRef: MatDialogRef<InternComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -41,7 +45,7 @@ export class InternComponent implements OnInit {
         this.camas = res;
       }
     );
-    this.filteredOptions = this.myControl.valueChanges
+    this.filteredOptions = this.medicineInput.valueChanges
       .pipe(
         startWith(''),
         debounceTime(400),
@@ -95,22 +99,57 @@ export class InternComponent implements OnInit {
             swal('Algo malo ha ocurrido', 'Error al agregar paciente', 'error');
           }
         }
-        );
+      );
   }
 
   addMedicine() {
-    const medicine = this.myControl.value;
-    console.log(medicine);
-    if (typeof medicine === 'string') {
-      this.medicines.push(medicine);
-    } else {
-      const {Compuesto, Presentacion, Cantidad} = medicine;
-      const medicineWithFormat = `${Compuesto} - ${Presentacion ? Presentacion : ''} - ${Cantidad ? Cantidad : ''}`;
-      this.medicines.push(medicineWithFormat);
+    const medicine = this.medicineInput.value;
+    const prescripcion = this.prescripcionInput.value;
+    const cantidad = this.cantidad.value;
+    const tiempo = this.cantidad.value;
+    let prescripcionWithFormat = '';
+    if (!medicine) {
+      return;
     }
-    this.myControl.reset();
-    // this.medicines.push(medicine);
+    if (typeof medicine === 'string') {
+      if (prescripcion) {
+        prescripcionWithFormat = `Prescripcion: ${prescripcion}`;
+      }
+      if (cantidad) {
+        prescripcionWithFormat = `${prescripcionWithFormat} - Cantidad: ${cantidad}`;
+      }
+      if (tiempo) {
+        prescripcionWithFormat = `${prescripcionWithFormat} - Tiempo: ${tiempo} horas`;
+      }
+      const medicineWithFormat = `${medicine} / ${prescripcionWithFormat}`;
+      this.medicines.push(medicineWithFormat);
+    } else {
+      console.log(medicine);
+      const {Compuesto, Presentacion, Cantidad} = medicine;
+      if (Compuesto === 'Sin medicamentos') {
+        this.medicines.push(Compuesto);
+        return;
+      } else {
+        const medicineString = `${Compuesto} - ${Presentacion ? Presentacion : ''} - ${Cantidad ? Cantidad : ''}`;
+        if (prescripcion) {
+          prescripcionWithFormat = `Prescripcion: ${prescripcion}`;
+        }
+        if (cantidad) {
+          prescripcionWithFormat = `${prescripcionWithFormat} - Dosis: ${cantidad}`;
+        }
+        if (tiempo) {
+          prescripcionWithFormat = `${prescripcionWithFormat} - Tiempo: ${tiempo} horas`;
+        }
+        const medicineWithFormat = `${medicineString} / ${prescripcionWithFormat}`;
+        this.medicines.push(medicineWithFormat);
+      }
+    }
+    this.medicineInput.reset();
     console.log('Medicinas:', this.medicines);
+  }
+
+  deleteMedicine(index) {
+    this.medicines.splice(index, 1);
   }
 
   displayFn(medicine): string {

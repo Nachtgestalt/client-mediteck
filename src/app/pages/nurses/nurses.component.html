@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-danger" (click)="delete(nurse.id)">Eliminar</button>
           </div>
           <div class="col-4">
-            <app-edit-nurse (cerrado)="reload($event)" [nurse]="nurses[i]"></app-edit-nurse>
+            <app-edit-nurse (cerrado)="reload($event)" [nurse]="nurse"></app-edit-nurse>
           </div>
         </div>
       </div>

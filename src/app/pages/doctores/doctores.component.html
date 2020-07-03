@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-danger" (click)="delete(doctor.id)">Eliminar</button>
           </div>
           <div class="col-4">
-            <app-edit-doctor (cerrado)="reload($event)" [doctor]="doctores[i]"></app-edit-doctor>
+            <app-edit-doctor (cerrado)="reload($event)" [doctor]="doctor"></app-edit-doctor>
             <!--<button type="button" class="btn btn-primary float-right">Ver y/o Editar</button>-->
           </div>
         </div>

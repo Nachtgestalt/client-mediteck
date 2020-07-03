@@ -53,7 +53,7 @@ export class LeftsidebarService {
       submenu: [
         {titulo: 'Listar pacientes', subNumber: 1, url: '/listar_pacientes'},
         {titulo: 'Agregar pacientes', subNumber: 1, url: '/agregar-paciente'},
-        {titulo: 'Pacientes internados', subNumber: 1, url: '/pacientes-place'}
+        {titulo: 'Pacientes hospitalizados', subNumber: 1, url: '/pacientes-place'}
       ]
     },
     {

@@ -23,13 +23,12 @@
     <!--Antecedentes familiares-->
     <div formGroupName="AntecedentesFamiliares">
       <button class="accordion" (click)="isCollapsedAntFam = !isCollapsedAntFam"
-              [attr.aria-expanded]="!isCollapsedAntFam" aria-controls="AntecedentesFam"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedAntFam" aria-controls="AntecedentesFam">
         <i class="fas fa-users fa-2x mx-2"></i>
         Antecedentes familiares
         <i class="zmdi zmdi-chevron-down float-right text-center"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntFam"></i>
-        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isEditMedicalHistory && !isCollapsedAntFam"></i>
+           *ngIf="isCollapsedAntFam"></i>
+        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isCollapsedAntFam"></i>
       </button>
       <!--Antecedentes familiares detalle-->
       <div id="AntecedentesFam" [ngbCollapse]="isCollapsedAntFam">
@@ -234,13 +233,12 @@
     <!--Antecedentes personales patologicos-->
     <div formGroupName="AntecedentesPatologicos">
       <button class="accordion" (click)="isCollapsedAntPat = !isCollapsedAntPat"
-              [attr.aria-expanded]="!isCollapsedAntPat" aria-controls="AntecedentesPat"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedAntPat" aria-controls="AntecedentesPat">
         <i class="fas fa-heartbeat fa-2x mx-2"></i>
         Antecedentes personales patologicos
         <i class="zmdi zmdi-chevron-down float-right text-center"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntPat"></i>
-        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isEditMedicalHistory && !isCollapsedAntPat"></i>
+           *ngIf="isCollapsedAntPat"></i>
+        <i class="zmdi zmdi-chevron-up float-right text-center" *ngIf="!isCollapsedAntPat"></i>
       </button>
       <!--Antecedentes personales patologicos detalle-->
       <div id="AntecedentesPat" [ngbCollapse]="isCollapsedAntPat">
@@ -354,13 +352,12 @@
     <!--Antecedentes personales NO patologicos-->
     <div formGroupName="AntecedentesNoPatologicos">
       <button class="accordion" (click)="isCollapsedAntNoPat = !isCollapsedAntNoPat"
-              [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedAntNoPat" aria-controls="AntecedentesNoPat">
         <i class="icon fas fa-home fa-2x mx-2"></i>
         Antecedentes personales no patologicos
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntNoPat"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntNoPat"></i>
+           *ngIf="isCollapsedAntNoPat"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isCollapsedAntNoPat"></i>
       </button>
       <!--Antecedentes personales NO patologicos detalle-->
       <div id="AntecedentesNoPat" [ngbCollapse]="isCollapsedAntNoPat">
@@ -502,13 +499,12 @@
     <div formGroupName="AntecedentesGinecologicos"
          *ngIf="patientData.Sexo === 'FEMENINO' && (patientAge >= 15 && patientAge <= 90)">
       <button class="accordion" (click)="isCollapsedAntGinecologicos = !isCollapsedAntGinecologicos"
-              [attr.aria-expanded]="!isCollapsedAntGinecologicos" aria-controls="InterrogatorioAparatos"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedAntGinecologicos" aria-controls="InterrogatorioAparatos">
         <i class="fas fa-female mx-3 fa-2x"></i>
         Antecedentes ginecologicos
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntGinecologicos"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntGinecologicos"></i>
+           *ngIf="isCollapsedAntGinecologicos"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isCollapsedAntGinecologicos"></i>
       </button>
 
       <!--Antecedentes ginecologicos detalle-->
@@ -582,13 +578,12 @@
     <div formGroupName="AntecedentesPerinatales"
          *ngIf="patientAge <= 5">
       <button class="accordion" (click)="isCollapsedAntPerinatales = !isCollapsedAntPerinatales"
-              [attr.aria-expanded]="!isCollapsedAntPerinatales" aria-controls="InterrogatorioAparatos"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedAntPerinatales" aria-controls="InterrogatorioAparatos">
         <i class="fas fas fa-child mx-2 fa-2x"></i>
         Antecedentes perinatales
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedAntPerinatales"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedAntPerinatales"></i>
+           *ngIf="isCollapsedAntPerinatales"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isCollapsedAntPerinatales"></i>
       </button>
 
       <!--Antecedentes Perinatales detalle-->
@@ -652,13 +647,12 @@
     <div formGroupName="CartillaVacunacion"
          *ngIf="patientAge <= 5">
       <button class="accordion" (click)="isCollapsedCartilla = !isCollapsedCartilla"
-              [attr.aria-expanded]="!isCollapsedCartilla" aria-controls="InterrogatorioAparatos"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedCartilla" aria-controls="InterrogatorioAparatos">
         <i class="fas fas fa-child mx-2 fa-2x"></i>
         Cartilla de vacunación
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedCartilla"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedCartilla"></i>
+           *ngIf="isCollapsedCartilla"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isCollapsedCartilla"></i>
       </button>
 
       <!--Cartilla de vacunas detalle-->
@@ -667,7 +661,7 @@
           <table class="table m-b-0 table-hover">
             <thead>
             <tr>
-<!--              <th>ID</th>-->
+              <!--              <th>ID</th>-->
               <th>Vacunas</th>
               <th>Enfermedad que previene</th>
               <th>Dosis</th>
@@ -678,7 +672,7 @@
             <tbody>
             <tr formGroupName="BCG">
               <!--[ngClass]="{ 'table-danger': vaccine.suscripcion.Estado === 2, 'table-success': vaccine.Nombre !== 2 }">-->
-<!--              <td>1</td>-->
+              <!--              <td>1</td>-->
               <td class="tuberculosis color-white">BCG</td>
               <td class="tuberculosis-border">Tuberculosis</td>
               <td class="tuberculosis-border">UNICA</td>
@@ -688,7 +682,7 @@
               </td>
 
             <tr formGroupName="HepatitisB">
-<!--              <td rowspan="3">2</td>-->
+              <!--              <td rowspan="3">2</td>-->
               <td rowspan="3" class="color-white hepatitis-b">Hepatitis B</td>
               <td rowspan="3" class="hepatitis-b-border">Hepatitis B</td>
               <td class="hepatitis-b-border">PRIMERA</td>
@@ -714,7 +708,7 @@
 
 
             <tr formGroupName="Pentavalente">
-<!--              <td rowspan="4">3</td>-->
+              <!--              <td rowspan="4">3</td>-->
               <td rowspan="4" class="pentavalente color-white">Pentavalente acelular</td>
               <td rowspan="4" class="pentavalente-border">
 
@@ -753,7 +747,7 @@
             </tr>
 
 
-<!--            <td>4</td>-->
+            <!--            <td>4</td>-->
             <td class="dpt color-white">DPT</td>
             <td class="dpt-border">
 
@@ -770,7 +764,7 @@
 
 
             <tr formGroupName="Rotavirus">
-<!--              <td rowspan="3">5</td>-->
+              <!--              <td rowspan="3">5</td>-->
               <td rowspan="3" class="rotavirus color-white">Rotavirus</td>
               <td rowspan="3" class="rotavirus-border">Infección por Rotavirus</td>
               <td class="rotavirus-border">PRIMERA</td>
@@ -796,7 +790,7 @@
 
 
             <tr formGroupName="Neumococo">
-<!--              <td rowspan="3">6</td>-->
+              <!--              <td rowspan="3">6</td>-->
               <td rowspan="3" class="neumococo color-white">Neumococo Conjugada</td>
               <td rowspan="3" class="neumococo-border">Infección por Neumococo</td>
               <td class="neumococo-border">PRIMERA</td>
@@ -822,7 +816,7 @@
 
 
             <tr formGroupName="Influenza">
-<!--              <td rowspan="3">7</td>-->
+              <!--              <td rowspan="3">7</td>-->
               <td rowspan="3" class="influenza color-white">Influenza</td>
               <td rowspan="3" class="influenza-border">Influenza</td>
               <td class="influenza-border">PRIMERA</td>
@@ -848,7 +842,7 @@
 
 
             <tr formGroupName="SRP">
-<!--              <td rowspan="2">8</td>-->
+              <!--              <td rowspan="2">8</td>-->
               <td rowspan="2" class="srp color-white">SRP</td>
               <td rowspan="2" class="srp-border">
 
@@ -872,7 +866,7 @@
             </tr>
 
 
-<!--            <td>9</td>-->
+            <!--            <td>9</td>-->
             <td class="sabin color-whitesmoke">SABIN</td>
             <td class="sabin-border">Poliomelitis</td>
             <td class="sabin-border">ADICIONALES</td>
@@ -882,7 +876,7 @@
             </td>
 
             <tr>
-<!--              <td>10</td>-->
+              <!--              <td>10</td>-->
               <td class="sr color-white">SR</td>
               <td class="sr-border">Sarampion y Rubeola</td>
               <td class="sr-border">ADICIONALES</td>
@@ -900,13 +894,12 @@
     <!--Interrogatorio por aparatos-->
     <div formGroupName="InterrogatorioAparatos">
       <button class="accordion" (click)="isCollapsedIntApar = !isCollapsedIntApar"
-              [attr.aria-expanded]="!isCollapsedIntApar" aria-controls="InterrogatorioAparatos"
-              [disabled]="isEditMedicalHistory">
+              [attr.aria-expanded]="!isCollapsedIntApar" aria-controls="InterrogatorioAparatos">
         <i class="fas fa-x-ray mx-2 fa-2x"></i>
         Interrogatorio por aparatos
         <i class="zmdi zmdi-chevron-down float-right"
-           *ngIf="!isEditMedicalHistory && isCollapsedIntApar"></i>
-        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isEditMedicalHistory && !isCollapsedIntApar"></i>
+           *ngIf="isCollapsedIntApar"></i>
+        <i class="zmdi zmdi-chevron-up float-right" *ngIf="!isCollapsedIntApar"></i>
       </button>
       <!--Interrogatorio por aparatos detalle-->
       <div id="InterrogatorioAparatos" [ngbCollapse]="isCollapsedIntApar">
@@ -922,15 +915,12 @@
     </div>
 
 
-    <div class="historia-header" *ngIf="!isEditMedicalHistory">
-      <div class="d-flex flex-row-reverse">
-        <div class="col-sm-5">
-          <button class="btn btn-default btn-sm btn-edit" (click)="editMedicalHistory()">
-            {{msgEditMedical}}
-          </button>
-        </div>
-      </div>
+    <div class="d-flex flex-row-reverse" *ngIf="!isEditMedicalHistory">
+      <button class="btn btn-primary btn-sm" (click)="editMedicalHistory()">
+        {{msgEditMedical}}
+      </button>
     </div>
+
   </form>
 </div>
 
