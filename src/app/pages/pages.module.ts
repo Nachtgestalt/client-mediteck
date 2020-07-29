@@ -66,6 +66,7 @@ import { FirmComponent } from './firm/firm.component';
 import { RecetaComponent } from './receta/receta.component';
 import { NotPaidComponent } from './not-paid/not-paid.component';
 import { ContractComponent } from './payments/contract/contract.component';
+import {ViewNotesComponent} from '../modals/view-notes/view-notes.component';
 
 @NgModule({
   providers: [
@@ -155,7 +156,8 @@ import { ContractComponent } from './payments/contract/contract.component';
   ],
   entryComponents: [
     InternComponent,
-    ScheduleDateComponent
+    ScheduleDateComponent,
+    ViewNotesComponent
   ]
 })
 export class PagesModule { }

@@ -9,6 +9,8 @@ import {debounceTime, distinctUntilChanged, map, startWith, switchMap} from 'rxj
 import {Observable} from 'rxjs';
 import * as moment from 'moment';
 import {DomSanitizer} from '@angular/platform-browser';
+import {MatDialog} from '@angular/material';
+import {ViewNotesComponent} from '../../../modals/view-notes/view-notes.component';
 
 
 @Component({
@@ -27,7 +29,7 @@ export class NewMedicalConsultationComponent implements OnInit {
 
   filteredOptionsDiagnostics: Observable<any[]>;
   filteredOptionsMedicine: Observable<any[]>[] = [];
-  filteredOptionsLaboratory: Observable<any>;
+  filteredOptionsLaboratory: Observable<any[]>[] = [];
 
   vaccines = [];
   patient: any;
@@ -44,6 +46,7 @@ export class NewMedicalConsultationComponent implements OnInit {
               public _patientService: PatientService,
               private _consultationService: ConsultationService,
               private formBuilder: FormBuilder,
+              private dialog: MatDialog,
               private cdref: ChangeDetectorRef,
               private router: Router,
               private route: ActivatedRoute,
@@ -65,7 +68,7 @@ export class NewMedicalConsultationComponent implements OnInit {
     this.createFormGroup();
     console.log('Paciente: ', this.patient);
 
-    this.filteredOptionsLaboratory = this.formEstudios.get('Tipo_estudio').valueChanges
+    this.filteredOptionsLaboratory[0] = this.formEstudios.get('Laboratorios.0').get('Tipo_estudio').valueChanges
       .pipe(
         startWith<any>(''),
         map(value => {
@@ -145,9 +148,7 @@ export class NewMedicalConsultationComponent implements OnInit {
     });
 
     this.formEstudios = new FormGroup({
-      'Fecha': new FormControl(''),
-      'Tipo_estudio': new FormControl(''),
-      'Descripcion': new FormControl('')
+      'Laboratorios': new FormArray([this.createItemLaboratorie()])
     });
 
   }
@@ -176,7 +177,6 @@ export class NewMedicalConsultationComponent implements OnInit {
 
 
   save() {
-    let pdfResult;
     console.log(this.patientSelected.value);
     // this.form.get('idPaciente').setValue(Number(this.patientSelected.value));
     const newConsult = {
@@ -194,10 +194,6 @@ export class NewMedicalConsultationComponent implements OnInit {
         res => {
           console.log(res);
           swal('Consulta realizada', 'Consulta realizada con exito', 'success');
-          pdfResult = this.domSanitizer.bypassSecurityTrustResourceUrl(
-            URL.createObjectURL(res)
-          );
-          window.open(pdfResult.changingThisBreaksApplicationSecurity);
           this.router.navigate(['listar_pacientes']);
         }
       );
@@ -210,6 +206,28 @@ export class NewMedicalConsultationComponent implements OnInit {
       Cantidad: ['', Validators.required],
       Tiempo: ['', Validators.required],
       Prescripcion: ['', Validators.required],
+    });
+  }
+
+  createItemLaboratorie(): FormGroup {
+    return this.formBuilder.group({
+      'Fecha': new FormControl(''),
+      'Tipo_estudio': new FormControl(''),
+      'Descripcion': new FormControl('')
+    });
+  }
+
+  viewNotes(patient) {
+    console.log(patient);
+    const dialogRef = this.dialog.open(ViewNotesComponent, {
+        data: patient,
+        width: '80vw',
+        height: '80vh'
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -231,9 +249,32 @@ export class NewMedicalConsultationComponent implements OnInit {
     this.cdref.detectChanges();
   }
 
+  addNewLaboratorie() {
+    const control = <FormArray>this.formEstudios.controls['Laboratorios'];
+    control.push(this.createItemLaboratorie());
+
+    this.filteredOptionsLaboratory[control.length - 1] = this.formEstudios.get(`Laboratorios.${control.length - 1}`).get('Tipo_estudio').valueChanges
+      .pipe(
+        startWith<any>(''),
+        map(value => {
+          console.log(value);
+          return typeof value === 'string' ? value : value.Labororatorios;
+        }),
+        map(folio => folio ? this.filterLaboratories(folio) : this.laboratories.slice())
+      );
+    this.cdref.detectChanges();
+  }
+
   deleteMedicine(index) {
     // control refers to your formarray
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
+    // remove the chosen row
+    control.removeAt(index);
+  }
+
+  deleteLaboratorie(index) {
+    // control refers to your formarray
+    const control = <FormArray>this.formEstudios.controls['Laboratorios'];
     // remove the chosen row
     control.removeAt(index);
   }

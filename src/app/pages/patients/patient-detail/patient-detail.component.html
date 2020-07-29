@@ -263,35 +263,56 @@
             <div class="row clearfix">
               <div class="col-md-12">
                 <form [formGroup]="formEstudios">
+                  <div class="row" formArrayName="Laboratorios">
+                    <div class="col-md-11"
+                         *ngFor="let laboratorie of formEstudios.get('Laboratorios').controls; let i = index"
+                         [formGroupName]="i">
+                      <div class="row">
+                        <div class="col-md-11">
+                          <div class="form-group">
+                            <label>Fecha:</label>
+                            <input type="date" class="form-control" formControlName="Fecha">
+                          </div>
+                        </div>
+                        <div class="col-1 col-sm-1 alinear-centro">
+                          <button class="btn btn-danger btn-icon  btn-icon-mini btn-round col-md-1"
+                                  *ngIf="formEstudios.controls['Laboratorios'].length > 1"
+                                  (click)="deleteLaboratorie(i)">
+                            <i class="zmdi zmdi-minus"></i>
+                          </button>
+                        </div>
+                      </div>
 
-                  <div class="form-group">
-                    <label>Fecha:</label>
-                    <input type="date" class="form-control" formControlName="Fecha">
-                  </div>
+                      <div class="form-group">
+                        <label>Estudio solicitado:</label>
+                        <input type="text" class="form-control" placeholder="Estudio solicitado*"
+                               formControlName="Tipo_estudio" [matAutocomplete]="laboratorie">
+                        <mat-autocomplete #laboratorie="matAutocomplete">
+                          <mat-option *ngFor="let speciality of filteredOptionsLaboratory[i] | async"
+                                      [value]='speciality.Labororatorios'>
+                            {{ speciality.Labororatorios}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </div>
 
-                  <div class="form-group">
-                    <label>Estudio solicitado:</label>
-                    <input type="text" class="form-control" placeholder="Estudio solicitado*"
-                           formControlName="Tipo_estudio" [matAutocomplete]="laboratorie">
-                    <mat-autocomplete #laboratorie="matAutocomplete">
-                      <mat-option *ngFor="let speciality of filteredOptionsLaboratory | async"
-                                  [value]='speciality.Labororatorios'>
-                        {{ speciality.Labororatorios}}
-                      </mat-option>
-                    </mat-autocomplete>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Descripción:</label>
-                    <br>
-                    <textarea class="form-control" placeholder="Descripción*"
-                              formControlName="Descripcion"></textarea>
-                  </div>
-                  <div class="d-flex flex-row-reverse">
-                    <button class="btn btn-info" (click)="printFile('estudio')">Generar orden</button>
+                      <div class="form-group">
+                        <label>Descripción:</label>
+                        <br>
+                        <textarea class="form-control" placeholder="Descripción*"
+                                  formControlName="Descripcion"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-1 col-sm-1 alinear-centro">
+                      <button class="btn btn-primary btn-icon btn-icon-mini btn-round" (click)="addNewLaboratorie()">
+                        <i class="zmdi zmdi-plus"></i>
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
+            </div>
+            <div class="d-flex flex-row-reverse">
+              <button class="btn btn-info" (click)="printFile('estudios')">Generar orden</button>
             </div>
           </div>
 
@@ -404,6 +425,9 @@
                 </form>
               </div>
             </div>
+            <div class="d-flex flex-row-reverse">
+              <button class="btn btn-info" (click)="printFile('notas')">Imprimir nota</button>
+            </div>
           </div>
 
 
@@ -429,11 +453,11 @@
 
               </form>
             </div>
+            <div class="d-flex flex-row-reverse">
+              <button class="btn btn-info" (click)="printFile('vacunas')">Imprimir vacuna</button>
+            </div>
           </div>
         </div>
-<!--        <div class="d-flex flex-row-reverse mt-5">-->
-<!--          <button class="btn-success btn-lg rounded" (click)="printRecipe()">Generar receta</button>-->
-<!--        </div>-->
       </div>
     </div>
   </div>

@@ -18,7 +18,7 @@ export class PatientDetailComponent implements OnInit {
 
   filteredOptionsDiagnostics: Observable<any[]>;
   filteredOptionsMedicine: Observable<any[]>[] = [];
-  filteredOptionsLaboratory: Observable<any>;
+  filteredOptionsLaboratory: Observable<any[]>[] = [];
 
   doctor = JSON.parse(localStorage.getItem('user'));
   form: FormGroup;
@@ -66,7 +66,7 @@ export class PatientDetailComponent implements OnInit {
     console.log('Edad del paciente: ', this.patientAge);
     this.createFormGroup();
 
-    this.filteredOptionsLaboratory = this.formEstudios.get('Tipo_estudio').valueChanges
+    this.filteredOptionsLaboratory[0] = this.formEstudios.get('Laboratorios.0').get('Tipo_estudio').valueChanges
       .pipe(
         startWith<any>(''),
         map(value => {
@@ -168,9 +168,7 @@ export class PatientDetailComponent implements OnInit {
     });
 
     this.formEstudios = new FormGroup({
-      'Fecha': new FormControl(''),
-      'Tipo_estudio': new FormControl(''),
-      'Descripcion': new FormControl('')
+      'Laboratorios': new FormArray([this.createItemLaboratorie()])
     });
 
   }
@@ -184,9 +182,14 @@ export class PatientDetailComponent implements OnInit {
     for (let i = 0; i < consultation.receta.Medicamentos.length; i++) {
       this.addNewMedicine();
     }
-    // while (consultation.receta.Medicamentos.length) {
-    //   this.createItemMedicine();
-    // }
+    const laboratories = this.formEstudios.get('Laboratorios') as FormArray;
+    while (laboratories.length) {
+      laboratories.removeAt(0);
+    }
+    for (let i = 0; i < consultation.estudios.Laboratorios.length; i++) {
+      this.addNewLaboratorie();
+    }
+
     console.log(consultation);
     this.showConsultationDetail = true;
     this.form.patchValue(consultation.consulta);
@@ -297,6 +300,14 @@ export class PatientDetailComponent implements OnInit {
     });
   }
 
+  createItemLaboratorie(): FormGroup {
+    return this.formBuilder.group({
+      'Fecha': new FormControl(''),
+      'Tipo_estudio': new FormControl(''),
+      'Descripcion': new FormControl('')
+    });
+  }
+
   addNewMedicine() {
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
     control.push(this.createItemMedicine());
@@ -315,6 +326,23 @@ export class PatientDetailComponent implements OnInit {
     this.cdref.detectChanges();
   }
 
+  addNewLaboratorie() {
+    const control = <FormArray>this.formEstudios.controls['Laboratorios'];
+    control.push(this.createItemLaboratorie());
+
+    this.filteredOptionsLaboratory[control.length - 1] = this.formEstudios.get(`Laboratorios.${control.length - 1}`).get('Tipo_estudio').valueChanges
+      .pipe(
+        startWith<any>(''),
+        map(value => {
+          console.log(value);
+          return typeof value === 'string' ? value : value.Labororatorios;
+        }),
+        map(folio => folio ? this.filterLaboratories(folio) : this.laboratories.slice())
+      );
+    this.cdref.detectChanges();
+  }
+
+
   deleteMedicine(index) {
     // control refers to your formarray
     const control = <FormArray>this.formReceta.controls['Medicamentos'];
@@ -330,6 +358,13 @@ export class PatientDetailComponent implements OnInit {
           return option.Enfermedades.toLowerCase().indexOf(val.toLowerCase()) >= 0;
         }))
       );
+  }
+
+  deleteLaboratorie(index) {
+    // control refers to your formarray
+    const control = <FormArray>this.formEstudios.controls['Laboratorios'];
+    // remove the chosen row
+    control.removeAt(index);
   }
 
 

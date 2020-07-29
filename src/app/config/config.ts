@@ -11,7 +11,7 @@ export const URL_LOCAL = 'http://localhost:4200';
 //PROD
 // export const URL_SERVICIOS = 'https://api.clinitec.com.mx';
 //Dev
-export const URL_SERVICIOS = 'https://api.clinitec.com.mx';
+export const URL_SERVICIOS = 'http://api.clinitec.com.mx';
 export const GRANT_TYPE = 'password';
 export const CLIENT_ID = '1';
 export const DESTINO = 'Client';

@@ -83,7 +83,15 @@
           <input class="form-control" type="text" placeholder="Costo" formControlName="Costo">
         </div>
 
-        <app-add-note [patientData]="patient"></app-add-note>
+        <p class="m-0">Notas</p>
+        <div class="row">
+          <div class="col-md-12">
+            <app-add-note [patientData]="patient"></app-add-note>
+            <button type="button" class="btn btn-primary text-center" style="margin-top: 5px"
+                    (click)="viewNotes(patient)">Ver
+            </button>
+          </div>
+        </div>
 
       </div>
 
@@ -276,32 +284,54 @@
         <div class="row clearfix">
           <div class="col-md-12">
             <form [formGroup]="formEstudios">
+              <div class="row" formArrayName="Laboratorios">
+                <div class="col-md-11"
+                     *ngFor="let laboratorie of formEstudios.controls['Laboratorios']['controls']; let i = index"
+                     [formGroupName]="i">
+                  <div class="row">
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label>Fecha:</label>
+                        <input type="date" class="form-control" formControlName="Fecha">
+                      </div>
+                    </div>
+                    <div class="col-1 col-sm-1 alinear-centro">
+                      <button class="btn btn-danger btn-icon  btn-icon-mini btn-round col-md-1"
+                              *ngIf="formEstudios.controls['Laboratorios'].length > 1"
+                              (click)="deleteLaboratorie(i)">
+                        <i class="zmdi zmdi-minus"></i>
+                      </button>
+                    </div>
+                  </div>
 
-              <div class="form-group">
-                <label>Fecha:</label>
-                <input type="date" class="form-control" formControlName="Fecha">
+                  <div class="form-group">
+                    <label>Estudio solicitado:</label>
+                    <input type="text" class="form-control" placeholder="Estudio solicitado*"
+                           formControlName="Tipo_estudio" [matAutocomplete]="laboratorie">
+                    <mat-autocomplete #laboratorie="matAutocomplete">
+                      <mat-option *ngFor="let speciality of filteredOptionsLaboratory[i] | async"
+                                  [value]='speciality.Labororatorios'>
+                        {{ speciality.Labororatorios}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción:</label>
+                    <br>
+                    <textarea class="form-control" placeholder="Descripción*"
+                              formControlName="Descripcion"></textarea>
+                  </div>
+                </div>
+                <div class="col-1 col-sm-1 alinear-centro">
+                  <button class="btn btn-primary btn-icon btn-icon-mini btn-round" (click)="addNewLaboratorie()">
+                    <i class="zmdi zmdi-plus"></i>
+                  </button>
+                </div>
               </div>
 
-              <div class="form-group">
-                <label>Estudio solicitado:</label>
-                <input type="text" class="form-control" placeholder="Estudio solicitado*"
-                       formControlName="Tipo_estudio" [matAutocomplete]="laboratorie">
-                <mat-autocomplete #laboratorie="matAutocomplete">
-                  <mat-option *ngFor="let speciality of filteredOptionsLaboratory | async"
-                              [value]='speciality.Labororatorios'>
-                    {{ speciality.Labororatorios}}
-                  </mat-option>
-                </mat-autocomplete>
-              </div>
-
-              <div class="form-group">
-                <label>Descripción:</label>
-                <br>
-                <textarea class="form-control" placeholder="Descripción*"
-                          formControlName="Descripcion"></textarea>
-              </div>
               <div class="d-flex flex-row-reverse">
-                <button class="btn btn-info" (click)="printFile('estudio')">Generar orden</button>
+                <button class="btn btn-info" (click)="printFile('estudios')">Generar orden</button>
               </div>
             </form>
           </div>
@@ -417,30 +447,39 @@
             </form>
           </div>
         </div>
+        <div class="d-flex flex-row-reverse">
+          <button class="btn btn-info" (click)="printFile('notas')">Imprimir nota</button>
+        </div>
       </div>
 
 
       <!--***********************VACUNAS*****************-->
       <div class="tab-pane" routerLinkActive="active" id="Vacunas">
         <div class="row clearfix">
-          <form [formGroup]="formVacunas">
+          <div class="col-md-12">
+            <form [formGroup]="formVacunas">
 
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Fecha de Aplicación:</label>
-                <input type="date" class="form-control" id="fecha_aplicacion" formControlName="Fecha_aplicacion">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Fecha de Aplicación:</label>
+                  <input type="date" class="form-control" id="fecha_aplicacion" formControlName="Fecha_aplicacion">
+                </div>
+
+                <div class="form-group">
+                  <label>Vacuna:</label>
+                  <textarea class="form-control w-100" formControlName="idVacuna">
+                </textarea>
+                  <!--<select class="form-control" formControlName="idVacuna">-->
+                  <!--<option *ngFor="let vaccine of vaccines" [value]="vaccine.id">{{vaccine.Nombre}}</option>-->
+                  <!--</select>-->
+                </div>
               </div>
 
-              <div class="form-group">
-                <label>Vacuna:</label>
-                <input type="text" class="form-control" formControlName="idVacuna">
-                <!--<select class="form-control" formControlName="idVacuna">-->
-                <!--<option *ngFor="let vaccine of vaccines" [value]="vaccine.id">{{vaccine.Nombre}}</option>-->
-                <!--</select>-->
-              </div>
-            </div>
-
-          </form>
+            </form>
+          </div>
+        </div>
+        <div class="d-flex flex-row-reverse">
+          <button class="btn btn-info" (click)="printFile('vacunas')">Imprimir vacuna</button>
         </div>
       </div>
     </div>
